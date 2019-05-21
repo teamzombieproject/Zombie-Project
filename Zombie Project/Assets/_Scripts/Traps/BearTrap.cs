@@ -43,7 +43,7 @@ public class BearTrap : MonoBehaviour
         if (isDestroyed == false && coolDownComplete == true)
         {
             // Initiate bear trap animation or sprite
-            // kill zombie
+            TakeHealth();
             triggered = 0f;
             coolDownComplete = false;
             uses -= 1;
