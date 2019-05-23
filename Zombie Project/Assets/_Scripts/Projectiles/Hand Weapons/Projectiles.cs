@@ -8,7 +8,7 @@ public class Projectiles : MonoBehaviour
     // CODE FOR ALL HAND WEAPONS //
     // SEE NOTES BELOW           //
 
-    // Create diffrent bullet prefabs for each weapon and attach this script and fill out the inspector values. //
+    // Create different bullet prefabs for each weapon and attach this script and fill out the inspector values. //
 
     // Damage dealt to zombies should be in the zombies health script "TakeDamage" //
 
@@ -18,7 +18,7 @@ public class Projectiles : MonoBehaviour
     public int projectileDamage = 25;       // Damge of projectile = HANGDUN/.22 RIFLE/SEMI AUTO RIFLE/HIGH POWER RIFLE//SHOTGUN
     public float ProjectileSpeed = 2f;      // Speed/Delay of projectile
     public float destroyProjectile = 2f;    // Time/Range before destroy is called for projectile
-
+    public AudioSource hitSFX;              // SFX when projectile hits zombie
 
     private Transform myTransform;
     
@@ -32,7 +32,7 @@ public class Projectiles : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        myTransform.position += Time.deltaTime * ProjectileSpeed * myTransform.forward;
+        myTransform.position += Time.deltaTime * ProjectileSpeed * myTransform.forward; // transform.up?
 
         destroyProjectile -= Time.deltaTime;
 
@@ -48,6 +48,8 @@ public class Projectiles : MonoBehaviour
         if(collision.gameObject.tag == "Zombie")
         {
             collision.gameObject.SendMessage("TakeDamage", projectileDamage, SendMessageOptions.DontRequireReceiver);
+
+            hitSFX.Play();
         }
     }
 }
