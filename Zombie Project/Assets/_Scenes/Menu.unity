@@ -132,6 +132,27 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 1917194176}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &551501180 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3391368162305702132, guid: 96ea1fef37f481f4bbd176de7922e56f,
+    type: 3}
+  m_PrefabInstance: {fileID: 1917194176}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &551501185
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 551501180}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 942b596b420e6a746bc6f1daaa3fae89, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cursorTexture: {fileID: 2800000, guid: cf2520accc9af904c903a0c263f87c76, type: 3}
+  cursorMode: 0
+  hotSpot: {x: 0, y: 0}
 --- !u!1 &1021852213
 GameObject:
   m_ObjectHideFlags: 0
@@ -813,6 +834,28 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &1751193929 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3391368162922909324, guid: 96ea1fef37f481f4bbd176de7922e56f,
+    type: 3}
+  m_PrefabInstance: {fileID: 1917194176}
+  m_PrefabAsset: {fileID: 0}
+--- !u!54 &1751193934
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1751193929}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &1829736081
 GameObject:
   m_ObjectHideFlags: 0
@@ -950,6 +993,11 @@ PrefabInstance:
     - target: {fileID: 2253482343959054452, guid: 96ea1fef37f481f4bbd176de7922e56f,
         type: 3}
       propertyPath: m_Name
+      value: ZombieProjectGUI
+      objectReference: {fileID: 0}
+    - target: {fileID: 2253482343959054452, guid: 96ea1fef37f481f4bbd176de7922e56f,
+        type: 3}
+      propertyPath: m_TagString
       value: ZombieProjectGUI
       objectReference: {fileID: 0}
     - target: {fileID: 996043277422154882, guid: 96ea1fef37f481f4bbd176de7922e56f,
@@ -1212,6 +1260,11 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3391368162922909324, guid: 96ea1fef37f481f4bbd176de7922e56f,
+        type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 96ea1fef37f481f4bbd176de7922e56f, type: 3}
 --- !u!114 &2002072061 stripped
@@ -1220,7 +1273,7 @@ MonoBehaviour:
     type: 3}
   m_PrefabInstance: {fileID: 1917194176}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 1751193929}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 42ad743730c31de438c38a0d8f048c4e, type: 3}
