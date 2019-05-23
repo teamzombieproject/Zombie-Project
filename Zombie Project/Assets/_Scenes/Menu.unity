@@ -952,6 +952,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: ZombieProjectGUI
       objectReference: {fileID: 0}
+    - target: {fileID: 2253482343959054452, guid: 96ea1fef37f481f4bbd176de7922e56f,
+        type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
+    - target: {fileID: 3391368162922909324, guid: 96ea1fef37f481f4bbd176de7922e56f,
+        type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
     - target: {fileID: 996043277422154882, guid: 96ea1fef37f481f4bbd176de7922e56f,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1020,7 +1030,7 @@ PrefabInstance:
     - target: {fileID: 3391368162046286309, guid: 96ea1fef37f481f4bbd176de7922e56f,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 245
+      value: 265.5
       objectReference: {fileID: 0}
     - target: {fileID: 3391368162046286309, guid: 96ea1fef37f481f4bbd176de7922e56f,
         type: 3}

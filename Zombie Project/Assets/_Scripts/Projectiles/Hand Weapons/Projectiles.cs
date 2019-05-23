@@ -32,7 +32,7 @@ public class Projectiles : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        myTransform.position += Time.deltaTime * ProjectileSpeed * myTransform.forward; // transform.up?
+        myTransform.position += Time.deltaTime * ProjectileSpeed * myTransform.up; // transform.up?
 
         destroyProjectile -= Time.deltaTime;
 

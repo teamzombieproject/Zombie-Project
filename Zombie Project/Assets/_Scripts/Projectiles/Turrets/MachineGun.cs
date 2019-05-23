@@ -4,6 +4,17 @@ using UnityEngine;
 
 public class MachineGun : MonoBehaviour
 {
+
+    /////        SEE NOTES BELOW           /////
+
+    // Create MG bullet prefab and attach this script and fill out the inspector values. //
+
+    // Damage dealt to zombies should be in the zombies health script "TakeDamage" //
+
+    // Zombie prefabs/models in the Hieracrchy should be tagged "Zombie" //
+
+
+
     public int projectileDamage = 25;        // Damage
     public float destroyProjectile = 2f;     // Range before destroy is called
     public float speed = 5f;                 // Speed/Velocity
@@ -23,7 +34,7 @@ public class MachineGun : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        gameObject.GetComponent<Rigidbody>().AddForce(transform.forward * speed, ForceMode.VelocityChange); // transform.up?
+        gameObject.GetComponent<Rigidbody>().AddForce(turretTransform.up * speed, ForceMode.VelocityChange); // transform.up?
 
         destroyProjectile -= Time.deltaTime;
 
