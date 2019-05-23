@@ -4,31 +4,29 @@ using UnityEngine;
 
 public class Aiming : MonoBehaviour
 {
-    LayerMask layerMask;
-    float angleY = 0;
-    int direction = 1;
+    public Camera camera;
 
-    void Awake()
+    private void Start()
     {
-        layerMask = LayerMask.GetMask("Ground"); // gets ground layer for use with rays
+        camera = Camera.main;
+    }
+    private void FixedUpdate()
+    {
+        Aim();
     }
 
-    // Update is called once per frame
-    void Update()
+    void Aim()
     {
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        RaycastHit hit = new RaycastHit();
-        if (Physics.Raycast(ray, out hit, Mathf.Infinity, LayerMask.GetMask("Ground")))//if a ray is cast and hits layermask (outputting the raycast 'hit' as a variable)
+        Ray cameraRay = camera.ScreenPointToRay(Input.mousePosition);
+        Plane groundPlane = new Plane(Vector3.up, Vector3.zero);
+        float rayLength;
+
+        if (groundPlane.Raycast(cameraRay, out rayLength))
         {
-            Vector3 targetDir = hit.point - transform.position;
+            Vector3 pointToLook = cameraRay.GetPoint(rayLength);
+            Debug.DrawLine(cameraRay.origin, pointToLook, Color.red);
 
-            if (Camera.main.WorldToScreenPoint(transform.position).x <= Input.mousePosition.x) //flips gameobject for aesthetics    
-            { angleY = 180; direction = -1; }
-            else { angleY = 0; direction = 1; }
-
-            //find the angle from the player to the mouse using trig and convert it to degrees
-            float angle = Mathf.Atan2(targetDir.z, targetDir.x) * Mathf.Rad2Deg; 
-            transform.rotation = Quaternion.Euler(-45 + angleY, 0, 90) * Quaternion.AngleAxis(angle * -direction, Vector3.forward); // apply rotation to game object
+            transform.LookAt(new Vector3(pointToLook.x, transform.position.y, pointToLook.z));
         }
     }
 }
