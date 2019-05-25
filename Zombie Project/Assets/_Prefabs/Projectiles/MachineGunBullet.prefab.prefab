@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 8339252611486343711}
   - component: {fileID: 5253767874474291496}
   - component: {fileID: -6077403583484286639}
+  - component: {fileID: 3897680207379227839}
+  - component: {fileID: 8968588877190404743}
   m_Layer: 0
   m_Name: MachineGunBullet.prefab
   m_TagString: Untagged
@@ -93,6 +95,36 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   projectileDamage: 10
-  destroyProjectile: 2
-  speed: 200
+  destroyProjectile: 3
+  projectileSpeed: 15
   hitSFX: {fileID: 0}
+  bulletPrefab: {fileID: 6868290085325412257}
+--- !u!54 &3897680207379227839
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6868290085325412257}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 1
+  m_AngularDrag: 1
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!65 &8968588877190404743
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6868290085325412257}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.4200001, y: 0.32000002, z: 0.20000003}
+  m_Center: {x: 0, y: 0, z: 0}
