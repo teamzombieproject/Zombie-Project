@@ -9,6 +9,8 @@ TagManager:
   - Wall
   - Barricade
   - Zombie
+  - Turret
+  - Radio
   layers:
   - Default
   - TransparentFX

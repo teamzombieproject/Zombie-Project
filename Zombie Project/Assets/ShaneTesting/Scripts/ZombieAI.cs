@@ -4,90 +4,117 @@ using UnityEngine;
 
 public class ZombieAI : MonoBehaviour
 { 
-    public GameObject Player;
-    public GameObject Zombie;
-    public GameObject Turret;
+    
+    public GameObject currentTarget;
     public float zombieSpeed;
-    bool gotoTurret = true;
-    bool gotoPlayer = false;
-    public int zombieHealth;
-    public GameObject barricade;
+    public int zombieHealth = 100;    
     public float rotSpeed;
-    
+    public Animator zombieAnimator;
+    public Barricade thisBarricade;
+    public bool barricadeBeingAttacked = false;
+   
 
-    void Start()
+
+    private void Start()
     {
-     barricade.GetComponent<Barricade>();
-       
-    }
-    
+        currentTarget = GameObject.FindGameObjectWithTag("Radio");
+        zombieAnimator.SetBool("attack", false);
 
-    // Update is called once per frame
+    }
+
+
+
+
     void Update()
     {
-        if (gotoTurret == true)
+        if (currentTarget != null)  //if there is a targer identified from Zombie Detect Script
         {
-            transform.LookAt(Turret.transform);
-            transform.position = Vector3.MoveTowards(transform.position, Turret.transform.position, zombieSpeed);
+            transform.LookAt(currentTarget.transform);  //look at the target
+            transform.position = Vector3.MoveTowards(transform.position, currentTarget.transform.position, zombieSpeed); //move towards the target
         }
-        if (gotoPlayer == true)
-        {
-            transform.LookAt(Player.transform);
-            transform.position = Vector3.MoveTowards(transform.position, Player.transform.position, zombieSpeed);
-        }
-           
+
+       
+       
     }
-
-    private void OnTriggerStay(Collider other)
-    {
-        if (other.gameObject.tag == "Player")
-         
+    private void OnCollisionEnter(Collision col)
         {
-            gotoTurret = false;
-            gotoPlayer = true;
-        }
-        
-        
-    }
-
-    private void OnTriggerExit(Collider other)
-    {
-        gotoTurret = true;
-        gotoPlayer = false;
-    }
-
-
-
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject.tag == "Barricade")
-        {
+            if (col.gameObject.name == "barricade")
+            {
+            Debug.Log("collided with barricade");
             zombieSpeed = 0;
-            
-            barricade.GetComponent<Barricade>().barricadeHealth -= 10;
+                zombieAnimator.SetBool("attack", true);
+            Debug.Log("barricadebeing attacked set to true");
+            thisBarricade.barricadeHealth -= 10;
+            }
         }
-
-    }
-
-    private void OnCollisionExit(Collision collision)
-    {
-       zombieSpeed = 0.05f;
-    }
-
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.gameObject.tag == "Wall")
-        {
-            
-            transform.Rotate(Vector3.forward * rotSpeed);
-           
-        }
-
-    }
-
-
-
-
-
 }
+
+// if (barricadeBeingAttacked == false)
+   //     {
+   //         zombieSpeed = 0.05f;
+   //         zombieAnimator.SetBool("attack", false);
+    ///       Debug.Log("being attacked false");
+    //    }
+
+
+
+
+
+
+
+
+
+/*
+
+void CheckBarricade()
+ {
+      if (thisBarricade  != null)
+     {
+         zombieSpeed = 0;
+         zombieAnimator.SetBool("attack", true);
+         thisBarricade.barricadeHealth -= 10;
+     }
+    else
+     {
+        zombieAnimator.SetBool("attack", false);
+        zombieSpeed = 0.05f;
+      }
+
+
+ }
+
+
+
+ void CheckPlayer()
+ {
+     if (Player != null)
+     {
+         zombieSpeed = 0;
+         zombieAnimator.SetBool("attack", true);
+
+     }
+     else
+     {
+         zombieAnimator.SetBool("attack", false);
+        zombieSpeed = 0.05f;
+     }
+
+
+ }
+ 
+
+ private void OnTriggerEnter(Collider other)
+ {
+     if (other.gameObject.tag == "Wall")
+     {
+
+         transform.Rotate(Vector3.forward * rotSpeed);
+
+     }
+
+ }
+
+
+ */
+
+
