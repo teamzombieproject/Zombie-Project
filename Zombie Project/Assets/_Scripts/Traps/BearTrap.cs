@@ -8,6 +8,8 @@ public class BearTrap : MonoBehaviour
 
     public ZombieAI targetHealth;
 
+    public Animator animator;
+
     public float triggered = 0f;
     public float coolDown = 2f;
     public float damage = 20f;
@@ -22,12 +24,22 @@ public class BearTrap : MonoBehaviour
 
         triggered += Time.deltaTime;
 
+        CheckAnimationEnd();
+
         if (triggered >= coolDown)
         {
             coolDownComplete = true;
         }
 
 
+    }
+
+    private void CheckAnimationEnd()
+    {
+        if (animator.GetCurrentAnimatorStateInfo(0).IsName("Trap") && animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1.0f)
+        {
+            animator.SetBool("Triggered", false);
+        }
     }
 
     private void Destroyed()
@@ -44,7 +56,7 @@ public class BearTrap : MonoBehaviour
     {
         if (isDestroyed == false && coolDownComplete == true)
         {
-            // Initiate bear trap animation or sprite
+            animator.SetBool("Triggered", true);
             TakeHealth();
             triggered = 0f;
             coolDownComplete = false;
@@ -56,6 +68,8 @@ public class BearTrap : MonoBehaviour
     {
         targetHealth.zombieHealth -= 100;
     }
+
+
 
     private void Repaired()
     {

@@ -60,7 +60,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 7db52f17624033f4da3705d08bc75a11, type: 2}
+  - {fileID: 2100000, guid: 393c88340ab01864cb53552e99f13d25, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -111,8 +111,8 @@ MonoBehaviour:
   explosionRadius: 10
   explosionForce: 80
   explosionParticles: {fileID: 6906751743692448179}
-  textureDestroyed: {fileID: 2800000, guid: 1c78a68806bea6840959e60dd71c65f8, type: 3}
-  texture: {fileID: 2800000, guid: 7b063cf5dce3a0f439dbf6941e5853a6, type: 3}
+  textureDestroyed: {fileID: 2800000, guid: 3ef87e25de9c39c4eb9d0334f5e83cf3, type: 3}
+  texture: {fileID: 2800000, guid: 348bbbf38df299643bd9beda37a3a89e, type: 3}
   renderer: {fileID: 0}
 --- !u!1001 &1471772745
 PrefabInstance:
@@ -179,26 +179,6 @@ PrefabInstance:
     - target: {fileID: 5322615592331407587, guid: 26a183eb988058347a21747b5975ec3f,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6906751745077041658, guid: 26a183eb988058347a21747b5975ec3f,
-        type: 3}
-      propertyPath: playOnAwake
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7182330272784781782, guid: 26a183eb988058347a21747b5975ec3f,
-        type: 3}
-      propertyPath: playOnAwake
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 753701866441483189, guid: 26a183eb988058347a21747b5975ec3f,
-        type: 3}
-      propertyPath: playOnAwake
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4526373695647268373, guid: 26a183eb988058347a21747b5975ec3f,
-        type: 3}
-      propertyPath: playOnAwake
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
