@@ -6,7 +6,7 @@ public class Projectiles : MonoBehaviour
 {
 
     // CODE FOR ALL HAND WEAPONS //
-    // SEE NOTES BELOW           //
+    //      SEE NOTES BELOW      //
 
     // Create different bullet prefabs for each weapon and attach this script and fill out the inspector values. //
 
@@ -14,14 +14,14 @@ public class Projectiles : MonoBehaviour
 
     // Zombie prefabs/models in the Hieracrchy should be tagged "Zombie" //
 
-
-    public int projectileDamage = 25;       // Damge of projectile = HANGDUN/.22 RIFLE/SEMI AUTO RIFLE/HIGH POWER RIFLE//SHOTGUN
-    public float ProjectileSpeed = 2f;      // Speed/Delay of projectile
-    public float destroyProjectile = 2f;    // Time/Range before destroy is called for projectile
+    public int projectileDamage = 25;       // Damge of projectile = HANGDUN/.22 RIFLE/SEMI AUTO RIFLE/HIGH POWER RIFLE//SHOTGUN >  Changee damage value to suit weapon
+    public float ProjectileSpeed = 2f;      // Speed/Delay of projectile >  Best Value 10
+    public float destroyProjectile = 2f;    // Time/Range before destroy is called for projectile >  Best Value 2/3
     public AudioSource hitSFX;              // SFX when projectile hits zombie
 
     private Transform myTransform;
-    
+    public GameObject bulletPrefab;         // Prefab of projectile to destroy itself on dealing damage/collision
+
 
     // Start is called before the first frame update
     void Start()
@@ -32,7 +32,7 @@ public class Projectiles : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        myTransform.position += Time.deltaTime * ProjectileSpeed * myTransform.forward; // transform.up?
+        myTransform.position += Time.deltaTime * ProjectileSpeed * myTransform.up; // transform.up/forward/right?
 
         destroyProjectile -= Time.deltaTime;
 
@@ -43,13 +43,13 @@ public class Projectiles : MonoBehaviour
     }
     
 
-    private void OnCollisionEnter(Collision collision)
+    public void OnCollisionEnter(Collision collision)
     {
         if(collision.gameObject.tag == "Zombie")
         {
             collision.gameObject.SendMessage("TakeDamage", projectileDamage, SendMessageOptions.DontRequireReceiver);
-
-            hitSFX.Play();
+            Destroy(gameObject);
+            //hitSFX.Play();
         }
     }
 }

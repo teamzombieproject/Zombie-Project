@@ -6,6 +6,8 @@ public class BearTrap : MonoBehaviour
 {
     public int uses = 3;
 
+    public ZombieAI targetHealth;
+
     public float triggered = 0f;
     public float coolDown = 2f;
     public float damage = 20f;
@@ -52,7 +54,7 @@ public class BearTrap : MonoBehaviour
 
     private void TakeHealth()
     {
-        //targetHealth.TakeDamage(damage);
+        targetHealth.zombieHealth -= 100;
     }
 
     private void Repaired()
