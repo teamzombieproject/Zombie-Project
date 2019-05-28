@@ -1,13 +1,13 @@
 fileFormatVersion: 2
-guid: 3058f2011dfba2a4186e321f3c33b568
+guid: 3b1693d45aba2224fbf1cab23d43cc80
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -5516185122382423303
-    second: rightfront-sheet_0
+      213: -7706496505479727993
+    second: SideBack-sheet_0
   - first:
-      213: 3160947051386444
-    second: rightfront-sheet_1
+      213: 2757397564569502697
+    second: SideBack-sheet_1
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -101,43 +101,43 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: rightfront-sheet_0
+      name: SideBack-sheet_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 95
-        height: 130
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        height: 60
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 85d361039d42c8045b799b4a603987aa
-      internalID: -5516185122382423303
+      spriteID: f2d4942829896dc428a9ba16616aa0ab
+      internalID: -7706496505479727993
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: rightfront-sheet_1
+      name: SideBack-sheet_1
       rect:
         serializedVersion: 2
         x: 95
         y: 0
         width: 95
-        height: 130
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        height: 55
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 731849549ce262d43b09c232b3e17cf9
-      internalID: 3160947051386444
+      spriteID: 63c921010c54e1647a22e2a072955d70
+      internalID: 2757397564569502697
       vertices: []
       indices: 
       edges: []
@@ -145,7 +145,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 3bc256b1bd4524f4a8822e673d8e0114
+    spriteID: f0f8a5103a9448b4f9d6dce18b578bae
     internalID: 0
     vertices: []
     indices: 

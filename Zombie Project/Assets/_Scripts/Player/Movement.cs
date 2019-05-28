@@ -10,8 +10,8 @@ public class Movement : MonoBehaviour
     public float m_Speed = 10;
     Vector3 movement;
     Vector3 movement2;
-    int directionX;
-    int directionZ;
+    public int directionX = 0;
+    public int directionZ = 0;
     float speedRegulator = 1;
     private void Awake()
     {
