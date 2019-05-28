@@ -794,6 +794,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Speed: 10
+  directionX: 0
+  directionZ: 0
 --- !u!65 &175071468
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -841,6 +843,7 @@ MonoBehaviour:
   bulletTransform: {fileID: 7261867}
   bulletPrefab: {fileID: 8228887979237210996, guid: a08c0f716bdf0cf439f34de1ece5d7d0,
     type: 3}
+  projectile: {fileID: 0}
   fireSFX: {fileID: 0}
 --- !u!1 &180866816
 GameObject:
@@ -2539,6 +2542,7 @@ GameObject:
   - component: {fileID: 1048192214}
   - component: {fileID: 1048192213}
   - component: {fileID: 1048192212}
+  - component: {fileID: 1048192215}
   - component: {fileID: 1048192211}
   m_Layer: 0
   m_Name: Radio
@@ -2619,6 +2623,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 28
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1048192215
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1048192210}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a5564d85796e2024188d12c0b54f530a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  zombieAIScript: []
+  radioHealth: 60
 --- !u!1 &1066983447
 GameObject:
   m_ObjectHideFlags: 0
@@ -4032,7 +4050,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9fb2fd29b8908c8479027001e1c11bc6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  arm: {fileID: 1886201076}
 --- !u!64 &1827330504
 MeshCollider:
   m_ObjectHideFlags: 0

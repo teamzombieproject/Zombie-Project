@@ -5,12 +5,12 @@ using UnityEngine;
 public class Barricade : MonoBehaviour
  {
     public float barricadeHealth;
-    public ZombieAI zombieAIScript;
+    public List<ZombieAI> zombieAIScript;
     
     
     private void Start()
     {
-        zombieAIScript = GetComponent<ZombieAI>();
+       
 
     }
 
@@ -21,9 +21,13 @@ public class Barricade : MonoBehaviour
             {
                 Debug.Log("destroy me");
                 Destroy(this.gameObject);
-               zombieAIScript.barricadeBeingAttacked = false;
-                
+            for (int i = 0; i < zombieAIScript.Count; i++)
+            {
+                zombieAIScript[i].barricadeBeingAttacked = false;
+
             }
+
+        }
         
     }
 

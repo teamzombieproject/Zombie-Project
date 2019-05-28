@@ -5,13 +5,13 @@ using UnityEngine;
 public class Turret : MonoBehaviour
 {
     public float turretHealth;
-    public ZombieAI zombieAIScript;
+    public List<ZombieAI> zombieAIScript;
    
 
     
     void Start()
     {
-        zombieAIScript = GetComponent<ZombieAI>();
+        
     }
 
     
@@ -21,7 +21,11 @@ public class Turret : MonoBehaviour
         {
             Debug.Log("destroy me");
             Destroy(this.gameObject);
-            zombieAIScript.turretBeingAttacked = false;
+            for (int i = 0; i < zombieAIScript.Count; i++)
+            {
+                zombieAIScript[i].turretBeingAttacked = false;
+
+            }
 
         }
     }

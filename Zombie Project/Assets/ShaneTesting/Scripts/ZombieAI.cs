@@ -67,7 +67,7 @@ public class ZombieAI : MonoBehaviour
         {
             Debug.Log("collided with barricade");
             thisBarricade = col.gameObject.GetComponent<Barricade>();
-            thisBarricade.zombieAIScript = this;
+            thisBarricade.zombieAIScript.Add(this);
             barricadeBeingAttacked = true;
             ZombieAttackAnimation();
 
@@ -76,7 +76,7 @@ public class ZombieAI : MonoBehaviour
         {
             Debug.Log("collided with turret");
             thisTurret = col.gameObject.GetComponent<Turret>();
-            thisTurret.zombieAIScript = this;
+            thisTurret.zombieAIScript.Add(this);
             turretBeingAttacked = true;
             ZombieAttackAnimation();
         }
@@ -84,7 +84,7 @@ public class ZombieAI : MonoBehaviour
         {
             Debug.Log("collided with Radio");
             thisRadio = col.gameObject.GetComponent<Radio>();
-            thisRadio.zombieAIScript = this;
+            thisRadio.zombieAIScript.Add(this);
             radioBeingAttacked = true;
             ZombieAttackAnimation();
         }

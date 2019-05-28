@@ -4,14 +4,14 @@ using UnityEngine;
 
 public class Radio : MonoBehaviour
 {
-    public ZombieAI zombieAIScript;
+    public List<ZombieAI> zombieAIScript;
     public float radioHealth;
 
 
     // Start is called before the first frame update
     void Start()
     {
-        zombieAIScript = GetComponent<ZombieAI>();
+        
     }
 
     // Update is called once per frame
@@ -20,8 +20,12 @@ public class Radio : MonoBehaviour
         if (radioHealth <= 0)
         {
             Debug.Log("destroy me");
-            Destroy(this.gameObject);
-            zombieAIScript.radioBeingAttacked = false;
+            Destroy(this.gameObject); 
+            for (int i=0; i<zombieAIScript.Count; i++)
+            {
+                zombieAIScript[i].radioBeingAttacked = false;
+                     
+            }
 
         }
     }
