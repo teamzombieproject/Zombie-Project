@@ -12,7 +12,9 @@ public class ZombieAI : MonoBehaviour
     public Animator zombieAnimator;
     public Barricade thisBarricade;
     public bool barricadeBeingAttacked = false;
-   
+    public float attackRate = 1.0f;
+    public float attackTimer;
+    public float damageToBarricade = 10;
 
 
     private void Start()
@@ -23,8 +25,6 @@ public class ZombieAI : MonoBehaviour
     }
 
 
-
-
     void Update()
     {
         if (currentTarget != null)  //if there is a targer identified from Zombie Detect Script
@@ -33,34 +33,44 @@ public class ZombieAI : MonoBehaviour
             transform.position = Vector3.MoveTowards(transform.position, currentTarget.transform.position, zombieSpeed); //move towards the target
         }
 
-       
-       
+        if (barricadeBeingAttacked == true)
+        {
+            ZombieAttackBarricade();
+        }
+        if (barricadeBeingAttacked == false)
+        {
+          zombieSpeed = 0.05f;
+            zombieAnimator.SetBool("attack", false);
+            Debug.Log("being attacked false");
+        }
+
     }
     private void OnCollisionEnter(Collision col)
         {
             if (col.gameObject.name == "barricade")
             {
             Debug.Log("collided with barricade");
+            col.gameObject.GetComponent<Barricade>().zombieAIScript = this;
+            barricadeBeingAttacked = true;
             zombieSpeed = 0;
-                zombieAnimator.SetBool("attack", true);
-            Debug.Log("barricadebeing attacked set to true");
-            thisBarricade.barricadeHealth -= 10;
+            zombieAnimator.SetBool("attack", true);
+                  
             }
         }
+
+    void ZombieAttackBarricade()
+    {
+        attackTimer += Time.deltaTime;
+        if (attackTimer >= attackRate)
+
+        {
+            thisBarricade.barricadeHealth -= damageToBarricade;
+            attackTimer = 0;
+        }
+    }
+    
+
 }
-
-// if (barricadeBeingAttacked == false)
-   //     {
-   //         zombieSpeed = 0.05f;
-   //         zombieAnimator.SetBool("attack", false);
-    ///       Debug.Log("being attacked false");
-    //    }
-
-
-
-
-
-
 
 
 

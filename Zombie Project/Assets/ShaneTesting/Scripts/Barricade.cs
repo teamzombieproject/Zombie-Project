@@ -6,7 +6,7 @@ public class Barricade : MonoBehaviour
  {
 
 
-    public int barricadeHealth;
+    public float barricadeHealth;
     public ZombieAI zombieAIScript;
     
 
