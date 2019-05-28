@@ -18,6 +18,7 @@ public class Shooting : MonoBehaviour
 
 
     public GameObject bulletPrefab;              // Projectile prefab
+    public Rigidbody projectile;                 // Projectiles RB
 
     public AudioSource fireSFX;                  // Sound effects for firing
 
@@ -61,8 +62,10 @@ public class Shooting : MonoBehaviour
         {
             fireSFX.Play();
         }
-        GameObject.Instantiate(bulletPrefab, bulletTransform.position, bulletTransform.rotation);
-        timer = fireVelocity;
+        // GameObject.Instantiate(bulletPrefab, bulletTransform.position, bulletTransform.transform.rotation); // Bullet rotation problem here?
+        Rigidbody p = Instantiate(projectile, bulletTransform.transform.position, bulletTransform.transform.rotation);
+        p.velocity = transform.up * fireVelocity;
+        // timer = fireVelocity;
 
     }
 }

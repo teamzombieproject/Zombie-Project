@@ -21,7 +21,7 @@ public class MachineGun : MonoBehaviour
     public float destroyProjectile = 2f;     // Range before destroy is called > Best Value 3/4
     public float projectileSpeed = 5f;       // Speed/Velocity > Best Value 15
 
-    Rigidbody m_Rigidbody;                   // Projectiles Prefab RB values Mass = 1, Drag = 1, Angular Drag = 1
+    Rigidbody Rigidbody;                   // Projectiles Prefab RB values Mass = 1, Drag = 1, Angular Drag = 1
     public AudioSource hitSFX;
 
     private Transform turretTransform;
@@ -30,7 +30,7 @@ public class MachineGun : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        m_Rigidbody = GetComponent<Rigidbody>();
+        Rigidbody = GetComponent<Rigidbody>();
         turretTransform = transform;
     }
 
