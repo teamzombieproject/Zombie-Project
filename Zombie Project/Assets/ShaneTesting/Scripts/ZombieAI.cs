@@ -11,8 +11,16 @@ public class ZombieAI : MonoBehaviour
     public float rotSpeed;
     public Animator zombieAnimator;
     public Barricade thisBarricade;
+    public Turret thisTurret;
+    public Radio thisRadio;
     public bool barricadeBeingAttacked = false;
-   
+    public bool turretBeingAttacked = false;
+    public bool radioBeingAttacked = false;
+    public float attackRate = 1.0f;
+    public float attackTimer;
+    public float damageToBarricade = 10;
+    public float damageToTurret = 10;
+    public float damageToRadio = 10;
 
 
     private void Start()
@@ -23,8 +31,6 @@ public class ZombieAI : MonoBehaviour
     }
 
 
-
-
     void Update()
     {
         if (currentTarget != null)  //if there is a targer identified from Zombie Detect Script
@@ -33,88 +39,103 @@ public class ZombieAI : MonoBehaviour
             transform.position = Vector3.MoveTowards(transform.position, currentTarget.transform.position, zombieSpeed); //move towards the target
         }
 
-       
-       
+        if (barricadeBeingAttacked == true)
+        {
+            ZombieAttackBarricade();
+        }
+
+        if (turretBeingAttacked == true)
+        {
+            ZombieAttackTurret();
+        }
+
+        if (radioBeingAttacked == true)
+        {
+            ZombieAttackRadio();
+        }
+
+        if (barricadeBeingAttacked == false && turretBeingAttacked == false && radioBeingAttacked == false)
+        {
+            ZombieWalk();
+        }
+
+        
     }
     private void OnCollisionEnter(Collision col)
+    {
+        if (col.gameObject.tag == "Barricade")
         {
-            if (col.gameObject.name == "barricade")
-            {
             Debug.Log("collided with barricade");
-            zombieSpeed = 0;
-                zombieAnimator.SetBool("attack", true);
-            Debug.Log("barricadebeing attacked set to true");
-            thisBarricade.barricadeHealth -= 10;
-            }
+            thisBarricade = col.gameObject.GetComponent<Barricade>();
+            thisBarricade.zombieAIScript.Add(this);
+            barricadeBeingAttacked = true;
+            ZombieAttackAnimation();
+
         }
+        if (col.gameObject.tag == "Turret")
+        {
+            Debug.Log("collided with turret");
+            thisTurret = col.gameObject.GetComponent<Turret>();
+            thisTurret.zombieAIScript.Add(this);
+            turretBeingAttacked = true;
+            ZombieAttackAnimation();
+        }
+        if (col.gameObject.tag == "Radio")
+        {
+            Debug.Log("collided with Radio");
+            thisRadio = col.gameObject.GetComponent<Radio>();
+            thisRadio.zombieAIScript.Add(this);
+            radioBeingAttacked = true;
+            ZombieAttackAnimation();
+        }
+    }
+        
+              
+    void ZombieAttackBarricade()
+    {
+        attackTimer += Time.deltaTime;
+        if (attackTimer >= attackRate)
+
+        {
+            thisBarricade.barricadeHealth -= damageToBarricade;
+            attackTimer = 0;
+        }
+    }
+
+    void ZombieAttackTurret()
+    {
+        attackTimer += Time.deltaTime;
+        if (attackTimer >= attackRate)
+
+        {
+            thisTurret.turretHealth -= damageToTurret;
+            attackTimer = 0;
+        }
+    }
+
+    void ZombieAttackRadio()
+    {
+        attackTimer += Time.deltaTime;
+        if (attackTimer >= attackRate)
+
+        {
+            thisRadio.radioHealth -= damageToRadio;
+            attackTimer = 0;
+        }
+    }
+
+    void ZombieAttackAnimation()
+    {
+        zombieSpeed = 0;
+        zombieAnimator.SetBool("attack", true);
+    }
+
+    void ZombieWalk()
+    {
+        zombieSpeed = 0.05f;
+        zombieAnimator.SetBool("attack", false);
+    }
 }
 
-// if (barricadeBeingAttacked == false)
-   //     {
-   //         zombieSpeed = 0.05f;
-   //         zombieAnimator.SetBool("attack", false);
-    ///       Debug.Log("being attacked false");
-    //    }
-
-
-
-
-
-
-
-
-
-/*
-
-void CheckBarricade()
- {
-      if (thisBarricade  != null)
-     {
-         zombieSpeed = 0;
-         zombieAnimator.SetBool("attack", true);
-         thisBarricade.barricadeHealth -= 10;
-     }
-    else
-     {
-        zombieAnimator.SetBool("attack", false);
-        zombieSpeed = 0.05f;
-      }
-
-
- }
-
-
-
- void CheckPlayer()
- {
-     if (Player != null)
-     {
-         zombieSpeed = 0;
-         zombieAnimator.SetBool("attack", true);
-
-     }
-     else
-     {
-         zombieAnimator.SetBool("attack", false);
-        zombieSpeed = 0.05f;
-     }
-
-
- }
- 
-
- private void OnTriggerEnter(Collider other)
- {
-     if (other.gameObject.tag == "Wall")
-     {
-
-         transform.Rotate(Vector3.forward * rotSpeed);
-
-     }
-
- }
-
-
- */
 
 
