@@ -37,7 +37,7 @@ public class MachineGun : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        gameObject.GetComponent<Rigidbody>().AddForce(turretTransform.up * projectileSpeed, ForceMode.VelocityChange); // transform.up/right/forward?
+        gameObject.GetComponent<Rigidbody>().AddForce(-turretTransform.forward * projectileSpeed, ForceMode.VelocityChange); // transform.up/right/forward?
 
         destroyProjectile -= Time.deltaTime;
 
