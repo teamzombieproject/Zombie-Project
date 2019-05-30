@@ -15,7 +15,7 @@ public class ChangeSprite : MonoBehaviour
     float directZ;
     int headUp;
     int headSide;
-    public float turnPoint = 5;
+    public float turnPoint = .5f;
     private void Awake()
     {
         playerSprite = GetComponent<SpriteRenderer>();
@@ -80,13 +80,13 @@ public class ChangeSprite : MonoBehaviour
 
         }
         else headUp = -1;
-        if (direction.normalized.x <= -.5f)
+        if (direction.normalized.x <= -turnPoint)
         {
             headSide = -1; // if looking left
-        } else if (direction.normalized.x > -0.5f && direction.normalized.x < 0.5f)
+        } else if (direction.normalized.x > -turnPoint && direction.normalized.x < turnPoint)
         {
             headSide = 0; //if looking straight
-        } else if (direction.normalized.x >= .5f) headSide = 1; // if looking right
+        } else if (direction.normalized.x >= turnPoint) headSide = 1; // if looking right
 
         if (headUp == 1)
         {

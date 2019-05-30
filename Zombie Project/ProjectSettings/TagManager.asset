@@ -11,6 +11,9 @@ TagManager:
   - Zombie
   - Turret
   - Radio
+  - InstantiatePoint
+  - CamFollowPoint
+  - Light
   layers:
   - Default
   - TransparentFX

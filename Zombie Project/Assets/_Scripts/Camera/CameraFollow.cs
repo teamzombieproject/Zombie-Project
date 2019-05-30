@@ -10,6 +10,10 @@ public class CameraFollow : MonoBehaviour
     public float radius = 4.5f;
     float distance; 
     Vector3 MousePos1, MousePos2, ScreenMouse, MouseOffset;
+    public void Start()
+    {
+        player = GameObject.FindGameObjectWithTag("CamFollowPoint").transform;
+    }
     public void Update()
     {
         MousePos1 = Input.mousePosition;
