@@ -11,8 +11,7 @@ public class BearTrap : MonoBehaviour
     public Animator animator;
 
     public float triggered = 0f;
-    public float coolDown = 2f;
-    public float damage = 20f;
+    public float coolDown = 5f;
 
     public bool coolDownComplete = true;
     public bool isDestroyed = false;
@@ -20,6 +19,7 @@ public class BearTrap : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
         Destroyed();
 
         triggered += Time.deltaTime;
@@ -46,7 +46,7 @@ public class BearTrap : MonoBehaviour
     {
         if(uses <= 0)
         {
-            // change to destroyed sprite
+            animator.SetBool("Destroyed", true);
             isDestroyed = true;
             return;
         }
@@ -54,13 +54,17 @@ public class BearTrap : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (isDestroyed == false && coolDownComplete == true)
+        if (other.gameObject.tag == "Zombie")
         {
-            animator.SetBool("Triggered", true);
-            TakeHealth();
-            triggered = 0f;
-            coolDownComplete = false;
-            uses -= 1;
+            if (isDestroyed == false && coolDownComplete == true)
+            {
+                animator.SetBool("Triggered", true);
+                targetHealth = other.gameObject.GetComponent<ZombieAI>();
+                triggered = 0f;
+                coolDownComplete = false;
+                uses -= 1;
+                TakeHealth();
+            }
         }
     }
 
@@ -76,6 +80,6 @@ public class BearTrap : MonoBehaviour
         uses = 3;
         isDestroyed = false;
         coolDownComplete = true;
-        // Set sprite back to normal
+        animator.SetBool("Destroyed", false);
     }
 }
