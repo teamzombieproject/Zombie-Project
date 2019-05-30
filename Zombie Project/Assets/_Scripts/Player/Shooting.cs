@@ -62,7 +62,7 @@ public class Shooting : MonoBehaviour
         {
             fireSFX.Play();
         }
-        // GameObject.Instantiate(bulletPrefab, bulletTransform.position, bulletTransform.transform.rotation); // Bullet rotation problem here?
+        // GameObject.Instantiate(bulletPrefab, bulletTransform.position, bulletTransform.transform.rotation); 
         Rigidbody p = Instantiate(projectile, bulletTransform.transform.position, bulletTransform.transform.rotation);
         p.velocity = transform.up * fireVelocity;
         // timer = fireVelocity;

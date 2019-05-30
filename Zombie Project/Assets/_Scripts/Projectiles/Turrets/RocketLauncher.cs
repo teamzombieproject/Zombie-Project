@@ -19,7 +19,7 @@ public class RocketLauncher : MonoBehaviour
     public float rocketSpeed = 5f;      // Speed of rocket
     public float rocketRange = 10f;     // Range of rocket before destroy is called
 
-    public AudioSource hitSFX;          // Rocket explosion SFX 
+
     public GameObject explosionEffect;  // Eplosion particle effect
     public GameObject bulletPrefab;     // Prefab of projectile to destroy itself on dealing damage/collision to zombie
     public Transform rocketPrefab;      // Rocket prefab position in world for explosion to Instatiate 
@@ -33,6 +33,7 @@ public class RocketLauncher : MonoBehaviour
     {
         m_Rigidbody = GetComponent<Rigidbody>();
         turretTransform = transform;
+
 
     }
 
@@ -52,11 +53,11 @@ public class RocketLauncher : MonoBehaviour
     public void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.tag == "Zombie")
+      
         {
             collision.gameObject.SendMessage("TakeDamage", rocketDamage, SendMessageOptions.DontRequireReceiver);
             Destroy(gameObject);
             GameObject.Instantiate(explosionEffect, rocketPrefab.position, rocketPrefab.rotation);
-            //hitSFX.Play();
 
             if (splashDamage > 0f)
             {
