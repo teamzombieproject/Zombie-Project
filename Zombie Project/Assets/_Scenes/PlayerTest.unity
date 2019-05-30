@@ -120,6 +120,12 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!4 &126789567 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5076412349056885793, guid: a2944bdffc92d564684d9cfae975ca94,
+    type: 3}
+  m_PrefabInstance: {fileID: 1418680147}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &409499527
 GameObject:
   m_ObjectHideFlags: 0
@@ -437,6 +443,16 @@ PrefabInstance:
     - target: {fileID: 7540838305137067052, guid: a2944bdffc92d564684d9cfae975ca94,
         type: 3}
       propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7540838305137067052, guid: a2944bdffc92d564684d9cfae975ca94,
+        type: 3}
+      propertyPath: timer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7540838305137067052, guid: a2944bdffc92d564684d9cfae975ca94,
+        type: 3}
+      propertyPath: fireVelocity
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -988,6 +1004,31 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2057737446 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7721489898823672188, guid: a2944bdffc92d564684d9cfae975ca94,
+    type: 3}
+  m_PrefabInstance: {fileID: 1418680147}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2057737449
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2057737446}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b1987f946226ce947bbe45815e193df4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timer: 1
+  fireVelocity: 0.1
+  isShooting: 0
+  bulletTransform: {fileID: 126789567}
+  bulletPrefab: {fileID: 8228887979237210996, guid: a08c0f716bdf0cf439f34de1ece5d7d0,
+    type: 3}
+  fireSFX: {fileID: 0}
 --- !u!1 &2105217256
 GameObject:
   m_ObjectHideFlags: 0

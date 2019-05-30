@@ -40,7 +40,7 @@ public class RocketLauncher : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        gameObject.GetComponent<Rigidbody>().AddForce(turretTransform.up * rocketSpeed, ForceMode.VelocityChange); // transform.up/right/forward?
+        gameObject.GetComponent<Rigidbody>().AddForce(-turretTransform.forward * rocketSpeed, ForceMode.VelocityChange); // transform.up/right/forward?
 
         rocketRange -= Time.deltaTime;
 
