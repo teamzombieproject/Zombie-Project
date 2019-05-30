@@ -60,10 +60,10 @@ public class ZombieAI : MonoBehaviour
             ZombieWalk();
         }
 
-        if (zombieHealth<=100)
+       if (zombieHealth<=0)
         {
-            Destroy(this);
-        }
+            Destroy(this.gameObject);
+       }
 
 
         
