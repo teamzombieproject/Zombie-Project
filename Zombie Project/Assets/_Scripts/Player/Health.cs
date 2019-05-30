@@ -4,9 +4,11 @@ using UnityEngine;
 
 public class Health : MonoBehaviour
 {
-    public float health = 100;
-    float timer = 0, rotate = 0;
-    bool dead = false;
+    //total health, invulnurability sprite flash speed, how long your invulnurable (s), how long you have to wait after taking damage to heal (s), how much you heal
+    public float health = 100, multiplier = .1f, invulnurability = 5, healWait = 10, healAmount = 1; 
+    //DONT MAKE INVULNURABILITY TIME NEGATIVE, PLAYER WILL BE INDESTRUCTABLE FOREVER.
+    float timer = 0, healthTimer = 0, rotate = 0, timerInitial, startingHealth;
+    bool dead = false, waiting = false;
     public SpriteRenderer[] characterSprites;
     public Animator bodyAnimator, headAnimator;
     public GameObject charHead;
@@ -16,14 +18,14 @@ public class Health : MonoBehaviour
     public Light deathLight;
     public GameObject[] lights;
     bool damaged = false;
-    public float multiplier = .1f, invulnurability = 5;
-    //DONT MAKE INVULNURABILITY TIME NEGATIVE, IT WILL BE INDESTRUCTABLE FOREVER.
+    
 
     public bool takeDamage;
     private void Start()
     {
         lights = GameObject.FindGameObjectsWithTag("Light");
-        
+        startingHealth = health;
+        Debug.Log("starting health is " + startingHealth);
     }
     private void Update()
     {
@@ -38,6 +40,8 @@ public class Health : MonoBehaviour
             OnDeath();
             dead = true;
         }
+
+        Heal();
 
         //sprite flashing
         if (damaged)
@@ -64,9 +68,11 @@ public class Health : MonoBehaviour
 
     public void TakeDamage(float damage)
     {
-        if (!damaged) //indestructible if damaged
+        if (damaged) //indestructible if damaged
+            return;
+            healthTimer = 0;
             health -= damage;
-        // inform health GUI
+        // do inform health GUI when you can!
         if (health > 0)
         {
             timer = 0;
@@ -114,7 +120,7 @@ public class Health : MonoBehaviour
         Debug.Log("THE OTHER SIDE");
         Camera.main.gameObject.transform.parent = gameObject.transform;
         changeSprite.enabled = false; // stops sprite changing
-        aiming.enabled = false;
+        aiming.gameObject.SetActive(false);
         headAnimator.SetInteger("Direction", 0);
 
         for (int i = 0; i < lights.Length; i += 1)
@@ -126,5 +132,19 @@ public class Health : MonoBehaviour
 
 
 
+    }
+
+    void Heal() //heal a certain amount of time after taking damage
+    {
+        if (health == startingHealth)
+            return;
+        Debug.Log("healing, timer at " +healthTimer );
+        healthTimer += Time.deltaTime;
+        if (healthTimer >= healWait)
+        {
+            healthTimer -= 1.0f;
+            health += healAmount;
+            Debug.Log(health);
+        }
     }
 }
