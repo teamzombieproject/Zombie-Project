@@ -13,6 +13,7 @@ public class ZombieAI : MonoBehaviour
     public Barricade thisBarricade;
     public Turret thisTurret;
     public Radio thisRadio;
+    public Movement thisPlayer;
     public bool barricadeBeingAttacked = false;
     public bool turretBeingAttacked = false;
     public bool radioBeingAttacked = false;
@@ -59,6 +60,12 @@ public class ZombieAI : MonoBehaviour
             ZombieWalk();
         }
 
+        if (zombieHealth<=100)
+        {
+            Destroy(this);
+        }
+
+
         
     }
     private void OnCollisionEnter(Collision col)
@@ -88,6 +95,15 @@ public class ZombieAI : MonoBehaviour
             radioBeingAttacked = true;
             ZombieAttackAnimation();
         }
+      //  if (col.gameObject.tag == "Player")
+     //   {
+      //      Debug.Log("collided with Player");
+      //      thisPlayer = col.gameObject.GetComponent<Movement>();
+     //       thisPlayer.zombieAIScript.Add(this);
+     //       PlayerBeingAttacked = true;
+//ZombieAttackAnimation();
+       // }
+
     }
         
               

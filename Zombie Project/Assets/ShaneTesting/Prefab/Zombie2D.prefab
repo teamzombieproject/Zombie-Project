@@ -191,7 +191,7 @@ GameObject:
   - component: {fileID: 1770090244399708474}
   - component: {fileID: 1770090244399708476}
   m_Layer: 0
-  m_Name: Zombie 1
+  m_Name: Zombie2D
   m_TagString: Zombie
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -244,14 +244,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentTarget: {fileID: 0}
   zombieSpeed: 0.05
-  zombieHealth: 0
+  zombieHealth: 100
   rotSpeed: 0
   zombieAnimator: {fileID: 1770090243025800747}
   thisBarricade: {fileID: 0}
+  thisTurret: {fileID: 0}
+  thisRadio: {fileID: 0}
+  thisPlayer: {fileID: 0}
   barricadeBeingAttacked: 0
+  turretBeingAttacked: 0
+  radioBeingAttacked: 0
   attackRate: 1
   attackTimer: 0
   damageToBarricade: 10
+  damageToTurret: 10
+  damageToRadio: 10
 --- !u!65 &1770090244399708476
 BoxCollider:
   m_ObjectHideFlags: 0
