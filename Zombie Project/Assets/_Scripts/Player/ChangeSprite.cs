@@ -126,6 +126,6 @@ public class ChangeSprite : MonoBehaviour
                 headSprite.flipX = false;
             }
         }
-        Debug.Log("Head up/down direction is " + headUp + ", and Head left/right direction is " + headSide);
+       // Debug.Log("Head up/down direction is " + headUp + ", and Head left/right direction is " + headSide);
     }
 }
