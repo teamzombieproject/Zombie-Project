@@ -4,33 +4,31 @@ using UnityEngine;
 
 public class Barricade : MonoBehaviour
  {
-
-
-    public int barricadeHealth;
-    public ZombieAI zombieAIScript;
+    public float barricadeHealth;
+    public List<ZombieAI> zombieAIScript;
     
-
-
+    
     private void Start()
     {
-        zombieAIScript = GetComponent<ZombieAI>();
+       
 
     }
 
 
-    // Update is called once per frame
-    void Update()
+   void Update()
     {
-       
-        {
-            if (barricadeHealth <= 0)
+        if (barricadeHealth <= 0)
             {
                 Debug.Log("destroy me");
-                Destroy(this.gameObject, 3);
-               zombieAIScript.barricadeBeingAttacked = false;
-                
+                Destroy(this.gameObject);
+            for (int i = 0; i < zombieAIScript.Count; i++)
+            {
+                zombieAIScript[i].barricadeBeingAttacked = false;
+
             }
+
         }
+        
     }
 
 }
