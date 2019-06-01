@@ -6,12 +6,12 @@ public class Turret : MonoBehaviour
 {
     public float turretHealth;
     public List<ZombieAI> zombieAIScript;
-   
+    public GameObject zombieTarget;
 
     
     void Start()
     {
-        
+        zombieTarget = GameObject.FindGameObjectWithTag("Zombie");
     }
 
     
@@ -21,7 +21,7 @@ public class Turret : MonoBehaviour
         {
             Debug.Log("destroy me");
             Destroy(this.gameObject);
-            for (int i = 0; i < zombieAIScript.Count; i++)
+            for (int i=0; i<zombieAIScript.Count; i++)
             {
                 zombieAIScript[i].turretBeingAttacked = false;
 
@@ -29,4 +29,17 @@ public class Turret : MonoBehaviour
 
         }
     }
+
+   // private void OnTriggerEnter(Collider other)
+   // {
+   //     if (other.gameObject.tag == "Zombie")
+   //     {
+   //         (zombieTarget.transform);
+    //    }
+
+
+
+
+
+  //  }
 }

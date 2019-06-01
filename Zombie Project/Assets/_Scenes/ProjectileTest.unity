@@ -928,7 +928,6 @@ MonoBehaviour:
   bulletTransform: {fileID: 7261867}
   bulletPrefab: {fileID: 8228887979237210996, guid: a08c0f716bdf0cf439f34de1ece5d7d0,
     type: 3}
-  projectile: {fileID: 0}
   fireSFX: {fileID: 0}
 --- !u!1 &180866816
 GameObject:
@@ -941,6 +940,7 @@ GameObject:
   - component: {fileID: 180866820}
   - component: {fileID: 180866819}
   - component: {fileID: 180866818}
+  - component: {fileID: 180866821}
   - component: {fileID: 180866817}
   m_Layer: 0
   m_Name: Turret 4
@@ -1021,6 +1021,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &180866821
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 180866816}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dca5afd8d1f23a0479de08a6c6b3b94e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  turretHealth: 0
+  zombieAIScript: []
+  zombieTarget: {fileID: 0}
 --- !u!1 &265994452
 GameObject:
   m_ObjectHideFlags: 0
@@ -1772,6 +1787,7 @@ GameObject:
   - component: {fileID: 621308002}
   - component: {fileID: 621308001}
   - component: {fileID: 621308000}
+  - component: {fileID: 621308003}
   - component: {fileID: 621307999}
   m_Layer: 0
   m_Name: Turret1
@@ -1852,6 +1868,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &621308003
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 621307998}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dca5afd8d1f23a0479de08a6c6b3b94e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  turretHealth: 0
+  zombieAIScript: []
+  zombieTarget: {fileID: 0}
 --- !u!1 &622210809
 GameObject:
   m_ObjectHideFlags: 0
@@ -3199,7 +3230,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1048192210}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 16.3, y: 1.7, z: -1}
+  m_LocalPosition: {x: 14.6, y: 1.7, z: -1}
   m_LocalScale: {x: 3, y: 3, z: 3}
   m_Children: []
   m_Father: {fileID: 0}
@@ -3217,8 +3248,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5564d85796e2024188d12c0b54f530a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  zombieAIScript: []
   radioHealth: 60
+  zombieAIScript: []
 --- !u!1 &1066983447
 GameObject:
   m_ObjectHideFlags: 0
@@ -3581,6 +3612,51 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1127877630}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1181259784
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1181259786}
+  - component: {fileID: 1181259785}
+  m_Layer: 0
+  m_Name: TurretTrigger
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!135 &1181259785
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1181259784}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 25.07
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!4 &1181259786
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1181259784}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -27.1, y: 0, z: -26.6}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1959917805}
+  m_Father: {fileID: 0}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1181658079
 GameObject:
   m_ObjectHideFlags: 0
@@ -5254,6 +5330,7 @@ GameObject:
   - component: {fileID: 1914120419}
   - component: {fileID: 1914120418}
   - component: {fileID: 1914120417}
+  - component: {fileID: 1914120420}
   - component: {fileID: 1914120416}
   m_Layer: 0
   m_Name: Turret2
@@ -5334,6 +5411,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1914120420
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1914120415}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dca5afd8d1f23a0479de08a6c6b3b94e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  turretHealth: 0
+  zombieAIScript: []
+  zombieTarget: {fileID: 0}
 --- !u!4 &1932583125 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400170, guid: abfe6fc5a9b390a488839c1fc3b58dcd,
@@ -5442,6 +5534,7 @@ GameObject:
   - component: {fileID: 1959917805}
   - component: {fileID: 1959917804}
   - component: {fileID: 1959917803}
+  - component: {fileID: 1959917806}
   - component: {fileID: 1959917802}
   m_Layer: 0
   m_Name: Turret3
@@ -5515,13 +5608,28 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1959917801}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -16.9, y: 0, z: -34.6}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_Father: {fileID: 1181259786}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1959917806
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1959917801}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dca5afd8d1f23a0479de08a6c6b3b94e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  turretHealth: 50
+  zombieAIScript: []
+  zombieTarget: {fileID: 0}
 --- !u!1 &1960049647
 GameObject:
   m_ObjectHideFlags: 0

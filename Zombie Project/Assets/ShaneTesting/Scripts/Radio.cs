@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class Radio : MonoBehaviour
 {
-    public List<ZombieAI> zombieAIScript;
     public float radioHealth;
+    public List<ZombieAI> zombieAIScript;
+    
 
 
     // Start is called before the first frame update

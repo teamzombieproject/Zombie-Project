@@ -7,7 +7,7 @@ public class ZombieAI : MonoBehaviour
     
     public GameObject currentTarget;
     public float zombieSpeed;
-    public int zombieHealth = 100;    
+    public float zombieHealth = 100;    
     public float rotSpeed;
     public Animator zombieAnimator;
     public Barricade thisBarricade;
@@ -105,8 +105,9 @@ public class ZombieAI : MonoBehaviour
        // }
 
     }
-        
-              
+
+    
+
     void ZombieAttackBarricade()
     {
         attackTimer += Time.deltaTime;

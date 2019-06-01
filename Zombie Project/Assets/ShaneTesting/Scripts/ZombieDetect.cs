@@ -64,7 +64,7 @@ public class ZombieDetect : MonoBehaviour
 
                 else
                 {
-                    zombieAI.currentTarget = other.gameObject;  // otherwise set the current target to the Radio
+                    zombieAI.currentTarget = other.gameObject;  // otherwise set the current target to the Turret
                 }
                  }
                   else
