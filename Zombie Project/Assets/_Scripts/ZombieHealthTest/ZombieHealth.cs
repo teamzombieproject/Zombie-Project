@@ -4,8 +4,11 @@ using UnityEngine;
 
 public class ZombieHealth : MonoBehaviour
 {
-
+   
     public float zombieHealthTest = 100f;
+
+    
+
 
     public void TakeDamage(float amount)
     {
@@ -13,6 +16,7 @@ public class ZombieHealth : MonoBehaviour
 
         if (zombieHealthTest <= 0)
         {
+           
             Destroy(gameObject);
         }
     }

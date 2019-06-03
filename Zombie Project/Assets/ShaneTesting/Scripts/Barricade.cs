@@ -8,6 +8,7 @@ public class Barricade : MonoBehaviour
     public List<ZombieAI> zombieAIScript;
     
     
+    
     private void Start()
     {
        
