@@ -34,6 +34,12 @@ public class ZombieAI : MonoBehaviour
 
     void Update()
     {
+        if (zombieHealth <= 0)
+        {
+            Destroy(this.gameObject);
+        }
+
+
         if (currentTarget != null)  //if there is a targer identified from Zombie Detect Script
         {
             transform.LookAt(currentTarget.transform);  //look at the target
@@ -60,10 +66,7 @@ public class ZombieAI : MonoBehaviour
             ZombieWalk();
         }
 
-       if (zombieHealth<=0)
-        {
-            Destroy(this.gameObject);
-       }
+       
 
 
         
