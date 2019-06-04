@@ -51,11 +51,12 @@ public class MachineGun : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
+
         if (collision.gameObject.tag == "Zombie")
         {
             collision.gameObject.SendMessage("TakeDamage", projectileDamage, SendMessageOptions.DontRequireReceiver);
             Destroy(gameObject);
-           // hitSFX.Play();
+            //hitSFX.Play();
 
         }
     }
