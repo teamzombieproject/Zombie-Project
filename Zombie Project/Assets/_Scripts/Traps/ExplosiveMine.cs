@@ -7,8 +7,8 @@ public class ExplosiveMine : MonoBehaviour
     public bool isDestroyed = false;
 
     public float maxDamage = 150f;
-    public float explosionRadius = 10f;
-    public float explosionForce = 80f;
+    public float explosionRadius = 60f;
+    public float explosionForce = 0f;
 
     public ParticleSystem explosionParticles;
     public Sprite spriteDestroyed;
@@ -30,13 +30,13 @@ public class ExplosiveMine : MonoBehaviour
         {
             targetRigidbody.AddExplosionForce(explosionForce, transform.position, explosionRadius);
 
-            ZombieHealth targetHealth = targetRigidbody.GetComponent<ZombieHealth>();
+            ZombieAI targetHealth = targetRigidbody.GetComponent<ZombieAI>();
 
             if (targetHealth != null)
             {
                 float damage = CalculateDamage(targetRigidbody.position);
 
-                targetHealth.zombieHealthTest -= damage;
+                targetHealth.zombieHealth -= damage;
             }
 
             explosionParticles.transform.parent = null;
@@ -47,7 +47,7 @@ public class ExplosiveMine : MonoBehaviour
 
             isDestroyed = true;
 
-            this.GetComponent<SpriteRenderer>().sprite = spriteDestroyed;
+            this.GetComponentInChildren<SpriteRenderer>().sprite = spriteDestroyed;
 
         }
         else
@@ -78,6 +78,6 @@ public class ExplosiveMine : MonoBehaviour
     {
         isDestroyed = false;
 
-        this.GetComponent<SpriteRenderer>().sprite = _sprite;
+        this.GetComponentInChildren<SpriteRenderer>().sprite = _sprite;
     }
 }
