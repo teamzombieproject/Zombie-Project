@@ -92,7 +92,7 @@ GameObject:
   - component: {fileID: 1770090243025800746}
   m_Layer: 0
   m_Name: ZombieSprite
-  m_TagString: Zombie
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -268,11 +268,13 @@ MonoBehaviour:
   barricadeBeingAttacked: 0
   turretBeingAttacked: 0
   radioBeingAttacked: 0
+  playerBeingAttacked: 0
   attackRate: 1
   attackTimer: 0
   damageToBarricade: 10
   damageToTurret: 10
   damageToRadio: 10
+  damageToPlayer: 30
 --- !u!65 &1770090244399708476
 BoxCollider:
   m_ObjectHideFlags: 0

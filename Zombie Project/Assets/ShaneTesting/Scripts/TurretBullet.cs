@@ -6,6 +6,7 @@ public class TurretBullet : MonoBehaviour
 {
     private Transform target;
     public float bulletSpeed = 70f;
+    public float bulletDamage = 50f;
 
     public void Seek(Transform _target)
     {
@@ -30,14 +31,14 @@ public class TurretBullet : MonoBehaviour
             return;
         }
         transform.Translate(dir.normalized * distanceThisFrame, Space.World);  // move the bullet 
-
-       
-
     }
 
    void HitTarget()
     {
+        target.gameObject.GetComponent<ZombieAI>().zombieHealth -= bulletDamage;
+        
         Destroy(gameObject);
-        Destroy(target.gameObject);
+       
     }
 }
+

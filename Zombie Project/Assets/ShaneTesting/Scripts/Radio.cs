@@ -9,16 +9,10 @@ public class Radio : MonoBehaviour
     
 
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
+   // Update is called once per frame
     void Update()
     {
-        if (radioHealth <= 0)
+        if (radioHealth <= 0)  // make this game over instead of script below
         {
             Debug.Log("destroy me");
             Destroy(this.gameObject); 
