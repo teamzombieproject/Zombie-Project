@@ -17,11 +17,13 @@ public class ZombieAI : MonoBehaviour
     public bool barricadeBeingAttacked = false;
     public bool turretBeingAttacked = false;
     public bool radioBeingAttacked = false;
+    public bool playerBeingAttacked = false;
     public float attackRate = 1.0f;
     public float attackTimer;
     public float damageToBarricade = 10;
     public float damageToTurret = 10;
     public float damageToRadio = 10;
+    public float damageToPlayer = 20;
 
 
     private void Start()
@@ -40,7 +42,7 @@ public class ZombieAI : MonoBehaviour
         }
 
 
-        if (currentTarget != null)  //if there is a targer identified from Zombie Detect Script
+        if (currentTarget != null)  //if there is a target identified from Zombie Detect Script
         {
             transform.LookAt(currentTarget.transform);  //look at the target
             transform.position = Vector3.MoveTowards(transform.position, currentTarget.transform.position, zombieSpeed); //move towards the target
@@ -53,7 +55,7 @@ public class ZombieAI : MonoBehaviour
 
         if (turretBeingAttacked == true)
         {
-            ZombieAttackTurret();
+           ZombieAttackTurret();
         }
 
         if (radioBeingAttacked == true)
@@ -61,14 +63,17 @@ public class ZombieAI : MonoBehaviour
             ZombieAttackRadio();
         }
 
-        if (barricadeBeingAttacked == false && turretBeingAttacked == false && radioBeingAttacked == false)
+      //  if (playerBeingAttacked == true)
+      //  {
+       //    ZombieAttackPlayer();
+       // }
+
+        if (barricadeBeingAttacked == false && turretBeingAttacked == false && radioBeingAttacked == false && playerBeingAttacked == false)
         {
             ZombieWalk();
         }
 
        
-
-
         
     }
     private void OnCollisionEnter(Collision col)
@@ -98,18 +103,16 @@ public class ZombieAI : MonoBehaviour
             radioBeingAttacked = true;
             ZombieAttackAnimation();
         }
-      //  if (col.gameObject.tag == "Player")
-     //   {
-      //      Debug.Log("collided with Player");
-      //      thisPlayer = col.gameObject.GetComponent<Movement>();
-     //       thisPlayer.zombieAIScript.Add(this);
-     //       PlayerBeingAttacked = true;
-//ZombieAttackAnimation();
-       // }
-
+        if (col.gameObject.tag == "Player")
+        {
+            Debug.Log("collided with Player");
+            col.gameObject.GetComponent<Health>().TakeDamage(damageToPlayer);
+             playerBeingAttacked = true;
+            ZombieAttackAnimation();
+        }
+        
     }
 
-    
 
     void ZombieAttackBarricade()
     {
@@ -144,12 +147,26 @@ public class ZombieAI : MonoBehaviour
         }
     }
 
+   // void ZombieAttackPlayer()
+   // {
+    //    attackTimer += Time.deltaTime;
+    //    if (attackTimer >= attackRate)
+
+     //   {
+     //      attackTimer = 0;
+    //    }
+   // }
+
+
+
+
     void ZombieAttackAnimation()
     {
         zombieSpeed = 0;
         zombieAnimator.SetBool("attack", true);
-    }
+     }
 
+         
     void ZombieWalk()
     {
         zombieSpeed = 0.05f;
