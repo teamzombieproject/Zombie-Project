@@ -14,6 +14,9 @@ TagManager:
   - InstantiatePoint
   - CamFollowPoint
   - Light
+  - CameraRig
+  - Dropped
+  - SelectedGun
   layers:
   - Default
   - TransparentFX

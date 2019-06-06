@@ -8,7 +8,7 @@ public class Health : MonoBehaviour
     public float health = 100, multiplier = .1f, invulnurability = 5, healWait = 10, healAmount = 1; 
     //DONT MAKE INVULNURABILITY TIME NEGATIVE, PLAYER WILL BE INDESTRUCTABLE FOREVER.
     float timer = 0, healthTimer = 0, rotate = 0, timerInitial, startingHealth;
-    bool dead = false, waiting = false;
+    bool dead = false;
     public SpriteRenderer[] characterSprites;
     public Animator bodyAnimator, headAnimator;
     public GameObject charHead;
@@ -18,6 +18,7 @@ public class Health : MonoBehaviour
     public Light deathLight;
     public GameObject[] lights;
     bool damaged = false;
+    public bool deathIsFinished = false;
     
 
     public bool takeDamage;
@@ -111,13 +112,13 @@ public class Health : MonoBehaviour
         {
             bodyAnimator.SetInteger("State", 80);
             //activiate deathGUI()  <--------------- DO!!!!
+            deathIsFinished = true;
         }
 
         
         if (dead)
             return;
         //things that go once after this
-        Debug.Log("THE OTHER SIDE");
         Camera.main.gameObject.transform.parent = gameObject.transform;
         changeSprite.enabled = false; // stops sprite changing
         aiming.gameObject.SetActive(false);
@@ -138,13 +139,13 @@ public class Health : MonoBehaviour
     {
         if (health == startingHealth)
             return;
-        Debug.Log("healing, timer at " +healthTimer );
+        //Debug.Log("healing, timer at " +healthTimer );
         healthTimer += Time.deltaTime;
         if (healthTimer >= healWait && health > 0)
         {
             healthTimer -= 1.0f;
             health += healAmount;
-            Debug.Log(health);
+            //Debug.Log(health);
         }
     }
 }

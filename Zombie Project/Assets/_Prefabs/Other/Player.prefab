@@ -414,9 +414,10 @@ GameObject:
   - component: {fileID: 7897983124235829540}
   - component: {fileID: 7897983124235829539}
   - component: {fileID: 5658991374187755132}
+  - component: {fileID: 1933330112997681884}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -496,6 +497,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 100
+  multiplier: 0.1
+  invulnurability: 5
+  healWait: 10
+  healAmount: 1
   characterSprites:
   - {fileID: 7897983123044662910}
   - {fileID: 7897983123341893690}
@@ -507,9 +512,27 @@ MonoBehaviour:
   aiming: {fileID: 7897983124389621536}
   deathLight: {fileID: 8066307420155144806}
   lights: []
-  multiplier: 0.1
-  invulnurability: 5
   takeDamage: 0
+--- !u!114 &1933330112997681884
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7897983124235829538}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6293843b804081f4bb0f2fc672569cac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  WeaponInventory:
+  - {fileID: 5252190033579509318, guid: 6c6f98fbc4ade1e49b3a755646fc44da, type: 3}
+  - {fileID: 6394575757770541360, guid: e158bc212f31f344da9bffb5cc4e0986, type: 3}
+  - {fileID: 8087132243958192422, guid: b4f0f034b8c4a6a49bff9c81752c4a65, type: 3}
+  Droppable:
+  - {fileID: 6158363363992635381, guid: 683e0449ebad76144901f22d817765c9, type: 3}
+  - {fileID: 6158363363992635381, guid: 683e0449ebad76144901f22d817765c9, type: 3}
+  gunSpawn: {fileID: 7962415752316953021}
 --- !u!1 &7897983124389621534
 GameObject:
   m_ObjectHideFlags: 0
