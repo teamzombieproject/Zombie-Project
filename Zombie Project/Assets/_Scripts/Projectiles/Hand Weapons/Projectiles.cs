@@ -17,10 +17,12 @@ public class Projectiles : MonoBehaviour
     public int projectileDamage = 25;       // Damge of projectile = HANGDUN/.22 RIFLE/SEMI AUTO RIFLE/HIGH POWER RIFLE//SHOTGUN >  Changee damage value to suit weapon
     public float ProjectileSpeed = 2f;      // Speed/Delay of projectile >  Best Value 10
     public float destroyProjectile = 2f;    // Time/Range before destroy is called for projectile >  Best Value 2/3
-    public AudioSource hitSFX;              // SFX when projectile hits zombie
+    
 
     private Transform myTransform;
     public GameObject bulletPrefab;         // Prefab of projectile to destroy itself on dealing damage/collision
+    public Transform _BulletPrefab;         // Location of weapon bullet prefab in world for blood impact particle effects
+    public GameObject bloodHitFX;           // blood on bullet impact
 
 
     // Start is called before the first frame update
@@ -49,7 +51,7 @@ public class Projectiles : MonoBehaviour
         {
             collision.gameObject.SendMessage("TakeDamage", projectileDamage, SendMessageOptions.DontRequireReceiver);
             Destroy(gameObject);
-            //hitSFX.Play();
+            GameObject.Instantiate(bloodHitFX, _BulletPrefab.position, _BulletPrefab.rotation);
         }
     }
 }
