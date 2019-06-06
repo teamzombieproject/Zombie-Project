@@ -21,11 +21,13 @@ public class MachineGun : MonoBehaviour
     public float destroyProjectile = 2f;     // Range before destroy is called > Best Value 3/4
     public float projectileSpeed = 5f;       // Speed/Velocity > Best Value 15
 
-    Rigidbody Rigidbody;                   // Projectiles Prefab RB values Mass = 1, Drag = 1, Angular Drag = 1
-    public AudioSource hitSFX;
+    Rigidbody Rigidbody;                     // Projectiles Prefab RB values Mass = 1, Drag = 1, Angular Drag = 1
+   // public AudioSource hitSFX;
+    public GameObject bloodHitFX;            // blood on bullet impact
 
     private Transform turretTransform;
     public GameObject bulletPrefab;          // Prefab of projectile to destroy itself on dealing damage/collision
+    public Transform _MGPrefab;              // Location of machine gun bullet prefab in world for blood impact particle effects
 
     // Start is called before the first frame update
     void Start()
@@ -56,8 +58,7 @@ public class MachineGun : MonoBehaviour
         {
             collision.gameObject.SendMessage("TakeDamage", projectileDamage, SendMessageOptions.DontRequireReceiver);
             Destroy(gameObject);
-            //hitSFX.Play();
-
+            GameObject.Instantiate(bloodHitFX, _MGPrefab.position, _MGPrefab.rotation);
         }
     }
 }
