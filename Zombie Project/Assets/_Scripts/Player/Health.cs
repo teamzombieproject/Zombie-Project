@@ -92,11 +92,11 @@ public class Health : MonoBehaviour
         {
             Camera.main.gameObject.GetComponent<CameraFollow>().radius -= 0.1f;
         }
-        if (rotate < 365 && gameObject.GetComponentInChildren<Camera>() != null)
-        {
-            rotate += 5;
-            gameObject.transform.Rotate(0, 5, 0);
-        }
+        //if (rotate < 365 && gameObject.GetComponentInChildren<Camera>() != null)
+        //{
+          //  rotate += 5;
+            //gameObject.transform.Rotate(0, 5, 0);
+        //}
         else if (rotate >= 365)
             gameObject.transform.rotation = Quaternion.identity;
 
@@ -140,7 +140,7 @@ public class Health : MonoBehaviour
             return;
         Debug.Log("healing, timer at " +healthTimer );
         healthTimer += Time.deltaTime;
-        if (healthTimer >= healWait)
+        if (healthTimer >= healWait && health > 0)
         {
             healthTimer -= 1.0f;
             health += healAmount;
