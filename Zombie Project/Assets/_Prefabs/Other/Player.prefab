@@ -512,6 +512,7 @@ MonoBehaviour:
   aiming: {fileID: 7897983124389621536}
   deathLight: {fileID: 8066307420155144806}
   lights: []
+  deathIsFinished: 0
   takeDamage: 0
 --- !u!114 &1933330112997681884
 MonoBehaviour:
@@ -526,8 +527,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   WeaponInventory:
-  - {fileID: 5252190033579509318, guid: 6c6f98fbc4ade1e49b3a755646fc44da, type: 3}
   - {fileID: 6394575757770541360, guid: e158bc212f31f344da9bffb5cc4e0986, type: 3}
+  - {fileID: 5252190033579509318, guid: 6c6f98fbc4ade1e49b3a755646fc44da, type: 3}
   - {fileID: 8087132243958192422, guid: b4f0f034b8c4a6a49bff9c81752c4a65, type: 3}
   Droppable:
   - {fileID: 6158363363992635381, guid: 683e0449ebad76144901f22d817765c9, type: 3}

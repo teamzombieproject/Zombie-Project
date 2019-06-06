@@ -17,6 +17,9 @@ TagManager:
   - CameraRig
   - Dropped
   - SelectedGun
+  - BearTrap
+  - ZombieSpawnPoint
+  - Mine
   layers:
   - Default
   - TransparentFX
