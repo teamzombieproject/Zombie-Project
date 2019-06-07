@@ -11,6 +11,7 @@ public class ZombieSpawner : MonoBehaviour
     public Transform[] spawnPointsArray;
     bool mayspawn;
     GameManager gm;
+   
 
 
 
@@ -20,6 +21,7 @@ public class ZombieSpawner : MonoBehaviour
 
         gm = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
         gm.zombiesAlive++;
+        
 
     }
 
