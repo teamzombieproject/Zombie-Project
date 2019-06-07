@@ -14,10 +14,11 @@ TagManager:
   - InstantiatePoint
   - CamFollowPoint
   - Light
-  - HealthBar
-  - SpawnManager
+  - CameraRig
+  - Dropped
+  - SelectedGun
   - ZombieSpawnPoint
-  - RadioHealthBar
+  - Traps
   layers:
   - Default
   - TransparentFX
