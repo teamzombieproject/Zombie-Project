@@ -273,7 +273,7 @@ MonoBehaviour:
   attackTimer: 0
   damageToBarricade: 10
   damageToTurret: 10
-  damageToRadio: 10
+  damageToRadio: 3
   damageToPlayer: 30
 --- !u!65 &1770090244399708476
 BoxCollider:

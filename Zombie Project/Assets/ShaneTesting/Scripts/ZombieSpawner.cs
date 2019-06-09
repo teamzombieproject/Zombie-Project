@@ -9,18 +9,29 @@ public class ZombieSpawner : MonoBehaviour
     public float spawnTime;
     public float spawnRepeatRate;
     public Transform[] spawnPointsArray;
+    bool mayspawn;
+    GameManager gm;
+   
 
 
-    // Start is called before the first frame update
+
     void Start()
     {
         InvokeRepeating("Spawn", spawnTime, spawnRepeatRate);
+
+        gm = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
+        gm.zombiesAlive++;
+        
+
     }
 
    void Spawn()
     {
-        int spawnPointIndex = Random.Range(0, spawnPointsArray.Length);
-        Instantiate(zombie, spawnPointsArray[spawnPointIndex].position, spawnPointsArray[spawnPointIndex].rotation);
+        if (mayspawn == true)
+        {
+            int spawnPointIndex = Random.Range(0, spawnPointsArray.Length);
+            Instantiate(zombie, spawnPointsArray[spawnPointIndex].position, spawnPointsArray[spawnPointIndex].rotation);
+        }
 
     }
     

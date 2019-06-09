@@ -1000,7 +1000,7 @@ GameObject:
   - component: {fileID: 1363862146}
   m_Layer: 0
   m_Name: GameManager
-  m_TagString: Untagged
+  m_TagString: GameController
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1022,16 +1022,27 @@ MonoBehaviour:
   optionsButtonPressed: 0
   creditsButtonPressed: 0
   quitButtonPressed: 0
+  hasSupplyDropSpawned: 0
+  spawnDeactivate: 30
+  spawnTimer: 0
+  playerHealth: {fileID: 0}
+  spawns: {fileID: 0}
   playerObject: {fileID: 7897983124235829538, guid: a2944bdffc92d564684d9cfae975ca94,
     type: 3}
+  currentPlayer: {fileID: 0}
   cameraRigObject: {fileID: 2894945381534073869, guid: 2681a09a07ffd9f4ba257d793f3a323f,
     type: 3}
   radioObject: {fileID: 2949494387020026980, guid: ae3fc63cf521c0f4c9df227823a55a5f,
     type: 3}
   playerSpawn: {fileID: 586799347}
   radioSpawn: {fileID: 193477735}
+  supplyDropObject: {fileID: 0}
+  supplyDropSpawn: {fileID: 0}
+  currentSupplyDrop: {fileID: 0}
   gameScore: 0
   wave: 0
+  machineGunTurretStock: 0
+  javelinRocketTurretStock: 0
   mineStock: 0
   bearTrapStock: 0
   barricadeStock: 0
@@ -1905,7 +1916,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timer: 1
-  fireVelocity: 0.1
+  fireRate: 0
   isShooting: 0
   bulletTransform: {fileID: 126789567}
   bulletPrefab: {fileID: 8418014002721013478, guid: 3682e24fb75e25e4797cbb5cf2a7c725,
@@ -2087,7 +2098,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &2130441768
 MonoBehaviour:
   m_ObjectHideFlags: 0
