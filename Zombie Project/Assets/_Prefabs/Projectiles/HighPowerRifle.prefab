@@ -106,7 +106,7 @@ GameObject:
   - component: {fileID: 1106402099655988810}
   m_Layer: 0
   m_Name: HighPowerRifle
-  m_TagString: Player
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -172,5 +172,5 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.6983541, y: 0.51, z: 0.2}
-  m_Center: {x: 0.020754589, y: 0, z: 0}
+  m_Size: {x: 0.6983541, y: 0.51, z: 0.16385591}
+  m_Center: {x: 0.020754566, y: 0, z: -0.018072117}

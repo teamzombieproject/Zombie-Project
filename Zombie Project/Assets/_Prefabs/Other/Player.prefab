@@ -496,6 +496,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 100
+  multiplier: 0.1
+  invulnurability: 5
+  healWait: 10
+  healAmount: 1
   characterSprites:
   - {fileID: 7897983123044662910}
   - {fileID: 7897983123341893690}
@@ -507,8 +511,6 @@ MonoBehaviour:
   aiming: {fileID: 7897983124389621536}
   deathLight: {fileID: 8066307420155144806}
   lights: []
-  multiplier: 0.1
-  invulnurability: 5
   takeDamage: 0
 --- !u!1 &7897983124389621534
 GameObject:

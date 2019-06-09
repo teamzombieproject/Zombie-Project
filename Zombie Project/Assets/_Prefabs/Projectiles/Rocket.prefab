@@ -128,7 +128,7 @@ GameObject:
   - component: {fileID: 9018018367508808626}
   m_Layer: 0
   m_Name: Rocket
-  m_TagString: Player
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -195,8 +195,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 3.513815, y: 3.5599995, z: 8.777797}
-  m_Center: {x: -0.043859527, y: 0, z: 0.43656778}
+  m_Size: {x: 3.513815, y: 3.5599995, z: 6.2377906}
+  m_Center: {x: -0.043859527, y: 0, z: -0.83343494}
 --- !u!135 &9018018367508808627
 SphereCollider:
   m_ObjectHideFlags: 0

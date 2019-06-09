@@ -106,7 +106,7 @@ GameObject:
   - component: {fileID: 4140898665458208162}
   m_Layer: 0
   m_Name: Rifle .22
-  m_TagString: Player
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -172,5 +172,5 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 2.25, y: 0.51, z: 0.2}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 0.7027516, y: 0.51, z: 0.19372436}
+  m_Center: {x: 0.090430506, y: 0, z: -0.04065082}
