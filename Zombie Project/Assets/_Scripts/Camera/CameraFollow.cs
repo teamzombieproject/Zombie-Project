@@ -16,6 +16,11 @@ public class CameraFollow : MonoBehaviour
     }
     public void Update()
     {
+        if (player == null)
+        {
+            player = GameObject.FindGameObjectWithTag("CamFollowPoint").transform;
+        }
+
         MousePos1 = Input.mousePosition;
         // the below line assumes this script is attached to a camera rigect
         ScreenMouse = GetComponent<Camera>().ScreenToWorldPoint(new Vector3(MousePos1.x, MousePos1.y, rig.position.z - GetComponent<Camera>().transform.position.z));
