@@ -26,6 +26,7 @@ TagManager:
   - BearTrap
   - MachGun
   - MachGunTurret
+  - PlaceableGround
   layers:
   - Default
   - TransparentFX

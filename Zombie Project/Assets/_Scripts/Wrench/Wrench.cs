@@ -72,7 +72,6 @@ public class Wrench : MonoBehaviour
         else if (count == swingSpeed && rotation == 1 && attacking)
         {
             rotation = -1;
-            Debug.Log(rotation);
             attacking = false;
             gameObject.GetComponent<BoxCollider>().enabled = false;
             count = 0;
@@ -86,7 +85,6 @@ public class Wrench : MonoBehaviour
         else if (count == swingSpeed && rotation == -1)
         {
             rotation = 1;
-            Debug.Log(rotation);
             attacking = false;
             gameObject.GetComponent<BoxCollider>().enabled = false;
             count = 0;
