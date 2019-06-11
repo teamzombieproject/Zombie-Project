@@ -9,7 +9,7 @@ public class ZombieSpawner : MonoBehaviour
     public float spawnTime;
     public float spawnRepeatRate;
     public Transform[] spawnPointsArray;
-    bool mayspawn = true;
+    public bool mayspawn = true;
     GameManager gm;
    
 

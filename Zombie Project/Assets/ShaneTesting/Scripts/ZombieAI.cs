@@ -88,7 +88,7 @@ public class ZombieAI : MonoBehaviour
     {
         if (col.gameObject.tag == "Barricade")
         {
-            Debug.Log("collided with barricade");
+            Debug.Log("collided with Barricade");
             thisBarricade = col.gameObject.GetComponent<Barricade>();
             thisBarricade.zombieAIScript.Add(this);
             barricadeBeingAttacked = true;
