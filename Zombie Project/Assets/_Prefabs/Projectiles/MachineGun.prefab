@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 3384587827930413649}
   - component: {fileID: 8568726114572759327}
-  - component: {fileID: 7734323076315987185}
   - component: {fileID: 2392632631330554569}
   m_Layer: 0
   m_Name: MachineGun
@@ -48,27 +47,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectileDamage: 10
   destroyProjectile: 3
-  projectileSpeed: 15
+  projectileSpeed: 65
   bloodHitFX: {fileID: 492924346993083021, guid: f55f02b964098344b90354e2bec44554,
     type: 3}
   bulletPrefab: {fileID: 149625743778500591}
   _MGPrefab: {fileID: 3384587827930413649}
---- !u!54 &7734323076315987185
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 149625743778500591}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 1
-  m_AngularDrag: 1
-  m_UseGravity: 0
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 112
-  m_CollisionDetection: 0
 --- !u!65 &2392632631330554569
 BoxCollider:
   m_ObjectHideFlags: 0

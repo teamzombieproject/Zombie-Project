@@ -122,7 +122,6 @@ GameObject:
   m_Component:
   - component: {fileID: 9018018367508808632}
   - component: {fileID: 9018018367508808630}
-  - component: {fileID: 9018018367508808629}
   - component: {fileID: 9018018367508808628}
   - component: {fileID: 9018018367508808627}
   - component: {fileID: 9018018367508808626}
@@ -162,28 +161,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rocketDamage: 100
   splashDamage: 10
-  rocketSpeed: 2
+  rocketSpeed: 25
   rocketRange: 2
   explosionEffect: {fileID: 2281845382261292047, guid: 56e893f1da8ce3f4da158bd8faf29bde,
     type: 3}
   bulletPrefab: {fileID: 9018018367508808623}
   rocketPrefab: {fileID: 9018018367508808632}
---- !u!54 &9018018367508808629
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9018018367508808623}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 1
-  m_AngularDrag: 1
-  m_UseGravity: 0
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 112
-  m_CollisionDetection: 0
 --- !u!65 &9018018367508808628
 BoxCollider:
   m_ObjectHideFlags: 0
