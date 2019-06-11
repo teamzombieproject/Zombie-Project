@@ -19,7 +19,7 @@ public class Health : MonoBehaviour
     public GameObject[] lights;
     bool damaged = false;
     public bool deathIsFinished = false;
-    
+    public AudioClip damageSFX;
 
     public bool takeDamage;
     private void Start()
@@ -69,10 +69,13 @@ public class Health : MonoBehaviour
 
     public void TakeDamage(float damage)
     {
-        if (damaged) //indestructible if damaged
+        if (damaged || health <= 0) //indestructible if damaged
             return;
-            healthTimer = 0;
-            health -= damage;
+        healthTimer = 0;
+        health -= damage;
+        GetComponent<AudioSource>().pitch = 1;
+        GetComponent<AudioSource>().clip = damageSFX;
+        GetComponent<AudioSource>().Play();
         // do inform health GUI when you can!
         if (health > 0)
         {

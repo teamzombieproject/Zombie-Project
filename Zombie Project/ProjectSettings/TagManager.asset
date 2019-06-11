@@ -17,9 +17,16 @@ TagManager:
   - CameraRig
   - Dropped
   - SelectedGun
-  - BearTrap
   - ZombieSpawnPoint
+  - Traps
+  - HealthBar
+  - SpawnManager
+  - RadioHealthBar
   - Mine
+  - BearTrap
+  - MachGun
+  - MachGunTurret
+  - PlaceableGround
   layers:
   - Default
   - TransparentFX
