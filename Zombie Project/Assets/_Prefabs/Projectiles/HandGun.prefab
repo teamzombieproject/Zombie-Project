@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 5737285708536796263}
   - component: {fileID: 2600220654967420430}
-  - component: {fileID: 2169904546052188474}
   - component: {fileID: 6297392868981492056}
   m_Layer: 0
   m_Name: HandGun
@@ -47,28 +46,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   projectileDamage: 25
-  ProjectileSpeed: 5
+  projectileSpeed: 25
   destroyProjectile: 2
   bulletPrefab: {fileID: 4819104520247393049}
   _BulletPrefab: {fileID: 5737285708536796263}
   bloodHitFX: {fileID: 492924346993083021, guid: f55f02b964098344b90354e2bec44554,
     type: 3}
---- !u!54 &2169904546052188474
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4819104520247393049}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 1
-  m_AngularDrag: 1
-  m_UseGravity: 0
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 112
-  m_CollisionDetection: 0
 --- !u!65 &6297392868981492056
 BoxCollider:
   m_ObjectHideFlags: 0

@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 8767597879597650328}
   - component: {fileID: 1308291076780946417}
-  - component: {fileID: 2895570012969512133}
   - component: {fileID: 7014066521216928935}
   m_Layer: 0
   m_Name: Shotgun
@@ -47,28 +46,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   projectileDamage: 50
-  ProjectileSpeed: 55
+  projectileSpeed: 35
   destroyProjectile: 4
   bulletPrefab: {fileID: 8418014002721013478}
   _BulletPrefab: {fileID: 8767597879597650328}
   bloodHitFX: {fileID: 492924346993083021, guid: f55f02b964098344b90354e2bec44554,
     type: 3}
---- !u!54 &2895570012969512133
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8418014002721013478}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 1
-  m_AngularDrag: 1
-  m_UseGravity: 0
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 112
-  m_CollisionDetection: 0
 --- !u!65 &7014066521216928935
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -80,8 +63,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.0962847, y: 0.51, z: 0.082600735}
-  m_Center: {x: 0.008658298, y: 0, z: -0.1309994}
+  m_Size: {x: 1.2030151, y: 0.8012639, z: 0.08260074}
+  m_Center: {x: 0.01992531, y: 0.004617833, z: -0.1309994}
 --- !u!1 &9172303914226180330
 GameObject:
   m_ObjectHideFlags: 0
