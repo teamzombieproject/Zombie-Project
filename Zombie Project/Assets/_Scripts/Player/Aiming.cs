@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class Aiming : MonoBehaviour
 {
-    public Camera camera;
+    public Camera cameraObject;
 
     private void Start()
     {
-        camera = Camera.main;
+        if (cameraObject == null) cameraObject = Camera.main;
     }
     private void FixedUpdate()
     {
@@ -17,14 +17,14 @@ public class Aiming : MonoBehaviour
 
     void Aim()
     {
-        Ray cameraRay = camera.ScreenPointToRay(Input.mousePosition);
+        Ray cameraObjectRay = cameraObject.ScreenPointToRay(Input.mousePosition);
         Plane groundPlane = new Plane(Vector3.up, Vector3.zero);
         float rayLength;
 
-        if (groundPlane.Raycast(cameraRay, out rayLength))
+        if (groundPlane.Raycast(cameraObjectRay, out rayLength))
         {
-            Vector3 pointToLook = cameraRay.GetPoint(rayLength);
-            Debug.DrawLine(cameraRay.origin, pointToLook, Color.red);
+            Vector3 pointToLook = cameraObjectRay.GetPoint(rayLength);
+            Debug.DrawLine(cameraObjectRay.origin, pointToLook, Color.red);
 
             transform.LookAt(new Vector3(pointToLook.x, transform.position.y, pointToLook.z));
         }

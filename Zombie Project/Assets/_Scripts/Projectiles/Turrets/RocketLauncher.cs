@@ -23,7 +23,7 @@ public class RocketLauncher : MonoBehaviour
     public GameObject explosionEffect;  // Eplosion particle effect
     public GameObject bulletPrefab;     // Prefab of projectile to destroy itself on dealing damage/collision to zombie
     public Transform rocketPrefab;      // Rocket prefab position in world for explosion to Instatiate 
-    Rigidbody m_Rigidbody;              // Rockets Prefab RB values Mass = 1, Drag = 1, Angular Drag = 1
+    // Rigidbody m_Rigidbody;              // Rockets Prefab RB values Mass = 1, Drag = 1, Angular Drag = 1
 
     private Transform turretTransform;  // Rocket Transform/spawn = player gun
     
@@ -31,7 +31,7 @@ public class RocketLauncher : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        m_Rigidbody = GetComponent<Rigidbody>();
+        // m_Rigidbody = GetComponent<Rigidbody>();
         turretTransform = transform;
 
 
@@ -40,8 +40,8 @@ public class RocketLauncher : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        gameObject.GetComponent<Rigidbody>().AddForce(-turretTransform.forward * rocketSpeed, ForceMode.VelocityChange); // transform.up/right/forward?
-
+        // gameObject.GetComponent<Rigidbody>().AddForce(-turretTransform.forward * rocketSpeed, ForceMode.VelocityChange); // transform.up/right/forward?
+        turretTransform.position += Time.deltaTime * rocketSpeed * -turretTransform.forward;
         rocketRange -= Time.deltaTime;
 
         if (rocketRange <= 0)
@@ -63,6 +63,11 @@ public class RocketLauncher : MonoBehaviour
             {
                 DamageRadius();
             }
+
+        }
+        if (collision.gameObject.tag != "Zombie")
+        {
+            Destroy(gameObject);
         }
     }
 

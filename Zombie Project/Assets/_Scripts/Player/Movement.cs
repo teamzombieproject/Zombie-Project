@@ -15,6 +15,7 @@ public class Movement : MonoBehaviour
     public float walkTimerInitial = .5f;
     float speedRegulator = 1, walkTimer = .5f;
     bool walkPitch = false;
+    public AudioClip footstep;
     private void Awake()
     {
         playerRigidbody = GetComponent<Rigidbody>();
@@ -49,9 +50,12 @@ public class Movement : MonoBehaviour
         {
             walkTimer -= Time.deltaTime;
         }
-        else if (walkTimer <= 0)
+        else if (walkTimer <= 0 && !GetComponent<AudioSource>().isPlaying)
         {
             walkTimer = walkTimerInitial;
+            
+            GetComponent<AudioSource>().clip = footstep;
+            
             GetComponent<AudioSource>().Play();
             if (walkPitch)
             {

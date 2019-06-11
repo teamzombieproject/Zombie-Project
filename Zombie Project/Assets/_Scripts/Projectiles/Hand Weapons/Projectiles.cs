@@ -15,7 +15,7 @@ public class Projectiles : MonoBehaviour
     // Zombie prefabs/models in the Hieracrchy should be tagged "Zombie" //
 
     public int projectileDamage = 25;       // Damge of projectile = HANGDUN/.22 RIFLE/SEMI AUTO RIFLE/HIGH POWER RIFLE//SHOTGUN >  Changee damage value to suit weapon
-    public float ProjectileSpeed = 2f;      // Speed/Delay of projectile >  Best Value 10
+    public float projectileSpeed = 2f;      // Speed/Delay of projectile >  Best Value 10
     public float destroyProjectile = 2f;    // Time/Range before destroy is called for projectile >  Best Value 2/3
     
 
@@ -34,7 +34,7 @@ public class Projectiles : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        myTransform.position += Time.deltaTime * ProjectileSpeed * -myTransform.forward; // transform.up/forward/right?
+        myTransform.position += Time.deltaTime * projectileSpeed * -myTransform.forward; // transform.up/forward/right?
 
         destroyProjectile -= Time.deltaTime;
 
@@ -52,6 +52,10 @@ public class Projectiles : MonoBehaviour
             collision.gameObject.SendMessage("TakeDamage", projectileDamage, SendMessageOptions.DontRequireReceiver);
             Destroy(gameObject);
             GameObject.Instantiate(bloodHitFX, _BulletPrefab.position, _BulletPrefab.rotation);
+        }
+        if (collision.gameObject.tag != "Zombie")
+        {
+            Destroy(gameObject);
         }
     }
 }

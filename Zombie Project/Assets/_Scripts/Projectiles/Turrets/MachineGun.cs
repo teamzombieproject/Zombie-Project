@@ -21,8 +21,8 @@ public class MachineGun : MonoBehaviour
     public float destroyProjectile = 2f;     // Range before destroy is called > Best Value 3/4
     public float projectileSpeed = 5f;       // Speed/Velocity > Best Value 15
 
-    Rigidbody Rigidbody;                     // Projectiles Prefab RB values Mass = 1, Drag = 1, Angular Drag = 1
-   // public AudioSource hitSFX;
+    // Rigidbody Rigidbody;                  // Projectiles Prefab RB values Mass = 1, Drag = 1, Angular Drag = 1
+    // public AudioSource hitSFX;
     public GameObject bloodHitFX;            // blood on bullet impact
 
     private Transform turretTransform;
@@ -32,14 +32,15 @@ public class MachineGun : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Rigidbody = GetComponent<Rigidbody>();
+        // Rigidbody = GetComponent<Rigidbody>();
         turretTransform = transform;
     }
 
     // Update is called once per frame
     void Update()
     {
-        gameObject.GetComponent<Rigidbody>().AddForce(-turretTransform.forward * projectileSpeed, ForceMode.VelocityChange); // transform.up/right/forward?
+        //gameObject.GetComponent<Rigidbody>().AddForce(-turretTransform.forward * projectileSpeed, ForceMode.VelocityChange); // transform.up/right/forward?
+        turretTransform.position += Time.deltaTime * projectileSpeed * -turretTransform.forward;
 
         destroyProjectile -= Time.deltaTime;
 
@@ -59,6 +60,10 @@ public class MachineGun : MonoBehaviour
             collision.gameObject.SendMessage("TakeDamage", projectileDamage, SendMessageOptions.DontRequireReceiver);
             Destroy(gameObject);
             GameObject.Instantiate(bloodHitFX, _MGPrefab.position, _MGPrefab.rotation);
+        }
+        if(collision.gameObject.tag != "Zombie") 
+        {
+            Destroy(gameObject);
         }
     }
 }
