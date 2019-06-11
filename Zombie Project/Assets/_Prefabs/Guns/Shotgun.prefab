@@ -388,6 +388,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7957450501634424402}
   - component: {fileID: 6726400897484192802}
+  - component: {fileID: -2218796722097404383}
   - component: {fileID: 8449951560380021542}
   m_Layer: 0
   m_Name: Shotgun
@@ -509,6 +510,20 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &-2218796722097404383
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7957450501634424405}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a955ed102692ae54a9d384fbc4939088, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DropVersion: {fileID: 7306787393381154593, guid: 25b94170be692ee48a05c97268667161,
+    type: 3}
 --- !u!114 &8449951560380021542
 MonoBehaviour:
   m_ObjectHideFlags: 0
