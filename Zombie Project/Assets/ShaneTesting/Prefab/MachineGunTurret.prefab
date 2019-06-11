@@ -23,12 +23,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7173136139529902140}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.092, y: 0.094, z: 0.541}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.167, y: 0.010163054, z: 0.21302384}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 7851272574270055999}
-  m_RootOrder: 2
+  m_Father: {fileID: 7851272574270055997}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7851272574270290449
 GameObject:
@@ -181,10 +181,12 @@ MonoBehaviour:
   head: {fileID: 7851272574270055999}
   range: 15
   turnSpeed: 5
-  fireRate: 1
+  fireRate: 8
+  delayCountDown: 0.9
   turretBulletPrefab: {fileID: 2247488542966735974, guid: ae99e4df8c191304498941fa4b04ed50,
     type: 3}
   firePointLeft: {fileID: 1039759132269559948}
+  firePointRight: {fileID: 1238984617762418844}
 --- !u!54 &3174727678570618947
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -397,7 +399,8 @@ Transform:
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0.085005715, y: 0.08383693, z: 0.32797605}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 1238984617762418844}
   m_Father: {fileID: 7851272574270055999}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -477,7 +480,6 @@ Transform:
   m_Children:
   - {fileID: 7851272574270055995}
   - {fileID: 7851272574270055997}
-  - {fileID: 1238984617762418844}
   m_Father: {fileID: 7851272574270055987}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -550,7 +552,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8552515810165909721}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.003, y: 0, z: 0.234}
+  m_LocalPosition: {x: -0.241, y: 0, z: 0.234}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 7851272574270055995}

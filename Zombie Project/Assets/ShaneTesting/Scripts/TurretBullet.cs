@@ -6,7 +6,7 @@ public class TurretBullet : MonoBehaviour
 {
     private Transform target;
     public float bulletSpeed = 70f;
-    public float bulletDamage = 50f;
+    public float bulletDamage = 10f;
 
     public void Seek(Transform _target)
     {
