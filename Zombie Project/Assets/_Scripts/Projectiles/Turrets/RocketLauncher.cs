@@ -65,7 +65,7 @@ public class RocketLauncher : MonoBehaviour
             }
 
         }
-        if (collision.gameObject.tag == "Untagged")
+        if (collision.gameObject.tag != "Zombie")
         {
             Destroy(gameObject);
         }

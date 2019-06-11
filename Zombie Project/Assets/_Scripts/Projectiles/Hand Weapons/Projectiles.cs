@@ -53,6 +53,10 @@ public class Projectiles : MonoBehaviour
             Destroy(gameObject);
             GameObject.Instantiate(bloodHitFX, _BulletPrefab.position, _BulletPrefab.rotation);
         }
+        if (collision.gameObject.tag != "Zombie")
+        {
+            Destroy(gameObject);
+        }
     }
 }
 

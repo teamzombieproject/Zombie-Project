@@ -6,7 +6,7 @@ public class ZombieHealth : MonoBehaviour
 {
    
     public float zombieHealthTest = 100f;
-    GameManager gm;
+    GameManager  gm;
     
 
 
@@ -21,8 +21,10 @@ public class ZombieHealth : MonoBehaviour
 
         if (zombieHealthTest <= 0)
         {
-            gm.zombiesAlive--;
             Destroy(gameObject);
+            
+            gm.zombiesAlive--; //keep below destroy
+
         }
     }
 
