@@ -12,10 +12,13 @@ public class Movement : MonoBehaviour
     Vector3 movement2;
     public int directionX = 0;
     public int directionZ = 0;
-    float speedRegulator = 1;
+    public float walkTimerInitial = .5f;
+    float speedRegulator = 1, walkTimer = .5f;
+    bool walkPitch = false;
     private void Awake()
     {
         playerRigidbody = GetComponent<Rigidbody>();
+        walkTimer = walkTimerInitial;
     }
 
 
@@ -42,7 +45,26 @@ public class Movement : MonoBehaviour
 
 
 
-        
+        if (walkTimer > 0 && (directionX != 0 || directionZ != 0))
+        {
+            walkTimer -= Time.deltaTime;
+        }
+        else if (walkTimer <= 0)
+        {
+            walkTimer = walkTimerInitial;
+            GetComponent<AudioSource>().Play();
+            if (walkPitch)
+            {
+                GetComponent<AudioSource>().pitch = 1 + Random.Range(.1f, .3f);
+            }
+            else
+            {
+                GetComponent<AudioSource>().pitch = 1 - Random.Range(0, .2f);
+            }
+            walkPitch = !walkPitch;
+
+        }
+
     }
     private void FixedUpdate()
     {

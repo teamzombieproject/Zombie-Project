@@ -89,13 +89,14 @@ GameObject:
   m_Component:
   - component: {fileID: 5252190033579509313}
   - component: {fileID: 8820620794940260580}
+  - component: {fileID: 7883099099806516185}
   m_Layer: 0
   m_Name: GunExample
   m_TagString: SelectedGun
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &5252190033579509313
 Transform:
   m_ObjectHideFlags: 0
@@ -125,12 +126,26 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timer: 0
-  fireVelocity: 0
+  fireRate: 0
   isShooting: 0
   bulletTransform: {fileID: 5252190034291455136}
   bulletPrefab: {fileID: 4819104520247393049, guid: 2fe1c89e759eacf478386962d30b3a57,
     type: 3}
   fireSFX: {fileID: 0}
+--- !u!114 &7883099099806516185
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5252190033579509318}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a955ed102692ae54a9d384fbc4939088, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DropVersion: {fileID: 2751353820379216000, guid: 338a6f10591cca3489e1a206e0149b45,
+    type: 3}
 --- !u!1 &5252190033636138581
 GameObject:
   m_ObjectHideFlags: 0

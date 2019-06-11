@@ -15,7 +15,7 @@ public class ChangeSprite : MonoBehaviour
     float directZ;
     int headUp;
     int headSide;
-    public float turnPoint = .5f;
+    public float turnPoint = .66f;
     private void Awake()
     {
         playerSprite = GetComponent<SpriteRenderer>();
@@ -74,7 +74,7 @@ public class ChangeSprite : MonoBehaviour
     {
         Vector3 direction = Input.mousePosition - Camera.main.WorldToScreenPoint(gameObject.transform.position);
 
-        if (direction.normalized.y > 0)
+        if (direction.normalized.y > 0.4f)
         {
             headUp = 1;
 

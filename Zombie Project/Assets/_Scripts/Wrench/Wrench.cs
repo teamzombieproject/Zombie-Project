@@ -5,12 +5,12 @@ using UnityEngine;
 public class Wrench : MonoBehaviour
 {
     public float forceMagnitude = 10, damage = 30, initialCooldown = 3;
-    float cooldown = 0;
+    float cooldown = 1;
     bool attacking;
     int rotation = 1, count = 0;
     public int swingSpeed = 6;
-    public GameObject wrenchSprites;
-    
+    public GameObject wrenchSprites, wind, windSpawnPoint;
+    public GameObject hitFX; // stolen from james >:D
     AudioSource wrenchSFX;
     private void Start()
     {
@@ -32,6 +32,7 @@ public class Wrench : MonoBehaviour
                 gameObject.GetComponent<BoxCollider>().enabled = true;
                 Camera.main.GetComponent<ScreenShake>().CamShake(1f, .5f);
                 wrenchSFX.Play();
+                Instantiate(wind, windSpawnPoint.transform.position, windSpawnPoint.transform.rotation);    
             }
                 
             
@@ -55,6 +56,7 @@ public class Wrench : MonoBehaviour
             Debug.Log("Zombie Hit");
                 other.gameObject.GetComponent<Rigidbody>().AddForce(-transform.forward * forceMagnitude, ForceMode.VelocityChange);
                 other.gameObject.SendMessage("TakeDamage", damage, SendMessageOptions.DontRequireReceiver);
+                Instantiate(hitFX, other.transform.position, Quaternion.identity);
                 //hitSFX.Play();
         }
     }

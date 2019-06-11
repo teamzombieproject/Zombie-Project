@@ -5,13 +5,14 @@ using UnityEngine;
 public class WeaponSwitching : MonoBehaviour
 {
     public GameObject[] WeaponInventory;
-    public GameObject[] Droppable;
     int selected;
     public Transform gunSpawn;
-    
+    public AudioClip switchGunSFX, pickupGunSFX;
+    AudioSource audioSource;
+
     private void Start()
     {
-        
+        audioSource = GetComponent<AudioSource>(); 
     }
     private void Update()
     {
@@ -31,24 +32,59 @@ public class WeaponSwitching : MonoBehaviour
 
     void SwitchWeapons(int number)
     {
-        if (selected == number)
+        //check if the weapon being switched to is held or doesnt exist
+        if (selected == number || WeaponInventory[number] == null)
             return;
-        Destroy(GameObject.FindGameObjectWithTag("SelectedGun"));
-        Instantiate(WeaponInventory[number], gunSpawn);
+
+        //disable all deselected guns and enable selected one
+        for (int i = 0; i < WeaponInventory.Length; i++)
+        {
+            if (i == number)
+            {
+                WeaponInventory[i].gameObject.SetActive(true);
+            }
+            else if (WeaponInventory[i] != null) WeaponInventory[i].gameObject.SetActive(false);
+        }
+
+        //make selected equal the new selected guns number for use with gun pickup
         selected = number;
+
+        audioSource.clip = switchGunSFX;
+        audioSource.Play();
+
+        //GameObject[] gun = GameObject.FindGameObjectsWithTag("SelectedGun");
+        //for (int i = 0; i < gun.Length; i++)
+        //{
+        //    Destroy(gun[i]);
+        //}
+        //Instantiate(WeaponInventory[number], gunSpawn);
+        //selected = number;
+        //WeaponInventory[selected] = GameObject.FindGameObjectWithTag("SelectedGun");
+        
     }
 
-    public void WeaponPickup(GameObject newWeapon, GameObject newWeaponDroppable, Transform spawnTransform)
+    public void WeaponPickup(string newWeapon, Transform spawnTransform)
     {
         if (selected == 2)
         {
             SwitchWeapons(0);
         }
-        Instantiate(Droppable[selected], spawnTransform.position, Quaternion.Euler(0,Random.Range(0,360),0));
-        Destroy(GameObject.FindGameObjectWithTag("SelectedGun"));
-        WeaponInventory[selected] = newWeapon;
-        Droppable[selected] = newWeaponDroppable;
-        Instantiate(WeaponInventory[selected], gunSpawn);
+        audioSource.clip = pickupGunSFX;
+        audioSource.Play();
+        Destroy(spawnTransform.gameObject);
+        if (WeaponInventory[1] == null)
+        {
+            WeaponInventory[1] = gunSpawn.transform.Find(newWeapon).gameObject;
+            SwitchWeapons(1);
+            audioSource.clip = pickupGunSFX;
+            audioSource.Play();
+            return;
+        }
+
+        
+
+        
+        Instantiate(WeaponInventory[selected].GetComponent<DropInfo>().DropVersion, spawnTransform.position, Quaternion.Euler(0,Random.Range(0,360),0));
         
     }
 }
