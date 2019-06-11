@@ -12,16 +12,19 @@ public class ZombieAI : MonoBehaviour
     public Animator zombieAnimator;
     public Barricade thisBarricade;
     public Turret thisTurret;
+    public TurretMachGun thisMachGunTurret;
     public Radio thisRadio;
     public Movement thisPlayer;
     public bool barricadeBeingAttacked = false;
     public bool turretBeingAttacked = false;
+    public bool machGunTurretBeingAttacked = false;
     public bool radioBeingAttacked = false;
     public bool playerBeingAttacked = false;
     public float attackRate = 1.0f;
     public float attackTimer;
     public float damageToBarricade = 10;
     public float damageToTurret = 10;
+    public float damageToMachGunTurret = 10;
     public float damageToRadio = 10;
     public float damageToPlayer = 20;
 
@@ -58,6 +61,11 @@ public class ZombieAI : MonoBehaviour
            ZombieAttackTurret();
         }
 
+        if (machGunTurretBeingAttacked == true)
+        {
+            ZombieAttackMachGunTurret();
+        }
+
         if (radioBeingAttacked == true)
         {
             ZombieAttackRadio();
@@ -68,7 +76,7 @@ public class ZombieAI : MonoBehaviour
        //    ZombieAttackPlayer();
        // }
 
-        if (barricadeBeingAttacked == false && turretBeingAttacked == false && radioBeingAttacked == false && playerBeingAttacked == false)
+        if (barricadeBeingAttacked == false && turretBeingAttacked == false && radioBeingAttacked == false && playerBeingAttacked == false && machGunTurretBeingAttacked == false)
         {
             ZombieWalk();
         }
@@ -93,6 +101,14 @@ public class ZombieAI : MonoBehaviour
             thisTurret = col.gameObject.GetComponent<Turret>();
             thisTurret.zombieAIScript.Add(this);
             turretBeingAttacked = true;
+            ZombieAttackAnimation();
+        }
+        if (col.gameObject.tag == "MachGunTurret")
+        {
+            Debug.Log("collided with MachGunTurret");
+            thisMachGunTurret = col.gameObject.GetComponent<TurretMachGun>();
+            thisMachGunTurret.zombieAIScript.Add(this);
+            machGunTurretBeingAttacked = true;
             ZombieAttackAnimation();
         }
         if (col.gameObject.tag == "Radio")
@@ -132,6 +148,17 @@ public class ZombieAI : MonoBehaviour
 
         {
             thisTurret.turretHealth -= damageToTurret;
+            attackTimer = 0;
+        }
+    }
+
+    void ZombieAttackMachGunTurret()
+    {
+        attackTimer += Time.deltaTime;
+        if (attackTimer >= attackRate)
+
+        {
+            thisMachGunTurret.machGunTurretHealth -= damageToMachGunTurret;
             attackTimer = 0;
         }
     }

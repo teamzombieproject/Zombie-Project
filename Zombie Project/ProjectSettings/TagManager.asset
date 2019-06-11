@@ -19,6 +19,13 @@ TagManager:
   - SelectedGun
   - ZombieSpawnPoint
   - Traps
+  - HealthBar
+  - SpawnManager
+  - RadioHealthBar
+  - Mine
+  - BearTrap
+  - MachGun
+  - MachGunTurret
   layers:
   - Default
   - TransparentFX
