@@ -20,15 +20,19 @@ public class GameManager : MonoBehaviour
     public Health playerHealth;
     public ZombieSpawner spawns;
 
-    public GameObject playerObject;
-    public GameObject currentPlayer;
-    public GameObject cameraRigObject;
-    public GameObject radioObject;
+    public GameObject supplyDropSpawn;
+    public GameObject weaponDropSpawn;
     public GameObject playerSpawn;
     public GameObject radioSpawn;
     public GameObject supplyDropObject;
-    public GameObject supplyDropSpawn;
+    public GameObject weaponDropObject;
+    public GameObject playerObject;
+    public GameObject radioObject;
+    public GameObject cameraRigObject;
     public GameObject currentSupplyDrop;
+    public GameObject currentWeaponDrop;
+    public GameObject currentPlayer;
+
 
     public int gameScore = 0;
     public int wave = 0;
@@ -76,12 +80,14 @@ public class GameManager : MonoBehaviour
         Destroy(GameObject.FindGameObjectWithTag("Player"));                            // remove old player object
         Destroy(GameObject.FindGameObjectWithTag("CameraRig"));
         Destroy(GameObject.FindGameObjectWithTag("Radio"));                             // remove old radio object
+        //Destroy(GameObject.FindGameObjectWithTag("SupplyDrop"));
+        //Destroy(Gameobject.FindGameObjectWithTag("Dropped"));
 
         // destroy all spawnable game objects that may remain from previous game
         GameObject[] zombies = GameObject.FindGameObjectsWithTag("Zombie");             // find all of the zombies that are left over from the last game and store them in an array
         GameObject[] Traps = GameObject.FindGameObjectsWithTag("Traps");
         GameObject[] barricades = GameObject.FindGameObjectsWithTag("Barricade");
-        //GameObject[] Turrets = GameObject.FindGameObjectsWithTag("Turret");
+        GameObject[] Turrets = GameObject.FindGameObjectsWithTag("Turret");
         
         foreach(GameObject z in zombies)
         {
@@ -98,10 +104,10 @@ public class GameManager : MonoBehaviour
             Destroy(b);
         }
 
-        // foreach (GameObject tt in Turret)
-        // {
-        //     Destroy(tt);
-        // }
+        foreach (GameObject tt in Turrets)
+        {
+            Destroy(tt);
+        }
 
         // spawn new player object
         currentPlayer = Instantiate(playerObject, playerSpawn.transform.position, playerSpawn.transform.rotation);
@@ -130,6 +136,16 @@ public class GameManager : MonoBehaviour
         {
             currentSupplyDrop = Instantiate(supplyDropObject, supplyDropSpawn.transform.position, supplyDropSpawn.transform.rotation);
             hasSupplyDropSpawned = true;
+            currentWeaponDrop = Instantiate(weaponDropObject, weaponDropSpawn.transform.position, weaponDropSpawn.transform.rotation);
+        }
+
+    }
+
+    public void SelectedWeaponDrop()
+    {
+        if (wave == 2)
+        {
+             // weaponDropObject = Gun1;
         }
 
     }
@@ -175,12 +191,13 @@ public class GameManager : MonoBehaviour
                 // Make the supply drop spawn (set Spawn bool to true) (can only spawn when false)
                 if (!hasSupplyDropSpawned)
                 {
-                    //spawnSupplyDrop()
+                    SpawnSupplyDrop();
                 }
+
                 // change hud
                 if ( spawnTimer >= spawnDeactivate)
                 {
-                    // spawns.maySpawn = false;
+                    spawns.mayspawn = false;
                     canZombiesSpawn = false;
                 }
 
@@ -205,10 +222,12 @@ public class GameManager : MonoBehaviour
                 {
                     m_GameState = GameState.Action;
                     m_GameTime = 0f;
-                    // spawns.maySpawn = true;
+                    spawns.mayspawn = true;
                     canZombiesSpawn = true;
                     spawnTimer = 0f;
                     hasSupplyDropSpawned = false;
+                    //Destroy(Gameobject.FindGameObjectWithTag("Dropped"));
+                    wave += 1;
                 }
 
                 break;

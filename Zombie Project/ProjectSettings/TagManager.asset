@@ -27,6 +27,8 @@ TagManager:
   - MachGun
   - MachGunTurret
   - PlaceableGround
+  - Fire
+  - SupplyDrop
   layers:
   - Default
   - TransparentFX

@@ -1,0 +1,80 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &4228813810324043224
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4228813810324043226}
+  - component: {fileID: 4228813810324043227}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: GameController
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4228813810324043226
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4228813810324043224}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4228813810324043227
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4228813810324043224}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d736eb7d5024b684c8e4bbbc79537845, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playButtonPressed: 0
+  highScoresButtonPressed: 0
+  optionsButtonPressed: 0
+  creditsButtonPressed: 0
+  quitButtonPressed: 0
+  hasSupplyDropSpawned: 0
+  canZombiesSpawn: 0
+  spawnDeactivate: 30
+  spawnTimer: 0
+  playerHealth: {fileID: 0}
+  spawns: {fileID: 0}
+  supplyDropSpawn: {fileID: 0}
+  weaponDropSpawn: {fileID: 0}
+  playerSpawn: {fileID: 0}
+  radioSpawn: {fileID: 0}
+  supplyDropObject: {fileID: 6222122715345630286, guid: df7aa5bf1bd0f8942b8af680095e3d99,
+    type: 3}
+  weaponDropObject: {fileID: 0}
+  playerObject: {fileID: 7897983124235829538, guid: a2944bdffc92d564684d9cfae975ca94,
+    type: 3}
+  radioObject: {fileID: 2949494387020026980, guid: ae3fc63cf521c0f4c9df227823a55a5f,
+    type: 3}
+  cameraRigObject: {fileID: 2894945381534073869, guid: 2681a09a07ffd9f4ba257d793f3a323f,
+    type: 3}
+  currentSupplyDrop: {fileID: 0}
+  currentWeaponDrop: {fileID: 0}
+  currentPlayer: {fileID: 0}
+  gameScore: 0
+  wave: 0
+  zombiesAlive: 0
+  machineGunTurretStock: 0
+  javelinRocketTurretStock: 0
+  mineStock: 0
+  bearTrapStock: 0
+  barricadeStock: 0
