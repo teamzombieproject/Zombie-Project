@@ -29,6 +29,7 @@ TagManager:
   - PlaceableGround
   - Fire
   - SupplyDrop
+  - BuildManager
   layers:
   - Default
   - TransparentFX

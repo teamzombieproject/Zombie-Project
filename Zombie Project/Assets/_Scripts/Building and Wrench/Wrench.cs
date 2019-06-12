@@ -34,8 +34,6 @@ public class Wrench : MonoBehaviour
                 wrenchSFX.Play();
                 Instantiate(wind, windSpawnPoint.transform.position, windSpawnPoint.transform.rotation);    
             }
-                
-            
 
         }
         
