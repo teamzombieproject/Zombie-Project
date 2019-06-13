@@ -48,6 +48,7 @@ MonoBehaviour:
   projectileDamage: 50
   projectileSpeed: 35
   destroyProjectile: 4
+  kickBack: 6
   bulletPrefab: {fileID: 8418014002721013478}
   _BulletPrefab: {fileID: 8767597879597650328}
   bloodHitFX: {fileID: 492924346993083021, guid: f55f02b964098344b90354e2bec44554,

@@ -55,8 +55,14 @@ public class RocketLauncher : MonoBehaviour
         if (collision.gameObject.tag == "Zombie")
       
         {
-            collision.gameObject.SendMessage("TakeDamage", rocketDamage, SendMessageOptions.DontRequireReceiver);
-            Destroy(gameObject);
+            ZombieAI zomb = collision.gameObject.GetComponent<ZombieAI>();
+
+            zomb.gameObject.SendMessage("TakeDamage", rocketDamage, SendMessageOptions.DontRequireReceiver);
+            zomb.isHit = true;
+
+            //  collision.gameObject.SendMessage("TakeDamage", rocketDamage, SendMessageOptions.DontRequireReceiver);
+            //  Destroy(gameObject);
+
             GameObject.Instantiate(explosionEffect, rocketPrefab.position, rocketPrefab.rotation);
 
             if (splashDamage > 0f)

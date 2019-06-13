@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3384587827930413649}
   - component: {fileID: 8568726114572759327}
   - component: {fileID: 2392632631330554569}
+  - component: {fileID: -689123567656161194}
   m_Layer: 0
   m_Name: MachineGun
   m_TagString: Untagged
@@ -45,9 +46,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f7201c6ef935a243b1ff5194c0d08b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectileDamage: 10
+  projectileDamage: 20
   destroyProjectile: 3
   projectileSpeed: 65
+  kickBack: 2
   bloodHitFX: {fileID: 492924346993083021, guid: f55f02b964098344b90354e2bec44554,
     type: 3}
   bulletPrefab: {fileID: 149625743778500591}
@@ -65,6 +67,22 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.47433865, y: 0.2855914, z: 1.0221788}
   m_Center: {x: -0.023529878, y: -0.017204199, z: -0.25401238}
+--- !u!54 &-689123567656161194
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 149625743778500591}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 112
+  m_CollisionDetection: 0
 --- !u!1 &7296527191498642538
 GameObject:
   m_ObjectHideFlags: 0

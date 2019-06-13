@@ -160,7 +160,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rocketDamage: 100
-  splashDamage: 10
+  splashDamage: 20
   rocketSpeed: 25
   rocketRange: 2
   explosionEffect: {fileID: 2281845382261292047, guid: 56e893f1da8ce3f4da158bd8faf29bde,
