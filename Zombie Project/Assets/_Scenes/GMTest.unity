@@ -2013,7 +2013,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &2130441768
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2027,7 +2027,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   zombie: {fileID: 1770090244399708473, guid: 9d1c8c10d915b89439dec06f90aa2b19, type: 3}
-  spawnTime: 0
   spawnRepeatRate: 3
   spawnPointsArray:
   - {fileID: 501034354}
@@ -2234,6 +2233,36 @@ PrefabInstance:
       propertyPath: radioSpawn
       value: 
       objectReference: {fileID: 193477735}
+    - target: {fileID: 4228813810324043227, guid: 27b86aff628572c49bdf05fe2f25fdf9,
+        type: 3}
+      propertyPath: Gun1
+      value: 
+      objectReference: {fileID: 2836373917740303927, guid: 54cde5a3ffd7df94094b7af5012ad067,
+        type: 3}
+    - target: {fileID: 4228813810324043227, guid: 27b86aff628572c49bdf05fe2f25fdf9,
+        type: 3}
+      propertyPath: Gun2
+      value: 
+      objectReference: {fileID: 968243663125828718, guid: 80cf3d10b02a00b49a23ed9987c597bc,
+        type: 3}
+    - target: {fileID: 4228813810324043227, guid: 27b86aff628572c49bdf05fe2f25fdf9,
+        type: 3}
+      propertyPath: Gun3
+      value: 
+      objectReference: {fileID: 968243663125828718, guid: 80cf3d10b02a00b49a23ed9987c597bc,
+        type: 3}
+    - target: {fileID: 4228813810324043227, guid: 27b86aff628572c49bdf05fe2f25fdf9,
+        type: 3}
+      propertyPath: Gun4
+      value: 
+      objectReference: {fileID: 2856288382467738154, guid: 766ba9e845833b140bdc184870ba0e1a,
+        type: 3}
+    - target: {fileID: 4228813810324043227, guid: 27b86aff628572c49bdf05fe2f25fdf9,
+        type: 3}
+      propertyPath: Gun5
+      value: 
+      objectReference: {fileID: 7306787393381154593, guid: 25b94170be692ee48a05c97268667161,
+        type: 3}
     - target: {fileID: 4228813810324043226, guid: 27b86aff628572c49bdf05fe2f25fdf9,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2363,11 +2392,6 @@ PrefabInstance:
       propertyPath: GM
       value: 
       objectReference: {fileID: 1363862146}
-    - target: {fileID: 6222122715345630284, guid: df7aa5bf1bd0f8942b8af680095e3d99,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: b7dce6b805df76c47a1791563ae4fb00, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: df7aa5bf1bd0f8942b8af680095e3d99, type: 3}
 --- !u!1 &7503259316347928933 stripped

@@ -126,15 +126,17 @@ public class PlaceBuildable : MonoBehaviour
         }
     }
 
-    public void Reset(int colliders, Color color)
+    public void OnDisable()
     {
-        colliderAmount = colliders;
+        colliderAmount = 0;
+        placeable = true;
+        transform.position = new Vector3(999, 999, 999);
         if (isSprite)
         {
-            spriteComponent.color = color;
+            spriteComponent.color = new Color (0,1,0,.5f);
         }
         else
-            objectMaterial.color = color;
+            objectMaterial.color = new Color(0, 1, 0, .5f);
     }
 
     void PlaceObject()

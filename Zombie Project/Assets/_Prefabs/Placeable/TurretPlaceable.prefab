@@ -65,6 +65,8 @@ MonoBehaviour:
   isSprite: 0
   radius: 3
   objectMaterial: {fileID: 2100000, guid: ba1bea2d66acf9145a8e2b512a258a6b, type: 2}
+  placedObject: {fileID: 2906793573992320189, guid: 64af3a5a8cef4ca4a95b2de30c3b8336,
+    type: 3}
 --- !u!54 &9102675218722523681
 Rigidbody:
   m_ObjectHideFlags: 0

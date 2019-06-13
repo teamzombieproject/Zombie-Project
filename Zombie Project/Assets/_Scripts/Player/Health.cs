@@ -5,7 +5,7 @@ using UnityEngine;
 public class Health : MonoBehaviour
 {
     //total health, invulnurability sprite flash speed, how long your invulnurable (s), how long you have to wait after taking damage to heal (s), how much you heal
-    public float health = 100, multiplier = .1f, invulnurability = 5, healWait = 10, healAmount = 1; 
+    public float health = 100, multiplier = .1f, invulnurability = 5, healWait = 10, healAmount = 1;
     //DONT MAKE INVULNURABILITY TIME NEGATIVE, PLAYER WILL BE INDESTRUCTABLE FOREVER.
     float timer = 0, healthTimer = 0, rotate = 0, timerInitial, startingHealth;
     bool dead = false;
@@ -32,7 +32,7 @@ public class Health : MonoBehaviour
     {
         if (takeDamage)
         {
-            TakeDamage(10);
+            TakeDamage(10,Vector3.zero);
             takeDamage = false;
         }
 
@@ -67,12 +67,13 @@ public class Health : MonoBehaviour
         }
     }
 
-    public void TakeDamage(float damage)
+    public void TakeDamage(float damage, Vector3 damagePosition)
     {
         if (damaged || health <= 0) //indestructible if damaged
             return;
         healthTimer = 0;
         health -= damage;
+        movement.hitKnockback = gameObject.transform.position - damagePosition; //knockback
         GetComponent<AudioSource>().pitch = 1;
         GetComponent<AudioSource>().clip = damageSFX;
         GetComponent<AudioSource>().Play();
@@ -125,7 +126,7 @@ public class Health : MonoBehaviour
         Camera.main.gameObject.transform.parent = gameObject.transform;
         changeSprite.enabled = false; // stops sprite changing
         aiming.gameObject.SetActive(false);
-        gameObject.GetComponent<Movement>().enabled = false;
+        movement.enabled = false;
         headAnimator.SetInteger("Direction", 0);
 
         for (int i = 0; i < lights.Length; i += 1)
