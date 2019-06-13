@@ -10,7 +10,7 @@ public class SupplyDrop : MonoBehaviour
     {
         if (GM == null)
         {
-            // GM = GameObject.FindGameObjectWithTag("GameController");         Ask Dan for help
+             GM = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
         }
     }
 
@@ -20,7 +20,7 @@ public class SupplyDrop : MonoBehaviour
         {
             RandomizedLoot();
             GM.hasSupplyDropSpawned = false;
-            //Destroy(this.gameObject);
+            Destroy(this.gameObject);
         }
     }
 
@@ -42,18 +42,11 @@ public class SupplyDrop : MonoBehaviour
             new RandomVaribles(0, 2, .3f),
             new RandomVaribles(2, 3, .7f));
 
-        GM.javelinRocketTurretStock = JRTrandom;
-        GM.machineGunTurretStock = MGTrandom;
-        GM.mineStock = Mrandom;
-        GM.bearTrapStock = BTrandom;
-        GM.barricadeStock = Brandom;
-
-        //  if (GM.wave == 1)
-        //  {
-        // give player (x)Gun
-        //  }
-        // ect for other rounds
-
+        GM.javelinRocketTurretStock += JRTrandom;
+        GM.machineGunTurretStock += MGTrandom;
+        GM.mineStock += Mrandom;
+        GM.bearTrapStock += BTrandom;
+        GM.barricadeStock += Brandom;
     }
 
     struct RandomVaribles

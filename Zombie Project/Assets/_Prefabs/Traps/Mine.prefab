@@ -92,7 +92,7 @@ GameObject:
   - component: {fileID: 4234195324555412672}
   m_Layer: 0
   m_Name: Mine
-  m_TagString: Mine
+  m_TagString: Traps
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

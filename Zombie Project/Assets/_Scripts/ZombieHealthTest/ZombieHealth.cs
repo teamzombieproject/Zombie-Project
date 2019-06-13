@@ -13,6 +13,7 @@ public class ZombieHealth : MonoBehaviour
     private void Start()
     {
         gm = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
+        gm.zombiesAlive++;
     }
 
     public void TakeDamage(float amount)
@@ -21,9 +22,10 @@ public class ZombieHealth : MonoBehaviour
 
         if (zombieHealthTest <= 0)
         {
+            gm.zombiesAlive--; //keep below destroy
             Destroy(gameObject);
             
-            gm.zombiesAlive--; //keep below destroy
+            
 
         }
     }

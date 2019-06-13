@@ -280,7 +280,7 @@ AudioSource:
   m_audioClip: {fileID: 8300000, guid: 551a6e573276cef4c804d90a74bf8c7b, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
-  m_Pitch: 1
+  m_Pitch: 0.6
   Loop: 0
   Mute: 0
   Spatialize: 0
@@ -375,7 +375,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 052ccc297a0a62943a013bc20f7cbdf8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  forceMagnitude: 3
+  forceMagnitude: 40
   damage: 50
   initialCooldown: 1.5
   swingSpeed: 4

@@ -26,8 +26,8 @@ public class Radio : MonoBehaviour
             Destroy(this.gameObject); 
             for (int i=0; i<zombieAIScript.Count; i++)
             {
-                zombieAIScript[i].radioBeingAttacked = false;
-                     
+               // zombieAIScript[i].radioBeingAttacked = false;
+                zombieAIScript[i].attackObject = null;
             }
 
         }

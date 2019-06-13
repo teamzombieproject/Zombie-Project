@@ -6,7 +6,7 @@ public class Wrench : MonoBehaviour
 {
     public float forceMagnitude = 10, damage = 30, initialCooldown = 3;
     float cooldown = 1;
-    bool attacking;
+    bool attacking, repair;
     int rotation = 1, count = 0;
     public int swingSpeed = 6;
     public GameObject wrenchSprites, wind, windSpawnPoint;
@@ -19,6 +19,10 @@ public class Wrench : MonoBehaviour
     }
     private void Update()
     {
+        if (Input.GetButton("Repair"))
+        {
+            repair = true;
+        } else repair = false;
         if (cooldown > 0)
         {
             cooldown -= Time.deltaTime;
@@ -49,13 +53,17 @@ public class Wrench : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "Zombie")
+        if (other.gameObject.tag == "Zombie" && !repair)
         {
             Debug.Log("Zombie Hit");
-                other.gameObject.GetComponent<Rigidbody>().AddForce(-transform.forward * forceMagnitude, ForceMode.VelocityChange);
+                other.gameObject.GetComponent<Rigidbody>().AddForce(other.gameObject.transform.position - new Vector3 (transform.position.x,0,transform.position.y)* forceMagnitude, ForceMode.Impulse);
                 other.gameObject.SendMessage("TakeDamage", damage, SendMessageOptions.DontRequireReceiver);
                 Instantiate(hitFX, other.transform.position, Quaternion.identity);
                 //hitSFX.Play();
+        }
+        else if (repair)
+        {
+            Repair();
         }
     }
 
@@ -88,6 +96,11 @@ public class Wrench : MonoBehaviour
             count = 0;
         }
 
+
+    }
+
+    void Repair()
+    {
 
     }
 }

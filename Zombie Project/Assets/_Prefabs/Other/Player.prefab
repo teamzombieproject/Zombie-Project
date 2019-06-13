@@ -370,7 +370,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7897983123341893688}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.24, z: 0.307}
+  m_LocalPosition: {x: 0, y: 1.24, z: 0.613}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 7897983123044662909}
@@ -556,7 +556,7 @@ Rigidbody:
   m_Mass: 1
   m_Drag: 5
   m_AngularDrag: 0
-  m_UseGravity: 0
+  m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 116
@@ -568,7 +568,7 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7897983124235829538}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: c2bd1265e2d25c746a95f256c71b9068, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
@@ -586,7 +586,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 469ac4545c017d04dbdbf9454ac60e20, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Speed: 10
+  speed: 10
+  knockbackSlowdown: 6
+  hitKnockback: {x: 0, y: 0, z: 0}
   directionX: 0
   directionZ: 0
   walkTimerInitial: 0.25
@@ -634,13 +636,13 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: db4937c0f87afb24b9dc01139acc0c2d, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.19
   m_Pitch: 1.59
   Loop: 0
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
-  Priority: 128
+  Priority: 41
   DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 500
@@ -1291,16 +1293,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7962415752316953021}
     m_Modifications:
-    - target: {fileID: 8087132243958192422, guid: b4f0f034b8c4a6a49bff9c81752c4a65,
-        type: 3}
-      propertyPath: m_Name
-      value: Wrench
-      objectReference: {fileID: 0}
-    - target: {fileID: 8087132243958192422, guid: b4f0f034b8c4a6a49bff9c81752c4a65,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 8087132243958192417, guid: b4f0f034b8c4a6a49bff9c81752c4a65,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1356,6 +1348,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8087132243958192422, guid: b4f0f034b8c4a6a49bff9c81752c4a65,
+        type: 3}
+      propertyPath: m_Name
+      value: Wrench
+      objectReference: {fileID: 0}
+    - target: {fileID: 8087132243958192422, guid: b4f0f034b8c4a6a49bff9c81752c4a65,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b4f0f034b8c4a6a49bff9c81752c4a65, type: 3}
 --- !u!4 &1352444577362286555 stripped
@@ -1377,6 +1379,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7962415752316953021}
     m_Modifications:
+    - target: {fileID: 8482358737411333055, guid: 8f4c668b7e41ca749a5a8b77812a39f7,
+        type: 3}
+      propertyPath: m_Name
+      value: Handgun
+      objectReference: {fileID: 0}
+    - target: {fileID: 8482358737411333055, guid: 8f4c668b7e41ca749a5a8b77812a39f7,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8482358737411333048, guid: 8f4c668b7e41ca749a5a8b77812a39f7,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1431,16 +1443,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8482358737411333055, guid: 8f4c668b7e41ca749a5a8b77812a39f7,
-        type: 3}
-      propertyPath: m_Name
-      value: Handgun
-      objectReference: {fileID: 0}
-    - target: {fileID: 8482358737411333055, guid: 8f4c668b7e41ca749a5a8b77812a39f7,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8f4c668b7e41ca749a5a8b77812a39f7, type: 3}

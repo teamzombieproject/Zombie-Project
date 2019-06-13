@@ -10,9 +10,10 @@ public class GameManager : MonoBehaviour
     public bool creditsButtonPressed = false;
     public bool quitButtonPressed = false;
     public bool hasSupplyDropSpawned = false;
+    public bool canGunBeSpawned = true;
     public bool canZombiesSpawn = false;
 
-    private float m_GameTime = 0f;
+    public float m_GameTime = 0f;
     public float GameTime { get { return m_GameTime; } }
     public float spawnDeactivate = 30f;
     public float spawnTimer = 0f;
@@ -32,10 +33,16 @@ public class GameManager : MonoBehaviour
     public GameObject currentSupplyDrop;
     public GameObject currentWeaponDrop;
     public GameObject currentPlayer;
+    public GameObject Gun1;
+    public GameObject Gun2;
+    public GameObject Gun3;
+    public GameObject Gun4;
+    public GameObject Gun5;
 
 
     public int gameScore = 0;
     public int wave = 0;
+    public int difficultyMultiplier = 1;
     public int zombiesAlive = 0;
     public int machineGunTurretStock = 0;
     public int javelinRocketTurretStock = 0;
@@ -73,6 +80,8 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         CheckState();
+        SelectedWeaponDrop();
+        difficultyMultiplier = wave +1;
     }
 
     void Init()
@@ -80,8 +89,8 @@ public class GameManager : MonoBehaviour
         Destroy(GameObject.FindGameObjectWithTag("Player"));                            // remove old player object
         Destroy(GameObject.FindGameObjectWithTag("CameraRig"));
         Destroy(GameObject.FindGameObjectWithTag("Radio"));                             // remove old radio object
-        //Destroy(GameObject.FindGameObjectWithTag("SupplyDrop"));
-        //Destroy(Gameobject.FindGameObjectWithTag("Dropped"));
+        Destroy(GameObject.FindGameObjectWithTag("SupplyDrop"));
+        Destroy(GameObject.FindGameObjectWithTag("Dropped"));
 
         // destroy all spawnable game objects that may remain from previous game
         GameObject[] zombies = GameObject.FindGameObjectsWithTag("Zombie");             // find all of the zombies that are left over from the last game and store them in an array
@@ -136,18 +145,31 @@ public class GameManager : MonoBehaviour
         {
             currentSupplyDrop = Instantiate(supplyDropObject, supplyDropSpawn.transform.position, supplyDropSpawn.transform.rotation);
             hasSupplyDropSpawned = true;
-            currentWeaponDrop = Instantiate(weaponDropObject, weaponDropSpawn.transform.position, weaponDropSpawn.transform.rotation);
         }
-
     }
 
     public void SelectedWeaponDrop()
     {
+        if (wave == 1)
+        {
+              weaponDropObject = Gun1;
+        }
         if (wave == 2)
         {
-             // weaponDropObject = Gun1;
+            weaponDropObject = Gun2;
         }
-
+        if (wave == 3)
+        {
+            weaponDropObject = Gun3;
+        }
+        if (wave == 4)
+        {
+            weaponDropObject = Gun4;
+        }
+        if (wave == 5)
+        {
+            weaponDropObject = Gun5;
+        }
     }
 
     void CheckState()
@@ -188,12 +210,6 @@ public class GameManager : MonoBehaviour
                     m_GameState = GameState.GameOver;
                 }
 
-                // Make the supply drop spawn (set Spawn bool to true) (can only spawn when false)
-                if (!hasSupplyDropSpawned)
-                {
-                    SpawnSupplyDrop();
-                }
-
                 // change hud
                 if ( spawnTimer >= spawnDeactivate)
                 {
@@ -207,7 +223,7 @@ public class GameManager : MonoBehaviour
                 }
 
                 // All zombies dead change to build state
-                if (!canZombiesSpawn && zombiesAlive == 0)
+                if (!canZombiesSpawn && spawnTimer >= 3 && zombiesAlive == 0)
                 {
                     m_GameState = GameState.Build;
                 }
@@ -226,8 +242,20 @@ public class GameManager : MonoBehaviour
                     canZombiesSpawn = true;
                     spawnTimer = 0f;
                     hasSupplyDropSpawned = false;
-                    //Destroy(Gameobject.FindGameObjectWithTag("Dropped"));
+                    Destroy(GameObject.FindGameObjectWithTag("Dropped"));
+                    canGunBeSpawned = true;
                     wave += 1;
+                }
+
+                // Make the supply drop spawn (set Spawn bool to true) (can only spawn when false)
+                if (!hasSupplyDropSpawned)
+                {
+                    SpawnSupplyDrop();
+                }
+                if (canGunBeSpawned)
+                {
+                    currentWeaponDrop = Instantiate(weaponDropObject, weaponDropSpawn.transform.position, weaponDropSpawn.transform.rotation);
+                    canGunBeSpawned = false;
                 }
 
                 break;
