@@ -52,12 +52,12 @@ public class Projectiles : MonoBehaviour
             ZombieAI zomb = collision.gameObject.GetComponent<ZombieAI>();
 
             zomb.gameObject.SendMessage("TakeDamage", projectileDamage, SendMessageOptions.DontRequireReceiver);
-            //zomb.isHit = true;
+            zomb.isHit = true;
 
             Vector3 shotDir = zomb.transform.position - transform.position;
             shotDir.y = 0;
 
-           // zomb.rb.AddForce(shotDir * kickBack, ForceMode.Impulse);
+            zomb.rb.AddForce(shotDir * kickBack, ForceMode.Impulse);
 
             GameObject.Instantiate(bloodHitFX, _BulletPrefab.position, _BulletPrefab.rotation);
 

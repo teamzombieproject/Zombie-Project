@@ -20,7 +20,7 @@ public class MachineGun : MonoBehaviour
     public int projectileDamage = 25;        // Damage > Best Value 10
     public float destroyProjectile = 2f;     // Range before destroy is called > Best Value 3/4
     public float projectileSpeed = 5f;       // Speed/Velocity > Best Value 15
-
+    public float kickBack = 10f;             // Zombie staggers back
     // Rigidbody Rigidbody;                  // Projectiles Prefab RB values Mass = 1, Drag = 1, Angular Drag = 1
     // public AudioSource hitSFX;
     public GameObject bloodHitFX;            // blood on bullet impact
@@ -39,8 +39,8 @@ public class MachineGun : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //gameObject.GetComponent<Rigidbody>().AddForce(-turretTransform.forward * projectileSpeed, ForceMode.VelocityChange); // transform.up/right/forward?
-        turretTransform.position += Time.deltaTime * projectileSpeed * -turretTransform.forward;
+        gameObject.GetComponent<Rigidbody>().AddForce(-turretTransform.forward * projectileSpeed, ForceMode.VelocityChange); // transform.up/right/forward?
+        //turretTransform.position += Time.deltaTime * projectileSpeed * -turretTransform.forward;
 
         destroyProjectile -= Time.deltaTime;
 
@@ -57,12 +57,26 @@ public class MachineGun : MonoBehaviour
 
         if (collision.gameObject.tag == "Zombie")
         {
-            collision.gameObject.SendMessage("TakeDamage", projectileDamage, SendMessageOptions.DontRequireReceiver);
-            Destroy(gameObject);
+
+            ZombieAI zomb = collision.gameObject.GetComponent<ZombieAI>();
+
+            zomb.gameObject.SendMessage("TakeDamage", projectileDamage, SendMessageOptions.DontRequireReceiver);
+            zomb.isHit = true;
+
+            Vector3 shotDir = zomb.transform.position - transform.position;
+            shotDir.y = 0;
+
+            zomb.rb.AddForce(shotDir * kickBack, ForceMode.Impulse);
+
             GameObject.Instantiate(bloodHitFX, _MGPrefab.position, _MGPrefab.rotation);
+
+
+            // collision.gameObject.SendMessage("TakeDamage", projectileDamage, SendMessageOptions.DontRequireReceiver);
+            // Destroy(gameObject);
+            // GameObject.Instantiate(bloodHitFX, _MGPrefab.position, _MGPrefab.rotation);
         }
 
-        if(collision.gameObject.tag != "Zombie") //"Untagged"
+        if(collision.gameObject.tag != "Zombie") // == "Untagged"
         {
             Destroy(gameObject);
         }
