@@ -15,9 +15,13 @@ public class Turret : MonoBehaviour
     public float turnSpeed = 5f;
     public float fireRate = 1f;
     private float fireCountDown =0f;
+    float delayCountDown;
 
     public GameObject turretBulletPrefab;
-    public Transform firePoint;
+    public Transform[] firePoint;
+
+    AudioSource audioSrc;
+    public AudioClip audioClip;
     
 
     
@@ -26,6 +30,9 @@ public class Turret : MonoBehaviour
         
         InvokeRepeating("UpdateTarget", 0f, 0.5f);  //calls the Update Target function and tells it to run 2 times per second, sotwice a second it will search for a new target.  
         //if you put it in the update it 
+
+        audioSrc = GetComponent<AudioSource>();
+        audioSrc.clip = audioClip;
     }
 
 
@@ -58,23 +65,53 @@ public class Turret : MonoBehaviour
         if (fireCountDown <= 0)
         {
             Shoot();
-            fireCountDown = 1f / fireRate;  //ie if fire rate = 2 then firecountdown = 0.5 meaning it will fire a bullet every 0.5 of a second.
+            fireCountDown = fireRate;
+            delayCountDown = fireCountDown / 2;
+        }
+
+        if (firePoint.Length > 1 && delayCountDown <= 0)
+        {
+            Shoot2();
+            delayCountDown = fireRate;
         }
 
         fireCountDown -= Time.deltaTime;  //every second, fire countdown will be reduced by 1.
+        delayCountDown -= Time.deltaTime;
 
 
-    }void Shoot()
-    {
-        GameObject bulletGo = (GameObject)Instantiate(turretBulletPrefab, firePoint.position, firePoint.rotation);  //give the instantiated bullet a variable name "bulletGO" so the bullet script can access it
-        TurretBullet turretBullet = bulletGo.GetComponent<TurretBullet>(); //access the turretBullet script
-
-        if (turretBullet != null)
-        {
-            turretBullet.Seek(target);  //run the seek function located on the bullet script and pass to it the target variable
-        }
     }
-    
+    void Shoot()
+    {
+        GameObject bulletGo = Instantiate(turretBulletPrefab, firePoint[0].position, firePoint[0].rotation);  //give the instantiated bullet a variable name "bulletGO" so the bullet script can access it
+        audioSrc.Play();
+    }
+
+    void Shoot2()
+    {
+       GameObject bulletGo = Instantiate(turretBulletPrefab, firePoint[1].position, firePoint[1].rotation);
+        audioSrc.Play();
+    }
+    /*
+            if (fireCountDown <= 0)
+            {
+                Shoot();
+                fireCountDown = 1f / fireRate;  //ie if fire rate = 2 then firecountdown = 0.5 meaning it will fire a bullet every 0.5 of a second.
+            }
+
+            fireCountDown -= Time.deltaTime;  //every second, fire countdown will be reduced by 1.
+
+
+        }void Shoot()
+        {
+            GameObject bulletGo = (GameObject)Instantiate(turretBulletPrefab, firePoint[0], firePoint[0]);  //give the instantiated bullet a variable name "bulletGO" so the bullet script can access it
+            TurretBullet turretBullet = bulletGo.GetComponent<TurretBullet>(); //access the turretBullet script
+
+            if (turretBullet != null)
+            {
+                turretBullet.Seek(target);  //run the seek function located on the bullet script and pass to it the target variable
+            }
+        }
+        */
 
     void UpdateTarget()  
     {
