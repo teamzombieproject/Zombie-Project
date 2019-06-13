@@ -41,7 +41,7 @@ public class RocketLauncher : MonoBehaviour
     void Update()
     {
         // gameObject.GetComponent<Rigidbody>().AddForce(-turretTransform.forward * rocketSpeed, ForceMode.VelocityChange); // transform.up/right/forward?
-        turretTransform.position += Time.deltaTime * rocketSpeed * -turretTransform.forward;
+        turretTransform.position += Time.deltaTime * rocketSpeed * turretTransform.forward;
         rocketRange -= Time.deltaTime;
 
         if (rocketRange <= 0)
