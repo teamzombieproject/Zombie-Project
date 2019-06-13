@@ -10,27 +10,34 @@ public class GameManager : MonoBehaviour
     public bool creditsButtonPressed = false;
     public bool quitButtonPressed = false;
     public bool hasSupplyDropSpawned = false;
+    public bool hasBEDropSpawned = false;
+    public bool bEPiecePickedUp = false;
     public bool canGunBeSpawned = true;
     public bool canZombiesSpawn = false;
+    public bool actionPhaseActive = false;
 
     public float m_GameTime = 0f;
     public float GameTime { get { return m_GameTime; } }
     public float spawnDeactivate = 30f;
     public float spawnTimer = 0f;
+    public float bEDropTimeEnd = 2f;
 
     public Health playerHealth;
     public ZombieSpawner spawns;
 
     public GameObject supplyDropSpawn;
+    public GameObject bEDropSpawn;
     public GameObject weaponDropSpawn;
     public GameObject playerSpawn;
     public GameObject radioSpawn;
     public GameObject supplyDropObject;
+    public GameObject bEDropObject;
     public GameObject weaponDropObject;
     public GameObject playerObject;
     public GameObject radioObject;
     public GameObject cameraRigObject;
     public GameObject currentSupplyDrop;
+    public GameObject currentBEDrop;
     public GameObject currentWeaponDrop;
     public GameObject currentPlayer;
     public GameObject Gun1;
@@ -44,6 +51,7 @@ public class GameManager : MonoBehaviour
     public int wave = 0;
     public int difficultyMultiplier = 1;
     public int zombiesAlive = 0;
+    public int bEPieces = 0;
     public int machineGunTurretStock = 0;
     public int javelinRocketTurretStock = 0;
     public int mineStock = 0;
@@ -59,7 +67,8 @@ public class GameManager : MonoBehaviour
         HighScores,
         Options,
         Credits,
-        GameOver
+        Win,
+        Lose
     }
 
     private GameState m_GameState;
@@ -90,6 +99,7 @@ public class GameManager : MonoBehaviour
         Destroy(GameObject.FindGameObjectWithTag("CameraRig"));
         Destroy(GameObject.FindGameObjectWithTag("Radio"));                             // remove old radio object
         Destroy(GameObject.FindGameObjectWithTag("SupplyDrop"));
+        Destroy(GameObject.FindGameObjectWithTag("BEDrop"));
         Destroy(GameObject.FindGameObjectWithTag("Dropped"));
 
         // destroy all spawnable game objects that may remain from previous game
@@ -129,6 +139,7 @@ public class GameManager : MonoBehaviour
         wave = 0;
         gameScore = 0;
         zombiesAlive = 0;
+        bEPieces = 0;
         mineStock = 0;
         bearTrapStock = 0;
         barricadeStock = 0;
@@ -145,6 +156,15 @@ public class GameManager : MonoBehaviour
         {
             currentSupplyDrop = Instantiate(supplyDropObject, supplyDropSpawn.transform.position, supplyDropSpawn.transform.rotation);
             hasSupplyDropSpawned = true;
+        }
+    }
+
+    void SpawnBEDrop()
+    {
+        if (currentBEDrop == null)
+        {
+            currentBEDrop = Instantiate(bEDropObject, bEDropSpawn.transform.position, bEDropSpawn.transform.rotation);
+            hasBEDropSpawned = true;
         }
     }
 
@@ -202,12 +222,12 @@ public class GameManager : MonoBehaviour
                 Init();
                 break;
             case GameState.Action:
-                bool isGameOver = false;
                 spawnTimer += Time.deltaTime;
+                actionPhaseActive = true;
 
                 if (playerHealth.deathIsFinished == true)
                 {
-                    m_GameState = GameState.GameOver;
+                    m_GameState = GameState.Lose;
                 }
 
                 // change hud
@@ -217,13 +237,18 @@ public class GameManager : MonoBehaviour
                     canZombiesSpawn = false;
                 }
 
-                if (isGameOver == true)
+                if ( spawnTimer >= bEDropTimeEnd && !hasBEDropSpawned)
                 {
-                    m_GameState = GameState.GameOver;
+                    SpawnBEDrop();
+                }
+
+                if (bEPieces == 5)
+                {
+                    m_GameState = GameState.Win;
                 }
 
                 // All zombies dead change to build state
-                if (!canZombiesSpawn && spawnTimer >= 3 && zombiesAlive == 0)
+                if (!canZombiesSpawn && spawnTimer >= 3 && zombiesAlive == 0 && !bEPiecePickedUp)
                 {
                     m_GameState = GameState.Build;
                 }
@@ -231,6 +256,7 @@ public class GameManager : MonoBehaviour
                 break;
             case GameState.Build:
                 m_GameTime += Time.deltaTime;
+                actionPhaseActive = false;
 
                 // change hud to building hud
 
@@ -242,6 +268,7 @@ public class GameManager : MonoBehaviour
                     canZombiesSpawn = true;
                     spawnTimer = 0f;
                     hasSupplyDropSpawned = false;
+                    hasBEDropSpawned = false;
                     Destroy(GameObject.FindGameObjectWithTag("Dropped"));
                     canGunBeSpawned = true;
                     wave += 1;
@@ -275,7 +302,12 @@ public class GameManager : MonoBehaviour
 
 
                 break;
-            case GameState.GameOver:
+            case GameState.Lose:
+
+
+
+                break;
+            case GameState.Win:
 
 
 
