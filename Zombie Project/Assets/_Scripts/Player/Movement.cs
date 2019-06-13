@@ -7,9 +7,8 @@ public class Movement : MonoBehaviour
     Rigidbody playerRigidbody;
     float horMovementInputValue;
     float vertMovementInputValue;
-    public float m_Speed = 10;
-    Vector3 movement;
-    Vector3 movement2;
+    public float speed = 10, knockbackSlowdown = 6;
+    public Vector3 hitKnockback;
     public int directionX = 0;
     public int directionZ = 0;
     public float walkTimerInitial = .5f;
@@ -44,7 +43,10 @@ public class Movement : MonoBehaviour
             speedRegulator = .7f;
         else speedRegulator = 1;
 
-
+        if (hitKnockback.x > 0)
+        {
+            hitKnockback -= (Vector3.one * Time.deltaTime * knockbackSlowdown);
+        } if (hitKnockback.x < 0) hitKnockback = Vector3.zero;
 
         if (walkTimer > 0 && (directionX != 0 || directionZ != 0))
         {
@@ -72,6 +74,7 @@ public class Movement : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        transform.position += transform.forward * m_Speed * -directionZ * speedRegulator * Time.deltaTime + transform.right * m_Speed * -directionX * speedRegulator * Time.deltaTime;
+        //transform.position += transform.forward * speed * -directionZ * speedRegulator * Time.deltaTime + transform.right * speed * -directionX * speedRegulator * Time.deltaTime;
+        playerRigidbody.velocity = new Vector3(-directionX + hitKnockback.x, 0, -directionZ + hitKnockback.z) * speed * speedRegulator;
     }
 }
