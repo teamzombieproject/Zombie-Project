@@ -24,7 +24,8 @@ public class Barricade : MonoBehaviour
                 Destroy(this.gameObject);
             for (int i = 0; i < zombieAIScript.Count; i++)
             {
-                zombieAIScript[i].barricadeBeingAttacked = false;
+                //zombieAIScript[i].barricadeBeingAttacked = false;
+                zombieAIScript[i].attackObject = null;
 
             }
 

@@ -37,7 +37,8 @@ public class Turret : MonoBehaviour
             Destroy(this.gameObject);
             for (int i = 0; i < zombieAIScript.Count; i++)
             {
-                zombieAIScript[i].turretBeingAttacked = false;
+               // zombieAIScript[i].turretBeingAttacked = false;
+                zombieAIScript[i].attackObject = null;
             }
 
         }
