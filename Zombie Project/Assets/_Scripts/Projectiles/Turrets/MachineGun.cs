@@ -61,7 +61,8 @@ public class MachineGun : MonoBehaviour
             Destroy(gameObject);
             GameObject.Instantiate(bloodHitFX, _MGPrefab.position, _MGPrefab.rotation);
         }
-        if(collision.gameObject.tag != "Zombie") 
+
+        if(collision.gameObject.tag != "Zombie") //"Untagged"
         {
             Destroy(gameObject);
         }
