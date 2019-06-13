@@ -125,6 +125,7 @@ public class Health : MonoBehaviour
         Camera.main.gameObject.transform.parent = gameObject.transform;
         changeSprite.enabled = false; // stops sprite changing
         aiming.gameObject.SetActive(false);
+        gameObject.GetComponent<Movement>().enabled = false;
         headAnimator.SetInteger("Direction", 0);
 
         for (int i = 0; i < lights.Length; i += 1)

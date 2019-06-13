@@ -6,33 +6,49 @@ public class ZombieSpawner : MonoBehaviour
 {
 
     public GameObject zombie;
-    public float spawnTime;
+   // public float spawnTime;
     public float spawnRepeatRate;
-    public Transform[] spawnPointsArray;
+    public GameObject[] spawnPointsArray;
     public bool mayspawn = true;
     GameManager gm;
+
+    float spawnTimer = 0f;
    
 
 
 
     void Start()
     {
-        InvokeRepeating("Spawn", spawnTime, spawnRepeatRate);
-
+        spawnTimer = 0f;
+        spawnPointsArray = GameObject.FindGameObjectsWithTag("ZombieSpawnPoint");
+                
         gm = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
         gm.zombiesAlive++;
         
 
     }
 
-   void Spawn()
+    void Update()
     {
         if (mayspawn == true)
         {
-            int spawnPointIndex = Random.Range(0, spawnPointsArray.Length);
-            Instantiate(zombie, spawnPointsArray[spawnPointIndex].position, spawnPointsArray[spawnPointIndex].rotation);
+            spawnTimer += Time.deltaTime;
+
+            if (spawnTimer > spawnRepeatRate)
+            {
+                Spawn();
+                spawnTimer = 0;
+            }
         }
 
+    }
+
+    void Spawn()
+    {
+        
+            int spawnPointIndex = Random.Range(0, spawnPointsArray.Length);
+            Instantiate(zombie, spawnPointsArray[spawnPointIndex].transform.position, spawnPointsArray[spawnPointIndex].transform.rotation);
+        
     }
     
     

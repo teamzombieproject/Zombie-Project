@@ -13,19 +13,22 @@ public class TurretMachGun : MonoBehaviour
 
     public float range = 15f;
     public float turnSpeed = 5f;
-    public float fireRate = 1f;
-    private float fireCountDown = 0f;
-    public float delayCountDown = 0.5f;
+    public float fireRate = 2f;
+    public float fireCountDown = 0f;
+    public float delayCountDown = 0f;
 
-
+    public GameObject turretBullet2Prefab;
     public GameObject turretBulletPrefab;
     public Transform firePointLeft;
     public Transform firePointRight;
 
+    public AudioClip machGunTurretAudioClip;
+    public AudioSource machGunTurretAudioSource;
+
 
     void Start()
     {
-
+        machGunTurretAudioSource.clip = machGunTurretAudioClip;
         InvokeRepeating("UpdateTarget", 0f, 0.5f);  //calls the Update Target function and tells it to run 2 times per second, sotwice a second it will search for a new target.  
         //if you put it in the update it 
     }
@@ -56,22 +59,31 @@ public class TurretMachGun : MonoBehaviour
         //using Lerp smooths out the rotation otherwise it would just jump to new target.
         head.rotation = Quaternion.Euler(0f, rotation.y, 0f);
 
+        
+
         if (fireCountDown <= 0)
         {
             Shoot();
+            fireCountDown = fireRate;  
+            delayCountDown = fireCountDown / 2;
+        }
+
+        if (delayCountDown <= 0)
+        {
             Shoot2();
-            
-            fireCountDown = 1f / fireRate;  //ie if fire rate = 2 then firecountdown = 0.5 meaning it will fire a bullet every 0.5 of a second.
+            delayCountDown = fireRate;
         }
 
         fireCountDown -= Time.deltaTime;  //every second, fire countdown will be reduced by 1.
-        
+        delayCountDown -= Time.deltaTime;
+
 
     }
     void Shoot()
     {
         GameObject bulletGo = (GameObject)Instantiate(turretBulletPrefab, firePointLeft.position, firePointLeft.rotation);  //give the instantiated bullet a variable name "bulletGO" so the bullet script can access it
         TurretBullet turretBullet = bulletGo.GetComponent<TurretBullet>(); //access the turretBullet script
+        machGunTurretAudioSource.Play();
 
         if (turretBullet != null)
         {
@@ -81,17 +93,17 @@ public class TurretMachGun : MonoBehaviour
 
     void Shoot2()
     {
-        delayCountDown -= Time.deltaTime;
-        if (delayCountDown <= 0)
-        {
-            GameObject bulletGo = (GameObject)Instantiate(turretBulletPrefab, firePointRight.position, firePointRight.rotation);  //give the instantiated bullet a variable name "bulletGO" so the bullet script can access it
-            TurretBullet turretBullet = bulletGo.GetComponent<TurretBullet>(); //access the turretBullet script
+                
+        
+            GameObject bulletGo2 = (GameObject)Instantiate(turretBullet2Prefab, firePointRight.position, firePointRight.rotation);  //give the instantiated bullet a variable name "bulletGO" so the bullet script can access it
+            TurretBullet turretBullet = bulletGo2.GetComponent<TurretBullet>(); //access the turretBullet script
+            machGunTurretAudioSource.Play();
 
-            if (turretBullet != null)
+        if (turretBullet != null)
             {
                 turretBullet.Seek(target);  //run the seek function located on the bullet script and pass to it the target variable
             }
-        }
+        
     }
 
 

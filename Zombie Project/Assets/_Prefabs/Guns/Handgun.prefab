@@ -328,6 +328,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8482358737411333048}
   - component: {fileID: 5080366854649731528}
+  - component: {fileID: -3772625786376277643}
   - component: {fileID: 7970717586542059212}
   m_Layer: 0
   m_Name: Handgun
@@ -448,6 +449,20 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &-3772625786376277643
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8482358737411333055}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a955ed102692ae54a9d384fbc4939088, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DropVersion: {fileID: 2836373917740303927, guid: 54cde5a3ffd7df94094b7af5012ad067,
+    type: 3}
 --- !u!114 &7970717586542059212
 MonoBehaviour:
   m_ObjectHideFlags: 0

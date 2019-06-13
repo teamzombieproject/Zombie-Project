@@ -89,6 +89,7 @@ GameObject:
   m_Component:
   - component: {fileID: 247433608384665086}
   - component: {fileID: 3483953663813572494}
+  - component: {fileID: -1117057859532761248}
   - component: {fileID: 1749022492931641482}
   m_Layer: 0
   m_Name: HighPowerRifle
@@ -213,6 +214,20 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &-1117057859532761248
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 247433608384665081}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a955ed102692ae54a9d384fbc4939088, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DropVersion: {fileID: 2856288382467738154, guid: 766ba9e845833b140bdc184870ba0e1a,
+    type: 3}
 --- !u!114 &1749022492931641482
 MonoBehaviour:
   m_ObjectHideFlags: 0

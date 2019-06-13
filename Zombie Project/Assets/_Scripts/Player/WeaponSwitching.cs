@@ -72,8 +72,7 @@ public class WeaponSwitching : MonoBehaviour
         {
             SwitchWeapons(0, false);
         }
-        audioSource.clip = pickupGunSFX;
-        audioSource.Play();
+        
         
         if (WeaponInventory[1] == null)
         {
@@ -91,7 +90,8 @@ public class WeaponSwitching : MonoBehaviour
         WeaponInventory[selected] = gunSpawn.transform.Find(newWeapon).gameObject;
         // switch to new weapon
         SwitchWeapons(selected, true);
-        
+        audioSource.clip = pickupGunSFX;
+        audioSource.Play();
         //destroy new weapon's drop
         Destroy(spawnTransform.gameObject);
     }
