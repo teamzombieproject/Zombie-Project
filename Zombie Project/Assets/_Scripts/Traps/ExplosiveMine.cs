@@ -26,7 +26,7 @@ public class ExplosiveMine : MonoBehaviour
 
         Rigidbody targetRigidbody = other.gameObject.GetComponent<Rigidbody>();
 
-        if (targetRigidbody != null && isDestroyed == false)
+        if (targetRigidbody != null && isDestroyed == false && other.gameObject.tag == "Zombie")
         {
             targetRigidbody.AddExplosionForce(explosionForce, transform.position, explosionRadius);
 
