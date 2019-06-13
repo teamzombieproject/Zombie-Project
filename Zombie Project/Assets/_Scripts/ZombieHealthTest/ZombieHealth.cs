@@ -22,11 +22,9 @@ public class ZombieHealth : MonoBehaviour
 
         if (zombieHealthTest <= 0)
         {
-            gm.zombiesAlive--; //keep below destroy
+            gm.zombiesAlive--;
             Destroy(gameObject);
             
-            
-
         }
     }
 
