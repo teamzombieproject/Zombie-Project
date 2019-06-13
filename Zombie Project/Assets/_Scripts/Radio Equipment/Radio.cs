@@ -9,12 +9,14 @@ public class Radio : MonoBehaviour
     public List<ZombieAI> zombieAIScript;
     Image radioHealthBar;
     float maxHealth = 100f;
+    GameManager GM;
 
 
     private void Start()
     {
         radioHealth = maxHealth;
         radioHealthBar = GameObject.FindGameObjectWithTag("RadioHealthBar").GetComponent<Image>();
+        GM = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
     }
 
     // Update is called once per frame
@@ -35,7 +37,16 @@ public class Radio : MonoBehaviour
         radioHealthBar.fillAmount = radioHealth / maxHealth;
     }
 
-
+    /*
+    public void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag == "Player" && GM.bEPiecePickedUp)
+        {
+            GM.bEPieces += 1;
+            GM.bEPiecePickedUp = false;
+        }
+    }
+    */
 }
 
 

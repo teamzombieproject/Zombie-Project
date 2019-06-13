@@ -19,8 +19,7 @@ public class SupplyDrop : MonoBehaviour
         if (other.gameObject.tag == "Player")
         {
             RandomizedLoot();
-            GM.hasSupplyDropSpawned = false;
-            Destroy(this.gameObject);
+            Destroy(gameObject);
         }
     }
 
