@@ -139,7 +139,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectileDamage: 45
   projectileSpeed: 45
-  destroyProjectile: 4
+  destroyProjectile: 3
   bulletPrefab: {fileID: 3239035987806781411}
   _BulletPrefab: {fileID: 2417684107044327581}
   bloodHitFX: {fileID: 492924346993083021, guid: f55f02b964098344b90354e2bec44554,

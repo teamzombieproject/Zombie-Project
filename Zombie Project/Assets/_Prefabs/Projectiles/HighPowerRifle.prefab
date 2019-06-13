@@ -138,7 +138,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   projectileDamage: 60
-  projectileSpeed: 45
+  projectileSpeed: 50
   destroyProjectile: 4
   bulletPrefab: {fileID: 1936136267260929035}
   _BulletPrefab: {fileID: 1702502901454687093}
