@@ -97,7 +97,7 @@ public class PlaceBuildable : MonoBehaviour
     {
         if(other.tag != "PlaceableGround")
         {
-            Debug.Log("Object '" + other.name + "' entered placeable collider.");
+            //Debug.Log("Object '" + other.name + "' entered placeable collider.");
             placeable = false;
             colliderAmount++;
             if (isSprite)
@@ -139,11 +139,17 @@ public class PlaceBuildable : MonoBehaviour
             objectMaterial.color = new Color(0, 1, 0, .5f);
     }
 
+    private void OnEnable()
+    {
+        placeable = true;
+    }
+
     void PlaceObject()
     {
         //instantiate buildable gameobject
         quantity--;
-        Instantiate(placedObject, transform.position, transform.rotation);
+        GameObject instantiatedObj = Instantiate(placedObject, transform.position, transform.rotation);
+        GameObject.FindGameObjectWithTag("GameController").GetComponent<HealthBarManager>().AddHealthBar(instantiatedObj);
         if (quantity <= 0)
         {
             if (isSprite)

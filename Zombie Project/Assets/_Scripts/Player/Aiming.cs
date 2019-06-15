@@ -10,7 +10,7 @@ public class Aiming : MonoBehaviour
     {
         if (cameraObject == null) cameraObject = Camera.main;
     }
-    private void FixedUpdate()
+    private void LateUpdate()
     {
         Aim();
     }

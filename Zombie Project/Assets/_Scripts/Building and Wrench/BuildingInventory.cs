@@ -6,9 +6,8 @@ public class BuildingInventory : MonoBehaviour
 {
     //the buildmanager should turn on when gameManager sets it active.
     public GameManager gameManager;
-    public bool disable = false;
     public GameObject[] buildInventory;
-    public GameObject Player;
+    GameObject Player;
     
     int pickupSlot;
 
@@ -17,6 +16,7 @@ public class BuildingInventory : MonoBehaviour
         //disable weapons and weaponswitching
         Player = GameObject.FindGameObjectWithTag("Player");
         Player.transform.Find("Arm").gameObject.SetActive(false);
+        gameManager = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
     }
     private void OnEnable()
     {
@@ -82,7 +82,7 @@ public class BuildingInventory : MonoBehaviour
 
         if (buildInventory[slot] == null || buildInventory[slot].GetComponent<PlaceBuildable>().quantity == 0)
         {
-            return;
+            slot = -1; //make it so none of the items get set active
         }
 
         for (int i = 0; i < buildInventory.Length; i++)

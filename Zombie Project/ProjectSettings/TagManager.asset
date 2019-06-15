@@ -30,6 +30,7 @@ TagManager:
   - Fire
   - SupplyDrop
   - BuildManager
+  - BEDrop
   layers:
   - Default
   - TransparentFX

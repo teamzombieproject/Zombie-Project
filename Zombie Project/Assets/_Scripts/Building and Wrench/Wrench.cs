@@ -4,13 +4,16 @@ using UnityEngine;
 
 public class Wrench : MonoBehaviour
 {
-    public float forceMagnitude = 10, damage = 30, initialCooldown = 3;
+    public float forceMagnitude = 10, damage = 30, initialCooldown = 3, repairAmount = 5;
     float cooldown = 1;
     bool attacking, repair;
     int rotation = 1, count = 0;
     public int swingSpeed = 6;
+    public string[] repairableTags;
     public GameObject wrenchSprites, wind, windSpawnPoint;
     public GameObject hitFX; // stolen from james >:D
+
+    public AudioClip smackSFX, repairSFX, repairMissSFX;
     AudioSource wrenchSFX;
     private void Start()
     {
@@ -35,7 +38,13 @@ public class Wrench : MonoBehaviour
                 attacking = true;
                 gameObject.GetComponent<BoxCollider>().enabled = true;
                 Camera.main.GetComponent<ScreenShake>().CamShake(1f, .5f);
+                if (repair)
+                    wrenchSFX.clip = repairMissSFX;
+                else
+                    wrenchSFX.clip = smackSFX;
+                wrenchSFX.pitch = .6f;
                 wrenchSFX.Play();
+                
                 Instantiate(wind, windSpawnPoint.transform.position, windSpawnPoint.transform.rotation);    
             }
 
@@ -63,9 +72,10 @@ public class Wrench : MonoBehaviour
         }
         else if (repair)
         {
-            Repair();
+            Repair(other.gameObject);
         }
     }
+    
 
     void Swipe()
     {
@@ -99,8 +109,51 @@ public class Wrench : MonoBehaviour
 
     }
 
-    void Repair()
+    void Repair(GameObject repairable)
     {
-
+       
+        for (int i = 0; i < repairableTags.Length; i++)
+        {
+            if (repairable.tag == repairableTags[i])
+            {
+                wrenchSFX.clip = repairSFX;
+                wrenchSFX.pitch = .8f;
+                wrenchSFX.Play();
+                if (i == 0)
+                {
+                    
+                    if (repairable.GetComponent<ExplosiveMine>() != null)
+                    {
+                        repairable.GetComponent<ExplosiveMine>().isDestroyed = false;
+                        repairable.GetComponent<SpriteRenderer>().sprite = repairable.GetComponent<ExplosiveMine>()._sprite;
+                    }
+                    else
+                    {
+                        if (repairable.GetComponent<BearTrap>().uses < 3)
+                        {
+                                repairable.GetComponent<BearTrap>().uses += 1;
+                        }
+                            
+                        repairable.GetComponent<BearTrap>().isDestroyed = false;
+                        repairable.GetComponent<BearTrap>().animator.SetBool("Destroyed", false);
+                    }
+                }
+                else if (i == 1)
+                {
+                    if (repairable.GetComponent<Barricade>().barricadeHealth < 60)
+                    {
+                        repairable.GetComponent<Barricade>().barricadeHealth = Mathf.Clamp(repairable.GetComponent<Barricade>().barricadeHealth + repairAmount, 0, 60);
+                        
+                    }
+                }
+                else if (i == 2 || i == 3)
+                {
+                     if (repairable.GetComponent<Turret>().turretHealth < 100)
+                    {
+                        repairable.GetComponent<Turret>().turretHealth = Mathf.Clamp(repairable.GetComponent<Turret>().turretHealth + repairAmount, 0, 100);
+                    }
+                }
+            }
+        }
     }
 }

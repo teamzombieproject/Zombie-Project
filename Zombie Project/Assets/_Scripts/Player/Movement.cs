@@ -43,10 +43,7 @@ public class Movement : MonoBehaviour
             speedRegulator = .7f;
         else speedRegulator = 1;
 
-        if (hitKnockback.x > 0)
-        {
-            hitKnockback -= (Vector3.one * Time.deltaTime * knockbackSlowdown);
-        } if (hitKnockback.x < 0) hitKnockback = Vector3.zero;
+        
 
         if (walkTimer > 0 && (directionX != 0 || directionZ != 0))
         {
@@ -74,7 +71,14 @@ public class Movement : MonoBehaviour
     }
     private void FixedUpdate()
     {
+        if (hitKnockback.x > 0)
+        {
+            hitKnockback -= (Vector3.one * Time.deltaTime * knockbackSlowdown + (hitKnockback / 100));
+        }
+        if (hitKnockback.x < 0) hitKnockback = Vector3.zero;
+
         //transform.position += transform.forward * speed * -directionZ * speedRegulator * Time.deltaTime + transform.right * speed * -directionX * speedRegulator * Time.deltaTime;
         playerRigidbody.velocity = new Vector3(-directionX + hitKnockback.x, 0, -directionZ + hitKnockback.z) * speed * speedRegulator;
+
     }
 }
