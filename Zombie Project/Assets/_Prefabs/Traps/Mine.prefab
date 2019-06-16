@@ -90,6 +90,7 @@ GameObject:
   - component: {fileID: 8009869660430559937}
   - component: {fileID: 2078088963916308455}
   - component: {fileID: 4234195324555412672}
+  - component: {fileID: 7967282058505204276}
   m_Layer: 0
   m_Name: Mine
   m_TagString: Traps
@@ -147,6 +148,19 @@ MonoBehaviour:
   spriteDestroyed: {fileID: 21300000, guid: b940a4c3b2c5bb2459e394b8fa1ca3f7, type: 3}
   _sprite: {fileID: 21300000, guid: 3ef87e25de9c39c4eb9d0334f5e83cf3, type: 3}
   renderer: {fileID: 0}
+--- !u!114 &7967282058505204276
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3667504631721663238}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c23ef9af42f1b14ca0424d2825b65ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Icon: {fileID: 21300000, guid: 527fd5e22ee6e384ab607f1b2e000c4d, type: 3}
 --- !u!1001 &1471772745
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -248,41 +262,6 @@ PrefabInstance:
         type: 3}
       propertyPath: EmissionModule.m_Bursts.Array.data[0].countCurve.scalar
       value: 500
-      objectReference: {fileID: 0}
-    - target: {fileID: 7182330272784781782, guid: 26a183eb988058347a21747b5975ec3f,
-        type: 3}
-      propertyPath: InitialModule.startSpeed.scalar
-      value: 0.4
-      objectReference: {fileID: 0}
-    - target: {fileID: 7182330272784781782, guid: 26a183eb988058347a21747b5975ec3f,
-        type: 3}
-      propertyPath: InitialModule.maxNumParticles
-      value: 300
-      objectReference: {fileID: 0}
-    - target: {fileID: 7182330272784781782, guid: 26a183eb988058347a21747b5975ec3f,
-        type: 3}
-      propertyPath: ShapeModule.m_Scale.x
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 7182330272784781782, guid: 26a183eb988058347a21747b5975ec3f,
-        type: 3}
-      propertyPath: ShapeModule.m_Scale.y
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 7182330272784781782, guid: 26a183eb988058347a21747b5975ec3f,
-        type: 3}
-      propertyPath: ShapeModule.m_Scale.z
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 7182330272784781782, guid: 26a183eb988058347a21747b5975ec3f,
-        type: 3}
-      propertyPath: ShapeModule.radius.value
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 7182330272784781782, guid: 26a183eb988058347a21747b5975ec3f,
-        type: 3}
-      propertyPath: EmissionModule.m_Bursts.Array.data[0].countCurve.scalar
-      value: 300
       objectReference: {fileID: 0}
     - target: {fileID: 753701866441483189, guid: 26a183eb988058347a21747b5975ec3f,
         type: 3}
@@ -398,6 +377,41 @@ PrefabInstance:
         type: 3}
       propertyPath: EmissionModule.m_Bursts.Array.data[0].countCurve.scalar
       value: 600
+      objectReference: {fileID: 0}
+    - target: {fileID: 7182330272784781782, guid: 26a183eb988058347a21747b5975ec3f,
+        type: 3}
+      propertyPath: InitialModule.startSpeed.scalar
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7182330272784781782, guid: 26a183eb988058347a21747b5975ec3f,
+        type: 3}
+      propertyPath: InitialModule.maxNumParticles
+      value: 300
+      objectReference: {fileID: 0}
+    - target: {fileID: 7182330272784781782, guid: 26a183eb988058347a21747b5975ec3f,
+        type: 3}
+      propertyPath: ShapeModule.m_Scale.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7182330272784781782, guid: 26a183eb988058347a21747b5975ec3f,
+        type: 3}
+      propertyPath: ShapeModule.m_Scale.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7182330272784781782, guid: 26a183eb988058347a21747b5975ec3f,
+        type: 3}
+      propertyPath: ShapeModule.m_Scale.z
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7182330272784781782, guid: 26a183eb988058347a21747b5975ec3f,
+        type: 3}
+      propertyPath: ShapeModule.radius.value
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7182330272784781782, guid: 26a183eb988058347a21747b5975ec3f,
+        type: 3}
+      propertyPath: EmissionModule.m_Bursts.Array.data[0].countCurve.scalar
+      value: 300
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 26a183eb988058347a21747b5975ec3f, type: 3}

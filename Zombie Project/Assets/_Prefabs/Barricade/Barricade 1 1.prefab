@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 8946270976447408331}
   - component: {fileID: 8951494605587907812}
   - component: {fileID: 9122934872358201857}
+  - component: {fileID: 7332574280842577142}
   m_Layer: 0
   m_Name: Barricade 1 1
   m_TagString: Barricade
@@ -45,8 +46,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 0.8}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 1, y: 1, z: 0.38597277}
+  m_Center: {x: -1.30555835e-17, y: 0, z: 0.004289627}
 --- !u!114 &9122934872358201857
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -61,6 +62,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   barricadeHealth: 60
   zombieAIScript: []
+--- !u!114 &7332574280842577142
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 218704371103021763}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c23ef9af42f1b14ca0424d2825b65ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Icon: {fileID: 21300000, guid: 9f769797387ff1e448b064d38b92cde0, type: 3}
 --- !u!1001 &4404134034572639142
 PrefabInstance:
   m_ObjectHideFlags: 0

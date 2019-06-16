@@ -1,12 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class BuildingInventory : MonoBehaviour
 {
     //the buildmanager should turn on when gameManager sets it active.
     public GameManager gameManager;
     public GameObject[] buildInventory;
+    public GameObject[] boxes; // selection boxes
+    public Sprite[] Icons; //bear trap, mine, turret, machgunturret, barricade
     GameObject Player;
     
     int pickupSlot;
@@ -79,7 +82,15 @@ public class BuildingInventory : MonoBehaviour
     {
 
         //slot sprite changes to the selected (using similar code as changing what objects are active down below and a new array)
-
+        for(int i = 0; i < boxes.Length; i++)
+        {
+            if (i == slot)
+            {
+                boxes[i].GetComponent<Outline>().enabled = true;
+            }
+            else
+                boxes[i].GetComponent<Outline>().enabled = false;
+        }
         if (buildInventory[slot] == null || buildInventory[slot].GetComponent<PlaceBuildable>().quantity == 0)
         {
             slot = -1; //make it so none of the items get set active
@@ -106,18 +117,19 @@ public class BuildingInventory : MonoBehaviour
             if (buildInventory[i] == newBuildable)
             {
                 buildInventory[i].GetComponent<PlaceBuildable>().quantity += quantity;
-                //inform HUD
+                boxes[i].GetComponentInChildren<Text>().text = quantity.ToString();
                 return;
             }
             else if (buildInventory[i] == null)
             {
                 pickupSlot = i;
-                break;
             }
         }
         buildInventory[pickupSlot] = newBuildable;
         buildInventory[pickupSlot].GetComponent<PlaceBuildable>().quantity = quantity;
-        //inform HUD
+        boxes[pickupSlot].GetComponentInChildren<Text>().text = quantity.ToString();
+        boxes[pickupSlot].GetComponent<Image>().enabled = true;
+        boxes[pickupSlot].GetComponent<Image>().sprite = newBuildable.GetComponent<IconInfo>().Icon;
     }
 
     private void OnDisable()

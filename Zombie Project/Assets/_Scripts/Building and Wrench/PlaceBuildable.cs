@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlaceBuildable : MonoBehaviour
 {
@@ -158,6 +159,14 @@ public class PlaceBuildable : MonoBehaviour
             }
             else
                 objectMaterial.color = new Color(0, 1, 0, .5f);
+            for (int i = 0; i < GetComponentInParent<BuildingInventory>().buildInventory.Length; i++)
+            {
+                if (gameObject == GetComponentInParent<BuildingInventory>().buildInventory[i])
+                {
+                    GetComponentInParent<BuildingInventory>().boxes[i].GetComponent<Image>().enabled = true;
+
+                }
+            }
             gameObject.SetActive(false);
         }
         

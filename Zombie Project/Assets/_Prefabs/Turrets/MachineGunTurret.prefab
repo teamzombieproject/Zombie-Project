@@ -433,6 +433,7 @@ GameObject:
   - component: {fileID: 897477094050685444}
   - component: {fileID: 897477094050685445}
   - component: {fileID: 897477094050685446}
+  - component: {fileID: 5913416734979612841}
   m_Layer: 0
   m_Name: MachineGunTurret
   m_TagString: MachGunTurret
@@ -490,7 +491,7 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 94
+  m_Constraints: 126
   m_CollisionDetection: 0
 --- !u!114 &897477094050685444
 MonoBehaviour:
@@ -516,7 +517,6 @@ MonoBehaviour:
   firePoint:
   - {fileID: 897477094116049996}
   - {fileID: 897477093958310659}
-  audioSrc: {fileID: 897477094050685446}
   audioClip: {fileID: 8300000, guid: 8581f806dddef8046b4942de05b897be, type: 3}
 --- !u!65 &897477094050685445
 BoxCollider:
@@ -627,6 +627,19 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &5913416734979612841
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 897477094050685447}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c23ef9af42f1b14ca0424d2825b65ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Icon: {fileID: 21300000, guid: 1e93dc8e1adab164dbfc43c8edc4482d, type: 3}
 --- !u!1 &897477094116049997
 GameObject:
   m_ObjectHideFlags: 0
