@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 3677857250860440535}
   - component: {fileID: 4957103070375618135}
   - component: {fileID: 7337485445225824519}
+  - component: {fileID: 7869956955566866968}
   m_Layer: 0
   m_Name: BearTrapPlaceable
   m_TagString: BearTrap
@@ -129,3 +130,16 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &7869956955566866968
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3677857250343339581}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c23ef9af42f1b14ca0424d2825b65ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Icon: {fileID: 21300000, guid: a8d276e08ff39634c9a02f120eab2f54, type: 3}

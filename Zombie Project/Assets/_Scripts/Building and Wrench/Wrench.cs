@@ -125,7 +125,7 @@ public class Wrench : MonoBehaviour
                     if (repairable.GetComponent<ExplosiveMine>() != null)
                     {
                         repairable.GetComponent<ExplosiveMine>().isDestroyed = false;
-                        repairable.GetComponent<SpriteRenderer>().sprite = repairable.GetComponent<ExplosiveMine>()._sprite;
+                        repairable.GetComponentInChildren<SpriteRenderer>().sprite = repairable.GetComponent<ExplosiveMine>()._sprite;
                     }
                     else
                     {

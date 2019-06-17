@@ -9,7 +9,7 @@ public class BuildingInventory : MonoBehaviour
     public GameManager gameManager;
     public GameObject[] buildInventory;
     public GameObject[] boxes; // selection boxes
-    public Sprite[] Icons; //bear trap, mine, turret, machgunturret, barricade
+    //public Sprite[] Icons; //bear trap, mine, turret, machgunturret, barricade
     GameObject Player;
     
     int pickupSlot;
@@ -25,6 +25,8 @@ public class BuildingInventory : MonoBehaviour
     {
         Player = GameObject.FindGameObjectWithTag("Player");
         Player.transform.Find("Arm").gameObject.SetActive(false);
+        //GameObject.FindGameObjectWithTag("BuildInventory").SetActive(true);
+        GameObject.FindGameObjectWithTag("Canvas").transform.Find("InventorySelections").gameObject.SetActive(true);
     }
     void Update()
     {
@@ -116,26 +118,38 @@ public class BuildingInventory : MonoBehaviour
         {
             if (buildInventory[i] == newBuildable)
             {
-                buildInventory[i].GetComponent<PlaceBuildable>().quantity += quantity;
+                quantity += buildInventory[i].GetComponent<PlaceBuildable>().quantity;
                 boxes[i].GetComponentInChildren<Text>().text = quantity.ToString();
+                buildInventory[i].GetComponent<PlaceBuildable>().quantity = quantity;
+                
                 return;
             }
-            else if (buildInventory[i] == null)
+            else if (buildInventory[i] == null && !(pickupSlot < i))
             {
                 pickupSlot = i;
+                break;
             }
         }
         buildInventory[pickupSlot] = newBuildable;
         buildInventory[pickupSlot].GetComponent<PlaceBuildable>().quantity = quantity;
         boxes[pickupSlot].GetComponentInChildren<Text>().text = quantity.ToString();
-        boxes[pickupSlot].GetComponent<Image>().enabled = true;
-        boxes[pickupSlot].GetComponent<Image>().sprite = newBuildable.GetComponent<IconInfo>().Icon;
+        boxes[pickupSlot].transform.Find("PickupIcon").gameObject.GetComponent<Image>().enabled = true;
+        boxes[pickupSlot].transform.Find("PickupIcon").gameObject.GetComponent<Image>().sprite = newBuildable.GetComponent<IconInfo>().Icon;
+        if (boxes[pickupSlot].GetComponent<Outline>().enabled == true)
+        {
+            buildInventory[pickupSlot].gameObject.SetActive(true);
+        }
+        pickupSlot = 99;
     }
 
     private void OnDisable()
     {
         //deactivate all UI
-        Player = GameObject.FindGameObjectWithTag("Player");
+        for (int i = 0; i < boxes.Length; i++)
+        {
+            boxes[i].GetComponent<Outline>().enabled = false;
+        }
+            Player = GameObject.FindGameObjectWithTag("Player");
         Player.transform.Find("Arm").gameObject.SetActive(true);
         for (int i = 0; i < buildInventory.Length; i++)
         {
@@ -144,6 +158,8 @@ public class BuildingInventory : MonoBehaviour
                 buildInventory[i].SetActive(false);
             }
         }
+        //GameObject.FindGameObjectWithTag("BuildInventory").SetActive(false);
+        GameObject.FindGameObjectWithTag("Canvas").transform.Find("InventorySelections").gameObject.SetActive(false);
         gameObject.SetActive(false);
     }
 }

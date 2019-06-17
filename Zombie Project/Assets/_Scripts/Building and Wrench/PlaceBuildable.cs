@@ -149,6 +149,19 @@ public class PlaceBuildable : MonoBehaviour
     {
         //instantiate buildable gameobject
         quantity--;
+        for (int i = 0; i < GetComponentInParent<BuildingInventory>().buildInventory.Length; i++)
+        {
+            if (gameObject == GetComponentInParent<BuildingInventory>().buildInventory[i])
+            {
+                if (quantity <= 0)
+                {
+                    GetComponentInParent<BuildingInventory>().boxes[i].transform.Find("PickupIcon").GetComponent<Image>().enabled = false;
+                    GetComponentInParent<BuildingInventory>().buildInventory[i] = null;
+                    GetComponentInParent<BuildingInventory>().boxes[i].GetComponentInChildren<Text>().enabled = false;
+                }
+                GetComponentInParent<BuildingInventory>().boxes[i].GetComponentInChildren<Text>().text = quantity.ToString();
+            }
+        }
         GameObject instantiatedObj = Instantiate(placedObject, transform.position, transform.rotation);
         GameObject.FindGameObjectWithTag("GameController").GetComponent<HealthBarManager>().AddHealthBar(instantiatedObj);
         if (quantity <= 0)
@@ -159,14 +172,7 @@ public class PlaceBuildable : MonoBehaviour
             }
             else
                 objectMaterial.color = new Color(0, 1, 0, .5f);
-            for (int i = 0; i < GetComponentInParent<BuildingInventory>().buildInventory.Length; i++)
-            {
-                if (gameObject == GetComponentInParent<BuildingInventory>().buildInventory[i])
-                {
-                    GetComponentInParent<BuildingInventory>().boxes[i].GetComponent<Image>().enabled = true;
-
-                }
-            }
+            
             gameObject.SetActive(false);
         }
         
