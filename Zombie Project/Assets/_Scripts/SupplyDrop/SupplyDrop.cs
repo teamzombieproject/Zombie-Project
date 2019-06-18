@@ -19,30 +19,26 @@ public class SupplyDrop : MonoBehaviour
         if (other.gameObject.tag == "Player")
         {
             RandomizedLoot();
-                while (GM.mineStock < 0)
+
+                for (int i = GM.mineStock; i > 0; i--)
                 {
                     Instantiate(GM.mineDrop, GM.supplyDropSpawn.transform.position, Quaternion.identity);
-                    GM.mineStock--;
                 }
-                while (GM.bearTrapStock < 0)
+                for (int i = GM.bearTrapStock; i > 0; i--)
                 {
                     Instantiate(GM.bearTrapDrop, GM.supplyDropSpawn.transform.position, Quaternion.identity);
-                    GM.bearTrapStock--;
                 }
-                while (GM.javelinRocketTurretStock < 0)
+                for (int i = GM.javelinRocketTurretStock; i > 0; i--)
                 {
                     Instantiate(GM.javelinRocketTurretDrop, GM.supplyDropSpawn.transform.position, Quaternion.identity);
-                    GM.javelinRocketTurretStock--;
                 }
-                while (GM.machineGunTurretStock < 0)
+                for (int i = GM.machineGunTurretStock; i > 0; i--)
                 {
                     Instantiate(GM.machineGunTurretDrop, GM.supplyDropSpawn.transform.position, Quaternion.identity);
-                    GM.machineGunTurretStock--;
                 }
-                while (GM.barricadeStock < 0)
+                for (int i = GM.barricadeStock; i > 0; i--)
                 {
                     Instantiate(GM.barricadeDrop, GM.supplyDropSpawn.transform.position, Quaternion.identity);
-                    GM.barricadeStock--;
                 }
             Destroy(gameObject);
         }
