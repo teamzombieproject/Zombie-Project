@@ -606,7 +606,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 100
-  multiplier: 0.1
   invulnurability: 5
   healWait: 10
   healAmount: 1

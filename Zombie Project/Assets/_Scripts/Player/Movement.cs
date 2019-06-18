@@ -28,7 +28,7 @@ public class Movement : MonoBehaviour
         if (Input.GetKey(KeyCode.W) && !Input.GetKey(KeyCode.S))
            directionZ = 1;
         else if (Input.GetKey(KeyCode.S) && !Input.GetKey(KeyCode.W))
-            directionZ = -1;
+            directionZ = -1; 
         else
             directionZ = 0;
 
