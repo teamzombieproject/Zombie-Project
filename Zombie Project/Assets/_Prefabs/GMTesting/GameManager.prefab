@@ -43,6 +43,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d736eb7d5024b684c8e4bbbc79537845, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  deBugMod: 0
   playButtonPressed: 0
   highScoresButtonPressed: 0
   optionsButtonPressed: 0
@@ -54,6 +55,7 @@ MonoBehaviour:
   canGunBeSpawned: 1
   canZombiesSpawn: 0
   actionPhaseActive: 0
+  isRadioDead: 0
   m_GameTime: 0
   spawnDeactivate: 30
   spawnTimer: 0
@@ -65,9 +67,11 @@ MonoBehaviour:
   weaponDropSpawn: {fileID: 0}
   playerSpawn: {fileID: 0}
   radioSpawn: {fileID: 0}
+  zombieSpawner: {fileID: 0}
   supplyDropObject: {fileID: 6222122715345630286, guid: df7aa5bf1bd0f8942b8af680095e3d99,
     type: 3}
-  bEDropObject: {fileID: 0}
+  bEDropObject: {fileID: 6125793029045932334, guid: abfd23078dae7324e814806f162b5953,
+    type: 3}
   weaponDropObject: {fileID: 0}
   playerObject: {fileID: 7897983124235829538, guid: a2944bdffc92d564684d9cfae975ca94,
     type: 3}
@@ -79,11 +83,11 @@ MonoBehaviour:
   currentBEDrop: {fileID: 0}
   currentWeaponDrop: {fileID: 0}
   currentPlayer: {fileID: 0}
-  Gun1: {fileID: 0}
-  Gun2: {fileID: 0}
-  Gun3: {fileID: 0}
-  Gun4: {fileID: 0}
-  Gun5: {fileID: 0}
+  Gun1: {fileID: 2836373917740303927, guid: 54cde5a3ffd7df94094b7af5012ad067, type: 3}
+  Gun2: {fileID: 6940478904085392384, guid: 9e0bc5c684bd87b41bf073d7af27ef10, type: 3}
+  Gun3: {fileID: 968243663125828718, guid: 80cf3d10b02a00b49a23ed9987c597bc, type: 3}
+  Gun4: {fileID: 2856288382467738154, guid: 766ba9e845833b140bdc184870ba0e1a, type: 3}
+  Gun5: {fileID: 7306787393381154593, guid: 25b94170be692ee48a05c97268667161, type: 3}
   gameScore: 0
   wave: 0
   difficultyMultiplier: 1
