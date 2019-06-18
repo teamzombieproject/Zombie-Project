@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 7342571942844410890}
   - component: {fileID: 7508769376142574727}
   m_Layer: 0
-  m_Name: MinePlacable
+  m_Name: MinePlaceable
   m_TagString: Traps
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

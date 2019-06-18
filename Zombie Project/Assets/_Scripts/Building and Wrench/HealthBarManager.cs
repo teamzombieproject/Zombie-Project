@@ -45,7 +45,6 @@ public class HealthBarManager : MonoBehaviour
         {
             if (healthBars[i] != null)
             healthBarList.Add(healthBars[i]);
-            Debug.Log("adding;");
         }
     }
     //    healthBars = GameObject.FindGameObjectsWithTag("HealthBar");
