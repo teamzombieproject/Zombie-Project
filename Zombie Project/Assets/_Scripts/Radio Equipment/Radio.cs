@@ -9,7 +9,7 @@ public class Radio : MonoBehaviour
     public List<ZombieAI> zombieAIScript;
     Image radioHealthBar;
     float maxHealth = 100f;
-    GameManager GM;
+    public GameManager GM;
 
 
     private void Start()
@@ -25,19 +25,19 @@ public class Radio : MonoBehaviour
         if (radioHealth <= 0)  // make this game over instead of script below
         {
             Debug.Log("destroy me");
-            Destroy(this.gameObject); 
             for (int i=0; i<zombieAIScript.Count; i++)
             {
                // zombieAIScript[i].radioBeingAttacked = false;
                 zombieAIScript[i].attackObject = null;
             }
-
+            GM.isRadioDead = true;
+            Destroy(this.gameObject); 
         }
 
         radioHealthBar.fillAmount = radioHealth / maxHealth;
     }
 
-    /*
+    
     public void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.tag == "Player" && GM.bEPiecePickedUp)
@@ -46,7 +46,7 @@ public class Radio : MonoBehaviour
             GM.bEPiecePickedUp = false;
         }
     }
-    */
+    
 }
 
 

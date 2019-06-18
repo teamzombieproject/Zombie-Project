@@ -2318,9 +2318,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4228813810324043227, guid: 27b86aff628572c49bdf05fe2f25fdf9,
         type: 3}
+      propertyPath: spawns
+      value: 
+      objectReference: {fileID: 2130441768}
+    - target: {fileID: 4228813810324043227, guid: 27b86aff628572c49bdf05fe2f25fdf9,
+        type: 3}
       propertyPath: supplyDropSpawn
       value: 
       objectReference: {fileID: 1935023454}
+    - target: {fileID: 4228813810324043227, guid: 27b86aff628572c49bdf05fe2f25fdf9,
+        type: 3}
+      propertyPath: bEDropSpawn
+      value: 
+      objectReference: {fileID: 1598943006}
     - target: {fileID: 4228813810324043227, guid: 27b86aff628572c49bdf05fe2f25fdf9,
         type: 3}
       propertyPath: weaponDropSpawn
@@ -2336,57 +2346,6 @@ PrefabInstance:
       propertyPath: radioSpawn
       value: 
       objectReference: {fileID: 193477735}
-    - target: {fileID: 4228813810324043227, guid: 27b86aff628572c49bdf05fe2f25fdf9,
-        type: 3}
-      propertyPath: Gun1
-      value: 
-      objectReference: {fileID: 2836373917740303927, guid: 54cde5a3ffd7df94094b7af5012ad067,
-        type: 3}
-    - target: {fileID: 4228813810324043227, guid: 27b86aff628572c49bdf05fe2f25fdf9,
-        type: 3}
-      propertyPath: Gun2
-      value: 
-      objectReference: {fileID: 968243663125828718, guid: 80cf3d10b02a00b49a23ed9987c597bc,
-        type: 3}
-    - target: {fileID: 4228813810324043227, guid: 27b86aff628572c49bdf05fe2f25fdf9,
-        type: 3}
-      propertyPath: Gun3
-      value: 
-      objectReference: {fileID: 968243663125828718, guid: 80cf3d10b02a00b49a23ed9987c597bc,
-        type: 3}
-    - target: {fileID: 4228813810324043227, guid: 27b86aff628572c49bdf05fe2f25fdf9,
-        type: 3}
-      propertyPath: Gun4
-      value: 
-      objectReference: {fileID: 2856288382467738154, guid: 766ba9e845833b140bdc184870ba0e1a,
-        type: 3}
-    - target: {fileID: 4228813810324043227, guid: 27b86aff628572c49bdf05fe2f25fdf9,
-        type: 3}
-      propertyPath: Gun5
-      value: 
-      objectReference: {fileID: 7306787393381154593, guid: 25b94170be692ee48a05c97268667161,
-        type: 3}
-    - target: {fileID: 4228813810324043227, guid: 27b86aff628572c49bdf05fe2f25fdf9,
-        type: 3}
-      propertyPath: bEDropSpawn
-      value: 
-      objectReference: {fileID: 1598943006}
-    - target: {fileID: 4228813810324043227, guid: 27b86aff628572c49bdf05fe2f25fdf9,
-        type: 3}
-      propertyPath: bEDropObject
-      value: 
-      objectReference: {fileID: 6125793029045932334, guid: abfd23078dae7324e814806f162b5953,
-        type: 3}
-    - target: {fileID: 4228813810324043227, guid: 27b86aff628572c49bdf05fe2f25fdf9,
-        type: 3}
-      propertyPath: bEDropTimeEnd
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 4228813810324043227, guid: 27b86aff628572c49bdf05fe2f25fdf9,
-        type: 3}
-      propertyPath: spawns
-      value: 
-      objectReference: {fileID: 2130441768}
     - target: {fileID: 4228813810324043226, guid: 27b86aff628572c49bdf05fe2f25fdf9,
         type: 3}
       propertyPath: m_LocalPosition.x
