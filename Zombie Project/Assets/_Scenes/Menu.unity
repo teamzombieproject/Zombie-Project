@@ -187,6 +187,46 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4228813810324043227, guid: 27b86aff628572c49bdf05fe2f25fdf9,
+        type: 3}
+      propertyPath: barricadeDrop
+      value: 
+      objectReference: {fileID: 7773288304641322761, guid: e55df1fc2d589d54e8eafbada42a834b,
+        type: 3}
+    - target: {fileID: 4228813810324043227, guid: 27b86aff628572c49bdf05fe2f25fdf9,
+        type: 3}
+      propertyPath: bearTrapDrop
+      value: 
+      objectReference: {fileID: 3094335276794448324, guid: 8e344e6b1a4b79c4bb17ed3fe6d3e2e0,
+        type: 3}
+    - target: {fileID: 4228813810324043227, guid: 27b86aff628572c49bdf05fe2f25fdf9,
+        type: 3}
+      propertyPath: machineGunTurretDrop
+      value: 
+      objectReference: {fileID: 787057082422037403, guid: 675e295c153e2e345a2905793b06d6d7,
+        type: 3}
+    - target: {fileID: 4228813810324043227, guid: 27b86aff628572c49bdf05fe2f25fdf9,
+        type: 3}
+      propertyPath: mineDrop
+      value: 
+      objectReference: {fileID: 5466698764742541, guid: 5d783198d0b5e89468440c290358c744,
+        type: 3}
+    - target: {fileID: 4228813810324043227, guid: 27b86aff628572c49bdf05fe2f25fdf9,
+        type: 3}
+      propertyPath: javelinRocketTurretDrop
+      value: 
+      objectReference: {fileID: 3385835996638796975, guid: ae91dbcd5181ecb4db69528c22c84eb3,
+        type: 3}
+    - target: {fileID: 4228813810324043227, guid: 27b86aff628572c49bdf05fe2f25fdf9,
+        type: 3}
+      propertyPath: bEDropTimeEnd
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 4228813810324043227, guid: 27b86aff628572c49bdf05fe2f25fdf9,
+        type: 3}
+      propertyPath: deBugMod
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 27b86aff628572c49bdf05fe2f25fdf9, type: 3}
 --- !u!114 &1092805572 stripped
@@ -273,5 +313,20 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1092805572}
+    - target: {fileID: 3391368162110978180, guid: 96ea1fef37f481f4bbd176de7922e56f,
+        type: 3}
+      propertyPath: m_BoundingSphereOverride.y
+      value: 1.9396419e-31
+      objectReference: {fileID: 0}
+    - target: {fileID: 3391368162110978180, guid: 96ea1fef37f481f4bbd176de7922e56f,
+        type: 3}
+      propertyPath: m_BoundingSphereOverride.z
+      value: 6.99e-43
+      objectReference: {fileID: 0}
+    - target: {fileID: 3391368162110978180, guid: 96ea1fef37f481f4bbd176de7922e56f,
+        type: 3}
+      propertyPath: m_BoundingSphereOverride.w
+      value: 3.0383294e-31
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 96ea1fef37f481f4bbd176de7922e56f, type: 3}

@@ -9,6 +9,7 @@ public class ExplosiveMine : MonoBehaviour
     public float maxDamage = 150f;
     public float explosionRadius = 60f;
     public float explosionForce = 0f;
+    public float timer = 0f;
 
     public ParticleSystem explosionParticles;
     public Sprite spriteDestroyed;
@@ -42,8 +43,12 @@ public class ExplosiveMine : MonoBehaviour
             explosionParticles.transform.parent = null;
 
             explosionParticles.Play();
+            timer += Time.deltaTime;
 
-            Destroy(explosionParticles.gameObject, explosionParticles.main.duration);
+            if (timer >= 2)
+            {
+                explosionParticles.Pause();
+            }
 
             isDestroyed = true;
 
@@ -78,6 +83,7 @@ public class ExplosiveMine : MonoBehaviour
     {
         isDestroyed = false;
 
+        timer = 0f;
         this.GetComponentInChildren<SpriteRenderer>().sprite = _sprite;
     }
 }

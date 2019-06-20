@@ -276,6 +276,7 @@ public class GameManager : MonoBehaviour
                 
                 spawnTimer += Time.deltaTime;
                 actionPhaseActive = true;
+                spawnDeactivate = 25f + difficultyMultiplier * 5;
 
                 if (playerHealth.deathIsFinished == true || isRadioDead)
                 {
@@ -289,7 +290,7 @@ public class GameManager : MonoBehaviour
                     canZombiesSpawn = false;
                 }
 
-                if ( spawnTimer >= bEDropTimeEnd && !hasBEDropSpawned)
+                if ( spawnTimer >= bEDropTimeEnd && !hasBEDropSpawned && !bEPiecePickedUp)
                 {
                     SpawnBEDrop();
                 }
@@ -320,7 +321,6 @@ public class GameManager : MonoBehaviour
                     spawns.mayspawn = true;
                     canZombiesSpawn = true;
                     spawnTimer = 0f;
-                    hasSupplyDropSpawned = false;
                     hasBEDropSpawned = false;
                     foreach (GameObject d in Dropped)
                     {
@@ -369,7 +369,7 @@ public class GameManager : MonoBehaviour
                 break;
             case GameState.Win:
 
-
+                
 
                 break;
         }
