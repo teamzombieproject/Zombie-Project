@@ -12,6 +12,7 @@ public class Wrench : MonoBehaviour
     public string[] repairableTags;
     public GameObject wrenchSprites, wind, windSpawnPoint;
     public GameObject hitFX; // stolen from james >:D
+    public GameObject sparks;
 
     public AudioClip smackSFX, repairSFX, repairMissSFX;
     AudioSource wrenchSFX;
@@ -122,6 +123,7 @@ public class Wrench : MonoBehaviour
         {
             if (repairable.tag == repairableTags[i])
             {
+                Instantiate(sparks, repairable.transform.position + new Vector3 (0,.5f,0), Quaternion.identity);
                 wrenchSFX.clip = repairSFX;
                 wrenchSFX.pitch = .8f;
                 wrenchSFX.Play();

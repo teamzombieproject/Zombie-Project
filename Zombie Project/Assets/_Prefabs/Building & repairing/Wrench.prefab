@@ -389,6 +389,7 @@ MonoBehaviour:
   wind: {fileID: 3120750599800903008, guid: 794229efc781f2448bec4ed32e24e42e, type: 3}
   windSpawnPoint: {fileID: 1391106749908404981}
   hitFX: {fileID: 492924346993083021, guid: f55f02b964098344b90354e2bec44554, type: 3}
+  sparks: {fileID: 4618993433187529245, guid: aaa16dd56059e9f43b847091c0bac9cb, type: 3}
   smackSFX: {fileID: 8300000, guid: 551a6e573276cef4c804d90a74bf8c7b, type: 3}
   repairSFX: {fileID: 8300000, guid: 64fca57a82c88b940813aa14b41ee6a0, type: 3}
   repairMissSFX: {fileID: 8300000, guid: 754b298e024b7ee4fab54a83aa0e6333, type: 3}
