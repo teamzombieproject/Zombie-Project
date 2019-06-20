@@ -124,19 +124,8 @@ public class GameManager : MonoBehaviour
         
         if (m_GameState == GameState.Lose)
         {
-            yield return SceneManager.LoadSceneAsync("Menu");
-            GameObject[] GameMangers = GameObject.FindGameObjectsWithTag("GameController");
-
-            foreach (GameObject GM in GameMangers)
-            {
-                if(GM != this.gameObject)
-                {
-                    Destroy(GM);
-                }
-            }
-
-            playButtonPressed = false;
-            m_GameState = GameState.Menu;
+            SceneManager.LoadScene("Menu");
+            Destroy(gameObject);
         }
     }
 
