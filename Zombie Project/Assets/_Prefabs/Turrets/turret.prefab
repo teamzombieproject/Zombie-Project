@@ -30,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 1441609565184625485}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -38.37, y: -0.37, z: -6.37}
-  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_LocalScale: {x: 1.1, y: 1.1, z: 1.1}
   m_Children:
   - {fileID: 6384863591949229460}
   - {fileID: 3304508161214607233}
@@ -110,6 +110,8 @@ MonoBehaviour:
     type: 3}
   firePoint:
   - {fileID: 3304508161497930326}
+  activeMat: {fileID: 2100000, guid: e51fbe90caeacba44b30c0c5fa3f46e8, type: 2}
+  deadMat: {fileID: 2100000, guid: 33e636b026ff27e499bfe03686c21a90, type: 2}
   audioClip: {fileID: 8300000, guid: 8581f806dddef8046b4942de05b897be, type: 3}
 --- !u!82 &358017180
 AudioSource:
