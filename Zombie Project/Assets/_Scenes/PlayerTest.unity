@@ -652,6 +652,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d736eb7d5024b684c8e4bbbc79537845, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  deBugMod: 0
   playButtonPressed: 0
   highScoresButtonPressed: 0
   optionsButtonPressed: 0
@@ -663,6 +664,7 @@ MonoBehaviour:
   canGunBeSpawned: 1
   canZombiesSpawn: 0
   actionPhaseActive: 0
+  isRadioDead: 0
   m_GameTime: 0
   spawnDeactivate: 30
   spawnTimer: 0
@@ -685,6 +687,11 @@ MonoBehaviour:
   currentBEDrop: {fileID: 0}
   currentWeaponDrop: {fileID: 0}
   currentPlayer: {fileID: 0}
+  mineDrop: {fileID: 0}
+  bearTrapDrop: {fileID: 0}
+  machineGunTurretDrop: {fileID: 0}
+  javelinRocketTurretDrop: {fileID: 0}
+  barricadeDrop: {fileID: 0}
   Gun1: {fileID: 0}
   Gun2: {fileID: 0}
   Gun3: {fileID: 0}
