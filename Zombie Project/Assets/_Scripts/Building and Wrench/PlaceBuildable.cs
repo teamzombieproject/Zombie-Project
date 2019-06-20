@@ -147,6 +147,8 @@ public class PlaceBuildable : MonoBehaviour
 
     void PlaceObject()
     {
+        GetComponentInParent<AudioSource>().Play();
+        Camera.main.GetComponent<ScreenShake>().CamShake(1, .3f);
         //instantiate buildable gameobject
         quantity--;
         for (int i = 0; i < GetComponentInParent<BuildingInventory>().buildInventory.Length; i++)

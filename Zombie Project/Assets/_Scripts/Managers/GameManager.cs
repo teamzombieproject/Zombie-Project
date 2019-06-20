@@ -1,9 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
+
+    public bool deBugMod = false;
+
     public bool playButtonPressed = false;
     public bool highScoresButtonPressed = false;
     public bool optionsButtonPressed = false;
@@ -15,12 +19,14 @@ public class GameManager : MonoBehaviour
     public bool canGunBeSpawned = true;
     public bool canZombiesSpawn = false;
     public bool actionPhaseActive = false;
+    public bool isRadioDead = false;
+   
 
     public float m_GameTime = 0f;
     public float GameTime { get { return m_GameTime; } }
     public float spawnDeactivate = 30f;
     public float spawnTimer = 0f;
-    public float bEDropTimeEnd = 2f;
+    public float bEDropTimeEnd = 20f;
 
     public Health playerHealth;
     public ZombieSpawner spawns;
@@ -30,6 +36,7 @@ public class GameManager : MonoBehaviour
     public GameObject weaponDropSpawn;
     public GameObject playerSpawn;
     public GameObject radioSpawn;
+    public GameObject zombieSpawner;
     public GameObject supplyDropObject;
     public GameObject bEDropObject;
     public GameObject weaponDropObject;
@@ -40,6 +47,11 @@ public class GameManager : MonoBehaviour
     public GameObject currentBEDrop;
     public GameObject currentWeaponDrop;
     public GameObject currentPlayer;
+    public GameObject mineDrop;
+    public GameObject bearTrapDrop;
+    public GameObject machineGunTurretDrop;
+    public GameObject javelinRocketTurretDrop;
+    public GameObject barricadeDrop;
     public GameObject Gun1;
     public GameObject Gun2;
     public GameObject Gun3;
@@ -76,7 +88,8 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
-        m_GameState = GameState.Setup;
+        DontDestroyOnLoad(gameObject);
+        m_GameState = GameState.Menu;
     }
 
     // Start is called before the first frame update
@@ -88,9 +101,43 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        CheckState();
-        SelectedWeaponDrop();
-        difficultyMultiplier = wave +1;
+        CheckState();        
+    }
+
+    public void PlayGame()
+    {
+        StartCoroutine("LoadLevel");
+    }
+
+    public void EndGame()
+    {
+        StartCoroutine("LoadLevel");
+    }
+
+    public IEnumerator LoadLevel()
+    {
+        if (m_GameState == GameState.Menu)
+        {
+            yield return SceneManager.LoadSceneAsync("Level");
+            playButtonPressed = true;
+        }
+        
+        if (m_GameState == GameState.Lose)
+        {
+            yield return SceneManager.LoadSceneAsync("Menu");
+            GameObject[] GameMangers = GameObject.FindGameObjectsWithTag("GameController");
+
+            foreach (GameObject GM in GameMangers)
+            {
+                if(GM != this.gameObject)
+                {
+                    Destroy(GM);
+                }
+            }
+
+            playButtonPressed = false;
+            m_GameState = GameState.Menu;
+        }
     }
 
     void Init()
@@ -100,15 +147,24 @@ public class GameManager : MonoBehaviour
         Destroy(GameObject.FindGameObjectWithTag("Radio"));                             // remove old radio object
         Destroy(GameObject.FindGameObjectWithTag("SupplyDrop"));
         Destroy(GameObject.FindGameObjectWithTag("BEDrop"));
-        Destroy(GameObject.FindGameObjectWithTag("Dropped"));
 
-        // destroy all spawnable game objects that may remain from previous game
+        playerSpawn = GameObject.Find("PlayerSpawn");
+        radioSpawn = GameObject.Find("RadioSpawn");
+        supplyDropSpawn = GameObject.Find("SupplyDropSpawn");
+        zombieSpawner = GameObject.Find("SpawnManager");
+        spawns = zombieSpawner.GetComponent<ZombieSpawner>();
+        supplyDropSpawn = GameObject.Find("SupplyDropSpawn");
+        bEDropSpawn = GameObject.Find("BEDropSpawn");
+        weaponDropSpawn = GameObject.Find("WeaponDropSpawn");
+
+    // destroy all spawnable game objects that may remain from previous game
         GameObject[] zombies = GameObject.FindGameObjectsWithTag("Zombie");             // find all of the zombies that are left over from the last game and store them in an array
         GameObject[] Traps = GameObject.FindGameObjectsWithTag("Traps");
         GameObject[] barricades = GameObject.FindGameObjectsWithTag("Barricade");
         GameObject[] Turrets = GameObject.FindGameObjectsWithTag("Turret");
-        
-        foreach(GameObject z in zombies)
+        GameObject[] Dropped = GameObject.FindGameObjectsWithTag("Dropped");
+
+        foreach (GameObject z in zombies)
         {
             Destroy(z);                                                                 // then loop through our array and destroy them all
         }
@@ -126,6 +182,11 @@ public class GameManager : MonoBehaviour
         foreach (GameObject tt in Turrets)
         {
             Destroy(tt);
+        }
+
+        foreach (GameObject d in Dropped)
+        {
+            Destroy(d);
         }
 
         // spawn new player object
@@ -152,6 +213,7 @@ public class GameManager : MonoBehaviour
 
     void SpawnSupplyDrop()
     {
+
         if (currentSupplyDrop == null)
         {
             currentSupplyDrop = Instantiate(supplyDropObject, supplyDropSpawn.transform.position, supplyDropSpawn.transform.rotation);
@@ -222,10 +284,11 @@ public class GameManager : MonoBehaviour
                 Init();
                 break;
             case GameState.Action:
+                
                 spawnTimer += Time.deltaTime;
                 actionPhaseActive = true;
 
-                if (playerHealth.deathIsFinished == true)
+                if (playerHealth.deathIsFinished == true || isRadioDead)
                 {
                     m_GameState = GameState.Lose;
                 }
@@ -257,6 +320,7 @@ public class GameManager : MonoBehaviour
             case GameState.Build:
                 m_GameTime += Time.deltaTime;
                 actionPhaseActive = false;
+                GameObject[] Dropped = GameObject.FindGameObjectsWithTag("Dropped");
 
                 // change hud to building hud
 
@@ -269,9 +333,13 @@ public class GameManager : MonoBehaviour
                     spawnTimer = 0f;
                     hasSupplyDropSpawned = false;
                     hasBEDropSpawned = false;
-                    Destroy(GameObject.FindGameObjectWithTag("Dropped"));
+                    foreach (GameObject d in Dropped)
+                    {
+                        Destroy(d);
+                    }
                     canGunBeSpawned = true;
                     wave += 1;
+                    difficultyMultiplier = wave + 1;
                 }
 
                 // Make the supply drop spawn (set Spawn bool to true) (can only spawn when false)
@@ -279,8 +347,10 @@ public class GameManager : MonoBehaviour
                 {
                     SpawnSupplyDrop();
                 }
+
                 if (canGunBeSpawned)
                 {
+                    SelectedWeaponDrop();
                     currentWeaponDrop = Instantiate(weaponDropObject, weaponDropSpawn.transform.position, weaponDropSpawn.transform.rotation);
                     canGunBeSpawned = false;
                 }
@@ -303,7 +373,8 @@ public class GameManager : MonoBehaviour
 
                 break;
             case GameState.Lose:
-
+                Debug.Log("You lose");
+                EndGame();
 
 
                 break;
@@ -312,6 +383,14 @@ public class GameManager : MonoBehaviour
 
 
                 break;
+        }
+    }
+
+    private void OnGUI()
+    {
+        if (deBugMod)
+        {
+            GUI.Label(new Rect(10, 10, 200, 20), "GameState =" + m_GameState);
         }
     }
 }
