@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4228813810324043226}
   - component: {fileID: 4228813810324043227}
+  - component: {fileID: 265840622}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: GameController
@@ -43,7 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d736eb7d5024b684c8e4bbbc79537845, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  deBugMod: 0
+  deBugMod: 1
   playButtonPressed: 0
   highScoresButtonPressed: 0
   optionsButtonPressed: 0
@@ -59,7 +60,7 @@ MonoBehaviour:
   m_GameTime: 0
   spawnDeactivate: 30
   spawnTimer: 0
-  bEDropTimeEnd: 2
+  bEDropTimeEnd: 20
   playerHealth: {fileID: 0}
   spawns: {fileID: 0}
   supplyDropSpawn: {fileID: 0}
@@ -83,6 +84,15 @@ MonoBehaviour:
   currentBEDrop: {fileID: 0}
   currentWeaponDrop: {fileID: 0}
   currentPlayer: {fileID: 0}
+  mineDrop: {fileID: 5466698764742541, guid: 5d783198d0b5e89468440c290358c744, type: 3}
+  bearTrapDrop: {fileID: 3094335276794448324, guid: 8e344e6b1a4b79c4bb17ed3fe6d3e2e0,
+    type: 3}
+  machineGunTurretDrop: {fileID: 787057082422037403, guid: 675e295c153e2e345a2905793b06d6d7,
+    type: 3}
+  javelinRocketTurretDrop: {fileID: 3385835996638796975, guid: ae91dbcd5181ecb4db69528c22c84eb3,
+    type: 3}
+  barricadeDrop: {fileID: 7773288304641322761, guid: e55df1fc2d589d54e8eafbada42a834b,
+    type: 3}
   Gun1: {fileID: 2836373917740303927, guid: 54cde5a3ffd7df94094b7af5012ad067, type: 3}
   Gun2: {fileID: 6940478904085392384, guid: 9e0bc5c684bd87b41bf073d7af27ef10, type: 3}
   Gun3: {fileID: 968243663125828718, guid: 80cf3d10b02a00b49a23ed9987c597bc, type: 3}
@@ -98,3 +108,16 @@ MonoBehaviour:
   mineStock: 0
   bearTrapStock: 0
   barricadeStock: 0
+--- !u!114 &265840622
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4228813810324043224}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 70b3c398200499546bc151944cdd73bd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healthBar: {fileID: 0}
