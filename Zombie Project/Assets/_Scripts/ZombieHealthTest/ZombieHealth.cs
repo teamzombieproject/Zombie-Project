@@ -5,8 +5,9 @@ using UnityEngine;
 public class ZombieHealth : MonoBehaviour
 {
    
-    public float zombieHealthTest = 100f;
+    public float zombieHealthTest = 40f;
     GameManager  gm;
+    
     
 
 
@@ -14,19 +15,26 @@ public class ZombieHealth : MonoBehaviour
     {
         gm = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
         gm.zombiesAlive++;
+       
+    }
+
+    private void Update()
+    {
+        if (zombieHealthTest <= 0)
+        {
+          gm.zombiesAlive--;
+           Destroy(gameObject);
+
+        }
     }
 
     public void TakeDamage(float amount)
     {
         zombieHealthTest -= amount;
-
-        if (zombieHealthTest <= 0)
-        {
-            gm.zombiesAlive--;
-            Destroy(gameObject);
-            
-        }
+               
     }
+
+
 
 
 }

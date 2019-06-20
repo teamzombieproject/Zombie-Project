@@ -413,7 +413,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 897477093958310660}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.167, y: 0.010163054, z: 0.21302384}
+  m_LocalPosition: {x: 0.167, y: 0.01, z: 0.629}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 897477092685517037}
@@ -435,7 +435,7 @@ GameObject:
   - component: {fileID: 897477094050685446}
   m_Layer: 0
   m_Name: MachineGunTurret
-  m_TagString: MachGunTurret
+  m_TagString: Turret
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -650,7 +650,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 897477094116049997}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.241, y: 0, z: 0.234}
+  m_LocalPosition: {x: -0.241, y: 0, z: 0.689}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 897477092397425243}

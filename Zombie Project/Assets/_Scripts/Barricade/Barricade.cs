@@ -9,6 +9,7 @@ public class Barricade : MonoBehaviour
     
     
     
+    
     private void Start()
     {
        
@@ -21,7 +22,10 @@ public class Barricade : MonoBehaviour
         if (barricadeHealth <= 0)
             {
                 Debug.Log("destroy me");
-                Destroy(this.gameObject);
+           
+           
+            Destroy(this.gameObject);
+
             for (int i = 0; i < zombieAIScript.Count; i++)
             {
                 //zombieAIScript[i].barricadeBeingAttacked = false;

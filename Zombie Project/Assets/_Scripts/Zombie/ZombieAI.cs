@@ -18,7 +18,7 @@ public class ZombieAI : MonoBehaviour
     public float attackTimer;
     public float damageToBarricade = 10;
     public float damageToTurret = 10;
-    public float damageToMachGunTurret = 10;
+   // public float damageToMachGunTurret = 10;
     public float damageToRadio = 10;
     public float damageToPlayer = 20;
     public Rigidbody rb;
@@ -94,16 +94,13 @@ public class ZombieAI : MonoBehaviour
     {
         if (col.gameObject.tag == "Barricade" ||
             col.gameObject.tag == "Turret" ||
-            col.gameObject.tag == "MachGunTurret" ||
+          //  col.gameObject.tag == "MachGunTurret" ||
             col.gameObject.tag == "Radio" ||
             col.gameObject.tag == "Player")
         {
             Debug.Log(gameObject + " collided with " + attackObject);
             attackObject = col.gameObject;
         }
-
-
-      
 
     }
 
@@ -129,12 +126,12 @@ public class ZombieAI : MonoBehaviour
                 turret.zombieAIScript.Add(this);
                 turret.turretHealth -= damageToTurret;
             }
-            else if (attackObject.tag == "MachGunTurret")
-            {
-                TurretMachGun mTurret = attackObject.GetComponent<TurretMachGun>();
-                mTurret.zombieAIScript.Add(this);
-                mTurret.machGunTurretHealth -= damageToMachGunTurret;
-            }
+           // else if (attackObject.tag == "MachGunTurret")
+           // {
+            //    TurretMachGun mTurret = attackObject.GetComponent<TurretMachGun>();
+            //    mTurret.zombieAIScript.Add(this);
+            //    mTurret.machGunTurretHealth -= damageToMachGunTurret;
+           // }
             else if (attackObject.tag == "Radio")
             {
                 Radio radio = attackObject.GetComponent<Radio>();
@@ -173,10 +170,6 @@ public class ZombieAI : MonoBehaviour
     }
 
 }
-
-
-
-
 
 
 /*

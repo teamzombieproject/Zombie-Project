@@ -37,7 +37,7 @@ public class Radio : MonoBehaviour
         radioHealthBar.fillAmount = radioHealth / maxHealth;
     }
 
-    /*
+    
     public void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.tag == "Player" && GM.bEPiecePickedUp)
@@ -46,7 +46,7 @@ public class Radio : MonoBehaviour
             GM.bEPiecePickedUp = false;
         }
     }
-    */
+    
 }
 
 

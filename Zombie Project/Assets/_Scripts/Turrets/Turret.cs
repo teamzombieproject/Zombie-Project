@@ -16,36 +16,38 @@ public class Turret : MonoBehaviour
     public float fireRate = 1f;
     private float fireCountDown =0f;
     float delayCountDown;
-
+    bool turretActive = true;
     public GameObject turretBulletPrefab;
     public Transform[] firePoint;
+    public Material activeMat;
+    public Material deadMat;
 
     AudioSource audioSrc;
     public AudioClip audioClip;
-    
 
-    
+
+
     void Start()
     {
-        
+
         InvokeRepeating("UpdateTarget", 0f, 0.5f);  //calls the Update Target function and tells it to run 2 times per second, sotwice a second it will search for a new target.  
         //if you put it in the update it 
 
         audioSrc = GetComponent<AudioSource>();
         audioSrc.clip = audioClip;
+       
     }
-
 
     void Update()  
     {
         if (turretHealth <= 0)
         {
-            Debug.Log("destroy me");
-            Destroy(this.gameObject);
+            
+            DeactivateTurret();
+
             for (int i = 0; i < zombieAIScript.Count; i++)
             {
-               // zombieAIScript[i].turretBeingAttacked = false;
-                zombieAIScript[i].attackObject = null;
+            zombieAIScript[i].attackObject = null;
             }
 
         }
@@ -62,14 +64,14 @@ public class Turret : MonoBehaviour
         //using Lerp smooths out the rotation otherwise it would just jump to new target.
         head.rotation = Quaternion.Euler(0f, rotation.y, 0f);
 
-        if (fireCountDown <= 0)
+        if (fireCountDown <= 0 && turretActive == true)
         {
             Shoot();
             fireCountDown = fireRate;
             delayCountDown = fireCountDown / 2;
         }
 
-        if (firePoint.Length > 1 && delayCountDown <= 0)
+        if (firePoint.Length > 1 && delayCountDown <= 0 && turretActive == true)
         {
             Shoot2();
             delayCountDown = fireRate;
@@ -91,27 +93,7 @@ public class Turret : MonoBehaviour
        GameObject bulletGo = Instantiate(turretBulletPrefab, firePoint[1].position, firePoint[1].rotation);
         audioSrc.Play();
     }
-    /*
-            if (fireCountDown <= 0)
-            {
-                Shoot();
-                fireCountDown = 1f / fireRate;  //ie if fire rate = 2 then firecountdown = 0.5 meaning it will fire a bullet every 0.5 of a second.
-            }
-
-            fireCountDown -= Time.deltaTime;  //every second, fire countdown will be reduced by 1.
-
-
-        }void Shoot()
-        {
-            GameObject bulletGo = (GameObject)Instantiate(turretBulletPrefab, firePoint[0], firePoint[0]);  //give the instantiated bullet a variable name "bulletGO" so the bullet script can access it
-            TurretBullet turretBullet = bulletGo.GetComponent<TurretBullet>(); //access the turretBullet script
-
-            if (turretBullet != null)
-            {
-                turretBullet.Seek(target);  //run the seek function located on the bullet script and pass to it the target variable
-            }
-        }
-        */
+   
 
     void UpdateTarget()  
     {
@@ -139,6 +121,25 @@ public class Turret : MonoBehaviour
         else
         {
             target = null;
+        }
+    }
+
+   void DeactivateTurret()
+    {
+        turretHealth = 0;
+        turretActive = false;
+       foreach(Renderer rend in GetComponentsInChildren<Renderer>())
+        {
+            rend.material = deadMat;
+        }
+    }
+
+    public void ActivateTurret()
+    {
+        turretActive = true;
+        foreach (Renderer rend in GetComponentsInChildren<Renderer>())
+        {
+            rend.material = activeMat;
         }
     }
 
