@@ -37,12 +37,18 @@ public class Wrench : MonoBehaviour
                 cooldown = initialCooldown;
                 attacking = true;
                 gameObject.GetComponent<BoxCollider>().enabled = true;
-                Camera.main.GetComponent<ScreenShake>().CamShake(1f, .5f);
+
                 if (repair)
+                {
                     wrenchSFX.clip = repairMissSFX;
+                    Camera.main.GetComponent<ScreenShake>().CamShake(.5f, .3f);
+                }
                 else
+                {
                     wrenchSFX.clip = smackSFX;
-                wrenchSFX.pitch = .6f;
+                    Camera.main.GetComponent<ScreenShake>().CamShake(1f, .5f);
+                }
+                    wrenchSFX.pitch = .6f;
                 wrenchSFX.Play();
                 
                 Instantiate(wind, windSpawnPoint.transform.position, windSpawnPoint.transform.rotation);    
@@ -150,6 +156,12 @@ public class Wrench : MonoBehaviour
                 {
                      if (repairable.GetComponent<Turret>().turretHealth < 100)
                     {
+                        
+                        if (repairable.GetComponent<Turret>().turretHealth <= 0)
+                        {
+                            repairable.GetComponent<Turret>().turretHealth = repairAmount;
+                            //repairable.GetComponent<Turret>().ActivateTurret();
+                        } else
                         repairable.GetComponent<Turret>().turretHealth = Mathf.Clamp(repairable.GetComponent<Turret>().turretHealth + repairAmount, 0, 100);
                     }
                 }

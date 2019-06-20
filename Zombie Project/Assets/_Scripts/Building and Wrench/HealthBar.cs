@@ -31,7 +31,8 @@ public class HealthBar : MonoBehaviour
         {
             if (following.GetComponent<BearTrap>() != null)
             {
-                health.fillAmount = following.GetComponent<BearTrap>().uses / 3;
+                float uses = following.GetComponent<BearTrap>().uses;
+                health.fillAmount = uses / 3;
             }
             else
             {

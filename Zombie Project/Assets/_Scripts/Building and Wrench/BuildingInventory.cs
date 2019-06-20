@@ -10,81 +10,95 @@ public class BuildingInventory : MonoBehaviour
     public GameObject[] buildInventory;
     public GameObject[] boxes; // selection boxes
     //public Sprite[] Icons; //bear trap, mine, turret, machgunturret, barricade
-    GameObject Player;
-    
+    GameObject Player, Arm;
+    public bool on = false;
     int pickupSlot;
 
     private void Start()
     {
         //disable weapons and weaponswitching
         Player = GameObject.FindGameObjectWithTag("Player");
-        Player.transform.Find("Arm").gameObject.SetActive(false);
         gameManager = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
-    }
-    private void OnEnable()
-    {
-        Player = GameObject.FindGameObjectWithTag("Player");
-        Player.transform.Find("Arm").gameObject.SetActive(false);
-        //GameObject.FindGameObjectWithTag("BuildInventory").SetActive(true);
-        GameObject.FindGameObjectWithTag("Canvas").transform.Find("InventorySelections").gameObject.SetActive(true);
     }
     void Update()
     {
         if (Player == null)
         {
             Player = GameObject.FindGameObjectWithTag("Player");
-            Player.transform.Find("Arm").gameObject.SetActive(false);
         }
-
-        //if (gameManager.State != GameManager.GameState.Build)
-        //{
-            //gameObject.SetActive(false)
-        //}
-
+        if (gameManager.State == GameManager.GameState.Build)
+        {
+            //tempOn = false;
+            on = true;
+            Player.transform.Find("Arm").GetComponent<Aiming>().enabled = false;
+            Player.transform.Find("Arm").GetComponent<AudioSource>().enabled = false;
+            Player.transform.Find("Arm").GetChild(0).gameObject.SetActive(false);
+            GameObject.FindGameObjectWithTag("Canvas").transform.Find("InventorySelections").gameObject.SetActive(true);
+        }
+        else
+        {
+           // tempOff = false;
+            on = false;
+            Disable();
+        }
+        // if (gameManager.State == GameManager.GameState.Build)
+        // {
+        //     on = true;
+        //     Player.transform.Find("Arm").GetComponent<Aiming>().enabled = false;
+        //     Player.transform.Find("Arm").GetChild(0).gameObject.SetActive(false);
+        // } else
+        // {
+        //     on = false;
+        //     Player.transform.Find("Arm").GetComponent<Aiming>().enabled = true;
+        //     Player.transform.Find("Arm").GetChild(0).gameObject.SetActive(true);
+        // }
+        if (on)
+        {
             if (Input.GetKeyUp(KeyCode.Alpha1))
-        {
-            SwitchSelectedBuildable(0);
+            {
+                SwitchSelectedBuildable(0);
+            }
+            else if (Input.GetKeyUp(KeyCode.Alpha2))
+            {
+                SwitchSelectedBuildable(1);
+            }
+            else if (Input.GetKeyUp(KeyCode.Alpha3))
+            {
+                SwitchSelectedBuildable(2);
+            }
+            else if (Input.GetKeyUp(KeyCode.Alpha4))
+            {
+                SwitchSelectedBuildable(3);
+            }
+            else if (Input.GetKeyUp(KeyCode.Alpha5))
+            {
+                SwitchSelectedBuildable(4);
+            }
+            else if (Input.GetKeyUp(KeyCode.Alpha6))
+            {
+                SwitchSelectedBuildable(5);
+            }
+            else if (Input.GetKeyUp(KeyCode.Alpha7))
+            {
+                SwitchSelectedBuildable(6);
+            }
+            else if (Input.GetKeyUp(KeyCode.Alpha8))
+            {
+                SwitchSelectedBuildable(7);
+            }
+            else if (Input.GetKeyUp(KeyCode.Alpha9))
+            {
+                SwitchSelectedBuildable(8);
+            }
         }
-        else if (Input.GetKeyUp(KeyCode.Alpha2))
-        {
-            SwitchSelectedBuildable(1);
-        }
-        else if (Input.GetKeyUp(KeyCode.Alpha3))
-        {
-            SwitchSelectedBuildable(2);
-        }
-        else if (Input.GetKeyUp(KeyCode.Alpha4))
-        {
-            SwitchSelectedBuildable(3);
-        }
-        else if (Input.GetKeyUp(KeyCode.Alpha5))
-        {
-            SwitchSelectedBuildable(4);
-        }
-        else if (Input.GetKeyUp(KeyCode.Alpha6))
-        {
-            SwitchSelectedBuildable(5);
-        }
-        else if (Input.GetKeyUp(KeyCode.Alpha7))
-        {
-            SwitchSelectedBuildable(6);
-        }
-        else if (Input.GetKeyUp(KeyCode.Alpha8))
-        {
-            SwitchSelectedBuildable(7);
-        }
-        else if (Input.GetKeyUp(KeyCode.Alpha9))
-        {
-            SwitchSelectedBuildable(8);
-        }
-
     }
 
     void SwitchSelectedBuildable(int slot)
     {
 
         //slot sprite changes to the selected (using similar code as changing what objects are active down below and a new array)
-        for(int i = 0; i < boxes.Length; i++)
+        boxes[0].transform.parent.GetComponent<AudioSource>().Play();
+        for (int i = 0; i < boxes.Length; i++)
         {
             if (i == slot)
             {
@@ -142,15 +156,13 @@ public class BuildingInventory : MonoBehaviour
         pickupSlot = 99;
     }
 
-    private void OnDisable()
+    private void Disable()
     {
         //deactivate all UI
         for (int i = 0; i < boxes.Length; i++)
         {
             boxes[i].GetComponent<Outline>().enabled = false;
         }
-            Player = GameObject.FindGameObjectWithTag("Player");
-        Player.transform.Find("Arm").gameObject.SetActive(true);
         for (int i = 0; i < buildInventory.Length; i++)
         {
             if (buildInventory[i] != null)
@@ -159,7 +171,10 @@ public class BuildingInventory : MonoBehaviour
             }
         }
         //GameObject.FindGameObjectWithTag("BuildInventory").SetActive(false);
+        Player = GameObject.FindGameObjectWithTag("Player");
+        Player.transform.Find("Arm").GetComponent<Aiming>().enabled = true;
+        Player.transform.Find("Arm").GetChild(0).gameObject.SetActive(true);
+        Player.transform.Find("Arm").GetComponent<AudioSource>().enabled = true;
         GameObject.FindGameObjectWithTag("Canvas").transform.Find("InventorySelections").gameObject.SetActive(false);
-        gameObject.SetActive(false);
     }
 }

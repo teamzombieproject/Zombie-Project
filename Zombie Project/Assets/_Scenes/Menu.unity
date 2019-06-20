@@ -1311,6 +1311,41 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.x
       value: -45.000275
       objectReference: {fileID: 0}
+    - target: {fileID: 3391368163168710948, guid: 96ea1fef37f481f4bbd176de7922e56f,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3391368163168710948, guid: 96ea1fef37f481f4bbd176de7922e56f,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3391368163168710948, guid: 96ea1fef37f481f4bbd176de7922e56f,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3391368163168710948, guid: 96ea1fef37f481f4bbd176de7922e56f,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3391368163168710948, guid: 96ea1fef37f481f4bbd176de7922e56f,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OnButtonPressed
+      objectReference: {fileID: 0}
+    - target: {fileID: 3391368163168710948, guid: 96ea1fef37f481f4bbd176de7922e56f,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 3391368163168710948, guid: 96ea1fef37f481f4bbd176de7922e56f,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
+      value: Main
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 96ea1fef37f481f4bbd176de7922e56f, type: 3}
 --- !u!114 &2002072061 stripped

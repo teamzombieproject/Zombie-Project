@@ -5,9 +5,9 @@ using UnityEngine;
 public class Health : MonoBehaviour
 {
     //total health, invulnurability sprite flash speed, how long your invulnurable (s), how long you have to wait after taking damage to heal (s), how much you heal
-    public float health = 100, multiplier = .1f, invulnurability = 5, healWait = 10, healAmount = 1;
+    public float health = 100, invulnurability = 5, healWait = 10, healAmount = 1;
     //DONT MAKE INVULNURABILITY TIME NEGATIVE, PLAYER WILL BE INDESTRUCTABLE FOREVER.
-    float timer = 0, healthTimer = 0, rotate = 0, timerInitial, startingHealth;
+    float timer = 0, healthTimer = 0, rotate = 0, timerInitial, startingHealth, multiplier = .1f;
     bool dead = false;
     public SpriteRenderer[] characterSprites;
     public Animator bodyAnimator, headAnimator;
