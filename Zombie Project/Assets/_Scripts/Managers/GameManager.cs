@@ -118,7 +118,7 @@ public class GameManager : MonoBehaviour
     {
         if (m_GameState == GameState.Menu)
         {
-            yield return SceneManager.LoadSceneAsync("Level");
+            yield return SceneManager.LoadSceneAsync("Level1");
             playButtonPressed = true;
         }
         
