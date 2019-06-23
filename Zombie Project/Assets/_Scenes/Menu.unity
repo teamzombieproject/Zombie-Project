@@ -273,5 +273,25 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1092805572}
+    - target: {fileID: 3391368162110978180, guid: 96ea1fef37f481f4bbd176de7922e56f,
+        type: 3}
+      propertyPath: m_BoundingSphereOverride.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3391368162110978180, guid: 96ea1fef37f481f4bbd176de7922e56f,
+        type: 3}
+      propertyPath: m_BoundingSphereOverride.z
+      value: 3.9e-44
+      objectReference: {fileID: 0}
+    - target: {fileID: 3391368162110978180, guid: 96ea1fef37f481f4bbd176de7922e56f,
+        type: 3}
+      propertyPath: m_BoundingSphereOverride.w
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3391368162110978180, guid: 96ea1fef37f481f4bbd176de7922e56f,
+        type: 3}
+      propertyPath: m_BoundingSphereOverride.x
+      value: 3.08e-43
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 96ea1fef37f481f4bbd176de7922e56f, type: 3}

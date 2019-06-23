@@ -19,10 +19,14 @@ public class Projectiles : MonoBehaviour
     public float destroyProjectile = 2f;    // Time/Range before destroy is called for projectile >  Best Value 2/3
     public float kickBack = 10f;            // Zombie staggers back
 
+    
+
     private Transform myTransform;
     public GameObject bulletPrefab;         // Prefab of projectile to destroy itself on dealing damage/collision
     public Transform _BulletPrefab;         // Location of weapon bullet prefab in world for blood impact particle effects
     public GameObject bloodHitFX;           // blood on bullet impact
+
+
 
 
     // Start is called before the first frame update

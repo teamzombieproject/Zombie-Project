@@ -241,9 +241,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timer: 0.1
-  fireRate: 0.2
-  isShooting: 0
-  bulletTransform: {fileID: 3329351497008091300}
+  fireRate: 0.1
+  reloadTime: 2
+  curReloadTime: 0
+  ammoCount: 0
+  timeBetweenShots: 0.1
+  curAmmo: 20
+  maxAmmo: 20
+  ammoReload: 0
+  fireMode: 1
+  isReloading: 0
+  isShooting: 1
+  isShotGun: 0
+  uiObject: {fileID: 8053882076228081266, guid: d8ef08c6e537e6b4fb66e3a4ebc23547,
+    type: 3}
+  bulletTransform:
+  - {fileID: 3329351497008091300}
   bulletPrefab: {fileID: 1936136267260929035, guid: d905bf2a92d2e444d8a4d87c150f27a3,
     type: 3}
   fireSFX: {fileID: 3483953663813572494}
@@ -379,13 +392,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6196297875492943657}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
   m_LocalPosition: {x: -0.00000008389529, y: -0.058000002, z: -1.2939999}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 247433608384665086}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!1 &6592181902461334331
 GameObject:
   m_ObjectHideFlags: 0

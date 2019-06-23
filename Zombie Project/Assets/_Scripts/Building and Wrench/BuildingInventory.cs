@@ -11,7 +11,8 @@ public class BuildingInventory : MonoBehaviour
     public GameObject[] boxes; // selection boxes
     //public Sprite[] Icons; //bear trap, mine, turret, machgunturret, barricade
     GameObject Player, Arm;
-    public bool on = false;
+    public bool on = false, forceOn = false;
+    bool enableOnce = false;
     int pickupSlot;
 
     private void Start()
@@ -26,20 +27,22 @@ public class BuildingInventory : MonoBehaviour
         {
             Player = GameObject.FindGameObjectWithTag("Player");
         }
-        if (gameManager.State == GameManager.GameState.Build)
+        if ((gameManager.State == GameManager.GameState.Build || forceOn) && !enableOnce)
         {
-            //tempOn = false;
+            enableOnce = true;
             on = true;
             Player.transform.Find("Arm").GetComponent<Aiming>().enabled = false;
             Player.transform.Find("Arm").GetComponent<AudioSource>().enabled = false;
             Player.transform.Find("Arm").GetChild(0).gameObject.SetActive(false);
             GameObject.FindGameObjectWithTag("Canvas").transform.Find("InventorySelections").gameObject.SetActive(true);
         }
-        else
+        else if (gameManager.State != GameManager.GameState.Build && !forceOn)
         {
-           // tempOff = false;
-            on = false;
-            Disable();
+            if (on)
+            {
+                Disable();
+                enableOnce = false;
+            }
         }
         // if (gameManager.State == GameManager.GameState.Build)
         // {
@@ -158,6 +161,7 @@ public class BuildingInventory : MonoBehaviour
 
     private void Disable()
     {
+        on = false;
         //deactivate all UI
         for (int i = 0; i < boxes.Length; i++)
         {

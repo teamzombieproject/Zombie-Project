@@ -57,13 +57,15 @@ public class Turret : MonoBehaviour
             return;
         }
 
-        // turret to turn to lock on to closest zombie
-        Vector3 dir = target.position - transform.position;  // create a vector called dir that points in direction of our enemy 
-        Quaternion lookRotation = Quaternion.LookRotation(dir); //calculates which way to look
-        Vector3 rotation = Quaternion.Lerp(head.rotation, lookRotation, turnSpeed * Time.deltaTime).eulerAngles;  //convert quarternion to euler angles so we can specify just the y axis to rotate around
-        //using Lerp smooths out the rotation otherwise it would just jump to new target.
-        head.rotation = Quaternion.Euler(0f, rotation.y, 0f);
-
+        if (turretHealth > 0)
+        {
+            // turret to turn to lock on to closest zombie
+            Vector3 dir = target.position - transform.position;  // create a vector called dir that points in direction of our enemy 
+            Quaternion lookRotation = Quaternion.LookRotation(dir); //calculates which way to look
+            Vector3 rotation = Quaternion.Lerp(head.rotation, lookRotation, turnSpeed * Time.deltaTime).eulerAngles;  //convert quarternion to euler angles so we can specify just the y axis to rotate around
+                                                                                                                      //using Lerp smooths out the rotation otherwise it would just jump to new target.
+            head.rotation = Quaternion.Euler(0f, rotation.y, 0f);
+        }
         if (fireCountDown <= 0 && turretActive == true)
         {
             Shoot();

@@ -286,8 +286,16 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 0.5
+<<<<<<< HEAD
+<<<<<<< HEAD
+      scalar: 0.2
+      minScalar: 0.01
+=======
+=======
+>>>>>>> 4070960700746bed9235bd832389e41be9fe03ca
+      scalar: 0.3
       minScalar: 0.05
+>>>>>>> 4070960700746bed9235bd832389e41be9fe03ca
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -602,7 +610,7 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     randomizeRotationDirection: 0
-    maxNumParticles: 25
+    maxNumParticles: 15
     size3D: 0
     rotation3D: 1
     gravityModifier:
@@ -661,7 +669,7 @@ ParticleSystem:
   ShapeModule:
     serializedVersion: 6
     enabled: 1
-    type: 0
+    type: 5
     angle: 25
     length: 5
     boxThickness: {x: 0, y: 0, z: 0}
@@ -1027,7 +1035,7 @@ ParticleSystem:
           m_PreInfinity: 2
           m_PostInfinity: 2
           m_RotationOrder: 4
-      cycleCount: 60
+      cycleCount: 1
       repeatInterval: 0.01
       probability: 1
   SizeModule:
@@ -4768,7 +4776,15 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10308, guid: 0000000000000000f000000000000000, type: 0}
+<<<<<<< HEAD
+<<<<<<< HEAD
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+=======
+  - {fileID: 2100000, guid: 45f49408c2bbead40a2199a129341e94, type: 2}
+>>>>>>> 4070960700746bed9235bd832389e41be9fe03ca
+=======
+  - {fileID: 2100000, guid: 45f49408c2bbead40a2199a129341e94, type: 2}
+>>>>>>> 4070960700746bed9235bd832389e41be9fe03ca
   - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
