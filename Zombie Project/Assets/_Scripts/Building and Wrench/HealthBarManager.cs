@@ -16,13 +16,13 @@ public class HealthBarManager : MonoBehaviour
     {
         traps = GameObject.FindGameObjectsWithTag("Traps");
         turret = GameObject.FindGameObjectsWithTag("Turret");
-        machGunTurret = GameObject.FindGameObjectsWithTag("MachGunTurret");
+        //machGunTurret = GameObject.FindGameObjectsWithTag("MachGunTurret");
         barricade = GameObject.FindGameObjectsWithTag("Barricade");
 
-        amount = traps.Length + turret.Length + machGunTurret.Length + barricade.Length;
+        amount = traps.Length + turret.Length + barricade.Length; // + machGunTurret.Length;
         for (int i = 0; i < amount; i++)
         {
-            nHB = Instantiate(healthBar, GameObject.FindGameObjectWithTag("Canvas").transform);
+            nHB = Instantiate(healthBar, FindObjectOfType<Canvas>().transform);
             if (i < traps.Length)
             {
                 nHB.GetComponent<HealthBar>().following = traps[i];
@@ -31,13 +31,13 @@ public class HealthBarManager : MonoBehaviour
             {
                 nHB.GetComponent<HealthBar>().following = turret[i - traps.Length];
             }
-            else if (i - (turret.Length + traps.Length) < machGunTurret.Length)
+           // else if (i - (turret.Length + traps.Length) < machGunTurret.Length)
+           // {
+          //      nHB.GetComponent<HealthBar>().following = machGunTurret[i - (turret.Length + traps.Length)];
+          //  }
+            else if (i - (turret.Length + traps.Length) < barricade.Length) //(i - (turret.Length + machGunTurret.Length + traps.Length) < barricade.Length)
             {
-                nHB.GetComponent<HealthBar>().following = machGunTurret[i - (turret.Length + traps.Length)];
-            }
-            else if (i - (turret.Length + machGunTurret.Length + traps.Length) < barricade.Length)
-            {
-                nHB.GetComponent<HealthBar>().following = barricade[i - (turret.Length + machGunTurret.Length + traps.Length)];
+                nHB.GetComponent<HealthBar>().following = barricade[i - (turret.Length + traps.Length)];
             }
         }
         healthBars = GameObject.FindGameObjectsWithTag("HealthBar");

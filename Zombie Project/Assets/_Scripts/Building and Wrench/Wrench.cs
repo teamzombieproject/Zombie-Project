@@ -123,7 +123,7 @@ public class Wrench : MonoBehaviour
         {
             if (repairable.tag == repairableTags[i])
             {
-                Instantiate(sparks, repairable.transform.position + new Vector3 (0,.5f,0), Quaternion.Euler(90,0,0));
+                Instantiate(sparks, repairable.transform.position + new Vector3 (0,.5f,0), Quaternion.identity);
                 wrenchSFX.clip = repairSFX;
                 wrenchSFX.pitch = .8f;
                 wrenchSFX.Play();
@@ -154,7 +154,7 @@ public class Wrench : MonoBehaviour
                         
                     }
                 }
-                else if (i == 2 || i == 3)
+                else if (i == 2)
                 {
                      if (repairable.GetComponent<Turret>().turretHealth < 100)
                     {

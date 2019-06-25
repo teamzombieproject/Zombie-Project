@@ -327,7 +327,7 @@ GameObject:
   - component: {fileID: 8586061968091651990}
   m_Layer: 0
   m_Name: MachineGunTurretPlaceable
-  m_TagString: MachGunTurret
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -341,7 +341,7 @@ Transform:
   m_GameObject: {fileID: 3493166771876459753}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -6.098143, y: -0.49, z: 7.184585}
-  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_LocalScale: {x: 1.1, y: 1.1, z: 1.1}
   m_Children:
   - {fileID: 3493166772014778017}
   - {fileID: 3493166770992885152}
@@ -394,7 +394,7 @@ MonoBehaviour:
   isSprite: 0
   radius: 3
   objectMaterial: {fileID: 2100000, guid: ba1bea2d66acf9145a8e2b512a258a6b, type: 2}
-  placedObject: {fileID: 897477094050685447, guid: 9aceb76026c98ff4486c7107f8cc90d7,
+  placedObject: {fileID: 3902915271643526681, guid: da9347803883a954ea5b8c18477d12c5,
     type: 3}
 --- !u!114 &8586061968091651990
 MonoBehaviour:

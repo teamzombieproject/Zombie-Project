@@ -23,7 +23,7 @@ public class HealthBar : MonoBehaviour
     {
         tag = following.tag;
 
-        if (tag == "Turret" || tag == "MachGunTurret")
+        if (tag == "Turret")
         {
             health.fillAmount = following.GetComponent<Turret>().turretHealth / 100;
         }

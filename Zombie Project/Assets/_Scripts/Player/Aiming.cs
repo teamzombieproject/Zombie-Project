@@ -10,9 +10,9 @@ public class Aiming : MonoBehaviour
     {
         if (cameraObject == null) cameraObject = Camera.main;
     }
-    private void LateUpdate()
+    private void LateUpdate() // on lateupdate instead of fixed update. know its not the best for fairness but it looks so much better
     {
-        Aim();
+        Aim(); 
     }
 
     void Aim()
