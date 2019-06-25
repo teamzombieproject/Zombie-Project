@@ -10,6 +10,8 @@ public class Shooting : MonoBehaviour
 
 
 {
+    GameObject gameManager;
+
     public float timer = 0.1f;                   // count down timer for fireRate
     public float fireRate = 0f;                  // Time between shots set value for each bullet
     public float reloadTime = 2f;                // Time to reload
@@ -37,10 +39,12 @@ public class Shooting : MonoBehaviour
     public void Start()
     {
         ammoReload = 2147483647;                 // MaxValue for Integer
+        gameManager = GameObject.FindGameObjectWithTag("GameController");
     }
   
     private void Update()
     {
+
         timer -= Time.deltaTime;
 
         if (fireMode == 1) // FullAuto = High Power Rifle
@@ -102,11 +106,11 @@ public class Shooting : MonoBehaviour
 
         if (curAmmo == 0)                                   // Not working on prefab only works when game object reloadReminder is dragged onto the prefab copy in the hierachy
         {
-         reloadReminder.gameObject.SetActive(true);
+            gameManager.GetComponent<GameManager>().reloadGUIObject.SetActive(true);
         }
         else
         {
-         reloadReminder.gameObject.SetActive(false);
+            gameManager.GetComponent<GameManager>().reloadGUIObject.SetActive(false);
         }
     }
 

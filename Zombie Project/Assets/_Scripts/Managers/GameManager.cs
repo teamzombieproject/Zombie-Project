@@ -20,8 +20,7 @@ public class GameManager : MonoBehaviour
     public bool canZombiesSpawn = false;
     public bool actionPhaseActive = false;
     public bool isRadioDead = false;
-   
-
+    
     public float m_GameTime = 0f;
     public float GameTime { get { return m_GameTime; } }
     public float spawnDeactivate = 30f;
@@ -57,6 +56,7 @@ public class GameManager : MonoBehaviour
     public GameObject Gun3;
     public GameObject Gun4;
     public GameObject Gun5;
+    public GameObject reloadGUIObject;
 
 
     public int gameScore = 0;
@@ -145,6 +145,8 @@ public class GameManager : MonoBehaviour
         supplyDropSpawn = GameObject.Find("SupplyDropSpawn");
         bEDropSpawn = GameObject.Find("BEDropSpawn");
         weaponDropSpawn = GameObject.Find("WeaponDropSpawn");
+        reloadGUIObject = GameObject.Find("ReloadReminder");
+        reloadGUIObject.SetActive(false);
 
     // destroy all spawnable game objects that may remain from previous game
         GameObject[] zombies = GameObject.FindGameObjectsWithTag("Zombie");             // find all of the zombies that are left over from the last game and store them in an array
