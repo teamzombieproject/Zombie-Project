@@ -74,6 +74,7 @@ public class Health : MonoBehaviour
         healthTimer = 0;
         health -= damage;
         movement.hitKnockback = gameObject.transform.position - damagePosition; //knockback
+        Camera.main.GetComponent<ScreenShake>().CamShake(3.5f, .7f);
         GetComponent<AudioSource>().pitch = 1;
         GetComponent<AudioSource>().clip = damageSFX;
         GetComponent<AudioSource>().Play();
