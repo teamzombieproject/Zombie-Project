@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Health : MonoBehaviour
 {
@@ -26,7 +27,8 @@ public class Health : MonoBehaviour
     {
         lights = GameObject.FindGameObjectsWithTag("Light");
         startingHealth = health;
-        Debug.Log("starting health is " + startingHealth);
+        /* Debug.Log("starting health is " + startingHealth);
+        Health[] test = GetComponents<Health>(); */
     }
     private void Update()
     {
@@ -34,8 +36,9 @@ public class Health : MonoBehaviour
         {
             TakeDamage(10,Vector3.zero);
             takeDamage = false;
+            Debug.Log(takeDamage);
         }
-
+        
         if (health <= 0)
         {
             OnDeath();
@@ -69,6 +72,7 @@ public class Health : MonoBehaviour
 
     public void TakeDamage(float damage, Vector3 damagePosition)
     {
+        
         if (damaged || health <= 0) //indestructible if damaged
             return;
         healthTimer = 0;
@@ -78,13 +82,14 @@ public class Health : MonoBehaviour
         GetComponent<AudioSource>().pitch = 1;
         GetComponent<AudioSource>().clip = damageSFX;
         GetComponent<AudioSource>().Play();
-        // do inform health GUI when you can!
+       
         if (health > 0)
         {
             timer = 0;
             //sprite flashing and indestructability
             damaged = true;
         }
+        GameObject.FindGameObjectWithTag("Healthbar").GetComponent<Image>().fillAmount = health / startingHealth;
     }
 
     void OnDeath()

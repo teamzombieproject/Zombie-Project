@@ -27,11 +27,14 @@ public class OffScreenPoint : MonoBehaviour
             if (OffScreen())
             {
                 Aim();
-            } else if (!isDisabled)
+            }
+            else if (!isDisabled)
             {
                 Disable();
             }
-        }   
+        }
+        else if (!isDisabled)
+            Disable();
     }
 
     void Aim()
@@ -42,6 +45,7 @@ public class OffScreenPoint : MonoBehaviour
             if (x > 40 * Mathf.PI / 2)
                 x = 0;
             UpDownMove();
+
             Vector2 pos = cameraObject.WorldToScreenPoint(pointTransform.position);
             Ray cameraObjectRay = cameraObject.ScreenPointToRay(pos);
             Plane groundPlane = new Plane(Vector3.up, Vector3.zero);

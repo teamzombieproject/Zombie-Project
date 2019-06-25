@@ -42,12 +42,12 @@ public class Wrench : MonoBehaviour
                 if (repair)
                 {
                     wrenchSFX.clip = repairMissSFX;
-                    Camera.main.GetComponent<ScreenShake>().CamShake(.5f, .3f);
+                    Camera.main.GetComponent<ScreenShake>().CamShake(.8f, .3f);
                 }
                 else
                 {
                     wrenchSFX.clip = smackSFX;
-                    Camera.main.GetComponent<ScreenShake>().CamShake(1f, .5f);
+                    Camera.main.GetComponent<ScreenShake>().CamShake(1.5f, .3f);
                 }
                     wrenchSFX.pitch = .6f;
                 wrenchSFX.Play();

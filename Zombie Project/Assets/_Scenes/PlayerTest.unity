@@ -709,6 +709,7 @@ MonoBehaviour:
   Gun3: {fileID: 0}
   Gun4: {fileID: 0}
   Gun5: {fileID: 0}
+  reloadGUIObject: {fileID: 0}
   gameScore: 0
   wave: 0
   difficultyMultiplier: 1
@@ -2864,6 +2865,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Camera Rig
       objectReference: {fileID: 0}
+    - target: {fileID: 2894945383540275441, guid: 2681a09a07ffd9f4ba257d793f3a323f,
+        type: 3}
+      propertyPath: orthographic size
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 2894945381534073868, guid: 2681a09a07ffd9f4ba257d793f3a323f,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2918,11 +2924,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2894945383540275441, guid: 2681a09a07ffd9f4ba257d793f3a323f,
-        type: 3}
-      propertyPath: orthographic size
-      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 2894945383540275447, guid: 2681a09a07ffd9f4ba257d793f3a323f,
         type: 3}
