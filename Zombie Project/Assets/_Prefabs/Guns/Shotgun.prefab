@@ -608,7 +608,7 @@ MonoBehaviour:
   fireMode: 2
   isReloading: 0
   isShooting: 0
-  isShotGun: 1
+  isShotGun: 0
   bulletTransform:
   - {fileID: 4842987082252794632}
   - {fileID: 9175925573933949165}
@@ -616,7 +616,7 @@ MonoBehaviour:
   bulletPrefab: {fileID: 8418014002721013478, guid: 3682e24fb75e25e4797cbb5cf2a7c725,
     type: 3}
   fireSFX: {fileID: 6726400897484192802}
-  fireFx: {fileID: 6350805912164418681, guid: 001a1f7c4fae098478d8daace54d6db1, type: 3}
+  fireFx: {fileID: 7757583998089983991, guid: e6f76a071dec79c469c51674a67b1b4f, type: 3}
   shotGunFX: {fileID: 7757583998089983991, guid: e6f76a071dec79c469c51674a67b1b4f,
     type: 3}
 --- !u!1 &7957450501798241353
