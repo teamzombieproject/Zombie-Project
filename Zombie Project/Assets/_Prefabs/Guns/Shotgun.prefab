@@ -598,8 +598,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1987f946226ce947bbe45815e193df4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timer: 0.1
-  fireRate: 0.15
   reloadTime: 2
   curReloadTime: 0
   ammoCount: 0
@@ -609,9 +607,8 @@ MonoBehaviour:
   ammoReload: 0
   fireMode: 2
   isReloading: 0
-  isShooting: 1
+  isShooting: 0
   isShotGun: 1
-  reloadReminder: {fileID: 0}
   bulletTransform:
   - {fileID: 4842987082252794632}
   - {fileID: 9175925573933949165}

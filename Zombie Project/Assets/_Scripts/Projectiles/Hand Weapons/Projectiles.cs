@@ -42,12 +42,11 @@ public class Projectiles : MonoBehaviour
 
         destroyProjectile -= Time.deltaTime;
 
-        if(destroyProjectile <= 0)
+        if (destroyProjectile <= 0)
         {
             Destroy(gameObject);
         }
     }
-    
 
     public void OnCollisionEnter(Collision collision)
     {
@@ -69,7 +68,7 @@ public class Projectiles : MonoBehaviour
             // Destroy(gameObject);
             // GameObject.Instantiate(bloodHitFX, _BulletPrefab.position, _BulletPrefab.rotation);
         }
-        if (collision.gameObject.tag != "Zombie")
+        else
         {
             Destroy(gameObject);
         }
