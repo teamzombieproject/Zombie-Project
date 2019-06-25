@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ZombieAI : MonoBehaviour
 {
@@ -19,7 +20,6 @@ public class ZombieAI : MonoBehaviour
     public float attackTimer;
     public float damageToBarricade = 10;
     public float damageToTurret = 10;
-   // public float damageToMachGunTurret = 10;
     public float damageToRadio = 10;
     public float damageToPlayer = 20;
     public Rigidbody rb;
@@ -27,7 +27,9 @@ public class ZombieAI : MonoBehaviour
     float hitTimer;
     public float stunTime = 0.5f;
 
-
+   // public GameObject radioHealthBar;
+   
+     
     private void Start()
     {
         currentTarget = GameObject.FindGameObjectWithTag("Radio");
@@ -35,6 +37,8 @@ public class ZombieAI : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         zombieAcceleration = zombieWalkSpeed;                       // set movement speed
         sprite = GetComponentInChildren<SpriteRenderer>();
+      
+       
 
     }
 
@@ -47,15 +51,7 @@ public class ZombieAI : MonoBehaviour
             Vector3 lookPos = currentTarget.transform.position - transform.position;            // find target direction
             lookPos.y = 0;                                                                      // cancel out y vector
 
-            /*
-            var step = zombieRotationSpeed * Time.deltaTime;                                    // calculate zombie rotation speed for this step
-
-            Quaternion rot = Quaternion.LookRotation(lookPos);                                  // convert target dir to rotation
-            transform.rotation = Quaternion.Slerp(transform.rotation, rot, step);               // apply rotation
-            */
-
-
-
+           
             rb.AddRelativeForce(lookPos * zombieAcceleration, ForceMode.Impulse);       // apply acceleration
 
             if (rb.velocity.magnitude > zombieMaxSpeed)                                         // clamp max speed
@@ -118,7 +114,6 @@ public class ZombieAI : MonoBehaviour
     {
         if (col.gameObject.tag == "Barricade" ||
             col.gameObject.tag == "Turret" ||
-          //  col.gameObject.tag == "MachGunTurret" ||
             col.gameObject.tag == "Radio" ||
             col.gameObject.tag == "Player")
         {
@@ -150,17 +145,15 @@ public class ZombieAI : MonoBehaviour
                 turret.zombieAIScript.Add(this);
                 turret.turretHealth -= damageToTurret;
             }
-           // else if (attackObject.tag == "MachGunTurret")
-           // {
-            //    TurretMachGun mTurret = attackObject.GetComponent<TurretMachGun>();
-            //    mTurret.zombieAIScript.Add(this);
-            //    mTurret.machGunTurretHealth -= damageToMachGunTurret;
-           // }
+           
             else if (attackObject.tag == "Radio")
             {
                 Radio radio = attackObject.GetComponent<Radio>();
                 radio.zombieAIScript.Add(this);
                 radio.radioHealth -= damageToRadio;
+                 
+               
+
             }
             else if (attackObject.tag == "Player")
             {

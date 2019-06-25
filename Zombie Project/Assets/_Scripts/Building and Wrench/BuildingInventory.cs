@@ -41,6 +41,7 @@ public class BuildingInventory : MonoBehaviour
                 Player.transform.Find("Arm").GetComponent<AudioSource>().enabled = false;
                 Player.transform.Find("Arm").GetChild(0).gameObject.SetActive(false);
                 boxes[0].transform.parent.gameObject.SetActive(true);
+                //GameObject.FindGameObjectWithTag("Canvas").transform.Find("InventorySelections").gameObject.SetActive(true);
             }
             else if (gameManager.State != GameManager.GameState.Build && !forceOn)
             {
@@ -145,7 +146,7 @@ public class BuildingInventory : MonoBehaviour
                 quantity += buildInventory[i].GetComponent<PlaceBuildable>().quantity;
                 boxes[i].GetComponentInChildren<Text>().text = quantity.ToString();
                 buildInventory[i].GetComponent<PlaceBuildable>().quantity = quantity;
-                
+
                 return;
             }
             else if (buildInventory[i] == null && !(pickupSlot < i))
