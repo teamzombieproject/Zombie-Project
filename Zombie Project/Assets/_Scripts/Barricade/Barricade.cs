@@ -8,15 +8,6 @@ public class Barricade : MonoBehaviour
     public List<ZombieAI> zombieAIScript;
     
     
-    
-    
-    private void Start()
-    {
-       
-
-    }
-
-
    void Update()
     {
         if (barricadeHealth <= 0)
@@ -28,7 +19,7 @@ public class Barricade : MonoBehaviour
 
             for (int i = 0; i < zombieAIScript.Count; i++)
             {
-                //zombieAIScript[i].barricadeBeingAttacked = false;
+                
                 zombieAIScript[i].attackObject = null;
 
             }

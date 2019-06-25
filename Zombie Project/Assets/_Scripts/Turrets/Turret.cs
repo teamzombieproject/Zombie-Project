@@ -26,6 +26,10 @@ public class Turret : MonoBehaviour
     AudioSource audioSrc;
     public AudioClip audioClip;
 
+    public Renderer headRenderer;
+    public Renderer bodyRenderer;
+    public bool smokeParticlePlaying = false;
+
 
 
     void Start()
@@ -36,7 +40,7 @@ public class Turret : MonoBehaviour
 
         audioSrc = GetComponent<AudioSource>();
         audioSrc.clip = audioClip;
-        smokeParticle.Stop();
+        smokeParticle.Clear();
         
        
     }
@@ -133,21 +137,29 @@ public class Turret : MonoBehaviour
     {
         turretHealth = 0;
         turretActive = false;
-        smokeParticle.Play();
-       
-       foreach(Renderer rend in GetComponentsInChildren<Renderer>())
+        if (smokeParticlePlaying == false)
         {
-            rend.material = deadMat;
+            smokeParticle.Play();
+            smokeParticlePlaying = true;
         }
+        
+
+
+         bodyRenderer.material = deadMat;
+            headRenderer.material = deadMat;
+        
     }
 
     public void ActivateTurret()
     {
         turretActive = true;
-        foreach (Renderer rend in GetComponentsInChildren<Renderer>())
-        {
-            rend.material = activeMat;
-        }
+        
+        
+            bodyRenderer.material = activeMat;
+            headRenderer.material = activeMat;
+        smokeParticle.Stop();
+        smokeParticlePlaying = false;
+
     }
 
     private void OnDrawGizmosSelected()  // gives a visual of the range of the turret

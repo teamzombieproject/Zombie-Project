@@ -10,6 +10,7 @@ public class Radio : MonoBehaviour
     Image radioHealthBar;
     float maxHealth = 100f;
     public GameManager GM;
+    public Text radioUnderAttack;
 
 
     private void Start()
@@ -17,6 +18,7 @@ public class Radio : MonoBehaviour
         radioHealth = maxHealth;
         radioHealthBar = GameObject.FindGameObjectWithTag("RadioHealthBar").GetComponent<Image>();
         GM = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
+        radioUnderAttack.text = "";
     }
 
     // Update is called once per frame
@@ -27,7 +29,7 @@ public class Radio : MonoBehaviour
             Debug.Log("destroy me");
             for (int i=0; i<zombieAIScript.Count; i++)
             {
-               // zombieAIScript[i].radioBeingAttacked = false;
+               
                 zombieAIScript[i].attackObject = null;
             }
             GM.isRadioDead = true;
@@ -35,9 +37,23 @@ public class Radio : MonoBehaviour
         }
 
         radioHealthBar.fillAmount = radioHealth / maxHealth;
+
+        if (zombieAIScript.Count > 0)
+        {
+            radioUnderAttack.text = "Radio Under Attack!!";
+        }
+        else
+        {
+            radioUnderAttack.text = "";
+        }
+
     }
 
-    
+   
+
+
+
+
     public void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.tag == "Player" && GM.bEPiecePickedUp)
