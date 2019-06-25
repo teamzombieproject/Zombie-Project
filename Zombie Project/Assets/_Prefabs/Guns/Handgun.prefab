@@ -180,6 +180,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2532650045976885615}
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -1.214}
   m_LocalPosition: {x: -0.00000008389529, y: 0.039, z: -1.151}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -344,7 +345,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8482358737411333055}
-  m_LocalRotation: {x: 0, y: 0, z: -0, w: -1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0.347}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -352,7 +353,7 @@ Transform:
   - {fileID: 370331372349314335}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 360, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!82 &5080366854649731528
 AudioSource:
   m_ObjectHideFlags: 0
@@ -476,9 +477,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timer: 0.1
-  fireRate: 2
-  isShooting: 0
-  bulletTransform: {fileID: 6407584679637196514}
+  fireRate: 1
+  reloadTime: 2
+  curReloadTime: 0
+  ammoCount: 0
+  timeBetweenShots: 1
+  curAmmo: 6
+  maxAmmo: 6
+  ammoReload: 0
+  fireMode: 2
+  isReloading: 0
+  isShooting: 1
+  isShotGun: 0
+  reloadReminder: {fileID: 0}
+  bulletTransform:
+  - {fileID: 6407584679637196514}
   bulletPrefab: {fileID: 4819104520247393049, guid: 2fe1c89e759eacf478386962d30b3a57,
     type: 3}
   fireSFX: {fileID: 5080366854649731528}

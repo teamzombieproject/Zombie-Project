@@ -27,29 +27,21 @@ public class BuildingInventory : MonoBehaviour
         {
             Player = GameObject.FindGameObjectWithTag("Player");
         }
-        if (gameManager == null)
+        if ((gameManager.State == GameManager.GameState.Build || forceOn) && !enableOnce)
         {
-            gameManager = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
+            enableOnce = true;
+            on = true;
+            Player.transform.Find("Arm").GetComponent<Aiming>().enabled = false;
+            Player.transform.Find("Arm").GetComponent<AudioSource>().enabled = false;
+            Player.transform.Find("Arm").GetChild(0).gameObject.SetActive(false);
+            GameObject.FindGameObjectWithTag("Canvas").transform.Find("InventorySelections").gameObject.SetActive(true);
         }
-        else
+        else if (gameManager.State != GameManager.GameState.Build && !forceOn)
         {
-            if ((gameManager.State == GameManager.GameState.Build || forceOn) && !enableOnce)
+            if (on)
             {
-                enableOnce = true;
-                on = true;
-                Player.transform.Find("Arm").GetComponent<Aiming>().enabled = false;
-                Player.transform.Find("Arm").GetComponent<AudioSource>().enabled = false;
-                Player.transform.Find("Arm").GetChild(0).gameObject.SetActive(false);
-                boxes[0].transform.parent.gameObject.SetActive(true);
-                //GameObject.FindGameObjectWithTag("Canvas").transform.Find("InventorySelections").gameObject.SetActive(true);
-            }
-            else if (gameManager.State != GameManager.GameState.Build && !forceOn)
-            {
-                if (on)
-                {
-                    Disable();
-                    enableOnce = false;
-                }
+                Disable();
+                enableOnce = false;
             }
         }
         // if (gameManager.State == GameManager.GameState.Build)
@@ -187,7 +179,6 @@ public class BuildingInventory : MonoBehaviour
         Player.transform.Find("Arm").GetComponent<Aiming>().enabled = true;
         Player.transform.Find("Arm").GetChild(0).gameObject.SetActive(true);
         Player.transform.Find("Arm").GetComponent<AudioSource>().enabled = true;
-        boxes[0].transform.parent.gameObject.SetActive(false);
-        //GameObject.FindGameObjectWithTag("Canvas").transform.Find("InventorySelections").gameObject.SetActive(false);
+        GameObject.FindGameObjectWithTag("Canvas").transform.Find("InventorySelections").gameObject.SetActive(false);
     }
 }
