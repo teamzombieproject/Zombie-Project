@@ -255,7 +255,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3086630014904091425}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+<<<<<<< HEAD
+<<<<<<< HEAD
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+=======
+=======
+>>>>>>> 4070960700746bed9235bd832389e41be9fe03ca
   m_LocalPosition: {x: -0.00000008389529, y: 0.03, z: -0.317}
+>>>>>>> 4070960700746bed9235bd832389e41be9fe03ca
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 8955208013215146486}
@@ -610,9 +617,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timer: 0.1
-  fireRate: 2
-  isShooting: 0
-  bulletTransform: {fileID: 5844685197412164780}
+  fireRate: 0.4
+  reloadTime: 1
+  curReloadTime: 0
+  ammoCount: 0
+  timeBetweenShots: 0.4
+  curAmmo: 10
+  maxAmmo: 10
+  ammoReload: 0
+  fireMode: 2
+  isReloading: 0
+  isShooting: 1
+  isShotGun: 0
+  reloadReminder: {fileID: 0}
+  bulletTransform:
+  - {fileID: 5844685197412164780}
   bulletPrefab: {fileID: 3239035987806781411, guid: a890a8e6b49736546a7d8f56b8a320d2,
     type: 3}
   fireSFX: {fileID: 5724419091153691526}

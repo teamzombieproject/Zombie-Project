@@ -241,9 +241,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timer: 0.1
-  fireRate: 0.2
-  isShooting: 0
-  bulletTransform: {fileID: 3329351497008091300}
+  fireRate: 0.1
+  reloadTime: 2
+  curReloadTime: 0
+  ammoCount: 0
+  timeBetweenShots: 0.1
+  curAmmo: 20
+  maxAmmo: 20
+  ammoReload: 0
+  fireMode: 1
+  isReloading: 0
+  isShooting: 1
+  isShotGun: 0
+  uiObject: {fileID: 8053882076228081266, guid: d8ef08c6e537e6b4fb66e3a4ebc23547,
+    type: 3}
+  bulletTransform:
+  - {fileID: 3329351497008091300}
   bulletPrefab: {fileID: 1936136267260929035, guid: d905bf2a92d2e444d8a4d87c150f27a3,
     type: 3}
   fireSFX: {fileID: 3483953663813572494}
