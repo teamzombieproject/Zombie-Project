@@ -21,6 +21,7 @@ public class Turret : MonoBehaviour
     public Transform[] firePoint;
     public Material activeMat;
     public Material deadMat;
+    public ParticleSystem smokeParticle;
 
     AudioSource audioSrc;
     public AudioClip audioClip;
@@ -35,6 +36,8 @@ public class Turret : MonoBehaviour
 
         audioSrc = GetComponent<AudioSource>();
         audioSrc.clip = audioClip;
+        smokeParticle.Stop();
+        
        
     }
 
@@ -130,6 +133,8 @@ public class Turret : MonoBehaviour
     {
         turretHealth = 0;
         turretActive = false;
+        smokeParticle.Play();
+       
        foreach(Renderer rend in GetComponentsInChildren<Renderer>())
         {
             rend.material = deadMat;
