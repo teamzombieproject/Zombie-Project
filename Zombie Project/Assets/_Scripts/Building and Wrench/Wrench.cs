@@ -154,7 +154,7 @@ public class Wrench : MonoBehaviour
                         
                     }
                 }
-                else if (i == 2 || i == 3)
+                else if (i == 2)
                 {
                      if (repairable.GetComponent<Turret>().turretHealth < 100)
                     {
