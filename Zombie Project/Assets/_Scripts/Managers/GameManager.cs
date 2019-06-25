@@ -285,7 +285,6 @@ public class GameManager : MonoBehaviour
                 
                 spawnTimer += Time.deltaTime;
                 actionPhaseActive = true;
-                spawnDeactivate = 25f + difficultyMultiplier * 5;
 
                 if (playerHealth.deathIsFinished == true || isRadioDead)
                 {
@@ -327,6 +326,7 @@ public class GameManager : MonoBehaviour
                 {
                     m_GameState = GameState.Action;
                     m_GameTime = 0f;
+                    spawnDeactivate = 25f + difficultyMultiplier * 5;
                     spawns.mayspawn = true;
                     canZombiesSpawn = true;
                     spawnTimer = 0f;
