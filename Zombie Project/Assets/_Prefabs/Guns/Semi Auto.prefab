@@ -291,6 +291,9 @@ MonoBehaviour:
   bulletPrefab: {fileID: 6083209742458288922, guid: f0392dbb858a39741826fbbd7fdef7d8,
     type: 3}
   fireSFX: {fileID: 2142834022580833154}
+  fireFx: {fileID: 6350805912164418681, guid: 001a1f7c4fae098478d8daace54d6db1, type: 3}
+  shotGunFX: {fileID: 7757583998089983991, guid: e6f76a071dec79c469c51674a67b1b4f,
+    type: 3}
 --- !u!1 &3353654333145388009
 GameObject:
   m_ObjectHideFlags: 0
@@ -782,7 +785,6 @@ Transform:
   m_GameObject: {fileID: 8653720835582438181}
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
   m_LocalPosition: {x: 0, y: -0.09800001, z: -1.4440001}
-  m_LocalPosition: {x: -0.00000008389529, y: -0.09800001, z: -1.4440001}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 3353654333039757810}

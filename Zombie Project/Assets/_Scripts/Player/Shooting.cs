@@ -31,9 +31,11 @@ public class Shooting : MonoBehaviour
     //public bool isFullAuto = false;            // Done in Fire Mode
 
     public GameObject reloadReminder;            // reload text object "reload" reminder for player
-    public Transform[] bulletTransform;          // bullet spawn 
+    public Transform[] bulletTransform;          // bullet spawn for projectile and fireFX
     public GameObject bulletPrefab;              // Projectile prefab
     public AudioSource fireSFX;                  // Sound effects for firing
+    public GameObject fireFx;                    // Particle effect when firing
+    public GameObject shotGunFX;                 // Particle effect for shotgun firing
     //public AudioSource reloadSFX;              // Reload sound efffect
 
     public void Start()
@@ -57,6 +59,7 @@ public class Shooting : MonoBehaviour
                     isShooting = false;
                     Shoot();
                     StartCoroutine(ShootingPewPew());
+                    Camera.main.GetComponent<ScreenShake>().CamShake(.9f, .2f);
                 }
             }
         }
@@ -79,6 +82,7 @@ public class Shooting : MonoBehaviour
             {
                 isShooting = true;
                 BurstFire();
+                Camera.main.GetComponent<ScreenShake>().CamShake(.8f, .1f);
             }
         }
 
@@ -104,7 +108,7 @@ public class Shooting : MonoBehaviour
             ammoCount = 0;
         }
 
-        if (curAmmo == 0)                                   // Not working on prefab only works when game object reloadReminder is dragged onto the prefab copy in the hierachy
+        if (curAmmo == 0)                                   
         {
             gameManager.GetComponent<GameManager>().reloadGUIObject.SetActive(true);
         }
@@ -173,11 +177,15 @@ public class Shooting : MonoBehaviour
         }
 
         Instantiate(bulletPrefab, bulletTransform[0].position, bulletTransform[0].transform.rotation);
+        GameObject.Instantiate(fireFx, bulletTransform[0].position, bulletTransform[0].rotation);
 
         if (isShotGun)
         {
             Instantiate(bulletPrefab, bulletTransform[1].position, bulletTransform[1].transform.rotation);
             Instantiate(bulletPrefab, bulletTransform[2].position, bulletTransform[2].transform.rotation);
+            //GameObject.Instantiate(fireFx, bulletTransform[1].position, bulletTransform[1].rotation);
+            GameObject.Instantiate(shotGunFX, bulletTransform[2].position, bulletTransform[2].rotation);
+            Camera.main.GetComponent<ScreenShake>().CamShake(1.0f, .2f);
         }
 
         timer = fireRate;
