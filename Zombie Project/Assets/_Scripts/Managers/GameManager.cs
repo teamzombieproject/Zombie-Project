@@ -137,6 +137,13 @@ public class GameManager : MonoBehaviour
         Destroy(GameObject.FindGameObjectWithTag("SupplyDrop"));
         Destroy(GameObject.FindGameObjectWithTag("BEDrop"));
 
+        GameObject[] dropped = GameObject.FindGameObjectsWithTag("Dropped");
+        foreach(GameObject d in dropped)
+        {
+            Destroy(d);
+        }
+
+
         playerSpawn = GameObject.Find("PlayerSpawn");
         radioSpawn = GameObject.Find("RadioSpawn");
         supplyDropSpawn = GameObject.Find("SupplyDropSpawn");
@@ -144,7 +151,7 @@ public class GameManager : MonoBehaviour
         spawns = zombieSpawner.GetComponent<ZombieSpawner>();
         supplyDropSpawn = GameObject.Find("SupplyDropSpawn");
         bEDropSpawn = GameObject.Find("BEDropSpawn");
-        weaponDropSpawn = GameObject.Find("WeaponDropSpawn");
+        weaponDropSpawn = GameObject.Find("WeaponSpawn");
         reloadGUIObject = GameObject.Find("ReloadReminder");
         reloadGUIObject.SetActive(false);
 
@@ -188,7 +195,7 @@ public class GameManager : MonoBehaviour
         playerHealth = currentPlayer.GetComponent<Health>();
 
         // reset variables (score, wave number, resources, etc.)
-        wave = 0;
+        wave = 1;
         gameScore = 0;
         zombiesAlive = 0;
         bEPieces = 0;
