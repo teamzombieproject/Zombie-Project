@@ -103,6 +103,7 @@ GameObject:
   - component: {fileID: 2417684107044327581}
   - component: {fileID: 5334072846669427444}
   - component: {fileID: 4140898665458208162}
+  - component: {fileID: -437053049311843871}
   m_Layer: 0
   m_Name: Rifle .22
   m_TagString: Untagged
@@ -156,5 +157,21 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.7027516, y: 0.51, z: 0.19372436}
-  m_Center: {x: 0.090430506, y: 0, z: -0.04065082}
+  m_Size: {x: 0.7027516, y: 0.51, z: 0.29}
+  m_Center: {x: -0.1, y: 0, z: 0}
+--- !u!54 &-437053049311843871
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3239035987806781411}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 116
+  m_CollisionDetection: 1
