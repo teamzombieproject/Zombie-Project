@@ -5108,6 +5108,9 @@ MonoBehaviour:
   placeableBuildableName: TurretPlaceable
   quantity: 1
   pickupFX: {fileID: 3385835996189941754}
+  countdown: 2
+  min: 20
+  max: -20
 --- !u!54 &-619943069502577903
 Rigidbody:
   m_ObjectHideFlags: 0
