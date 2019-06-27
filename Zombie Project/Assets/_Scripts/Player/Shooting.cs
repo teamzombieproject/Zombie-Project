@@ -10,8 +10,6 @@ public class Shooting : MonoBehaviour
 
 
 {
-    GameObject gameManager;
-
     public float reloadTime = 2f;                // Time to reload
     public float curReloadTime;                  // current time in reload
     public float ammoCount;                      // Count of bullets in gun 
@@ -24,14 +22,16 @@ public class Shooting : MonoBehaviour
 
     public bool isReloading;                     // Player has pushed R
     public bool isShooting = false;              // Player has pushed Fire1
-    public bool isShotGun = false;               // Player is using shotgun
+    public bool isShotGun = true;                // Player is using shotgun
 
     public Transform[] bulletTransform;          // bullet spawn for projectile and fireFX
     public GameObject bulletPrefab;              // Projectile prefab
     public AudioSource fireSFX;                  // Sound effects for firing
-    public GameObject fireFx;                    // Particle effect when firing
-
+    public GameObject fireFx;                    // Particle effect when firing guns - (Shotgun has its own particle effect)
     //public AudioSource reloadSFX;              // Reload sound efffect
+
+    GameObject gameManager;
+
 
     public void Start()
     {
@@ -51,27 +51,29 @@ public class Shooting : MonoBehaviour
         {
             if (Input.GetButton("Fire1") && !isReloading && curAmmo > 0)
             {
-                if (!isShooting)
-                {
-                    curAmmo--;
-                    isShooting = true;
-                    Shoot();
-                    StartCoroutine(ShootingPewPew());
-
-                    Camera.main.GetComponent<ScreenShake>().CamShake(.7f, .2f); //Camera shake when firing
-                }
-            }
-        }
-        else if (fireMode == 2) //Single Fire = Handgun, .22 Rifle and Shotgun
-        {
-            if (Input.GetButtonDown("Fire1") && !isReloading && curAmmo > 0)
-            {
                 if (!isShooting) //check not shooting already
                 {
                     curAmmo--;
                     isShooting = true;  //set shoot flag so we cant shoot
                     Shoot();
                     StartCoroutine(ShootingPewPew());
+
+                    Camera.main.GetComponent<ScreenShake>().CamShake(.7f, .2f); //Camera shake when firing High Power Rifle
+                }
+            }
+        }
+        else if (fireMode == 2) //Single Fire = Handgun, .22 Rifle, Shotgun
+        {
+            if (Input.GetButtonDown("Fire1") && !isReloading && curAmmo > 0)
+            {
+                if (!isShooting)
+                {
+                    curAmmo--;
+                    isShooting = true; 
+                    Shoot();
+                    StartCoroutine(ShootingPewPew());
+
+                    // No Camera shake for Handgun and .22, Shotgun recieves camera shake in "isShotgun" in Shoot function
                 }
             }
         }
@@ -82,7 +84,7 @@ public class Shooting : MonoBehaviour
                 isShooting = true;
                 BurstFire();
 
-                Camera.main.GetComponent<ScreenShake>().CamShake(.8f, .1f); //Camera shake when firing
+                Camera.main.GetComponent<ScreenShake>().CamShake(.8f, .1f); //Camera shake when firing Semi Auto
             }
         }
 
@@ -154,7 +156,7 @@ public class Shooting : MonoBehaviour
 
         if (fireMode != 3)
         {
-            isShooting = false; // reset shot flag so we can shoot again
+            isShooting = false; //reset shot flag so we can shoot again
         }
 
         if (fireMode == 3)
@@ -177,10 +179,12 @@ public class Shooting : MonoBehaviour
 
         if (isShotGun)
         {
+            Instantiate(bulletPrefab, bulletTransform[0].position, bulletTransform[0].transform.rotation);
             Instantiate(bulletPrefab, bulletTransform[1].position, bulletTransform[1].transform.rotation);
             Instantiate(bulletPrefab, bulletTransform[2].position, bulletTransform[2].transform.rotation);
 
-            Camera.main.GetComponent<ScreenShake>().CamShake(2.0f, .3f); //Camera shake when firing
+            Camera.main.GetComponent<ScreenShake>().CamShake(2.0f, .3f); //Camera shake when firing shotgun
         }
     }
 }
+
