@@ -475,10 +475,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1987f946226ce947bbe45815e193df4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  reloadTime: 2
+  reloadTime: 0.3
   curReloadTime: 0
   ammoCount: 0
-  timeBetweenShots: 1
+  timeBetweenShots: 0.3
   curAmmo: 6
   maxAmmo: 6
   ammoReload: 0
@@ -492,5 +492,3 @@ MonoBehaviour:
     type: 3}
   fireSFX: {fileID: 5080366854649731528}
   fireFx: {fileID: 6350805912164418681, guid: 001a1f7c4fae098478d8daace54d6db1, type: 3}
-  shotGunFX: {fileID: 7757583998089983991, guid: e6f76a071dec79c469c51674a67b1b4f,
-    type: 3}

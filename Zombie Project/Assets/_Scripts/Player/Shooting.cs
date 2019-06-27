@@ -28,6 +28,7 @@ public class Shooting : MonoBehaviour
     public GameObject bulletPrefab;              // Projectile prefab
     public AudioSource fireSFX;                  // Sound effects for firing
     public GameObject fireFx;                    // Particle effect when firing guns - (Shotgun has its own particle effect)
+
     //public AudioSource reloadSFX;              // Reload sound efffect
 
     GameObject gameManager;
@@ -47,7 +48,7 @@ public class Shooting : MonoBehaviour
   
     private void Update()
     {
-        if (fireMode == 1) // FullAuto = High Power Rifle
+        if (fireMode == 1 || fireMode == 2) // Fire mode 1 = FullAuto(High Power Rifle) Fire mode 2 = Single fire(Handgun, .22 & Shotgun)
         {
             if (Input.GetButton("Fire1") && !isReloading && curAmmo > 0)
             {
@@ -58,22 +59,7 @@ public class Shooting : MonoBehaviour
                     Shoot();
                     StartCoroutine(ShootingPewPew());
 
-                    Camera.main.GetComponent<ScreenShake>().CamShake(.7f, .2f); //Camera shake when firing High Power Rifle
-                }
-            }
-        }
-        else if (fireMode == 2) //Single Fire = Handgun, .22 Rifle, Shotgun
-        {
-            if (Input.GetButtonDown("Fire1") && !isReloading && curAmmo > 0)
-            {
-                if (!isShooting)
-                {
-                    curAmmo--;
-                    isShooting = true; 
-                    Shoot();
-                    StartCoroutine(ShootingPewPew());
-
-                    // No Camera shake for Handgun and .22, Shotgun recieves camera shake in "isShotgun" in Shoot function
+                    Camera.main.GetComponent<ScreenShake>().CamShake(.7f, .2f); //Camera shake when firing guns
                 }
             }
         }
@@ -84,7 +70,7 @@ public class Shooting : MonoBehaviour
                 isShooting = true;
                 BurstFire();
 
-                Camera.main.GetComponent<ScreenShake>().CamShake(.8f, .1f); //Camera shake when firing Semi Auto
+                Camera.main.GetComponent<ScreenShake>().CamShake(.8f, .2f); //Camera shake when firing Semi Auto
             }
         }
 
@@ -179,11 +165,8 @@ public class Shooting : MonoBehaviour
 
         if (isShotGun)
         {
-            Instantiate(bulletPrefab, bulletTransform[0].position, bulletTransform[0].transform.rotation);
             Instantiate(bulletPrefab, bulletTransform[1].position, bulletTransform[1].transform.rotation);
             Instantiate(bulletPrefab, bulletTransform[2].position, bulletTransform[2].transform.rotation);
-
-            Camera.main.GetComponent<ScreenShake>().CamShake(2.0f, .3f); //Camera shake when firing shotgun
         }
     }
 }
