@@ -61,14 +61,15 @@ public class RocketLauncher : MonoBehaviour
             zomb.isHit = true;
 
             //  collision.gameObject.SendMessage("TakeDamage", rocketDamage, SendMessageOptions.DontRequireReceiver);
-            //  Destroy(gameObject);
-
+           
             GameObject.Instantiate(explosionEffect, rocketPrefab.position, rocketPrefab.rotation);
 
             if (splashDamage > 0f)
             {
                 DamageRadius();
             }
+
+            Destroy(gameObject);
 
         }
         if (collision.gameObject.tag != "Zombie")

@@ -65,7 +65,7 @@ public class Projectiles : MonoBehaviour
             GameObject.Instantiate(bloodHitFX, _BulletPrefab.position, _BulletPrefab.rotation);
 
             // collision.gameObject.SendMessage("TakeDamage", projectileDamage, SendMessageOptions.DontRequireReceiver);
-            // Destroy(gameObject);
+            Destroy(gameObject);
             // GameObject.Instantiate(bloodHitFX, _BulletPrefab.position, _BulletPrefab.rotation);
         }
         else

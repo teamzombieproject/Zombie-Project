@@ -76,7 +76,7 @@ MonoBehaviour:
   weaponDropObject: {fileID: 0}
   playerObject: {fileID: 7897983124235829538, guid: a2944bdffc92d564684d9cfae975ca94,
     type: 3}
-  radioObject: {fileID: 2949494387020026980, guid: ae3fc63cf521c0f4c9df227823a55a5f,
+  radioObject: {fileID: 8405801758561485902, guid: 801f47a95022b214d81f21ce05f81c2e,
     type: 3}
   cameraRigObject: {fileID: 2894945381534073869, guid: 2681a09a07ffd9f4ba257d793f3a323f,
     type: 3}
@@ -98,6 +98,7 @@ MonoBehaviour:
   Gun3: {fileID: 968243663125828718, guid: 80cf3d10b02a00b49a23ed9987c597bc, type: 3}
   Gun4: {fileID: 2856288382467738154, guid: 766ba9e845833b140bdc184870ba0e1a, type: 3}
   Gun5: {fileID: 7306787393381154593, guid: 25b94170be692ee48a05c97268667161, type: 3}
+  reloadGUIObject: {fileID: 0}
   gameScore: 0
   wave: 0
   difficultyMultiplier: 1

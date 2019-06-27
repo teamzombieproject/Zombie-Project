@@ -112,7 +112,11 @@ MonoBehaviour:
   - {fileID: 3304508161497930326}
   activeMat: {fileID: 2100000, guid: e51fbe90caeacba44b30c0c5fa3f46e8, type: 2}
   deadMat: {fileID: 2100000, guid: 33e636b026ff27e499bfe03686c21a90, type: 2}
+  smokeParticle: {fileID: 0}
   audioClip: {fileID: 8300000, guid: 8581f806dddef8046b4942de05b897be, type: 3}
+  headRenderer: {fileID: 0}
+  bodyRenderer: {fileID: 0}
+  smokeParticlePlaying: 0
 --- !u!82 &358017180
 AudioSource:
   m_ObjectHideFlags: 0
@@ -479,7 +483,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6439540118158276280}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.03, y: 0.694, z: 0.921}
+  m_LocalPosition: {x: 0.03, y: 0.694, z: 1.24}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 3304508161214607233}
