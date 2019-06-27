@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
@@ -23,9 +24,9 @@ public class GameManager : MonoBehaviour
     
     public float m_GameTime = 0f;
     public float GameTime { get { return m_GameTime; } }
-    public float spawnDeactivate = 30f;
+    public float timeUntilEndOfWave = 30f;
     public float spawnTimer = 0f;
-    public float bEDropTimeEnd = 20f;
+    public float timeUntilBEDrop = 0f;
 
     public Health playerHealth;
     public ZombieSpawner spawns;
@@ -58,6 +59,11 @@ public class GameManager : MonoBehaviour
     public GameObject Gun5;
     public GameObject reloadGUIObject;
 
+    GameObject GameHUD;
+    Text WaveNumberText;
+    Text ZombiesRemainText;
+    Text TimeRemainText;
+    Text AmmoText;
 
     public int gameScore = 0;
     public int wave = 0;
@@ -69,6 +75,7 @@ public class GameManager : MonoBehaviour
     public int mineStock = 0;
     public int bearTrapStock = 0;
     public int barricadeStock = 0;
+    public int currentAmmo = 0;
 
     public enum GameState
     {
@@ -155,6 +162,12 @@ public class GameManager : MonoBehaviour
         reloadGUIObject = GameObject.Find("ReloadReminder");
         reloadGUIObject.SetActive(false);
 
+        GameHUD = GameObject.Find("GUI");
+        WaveNumberText = GameObject.Find("Swarm Number").GetComponent<Text>();
+        ZombiesRemainText = GameObject.Find("Zombies Remaining").GetComponent<Text>();
+        TimeRemainText = GameObject.Find("Time Remaining").GetComponent<Text>();
+        AmmoText = GameObject.Find("Ammo").GetComponent<Text>();
+
     // destroy all spawnable game objects that may remain from previous game
         GameObject[] zombies = GameObject.FindGameObjectsWithTag("Zombie");             // find all of the zombies that are left over from the last game and store them in an array
         GameObject[] Traps = GameObject.FindGameObjectsWithTag("Traps");
@@ -204,6 +217,9 @@ public class GameManager : MonoBehaviour
         barricadeStock = 0;
         machineGunTurretStock = 0;
         javelinRocketTurretStock = 0;
+        currentAmmo = 0;
+        spawnTimer = timeUntilEndOfWave;
+        timeUntilBEDrop = spawnTimer / 2;
 
         // change to the action state once everything is setup)
         m_GameState = GameState.Action;
@@ -282,8 +298,19 @@ public class GameManager : MonoBehaviour
                 Init();
                 break;
             case GameState.Action:
-                
-                spawnTimer += Time.deltaTime;
+
+                // update HUD
+                GameHUD.SetActive(true);
+                WaveNumberText.text = "Wave: " + wave;
+                ZombiesRemainText.text = "Zombies Remaining: " + zombiesAlive;
+
+                double spawnTimerRounded;
+                spawnTimerRounded = System.Math.Round(spawnTimer, 2);               // round the timer to 2 decimal places
+                TimeRemainText.text = "Time Remaining: " + spawnTimerRounded;
+
+                AmmoText.text = "Ammo: " + currentAmmo;
+
+                spawnTimer -= Time.deltaTime;           // count down spawn timer
                 actionPhaseActive = true;
 
                 if (playerHealth.deathIsFinished == true || isRadioDead)
@@ -292,13 +319,14 @@ public class GameManager : MonoBehaviour
                 }
 
                 // change hud
-                if ( spawnTimer >= spawnDeactivate)
+                if (spawnTimer <= 0)                    // spawn timer expired
                 {
                     spawns.mayspawn = false;
                     canZombiesSpawn = false;
+                    spawnTimer = 0;                      // keep timer at 0
                 }
 
-                if ( spawnTimer >= bEDropTimeEnd && !hasBEDropSpawned && !bEPiecePickedUp)
+                if ( spawnTimer <= timeUntilBEDrop && !hasBEDropSpawned && !bEPiecePickedUp)            // drop broadcast equipment
                 {
                     SpawnBEDrop();
                 }
@@ -309,13 +337,16 @@ public class GameManager : MonoBehaviour
                 }
 
                 // All zombies dead change to build state
-                if (!canZombiesSpawn && spawnTimer >= 3 && zombiesAlive == 0 && !bEPiecePickedUp)
+                if (!canZombiesSpawn && spawnTimer <= 0 && zombiesAlive == 0 && bEPiecePickedUp)
                 {
                     m_GameState = GameState.Build;
                 }
 
                 break;
             case GameState.Build:
+
+                GameHUD.SetActive(false);
+
                 m_GameTime += Time.deltaTime;
                 actionPhaseActive = false;
                 GameObject[] Dropped = GameObject.FindGameObjectsWithTag("Dropped");
@@ -326,7 +357,7 @@ public class GameManager : MonoBehaviour
                 {
                     m_GameState = GameState.Action;
                     m_GameTime = 0f;
-                    spawnDeactivate = 25f + difficultyMultiplier * 5;
+                    timeUntilEndOfWave = 25f + difficultyMultiplier * 5;
                     spawns.mayspawn = true;
                     canZombiesSpawn = true;
                     spawnTimer = 0f;
@@ -338,6 +369,9 @@ public class GameManager : MonoBehaviour
                     canGunBeSpawned = true;
                     wave += 1;
                     difficultyMultiplier = wave + 1;
+                    spawnTimer = timeUntilEndOfWave;
+                    timeUntilBEDrop = spawnTimer / 2;
+                    bEPiecePickedUp = false;
                 }
 
                 // Make the supply drop spawn (set Spawn bool to true) (can only spawn when false)
