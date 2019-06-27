@@ -5108,6 +5108,9 @@ MonoBehaviour:
   placeableBuildableName: MinePlaceable
   quantity: 1
   pickupFX: {fileID: 5466697864697345}
+  countdown: 2
+  min: 20
+  max: -20
 --- !u!54 &-672809511571458755
 Rigidbody:
   m_ObjectHideFlags: 0

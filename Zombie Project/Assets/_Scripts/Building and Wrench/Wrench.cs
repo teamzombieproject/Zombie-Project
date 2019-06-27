@@ -5,7 +5,7 @@ using UnityEngine;
 public class Wrench : MonoBehaviour
 {
     public float forceMagnitude = 10, damage = 30, initialCooldown = 3, repairAmount = 5;
-    float cooldown = 1;
+    float cooldown = 0;
     bool attacking, repair;
     int rotation = 1, count = 0;
     public int swingSpeed = 6;
@@ -73,7 +73,8 @@ public class Wrench : MonoBehaviour
         {
             Debug.Log("Zombie Hit");
                 other.gameObject.GetComponent<Rigidbody>().AddForce(other.gameObject.transform.position - new Vector3 (transform.position.x,0,transform.position.y)* forceMagnitude, ForceMode.Impulse);
-                other.gameObject.SendMessage("TakeDamage", damage, SendMessageOptions.DontRequireReceiver);
+            // other.gameObject.SendMessage("TakeDamage", damage, SendMessageOptions.DontRequireReceiver);
+            other.gameObject.GetComponent<ZombieHealth>().Hurt(damage, gameObject.transform.position, 1.4f);
                 Instantiate(hitFX, other.transform.position, Quaternion.identity);
                 //hitSFX.Play();
         }

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.AI;
 
 public class ZombieAI : MonoBehaviour
 {
@@ -27,7 +28,10 @@ public class ZombieAI : MonoBehaviour
     float hitTimer;
     public float stunTime = 0.5f;
 
-   // public GameObject radioHealthBar;
+    // public GameObject radioHealthBar;
+
+    //CONNORS NEW CODE
+    NavMeshAgent navAgent;
    
      
     private void Start()
@@ -37,8 +41,11 @@ public class ZombieAI : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         zombieAcceleration = zombieWalkSpeed;                       // set movement speed
         sprite = GetComponentInChildren<SpriteRenderer>();
-      
-       
+
+        //CONNORS NEW CODE
+        navAgent = GetComponent<NavMeshAgent>();
+        navAgent.speed = zombieMaxSpeed;
+       // navAgent.acceleration = zombieWalkSpeed;
 
     }
 
@@ -48,17 +55,21 @@ public class ZombieAI : MonoBehaviour
         if (currentTarget != null && !isHit)  //if there is a target identified from Zombie Detect Script
         {
 
-            Vector3 lookPos = currentTarget.transform.position - transform.position;            // find target direction
-            lookPos.y = 0;                                                                      // cancel out y vector
+            /* Vector3 lookPos = currentTarget.transform.position - transform.position;            // find target direction
+             lookPos.y = 0;                                                                      // cancel out y vector
 
-           
-            rb.AddRelativeForce(lookPos * zombieAcceleration, ForceMode.Impulse);       // apply acceleration
 
-            if (rb.velocity.magnitude > zombieMaxSpeed)                                         // clamp max speed
-            {
-                rb.velocity = rb.velocity.normalized * zombieMaxSpeed;
-            }
+             rb.AddRelativeForce(lookPos * zombieAcceleration, ForceMode.Impulse);       // apply acceleration
 
+             if (rb.velocity.magnitude > zombieMaxSpeed)                                         // clamp max speed
+             {
+                 rb.velocity = rb.velocity.normalized * zombieMaxSpeed;
+             }
+             */
+
+            //moving toward target code
+            navAgent.SetDestination(currentTarget.transform.position);
+            
         }
     }
 
@@ -75,12 +86,13 @@ public class ZombieAI : MonoBehaviour
                 hitTimer = stunTime;                                                            // reset the timer
             }
         }
-
+        /*
         if (zombieHealth <= 0)
         {
-            Destroy(this.gameObject);
+            Destroy(gameObject);
+            //add instantiate corpse
         }
-
+        */
         if (attackObject != null)
         {
             ZombieAttack();
@@ -90,7 +102,7 @@ public class ZombieAI : MonoBehaviour
             ZombieWalk();
         }
 
-        if (rb.velocity.x < 0)
+        if (navAgent.velocity.x < 0) //rb is now navAgent
         {
             sprite.flipX = false;
         }
@@ -99,7 +111,7 @@ public class ZombieAI : MonoBehaviour
             sprite.flipX = true;
         }
 
-        if (rb.velocity.z < 0)
+        if (navAgent.velocity.z < 0) //rb is now navagent
         {
             zombieAnimator.SetBool("back", true);
         }
@@ -125,7 +137,9 @@ public class ZombieAI : MonoBehaviour
 
     private void OnCollisionExit(Collision collision)
     {
+        if (collision.gameObject == attackObject)
         attackObject = null;
+        
     }
 
     void ZombieAttack()
@@ -159,7 +173,7 @@ public class ZombieAI : MonoBehaviour
             {
                attackObject.GetComponent<Health>().TakeDamage(damageToPlayer, transform.position);  
             }
-
+            
             attackTimer = 0;
         }
 
@@ -175,14 +189,16 @@ public class ZombieAI : MonoBehaviour
 
     void ZombieHit()
     {
-        zombieAcceleration = 0;
+        //zombieAcceleration = 0;
+        navAgent.isStopped = true;
         zombieAnimator.SetBool("attack", false);
     }
 
 
     void ZombieWalk()
     {
-        zombieAcceleration = zombieWalkSpeed;
+        //zombieAcceleration = zombieWalkSpeed;
+        navAgent.isStopped = false;
         zombieAnimator.SetBool("attack", false);
     }
 

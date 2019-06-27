@@ -54,7 +54,6 @@ public class OffScreenPoint : MonoBehaviour
             if (groundPlane.Raycast(cameraObjectRay, out rayLength))
             {
                 Vector3 pointToLook = cameraObjectRay.GetPoint(rayLength);
-                Debug.DrawLine(cameraObjectRay.origin, pointToLook, Color.blue);
 
                 transform.LookAt(new Vector3(pointToLook.x, transform.position.y, pointToLook.z));
             }

@@ -45,6 +45,11 @@ public class HealthBar : MonoBehaviour
         {
             health.fillAmount = following.GetComponent<Barricade>().barricadeHealth / 60;
         }
+        if (following == null)
+        {
+            health.gameObject.SetActive(false);
+            GetComponent<Image>().enabled = false;
+        }
     }
     private void LateUpdate()
     {

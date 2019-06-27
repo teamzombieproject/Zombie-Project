@@ -89,7 +89,8 @@ public class Health : MonoBehaviour
             //sprite flashing and indestructability
             damaged = true;
         }
-        GameObject.FindGameObjectWithTag("Healthbar").GetComponent<Image>().fillAmount = health / startingHealth;
+        //GameObject.FindGameObjectWithTag("Healthbar").GetComponent<Image>()
+        FindObjectOfType<Canvas>().transform.GetChild(0).Find("HealthBarBackground").Find("HealthBar").GetComponent<Image>().fillAmount = health / startingHealth;
     }
 
     void OnDeath()

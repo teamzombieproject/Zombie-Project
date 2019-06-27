@@ -10,9 +10,12 @@ public class PickupBuildable : MonoBehaviour
     GameObject target;
     public ParticleSystem pickupFX;
     public float countdown = 2;
+    public float min = -5, max = 10;
 
     private void Start()
     {
+        int random = Random.Range(0, 2) * 2 - 1;
+        GetComponent<Rigidbody>().AddForce(new Vector3(Random.Range(min, max) , 0, Random.Range(min, max)), ForceMode.Impulse);
         
     }
     private void OnTriggerEnter(Collider other)

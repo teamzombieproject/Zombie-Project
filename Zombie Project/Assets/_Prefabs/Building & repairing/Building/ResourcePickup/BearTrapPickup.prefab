@@ -4972,6 +4972,9 @@ MonoBehaviour:
   placeableBuildableName: BearTrapPlaceable
   quantity: 1
   pickupFX: {fileID: 3094335276536739063}
+  countdown: 2
+  min: 20
+  max: -20
 --- !u!54 &4388107194543156973
 Rigidbody:
   m_ObjectHideFlags: 0

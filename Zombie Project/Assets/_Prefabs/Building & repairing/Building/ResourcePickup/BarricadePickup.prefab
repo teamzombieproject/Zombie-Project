@@ -144,6 +144,9 @@ MonoBehaviour:
   placeableBuildableName: Barricade11Placeable
   quantity: 1
   pickupFX: {fileID: 7773288305457266635}
+  countdown: 2
+  min: 20
+  max: -20
 --- !u!54 &6402736124455416889
 Rigidbody:
   m_ObjectHideFlags: 0
