@@ -18,13 +18,14 @@ public class Projectiles : MonoBehaviour
     public float projectileSpeed = 2f;      // Speed/Delay of projectile >  Best Value 10
     public float destroyProjectile = 2f;    // Time/Range before destroy is called for projectile >  Best Value 2/3
     public float kickBack = 10f;            // Zombie staggers back
-
+    public bool isDeagle;                   // If Desert Eagle 
     
 
     private Transform myTransform;
     public GameObject bulletPrefab;         // Prefab of projectile to destroy itself on dealing damage/collision
     public Transform _BulletPrefab;         // Location of weapon bullet prefab in world for blood impact particle effects
     public GameObject bloodHitFX;           // blood on bullet impact
+
 
 
 
@@ -67,6 +68,20 @@ public class Projectiles : MonoBehaviour
             // collision.gameObject.SendMessage("TakeDamage", projectileDamage, SendMessageOptions.DontRequireReceiver);
             Destroy(gameObject);
             // GameObject.Instantiate(bloodHitFX, _BulletPrefab.position, _BulletPrefab.rotation);
+        }
+        if (isDeagle == true)
+        {
+            ZombieAI zomb = collision.gameObject.GetComponent<ZombieAI>();
+
+            zomb.gameObject.SendMessage("TakeDamage", projectileDamage, SendMessageOptions.DontRequireReceiver);
+            zomb.isHit = true;
+
+            Vector3 shotDir = zomb.transform.position - transform.position;
+            shotDir.y = 0;
+
+            zomb.rb.AddForce(shotDir * kickBack, ForceMode.Impulse);
+
+            GameObject.Instantiate(bloodHitFX, _BulletPrefab.position, _BulletPrefab.rotation);
         }
         else
         {

@@ -142,6 +142,7 @@ MonoBehaviour:
   projectileSpeed: 50
   destroyProjectile: 4
   kickBack: 6
+  isDeagle: 0
   bulletPrefab: {fileID: 1936136267260929035}
   _BulletPrefab: {fileID: 1702502901454687093}
   bloodHitFX: {fileID: 492924346993083021, guid: f55f02b964098344b90354e2bec44554,

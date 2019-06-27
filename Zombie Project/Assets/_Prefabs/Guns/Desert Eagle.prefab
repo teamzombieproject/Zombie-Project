@@ -432,7 +432,7 @@ GameObject:
   - component: {fileID: 9094114606172060074}
   - component: {fileID: 6561063728095155731}
   m_Layer: 0
-  m_Name: Handgun (1)
+  m_Name: Desert Eagle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -466,7 +466,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: d8e5253d276157f43a7ee472537f3abc, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.171
+  m_Volume: 0.453
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -576,12 +576,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1987f946226ce947bbe45815e193df4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  reloadTime: 0.3
+  reloadTime: 2
   curReloadTime: 0
   ammoCount: 0
-  timeBetweenShots: 0.3
-  curAmmo: 6
-  maxAmmo: 6
+  timeBetweenShots: 0.2
+  curAmmo: 4
+  maxAmmo: 4
   ammoReload: 0
   fireMode: 2
   isReloading: 0
@@ -589,7 +589,7 @@ MonoBehaviour:
   isShotGun: 0
   bulletTransform:
   - {fileID: 7889296688286864957}
-  bulletPrefab: {fileID: 4819104520247393049, guid: 2fe1c89e759eacf478386962d30b3a57,
+  bulletPrefab: {fileID: 9116186800894625880, guid: 23e4ed63e7b88f54ba688484ec505a77,
     type: 3}
   fireSFX: {fileID: 8291460495896170775}
   fireFx: {fileID: 6350805912164418681, guid: 001a1f7c4fae098478d8daace54d6db1, type: 3}
