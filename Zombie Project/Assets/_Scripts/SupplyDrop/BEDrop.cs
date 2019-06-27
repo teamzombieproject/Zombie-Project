@@ -23,6 +23,7 @@ public class BEDrop : MonoBehaviour
         {
             GM.bEPiecePickedUp = true;
             Destroy(gameObject);
+            GM.BEUpdateText.text = "Goal: Bring the BE Drop back to the radio";
         }
     }
 }
