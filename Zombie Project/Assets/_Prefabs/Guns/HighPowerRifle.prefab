@@ -256,6 +256,9 @@ MonoBehaviour:
   bulletPrefab: {fileID: 1936136267260929035, guid: d905bf2a92d2e444d8a4d87c150f27a3,
     type: 3}
   fireSFX: {fileID: 3483953663813572494}
+  fireFx: {fileID: 6350805912164418681, guid: 001a1f7c4fae098478d8daace54d6db1, type: 3}
+  shotGunFX: {fileID: 7757583998089983991, guid: e6f76a071dec79c469c51674a67b1b4f,
+    type: 3}
 --- !u!1 &462462533107970479
 GameObject:
   m_ObjectHideFlags: 0

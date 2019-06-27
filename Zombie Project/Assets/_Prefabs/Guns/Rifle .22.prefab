@@ -612,7 +612,7 @@ MonoBehaviour:
   reloadTime: 1
   curReloadTime: 0
   ammoCount: 0
-  timeBetweenShots: 0.4
+  timeBetweenShots: 1
   curAmmo: 10
   maxAmmo: 10
   ammoReload: 0
@@ -625,6 +625,9 @@ MonoBehaviour:
   bulletPrefab: {fileID: 3239035987806781411, guid: a890a8e6b49736546a7d8f56b8a320d2,
     type: 3}
   fireSFX: {fileID: 5724419091153691526}
+  fireFx: {fileID: 6350805912164418681, guid: 001a1f7c4fae098478d8daace54d6db1, type: 3}
+  shotGunFX: {fileID: 7757583998089983991, guid: e6f76a071dec79c469c51674a67b1b4f,
+    type: 3}
 --- !u!1 &8955208013320813549
 GameObject:
   m_ObjectHideFlags: 0
