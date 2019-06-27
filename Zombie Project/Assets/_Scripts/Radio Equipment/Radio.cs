@@ -11,6 +11,12 @@ public class Radio : MonoBehaviour
     float maxHealth = 100f;
     public GameManager GM;
     public Text radioUnderAttack;
+    public Renderer rend;
+
+    public Material standard;
+    public Material transparent;
+
+
 
 
     private void Start()
@@ -20,6 +26,8 @@ public class Radio : MonoBehaviour
         GM = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
         radioUnderAttack = GameObject.Find("Radio Under Attack").GetComponent<Text>();
         radioUnderAttack.text = "";
+
+
     }
 
     // Update is called once per frame
@@ -28,13 +36,13 @@ public class Radio : MonoBehaviour
         if (radioHealth <= 0)  // make this game over instead of script below
         {
             Debug.Log("destroy me");
-            for (int i=0; i<zombieAIScript.Count; i++)
+            for (int i = 0; i < zombieAIScript.Count; i++)
             {
-               
+
                 zombieAIScript[i].attackObject = null;
             }
             GM.isRadioDead = true;
-            Destroy(this.gameObject); 
+            Destroy(this.gameObject);
         }
 
         radioHealthBar.fillAmount = radioHealth / maxHealth;
@@ -50,20 +58,33 @@ public class Radio : MonoBehaviour
 
     }
 
-   
-
-
-
 
     public void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.tag == "Player" && GM.bEPiecePickedUp)
         {
+            //GM.BEUpdateText.text = "Goal: Get the BE Drop. It has spawned somewhere around the map.";
             GM.bEPieces += 1;
             GM.bEPiecePickedUp = false;
         }
     }
-    
+
+    public void OnTriggerStay(Collider other)
+    {
+        if (other.gameObject.tag == "Zombie" || other.gameObject.tag == "Player")
+        {
+            rend.material = transparent;
+        }
+
+    }
+
+    public void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.tag == "Zombie" || other.gameObject.tag == "Player")
+        {
+            rend.material = standard;
+        }
+
+    }
+
 }
-
-

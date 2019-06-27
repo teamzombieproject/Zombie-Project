@@ -78,7 +78,7 @@ public class Movement : MonoBehaviour
         if (hitKnockback.x < 0) hitKnockback = Vector3.zero;
 
         //transform.position += transform.forward * speed * -directionZ * speedRegulator * Time.deltaTime + transform.right * speed * -directionX * speedRegulator * Time.deltaTime;
-        playerRigidbody.velocity = new Vector3(-directionX + hitKnockback.x, 0, -directionZ + hitKnockback.z) * speed * speedRegulator;
+        playerRigidbody.velocity = new Vector3(-directionX * speed * speedRegulator + hitKnockback.x , playerRigidbody.velocity.y, -directionZ * speed * speedRegulator + hitKnockback.z ) ;
 
     }
 }

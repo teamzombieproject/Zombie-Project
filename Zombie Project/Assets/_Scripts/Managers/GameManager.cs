@@ -32,8 +32,13 @@ public class GameManager : MonoBehaviour
     public ZombieSpawner spawns;
 
     public GameObject supplyDropSpawn;
+    public GameObject supplyDropSpawn2;
+    public GameObject supplyDropSpawn3;
+    public GameObject supplyDropSpawn4;
     public GameObject bEDropSpawn;
-    public GameObject weaponDropSpawn;
+    public GameObject bEDropSpawn2;
+    public GameObject bEDropSpawn3;
+    public GameObject bEDropSpawn4;
     public GameObject playerSpawn;
     public GameObject radioSpawn;
     public GameObject zombieSpawner;
@@ -44,7 +49,9 @@ public class GameManager : MonoBehaviour
     public GameObject radioObject;
     public GameObject cameraRigObject;
     public GameObject currentSupplyDrop;
+    public GameObject currentSupplyDropSpawn;
     public GameObject currentBEDrop;
+    public GameObject currentBEDropSpawn;
     public GameObject currentWeaponDrop;
     public GameObject currentPlayer;
     public GameObject mineDrop;
@@ -60,10 +67,12 @@ public class GameManager : MonoBehaviour
     public GameObject reloadGUIObject;
 
     GameObject GameHUD;
+    Text BEPiecesText;
     Text WaveNumberText;
     Text ZombiesRemainText;
     Text TimeRemainText;
     Text AmmoText;
+    public Text BEUpdateText;
 
     public int gameScore = 0;
     public int wave = 0;
@@ -145,7 +154,7 @@ public class GameManager : MonoBehaviour
         Destroy(GameObject.FindGameObjectWithTag("BEDrop"));
 
         GameObject[] dropped = GameObject.FindGameObjectsWithTag("Dropped");
-        foreach(GameObject d in dropped)
+        foreach (GameObject d in dropped)
         {
             Destroy(d);
         }
@@ -154,21 +163,28 @@ public class GameManager : MonoBehaviour
         playerSpawn = GameObject.Find("PlayerSpawn");
         radioSpawn = GameObject.Find("RadioSpawn");
         supplyDropSpawn = GameObject.Find("SupplyDropSpawn");
+        supplyDropSpawn2 = GameObject.Find("SupplyDropSpawn2");
+        supplyDropSpawn3 = GameObject.Find("SupplyDropSpawn3");
+        supplyDropSpawn4 = GameObject.Find("SupplyDropSpawn4");
         zombieSpawner = GameObject.Find("SpawnManager");
         spawns = zombieSpawner.GetComponent<ZombieSpawner>();
         supplyDropSpawn = GameObject.Find("SupplyDropSpawn");
         bEDropSpawn = GameObject.Find("BEDropSpawn");
-        weaponDropSpawn = GameObject.Find("WeaponSpawn");
+        bEDropSpawn2 = GameObject.Find("BEDropSpawn2");
+        bEDropSpawn3 = GameObject.Find("BEDropSpawn3");
+        bEDropSpawn4 = GameObject.Find("BEDropSpawn4");
         reloadGUIObject = GameObject.Find("ReloadReminder");
         reloadGUIObject.SetActive(false);
 
         GameHUD = GameObject.Find("GUI");
+        BEPiecesText = GameObject.Find("Broadcast Equipment Pieces").GetComponent<Text>();
         WaveNumberText = GameObject.Find("Swarm Number").GetComponent<Text>();
         ZombiesRemainText = GameObject.Find("Zombies Remaining").GetComponent<Text>();
         TimeRemainText = GameObject.Find("Time Remaining").GetComponent<Text>();
         AmmoText = GameObject.Find("Ammo").GetComponent<Text>();
+        BEUpdateText = GameObject.Find("BE Update").GetComponent<Text>();
 
-    // destroy all spawnable game objects that may remain from previous game
+        // destroy all spawnable game objects that may remain from previous game
         GameObject[] zombies = GameObject.FindGameObjectsWithTag("Zombie");             // find all of the zombies that are left over from the last game and store them in an array
         GameObject[] Traps = GameObject.FindGameObjectsWithTag("Traps");
         GameObject[] barricades = GameObject.FindGameObjectsWithTag("Barricade");
@@ -180,12 +196,12 @@ public class GameManager : MonoBehaviour
             Destroy(z);                                                                 // then loop through our array and destroy them all
         }
 
-        foreach(GameObject t in Traps)
+        foreach (GameObject t in Traps)
         {
             Destroy(t);
         }
 
-        foreach(GameObject b in barricades)
+        foreach (GameObject b in barricades)
         {
             Destroy(b);
         }
@@ -230,8 +246,33 @@ public class GameManager : MonoBehaviour
 
         if (currentSupplyDrop == null)
         {
-            currentSupplyDrop = Instantiate(supplyDropObject, supplyDropSpawn.transform.position, supplyDropSpawn.transform.rotation);
+            RandomSDSpawn();
+
+            currentSupplyDrop = Instantiate(supplyDropObject, currentSupplyDropSpawn.transform.position, currentSupplyDropSpawn.transform.rotation);
             hasSupplyDropSpawned = true;
+        }
+    }
+
+    void RandomSDSpawn()
+    {
+        int SDrandom = RandomValue(
+        new RandomVaribles(1, 4, 1f));
+
+        if (SDrandom == 1)
+        {
+            currentSupplyDropSpawn = supplyDropSpawn;
+        }
+        if (SDrandom == 2)
+        {
+            currentSupplyDropSpawn = supplyDropSpawn2;
+        }
+        if (SDrandom == 3)
+        {
+            currentSupplyDropSpawn = supplyDropSpawn3;
+        }
+        if (SDrandom == 4)
+        {
+            currentSupplyDropSpawn = supplyDropSpawn4;
         }
     }
 
@@ -239,8 +280,33 @@ public class GameManager : MonoBehaviour
     {
         if (currentBEDrop == null)
         {
-            currentBEDrop = Instantiate(bEDropObject, bEDropSpawn.transform.position, bEDropSpawn.transform.rotation);
+            RandomBEDSpawn();
+
+            currentBEDrop = Instantiate(bEDropObject, currentBEDropSpawn.transform.position, currentBEDropSpawn.transform.rotation);
             hasBEDropSpawned = true;
+        }
+    }
+
+    void RandomBEDSpawn()
+    {
+        int BEDrandom = RandomValue(
+        new RandomVaribles(1, 4, 1f));
+
+        if (BEDrandom == 1)
+        {
+            currentBEDropSpawn = bEDropSpawn;
+        }
+        if (BEDrandom == 2)
+        {
+            currentBEDropSpawn = bEDropSpawn2;
+        }
+        if (BEDrandom == 3)
+        {
+            currentBEDropSpawn = bEDropSpawn3;
+        }
+        if (BEDrandom == 4)
+        {
+            currentBEDropSpawn = bEDropSpawn4;
         }
     }
 
@@ -301,6 +367,7 @@ public class GameManager : MonoBehaviour
 
                 // update HUD
                 GameHUD.SetActive(true);
+                BEPiecesText.text = "BE Pieces: " + bEPieces + "/5";
                 WaveNumberText.text = "Wave: " + wave;
                 ZombiesRemainText.text = "Zombies Remaining: " + zombiesAlive;
 
@@ -318,7 +385,6 @@ public class GameManager : MonoBehaviour
                     m_GameState = GameState.Lose;
                 }
 
-                // change hud
                 if (spawnTimer <= 0)                    // spawn timer expired
                 {
                     spawns.mayspawn = false;
@@ -351,8 +417,6 @@ public class GameManager : MonoBehaviour
                 actionPhaseActive = false;
                 GameObject[] Dropped = GameObject.FindGameObjectsWithTag("Dropped");
 
-                // change hud to building hud
-
                 if (m_GameTime >= 30)
                 {
                     m_GameState = GameState.Action;
@@ -383,7 +447,7 @@ public class GameManager : MonoBehaviour
                 if (canGunBeSpawned)
                 {
                     SelectedWeaponDrop();
-                    currentWeaponDrop = Instantiate(weaponDropObject, weaponDropSpawn.transform.position, weaponDropSpawn.transform.rotation);
+                    currentWeaponDrop = Instantiate(weaponDropObject, supplyDropSpawn.transform.position, supplyDropSpawn.transform.rotation);
                     canGunBeSpawned = false;
                 }
 
@@ -416,6 +480,36 @@ public class GameManager : MonoBehaviour
 
                 break;
         }
+    }
+
+    struct RandomVaribles
+    {
+        private int minValue;
+        private int maxValue;
+        public float probability;
+
+        public RandomVaribles(int minValue, int maxValue, float probability)
+        {
+            this.minValue = minValue;
+            this.maxValue = maxValue;
+            this.probability = probability;
+        }
+
+        public int GetValue() { return Random.Range(minValue, maxValue + 1); }
+    }
+
+    int RandomValue(params RandomVaribles[] varibles)
+    {
+        float randomness = Random.value;
+        float currentProbability = 0;
+        foreach (var varible in varibles)
+        {
+            currentProbability += varible.probability;
+            if (randomness <= currentProbability)
+                return varible.GetValue();
+        }
+
+        return 1;
     }
 
     private void OnGUI()
