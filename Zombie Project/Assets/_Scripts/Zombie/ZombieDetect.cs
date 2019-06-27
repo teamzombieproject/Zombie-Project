@@ -5,7 +5,6 @@ using UnityEngine;
 public class ZombieDetect : MonoBehaviour
 {
     // this script detects the collision of the zombie with other objects
-    public GameObject currentTarget;
     ZombieAI zombieAI;
 
     // Start is called before the first frame update
@@ -29,7 +28,7 @@ public class ZombieDetect : MonoBehaviour
         if (other.gameObject.tag == "Player")
         {
             zombieAI.currentTarget = other.gameObject;  //sets the thing that the zombie has collided with to the current target
-
+            return;
         }
 
         if (other.gameObject.tag == "Radio")             // if detect radio
@@ -54,7 +53,7 @@ public class ZombieDetect : MonoBehaviour
 
         if (other.gameObject.tag == "Turret")
         {
-              if (zombieAI.currentTarget != null) // check to see if zombie is already colliding with something
+            if (zombieAI.currentTarget != null) // check to see if zombie is already colliding with something
 
             {
                 if (other.gameObject.tag == "Player" || other.gameObject.tag == "Radio")  // if it is colliding with something and it is the player or the radio
@@ -66,11 +65,11 @@ public class ZombieDetect : MonoBehaviour
                 {
                     zombieAI.currentTarget = other.gameObject;  // otherwise set the current target to the Turret
                 }
-                 }
-                  else
-                 {
-                     zombieAI.currentTarget = other.gameObject; // if there is no target, then set it to the Radio
-                  }
+            }
+            else
+            {
+                zombieAI.currentTarget = other.gameObject; // if there is no target, then set it to the Radio
+            }
          }
 
      }

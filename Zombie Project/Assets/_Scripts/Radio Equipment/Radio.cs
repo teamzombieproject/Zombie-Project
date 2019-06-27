@@ -18,6 +18,7 @@ public class Radio : MonoBehaviour
         radioHealth = maxHealth;
         radioHealthBar = GameObject.FindGameObjectWithTag("RadioHealthBar").GetComponent<Image>();
         GM = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
+        radioUnderAttack = GameObject.Find("Radio Under Attack").GetComponent<Text>();
         radioUnderAttack.text = "";
     }
 

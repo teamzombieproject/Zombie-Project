@@ -10,10 +10,6 @@ public class Shooting : MonoBehaviour
 
 
 {
-    GameObject gameManager;
-
-    //public float timer = 0.1f;                   // count down timer for fireRate
-    //public float fireRate = 0f;                  // Time between shots set value for each bullet
     public float reloadTime = 2f;                // Time to reload
     public float curReloadTime;                  // current time in reload
     public float ammoCount;                      // Count of bullets in gun 
@@ -26,19 +22,21 @@ public class Shooting : MonoBehaviour
 
     public bool isReloading;                     // Player has pushed R
     public bool isShooting = false;              // Player has pushed Fire1
-    public bool isShotGun = false;               // Player is using shotgun
-    //public bool isSemiAuto = false;            // Done in Fire Mode
-    //public bool isFullAuto = false;            // Done in Fire Mode
+    public bool isShotGun = true;                // Player is using shotgun
 
-    //public GameObject reloadReminder;            // reload text object "reload" reminder for player
-    public Transform[] bulletTransform;          // bullet spawn 
+    public Transform[] bulletTransform;          // bullet spawn for projectile and fireFX
     public GameObject bulletPrefab;              // Projectile prefab
     public AudioSource fireSFX;                  // Sound effects for firing
+    public GameObject fireFx;                    // Particle effect when firing guns - (Shotgun has its own particle effect)
     //public AudioSource reloadSFX;              // Reload sound efffect
+
+    GameObject gameManager;
+
 
     public void Start()
     {
         ammoReload = 2147483647;                 // MaxValue for Integer
+
         gameManager = GameObject.FindGameObjectWithTag("GameController");
     }
 
@@ -46,31 +44,47 @@ public class Shooting : MonoBehaviour
     {
         isShooting = false;
     }
-
+  
     private void Update()
     {
-
-        //timer -= Time.deltaTime;
-
-        if (fireMode == 1 || fireMode == 2) // if firemode is FullAuto (High Power Rifle) or Single Fire (Handgun, .22 Rifle, Shotgun)
+        if (fireMode == 1) // FullAuto = High Power Rifle
         {
             if (Input.GetButton("Fire1") && !isReloading && curAmmo > 0)
             {
-                if (!isShooting)                        /// check not shooting already
+                if (!isShooting) //check not shooting already
                 {
                     curAmmo--;
-                    isShooting = true;                  // set shoot flag so we cant shoot again
+                    isShooting = true;  //set shoot flag so we cant shoot
                     Shoot();
                     StartCoroutine(ShootingPewPew());
+
+                    Camera.main.GetComponent<ScreenShake>().CamShake(.7f, .2f); //Camera shake when firing High Power Rifle
                 }
             }
         }
-        else if (fireMode == 3) // Burst Fire = Semi Auto Rifle
+        else if (fireMode == 2) //Single Fire = Handgun, .22 Rifle, Shotgun
+        {
+            if (Input.GetButtonDown("Fire1") && !isReloading && curAmmo > 0)
+            {
+                if (!isShooting)
+                {
+                    curAmmo--;
+                    isShooting = true; 
+                    Shoot();
+                    StartCoroutine(ShootingPewPew());
+
+                    // No Camera shake for Handgun and .22, Shotgun recieves camera shake in "isShotgun" in Shoot function
+                }
+            }
+        }
+        else if (fireMode == 3) //Burst Fire = Semi Auto Rifle
         {
             if (Input.GetButtonDown("Fire1") && !isReloading && curAmmo > 0 && ammoCount == 0)
             {
                 isShooting = true;
                 BurstFire();
+
+                Camera.main.GetComponent<ScreenShake>().CamShake(.8f, .1f); //Camera shake when firing Semi Auto
             }
         }
 
@@ -96,7 +110,7 @@ public class Shooting : MonoBehaviour
             ammoCount = 0;
         }
 
-        if (curAmmo == 0)                                   // Not working on prefab only works when game object reloadReminder is dragged onto the prefab copy in the hierachy
+        if (curAmmo == 0)                                   
         {
             gameManager.GetComponent<GameManager>().reloadGUIObject.SetActive(true);
         }
@@ -142,7 +156,7 @@ public class Shooting : MonoBehaviour
 
         if (fireMode != 3)
         {
-            isShooting = false;                 // reset shoot flag so we can shoot again
+            isShooting = false; //reset shot flag so we can shoot again
         }
 
         if (fireMode == 3)
@@ -154,26 +168,23 @@ public class Shooting : MonoBehaviour
 
     void Shoot()
     {
-        /*
-        if (timer > 0)
-        {
-            return;
-        }
-        */
-
         if (fireSFX != null)
         {
             fireSFX.Play();
         }
 
-        Instantiate(bulletPrefab, bulletTransform[0].position, bulletTransform[0].transform.rotation);
+         Instantiate(bulletPrefab, bulletTransform[0].position, bulletTransform[0].transform.rotation);
+
+         Instantiate(fireFx, bulletTransform[0].position, bulletTransform[0].rotation);
 
         if (isShotGun)
         {
+            Instantiate(bulletPrefab, bulletTransform[0].position, bulletTransform[0].transform.rotation);
             Instantiate(bulletPrefab, bulletTransform[1].position, bulletTransform[1].transform.rotation);
             Instantiate(bulletPrefab, bulletTransform[2].position, bulletTransform[2].transform.rotation);
-        }
 
-        //timer = fireRate;
+            Camera.main.GetComponent<ScreenShake>().CamShake(2.0f, .3f); //Camera shake when firing shotgun
+        }
     }
 }
+
