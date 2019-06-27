@@ -143,9 +143,7 @@ public class Turret : MonoBehaviour
             smokeParticlePlaying = true;
         }
         
-
-
-         bodyRenderer.material = deadMat;
+            bodyRenderer.material = deadMat;
             headRenderer.material = deadMat;
         
     }
