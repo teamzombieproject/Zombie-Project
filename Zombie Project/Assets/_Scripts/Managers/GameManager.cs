@@ -379,6 +379,7 @@ public class GameManager : MonoBehaviour
 
                 spawnTimer -= Time.deltaTime;           // count down spawn timer
                 actionPhaseActive = true;
+                hasSupplyDropSpawned = false;
 
                 if (playerHealth.deathIsFinished == true || isRadioDead)
                 {
@@ -403,7 +404,7 @@ public class GameManager : MonoBehaviour
                 }
 
                 // All zombies dead change to build state
-                if (!canZombiesSpawn && spawnTimer <= 0 && zombiesAlive == 0 && bEPiecePickedUp)
+                if (!canZombiesSpawn && spawnTimer <= 0 && zombiesAlive == 0)
                 {
                     m_GameState = GameState.Build;
                 }
@@ -447,7 +448,7 @@ public class GameManager : MonoBehaviour
                 if (canGunBeSpawned)
                 {
                     SelectedWeaponDrop();
-                    currentWeaponDrop = Instantiate(weaponDropObject, supplyDropSpawn.transform.position, supplyDropSpawn.transform.rotation);
+                    currentWeaponDrop = Instantiate(weaponDropObject, currentSupplyDropSpawn.transform.position, currentSupplyDropSpawn.transform.rotation);
                     canGunBeSpawned = false;
                 }
 
