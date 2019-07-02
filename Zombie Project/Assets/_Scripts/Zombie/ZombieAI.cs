@@ -28,6 +28,9 @@ public class ZombieAI : MonoBehaviour
     float hitTimer;
     public float stunTime = 0.5f;
 
+    AudioSource audioSrc;
+    public AudioClip audioClip;
+
     // public GameObject radioHealthBar;
 
     //CONNORS NEW CODE
@@ -41,6 +44,8 @@ public class ZombieAI : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         zombieAcceleration = zombieWalkSpeed;                       // set movement speed
         sprite = GetComponentInChildren<SpriteRenderer>();
+        audioSrc = GetComponent<AudioSource>();
+        audioSrc.clip = audioClip;
 
         //CONNORS NEW CODE
         navAgent = GetComponent<NavMeshAgent>();
@@ -171,7 +176,8 @@ public class ZombieAI : MonoBehaviour
             }
             else if (attackObject.tag == "Player")
             {
-               attackObject.GetComponent<Health>().TakeDamage(damageToPlayer, transform.position);  
+               attackObject.GetComponent<Health>().TakeDamage(damageToPlayer, transform.position);
+               audioSrc.Play();
             }
             
             attackTimer = 0;

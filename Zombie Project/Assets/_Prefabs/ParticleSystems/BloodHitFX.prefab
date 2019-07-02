@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 3099901148654828083}
   - component: {fileID: 850585715524253357}
   - component: {fileID: 2567910825025621999}
-  - component: {fileID: 4211835226660322167}
   - component: {fileID: 666160598077977654}
+  - component: {fileID: -7409582624433075659}
   m_Layer: 0
   m_Name: BloodHitFX
   m_TagString: Untagged
@@ -48,9 +48,9 @@ ParticleSystem:
   cullingMode: 0
   ringBufferMode: 0
   ringBufferLoopRange: {x: 0, y: 1}
-  looping: 1
+  looping: 0
   prewarm: 0
-  playOnAwake: 1
+  playOnAwake: 0
   useUnscaledTime: 0
   autoRandomSeed: 1
   useRigidbodyForVelocity: 1
@@ -288,8 +288,6 @@ ParticleSystem:
       minMaxState: 3
       scalar: 0.2
       minScalar: 0.01
-      scalar: 0.3
-      minScalar: 0.05
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -4816,7 +4814,20 @@ ParticleSystemRenderer:
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
   m_MaskInteraction: 0
---- !u!82 &4211835226660322167
+--- !u!114 &666160598077977654
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 492924346993083021}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 900871a1c748a3f468854a4f690500e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  destroyTime: 3
+--- !u!82 &-7409582624433075659
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -4827,7 +4838,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: aa3efdd44774ae44cab9d92dd532d3c1, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -4912,16 +4923,3 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &666160598077977654
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 492924346993083021}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 900871a1c748a3f468854a4f690500e3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  destroyTime: 3
