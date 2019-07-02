@@ -27,6 +27,7 @@ public class GameManager : MonoBehaviour
     public float timeUntilEndOfWave = 30f;
     public float spawnTimer = 0f;
     public float timeUntilBEDrop = 0f;
+    public float spawnRepeatRate = 3.75f;
 
     public Health playerHealth;
     public ZombieSpawner spawns;
@@ -418,11 +419,12 @@ public class GameManager : MonoBehaviour
                 actionPhaseActive = false;
                 GameObject[] Dropped = GameObject.FindGameObjectsWithTag("Dropped");
 
-                if (m_GameTime >= 30)
+                if (m_GameTime >= 45)
                 {
                     m_GameState = GameState.Action;
                     m_GameTime = 0f;
-                    timeUntilEndOfWave = 25f + difficultyMultiplier * 5;
+                    timeUntilEndOfWave += difficultyMultiplier * 5;
+                    spawnRepeatRate -= difficultyMultiplier * 0.2f; 
                     spawns.mayspawn = true;
                     canZombiesSpawn = true;
                     spawnTimer = 0f;
@@ -477,7 +479,7 @@ public class GameManager : MonoBehaviour
                 break;
             case GameState.Win:
 
-                
+
 
                 break;
         }
