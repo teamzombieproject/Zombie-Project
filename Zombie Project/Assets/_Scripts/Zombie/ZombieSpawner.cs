@@ -7,7 +7,6 @@ public class ZombieSpawner : MonoBehaviour
 
     public GameObject zombie;
    // public float spawnTime;
-    public float spawnRepeatRate;
     public GameObject[] spawnPointsArray;
     public bool mayspawn = true;
     GameManager gm;
@@ -34,7 +33,7 @@ public class ZombieSpawner : MonoBehaviour
         {
             spawnTimer += Time.deltaTime;
 
-            if (spawnTimer > spawnRepeatRate)
+            if (spawnTimer > gm.spawnRepeatRate)
             {
                 Spawn();
                 spawnTimer = 0;
