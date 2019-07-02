@@ -100,18 +100,11 @@ public class Health : MonoBehaviour
         {
             deathLight.intensity += .01f;
         }
-        if (Camera.main.gameObject.GetComponent<CameraFollow>().radius >= 0.1f)
+        /*if (Camera.main.gameObject.GetComponent<CameraFollow>().radius >= 0.1f)
         {
             Camera.main.gameObject.GetComponent<CameraFollow>().radius -= 0.1f;
-        }
-        //if (rotate < 365 && gameObject.GetComponentInChildren<Camera>() != null)
-        //{
-          //  rotate += 5;
-            //gameObject.transform.Rotate(0, 5, 0);
-        //}
-        else if (rotate >= 365)
-            gameObject.transform.rotation = Quaternion.identity;
-
+        }*/
+        
         timer += Time.deltaTime;
         if (timer >= 2 && timer <= 2.5 && bodyAnimator.GetInteger("State") != 5)
         {
@@ -136,10 +129,10 @@ public class Health : MonoBehaviour
         movement.enabled = false;
         headAnimator.SetInteger("Direction", 0);
 
-        for (int i = 0; i < lights.Length; i += 1)
+        /*for (int i = 0; i < lights.Length; i += 1)
         {
             lights[i].GetComponent<Light>().intensity = .5f;
-        }
+        }*/
 
         dead = false;
 
