@@ -29,7 +29,7 @@ public class Shooting : MonoBehaviour
     public AudioSource fireSFX;                  // Sound effects for firing
     public GameObject fireFx;                    // Particle effect when firing guns - (Shotgun has its own particle effect)
 
-    //public AudioSource reloadSFX;              // Reload sound efffect
+    public AudioSource reloadSFX;                // Reload sound efffect Final thing to do
 
     GameObject gameManager;
 
@@ -48,14 +48,14 @@ public class Shooting : MonoBehaviour
   
     private void Update()
     {
-        if (fireMode == 1 || fireMode == 2) // Fire mode 1 = FullAuto(High Power Rifle) Fire mode 2 = Single fire(Handgun, .22 & Shotgun)
+        if (fireMode == 1 || fireMode == 2) // Fire mode 1 = FullAuto(High Power Rifle) Fire mode 2 = Single fire(Desert Eagle, Handgun, .22 & Shotgun)
         {
             if (Input.GetButton("Fire1") && !isReloading && curAmmo > 0)
             {
-                if (!isShooting) //check not shooting already
+                if (!isShooting) //Check not shooting already
                 {
                     curAmmo--;
-                    isShooting = true;  //set shoot flag so we cant shoot
+                    isShooting = true;  //Set shoot flag so we cant shoot
                     Shoot();
                     StartCoroutine(ShootingPewPew());
 
@@ -76,6 +76,7 @@ public class Shooting : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.R) && !isReloading && ammoReload > 0)
         {
+            reloadSFX.Play();
             curReloadTime = reloadTime;
             isReloading = true;
             Reload();
@@ -89,6 +90,7 @@ public class Shooting : MonoBehaviour
             {
                 isReloading = false;
             }
+
         }
 
         if (ammoCount == 3)
@@ -142,7 +144,7 @@ public class Shooting : MonoBehaviour
 
         if (fireMode != 3)
         {
-            isShooting = false; //reset shot flag so we can shoot again
+            isShooting = false; //Reset shot flag so we can shoot again
         }
 
         if (fireMode == 3)
@@ -157,16 +159,17 @@ public class Shooting : MonoBehaviour
         if (fireSFX != null)
         {
             fireSFX.Play();
+            Instantiate(fireFx, bulletTransform[0].position, bulletTransform[0].rotation);
         }
 
          Instantiate(bulletPrefab, bulletTransform[0].position, bulletTransform[0].transform.rotation);
-
-         Instantiate(fireFx, bulletTransform[0].position, bulletTransform[0].rotation);
+         //Instantiate(fireFx, bulletTransform[0].position, bulletTransform[0].rotation);
 
         if (isShotGun)
         {
             Instantiate(bulletPrefab, bulletTransform[1].position, bulletTransform[1].transform.rotation);
             Instantiate(bulletPrefab, bulletTransform[2].position, bulletTransform[2].transform.rotation);
+
         }
     }
 }

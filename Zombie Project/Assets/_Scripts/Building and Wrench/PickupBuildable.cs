@@ -7,16 +7,17 @@ public class PickupBuildable : MonoBehaviour
     public string placeableBuildableName;
     public int quantity = 0;
     bool attract = false;//, pickedUp;
-    GameObject target;
+    GameObject target, child;
     public ParticleSystem pickupFX;
     public float countdown = 2;
-    public float min = -5, max = 10;
+    public float min = 5, max = 10;
+    bool collided;
 
     private void Start()
     {
         int random = Random.Range(0, 2) * 2 - 1;
-        GetComponent<Rigidbody>().AddForce(new Vector3(Random.Range(min, max) , 0, Random.Range(min, max)), ForceMode.Impulse);
-        
+        GetComponent<Rigidbody>().AddForce(new Vector3(Random.Range(min, max) * random, 0, Random.Range(min, max) * random), ForceMode.Impulse);
+        child = GetComponentInChildren<RecogniseCollision>().gameObject;
     }
     private void OnTriggerEnter(Collider other)
     {
@@ -30,6 +31,7 @@ public class PickupBuildable : MonoBehaviour
     {
         if (countdown > 0)
         {
+            collided = true;
             return;
         }
         GameObject.FindGameObjectWithTag("BuildManager").GetComponent<BuildingInventory>().BuildablePickup(GameObject.FindGameObjectWithTag("BuildManager").transform.Find(placeableBuildableName).gameObject, quantity);
@@ -43,14 +45,26 @@ public class PickupBuildable : MonoBehaviour
 
     private void Update()
     {
+        if (child.activeSelf == false && countdown <= 0)
+        {
+            child.SetActive(true);
+        }
         if (countdown > 0)
+        {
             countdown -= Time.deltaTime;
+            if (collided)
+            {
+                collided = false;
+                child.SetActive(false);
+            }
+        }
+        if (attract && countdown <= 0)
+            transform.position = Vector3.MoveTowards(transform.position, target.transform.position, 10 * Time.deltaTime);
+
     }
 
     private void LateUpdate()
     {
-        if (attract && countdown <= 0)
-            transform.position = Vector3.MoveTowards(transform.position, target.transform.position, 10 * Time.deltaTime);
-       
+        
     }
 }
