@@ -32,6 +32,7 @@ TagManager:
   - BuildManager
   - BEDrop
   - Reload
+  - PlayerHealthBar
   layers:
   - Default
   - TransparentFX
