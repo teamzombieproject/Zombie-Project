@@ -144,6 +144,11 @@ public class GameManager : MonoBehaviour
             SceneManager.LoadScene("Menu");
             Destroy(gameObject);
         }
+
+        if (m_GameState == GameState.Win)
+        {
+            yield return SceneManager.LoadSceneAsync("GameEnd");
+        }
     }
 
     void Init()
@@ -477,8 +482,8 @@ public class GameManager : MonoBehaviour
 
                 break;
             case GameState.Win:
-
-
+                Debug.Log("You wine");
+                EndGame();
 
                 break;
         }
