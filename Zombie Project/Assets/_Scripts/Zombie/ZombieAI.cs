@@ -17,7 +17,7 @@ public class ZombieAI : MonoBehaviour
    
     public GameObject attackObject;                             // use a single object to handle attacking instead of multiple bools/objects
     
-    public float attackRate = 1.0f;
+    public float attackRate = 0.8f;
     public float attackTimer;
     public float damageToBarricade = 10;
     public float damageToTurret = 10;
@@ -28,18 +28,21 @@ public class ZombieAI : MonoBehaviour
     float hitTimer;
     public float stunTime = 0.5f;
 
-    AudioSource audioSrc;
+    [HideInInspector]
+    public AudioSource audioSrc;
     public AudioClip audioClip;
 
     // public GameObject radioHealthBar;
 
     //CONNORS NEW CODE
-    NavMeshAgent navAgent;
-   
+    [HideInInspector]
+    public NavMeshAgent navAgent;
+
+    public bool ended, attack;
      
     private void Start()
     {
-        currentTarget = GameObject.FindGameObjectWithTag("Radio");
+        //currentTarget = GameObject.FindGameObjectWithTag("Radio");
         zombieAnimator.SetBool("attack", false);
         rb = GetComponent<Rigidbody>();
         zombieAcceleration = zombieWalkSpeed;                       // set movement speed
@@ -50,17 +53,18 @@ public class ZombieAI : MonoBehaviour
         //CONNORS NEW CODE
         navAgent = GetComponent<NavMeshAgent>();
         navAgent.speed = zombieMaxSpeed;
-       // navAgent.acceleration = zombieWalkSpeed;
+        navAgent.SetDestination(GameObject.FindGameObjectWithTag("Radio").transform.position);
+        // navAgent.acceleration = zombieWalkSpeed;
 
     }
 
 
-    private void FixedUpdate()
+   /* private void FixedUpdate()
     {
         if (currentTarget != null && !isHit)  //if there is a target identified from Zombie Detect Script
         {
 
-            /* Vector3 lookPos = currentTarget.transform.position - transform.position;            // find target direction
+             Vector3 lookPos = currentTarget.transform.position - transform.position;            // find target direction
              lookPos.y = 0;                                                                      // cancel out y vector
 
 
@@ -70,17 +74,22 @@ public class ZombieAI : MonoBehaviour
              {
                  rb.velocity = rb.velocity.normalized * zombieMaxSpeed;
              }
-             */
+             
 
             //moving toward target code
             navAgent.SetDestination(currentTarget.transform.position);
             
         }
-    }
+    }*/
 
     void Update()
     {
-        if (isHit)                                                                              // stuns the zombie for a moment when hit (so it stops moving)
+        if (currentTarget != null && currentTarget.transform.position != navAgent.destination)  //if there is a target identified from Zombie Detect Script
+        {
+            navAgent.SetDestination(currentTarget.transform.position);
+            
+        }
+            if (isHit)                                                                              // stuns the zombie for a moment when hit (so it stops moving)
         {
             ZombieHit();                                                                        // stops the zombie from moving/changes animation
 
@@ -91,13 +100,14 @@ public class ZombieAI : MonoBehaviour
                 hitTimer = stunTime;                                                            // reset the timer
             }
         }
-        /*
+        /* done through zombie health script for some reason
         if (zombieHealth <= 0)
         {
             Destroy(gameObject);
-            //add instantiate corpse
+            
         }
         */
+        
         if (attackObject != null)
         {
             ZombieAttack();
@@ -107,7 +117,8 @@ public class ZombieAI : MonoBehaviour
             ZombieWalk();
         }
 
-        if (navAgent.velocity.x < 0) //rb is now navAgent
+        //if (navAgent.velocity.x < 0) //rb is now navAgent
+        if (transform.position.x > currentTarget.transform.position.x)
         {
             sprite.flipX = false;
         }
@@ -116,7 +127,8 @@ public class ZombieAI : MonoBehaviour
             sprite.flipX = true;
         }
 
-        if (navAgent.velocity.z < 0) //rb is now navagent
+        //if (navAgent.velocity.z < 0) //rb is now navagent
+        if (transform.position.z > currentTarget.transform.position.z)
         {
             zombieAnimator.SetBool("back", true);
         }
@@ -134,17 +146,26 @@ public class ZombieAI : MonoBehaviour
             col.gameObject.tag == "Radio" ||
             col.gameObject.tag == "Player")
         {
-            Debug.Log(gameObject + " collided with " + attackObject);
             attackObject = col.gameObject;
+            Debug.Log(gameObject + " collided with " + attackObject);
         }
 
     }
 
-    private void OnCollisionExit(Collision collision)
+   private void OnCollisionExit(Collision collision)
     {
-        if (collision.gameObject == attackObject)
-        attackObject = null;
+        //if (collision.gameObject == attackObject)
+       // attackObject = null;
         
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject == attackObject)
+        {
+            attackObject = null;
+            attackTimer = 0;
+        }
     }
 
     void ZombieAttack()
@@ -152,6 +173,8 @@ public class ZombieAI : MonoBehaviour
         attackTimer += Time.deltaTime;
         if (attackTimer >= attackRate)
         {
+            //GetComponentInChildren<TurnToLook>().enabled = true;
+         //   GetComponentInChildren<TurnToLook>().EnableTurn(attackObject.transform, true);
             if (attackObject.tag == "Barricade")
             {
                 Barricade barricade = attackObject.GetComponent<Barricade>();
@@ -163,6 +186,7 @@ public class ZombieAI : MonoBehaviour
                 Turret turret = attackObject.GetComponent<Turret>();
                 turret.zombieAIScript.Add(this);
                 turret.turretHealth -= damageToTurret;
+                navAgent.velocity += (attackObject.transform.position - transform.position).normalized * Mathf.Clamp(Vector3.Distance(attackObject.transform.position, transform.position), 3, 5);
             }
            
             else if (attackObject.tag == "Radio")
@@ -170,14 +194,12 @@ public class ZombieAI : MonoBehaviour
                 Radio radio = attackObject.GetComponent<Radio>();
                 radio.zombieAIScript.Add(this);
                 radio.radioHealth -= damageToRadio;
-                 
-               
-
             }
             else if (attackObject.tag == "Player")
             {
                attackObject.GetComponent<Health>().TakeDamage(damageToPlayer, transform.position);
                audioSrc.Play();
+               navAgent.velocity += (attackObject.transform.position - transform.position).normalized * Mathf.Clamp(Vector3.Distance(attackObject.transform.position, transform.position), 3, 5);
             }
             
             attackTimer = 0;

@@ -33,7 +33,7 @@ public class OffScreenPoint : MonoBehaviour
                 Disable();
             }
         }
-        else if (!isDisabled)
+        else
             Disable();
     }
 
@@ -73,7 +73,6 @@ public class OffScreenPoint : MonoBehaviour
             }
             return true;
         }
-        if(!isDisabled)
         Disable();
         return false;
     }

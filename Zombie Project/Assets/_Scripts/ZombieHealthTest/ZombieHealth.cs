@@ -6,10 +6,12 @@ using UnityEngine.AI;
 public class ZombieHealth : MonoBehaviour
 {
    
-    public float zombieHealthTest = 40f;
+    public float zombieHealth = 100f, deathMagnitude = 5;
+    public GameObject corpsePrefab;
     GameManager  gm;
-    
-    
+    NavMeshAgent navAgent;
+
+
 
 
     private void Start()
@@ -21,23 +23,28 @@ public class ZombieHealth : MonoBehaviour
 
     private void Update()
     {
-        if (zombieHealthTest <= 0)
+        if (zombieHealth <= 0)
         {
           gm.zombiesAlive--;
-           Destroy(gameObject);
+            GameObject corpse = Instantiate(corpsePrefab, transform.position + new Vector3 (0,.1f,0), Quaternion.identity);
+            if (GetComponent<NavMeshAgent>().velocity.x > 0)
+                corpse.GetComponentInChildren<SpriteRenderer>().flipX = false;
+            else corpse.GetComponentInChildren<SpriteRenderer>().flipX = true;
+            corpse.GetComponent<Rigidbody>().velocity = navAgent.velocity * deathMagnitude;
+            Destroy(gameObject);
 
         }
     }
     public void TakeDamage (float amount)
     {
-        zombieHealthTest -= amount;
+        zombieHealth -= amount;
     }
 
 
     public void Hurt(float amount, Vector3 position, float pushMag)
     {
-        zombieHealthTest -= amount;
-        NavMeshAgent navAgent = GetComponent<NavMeshAgent>();
+        zombieHealth -= amount;
+        navAgent = GetComponent<NavMeshAgent>();
         navAgent.velocity += (gameObject.transform.position - position) * pushMag;
        
     }

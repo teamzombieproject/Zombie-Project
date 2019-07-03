@@ -96,38 +96,34 @@ public class Health : MonoBehaviour
     void OnDeath()
     {
         // things that go repeatedly or after an amount of time go first
-        if (deathLight.intensity <= 2.2f)
-        {
-            deathLight.intensity += .01f;
-        }
-        /*if (Camera.main.gameObject.GetComponent<CameraFollow>().radius >= 0.1f)
+        
+        if (Camera.main.gameObject.GetComponent<CameraFollow>().radius >= 0.1f)
         {
             Camera.main.gameObject.GetComponent<CameraFollow>().radius -= 0.1f;
-        }*/
+        }
         
         timer += Time.deltaTime;
-        if (timer >= 2 && timer <= 2.5 && bodyAnimator.GetInteger("State") != 5)
+        if (deathIsFinished)
         {
-
+            //activiate deathGUI()  <--------------- DO!!!!
+        }
+        else if (timer >= 1 && timer <= 1.5 && bodyAnimator.GetInteger("State") != 5)
+        {
             bodyAnimator.SetInteger("State", 5);
             charHead.SetActive(false);
-        }
-        else if (timer > 2.5 && bodyAnimator.GetInteger("State") != 80)
-        {
-            bodyAnimator.SetInteger("State", 80);
-            //activiate deathGUI()  <--------------- DO!!!!
-            deathIsFinished = true;
         }
 
         
         if (dead)
             return;
         //things that go once after this
-        Camera.main.gameObject.transform.parent = gameObject.transform;
+        //Camera.main.gameObject.transform.parent = gameObject.transform;
         changeSprite.enabled = false; // stops sprite changing
         aiming.gameObject.SetActive(false);
         movement.enabled = false;
         headAnimator.SetInteger("Direction", 0);
+
+        transform.Find("ShadowCylinder").gameObject.SetActive(false);
 
         /*for (int i = 0; i < lights.Length; i += 1)
         {

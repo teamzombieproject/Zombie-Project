@@ -11,7 +11,8 @@ GameObject:
   - component: {fileID: 1770090243025800745}
   - component: {fileID: 1770090243025800747}
   - component: {fileID: 1770090243025800746}
-  m_Layer: 0
+  - component: {fileID: 371921551454808299}
+  m_Layer: 11
   m_Name: ZombieSprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -100,6 +101,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 1
+--- !u!114 &371921551454808299
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1770090243025800744}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b86f20d53a3cf7447a61e84e8ff666fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1770090244399708473
 GameObject:
   m_ObjectHideFlags: 0
@@ -116,7 +129,7 @@ GameObject:
   - component: {fileID: 2462500754821307867}
   - component: {fileID: 7740011489804453639}
   - component: {fileID: 8232589939612357222}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Zombie2D
   m_TagString: Zombie
   m_Icon: {fileID: 0}
@@ -167,7 +180,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac55a8b287e024d4895585952a23821c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  zombieHealthTest: 100
+  zombieHealth: 100
+  deathMagnitude: 5
+  corpsePrefab: {fileID: 8957603523924562170, guid: 0e68950a22fa44045a9ee147d43c60b6,
+    type: 3}
 --- !u!114 &1770090244399708474
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -196,7 +212,11 @@ MonoBehaviour:
   rb: {fileID: 0}
   isHit: 0
   stunTime: 0.5
-  audioClip: {fileID: 8300000, guid: 40b3a7d5b923e8f4cbbfca6e5d3fb5ed, type: 3}
+  audioSrc: {fileID: 0}
+  audioClip: {fileID: 8300000, guid: f5f70efe5efd6844ea65b220d71442e2, type: 3}
+  navAgent: {fileID: 0}
+  ended: 0
+  attack: 0
 --- !u!65 &1770090244399708476
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -352,7 +372,7 @@ GameObject:
   - component: {fileID: 1770090244486485961}
   - component: {fileID: 1770090244486485963}
   - component: {fileID: 1770090244486485962}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: ZombieDetector
   m_TagString: Untagged
   m_Icon: {fileID: 0}

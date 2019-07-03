@@ -376,7 +376,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   forceMagnitude: 20
-  damage: 50
+  damage: 20
   initialCooldown: 1.5
   repairAmount: 10
   swingSpeed: 4
