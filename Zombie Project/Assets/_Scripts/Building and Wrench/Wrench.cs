@@ -75,6 +75,7 @@ public class Wrench : MonoBehaviour
                 other.gameObject.GetComponent<Rigidbody>().AddForce(other.gameObject.transform.position - new Vector3 (transform.position.x,0,transform.position.y)* forceMagnitude, ForceMode.Impulse);
             // other.gameObject.SendMessage("TakeDamage", damage, SendMessageOptions.DontRequireReceiver);
             other.gameObject.GetComponent<ZombieHealth>().Hurt(damage, gameObject.transform.position, 1.4f);
+            
             GameObject bloodFX = Instantiate(hitFX, other.transform.position, Quaternion.identity);
                 bloodFX.GetComponent<ParticleSystem>().Play();
         }
