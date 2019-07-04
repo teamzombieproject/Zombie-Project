@@ -8,7 +8,7 @@ public class Health : MonoBehaviour
     //total health, invulnurability sprite flash speed, how long your invulnurable (s), how long you have to wait after taking damage to heal (s), how much you heal
     public float health = 100, invulnurability = 5, healWait = 20, healAmount = 1;
     //DONT MAKE INVULNURABILITY TIME NEGATIVE, PLAYER WILL BE INDESTRUCTABLE FOREVER.
-    float timer = 0, healthTimer = 0, rotate = 0, timerInitial, startingHealth, multiplier = .1f;
+    float timer = 0, healthTimer = 0, timerInitial, startingHealth, multiplier = .1f;
     bool dead = false;
     public SpriteRenderer[] characterSprites;
     public Animator bodyAnimator, headAnimator;
@@ -21,6 +21,7 @@ public class Health : MonoBehaviour
     bool damaged = false;
     public bool deathIsFinished = false;
     public AudioClip damageSFX;
+    Image healthBar;
 
     public bool takeDamage;
     private void Start()
@@ -29,6 +30,7 @@ public class Health : MonoBehaviour
         startingHealth = health;
         /* Debug.Log("starting health is " + startingHealth);
         Health[] test = GetComponents<Health>(); */
+        healthBar = GameObject.FindGameObjectWithTag("Canvas").transform.Find("GUI").Find("HealthBarBackground").Find("HealthBar").gameObject.GetComponent<Image>();
     }
     private void Update()
     {
@@ -90,7 +92,10 @@ public class Health : MonoBehaviour
             damaged = true;
         }
         //GameObject.FindGameObjectWithTag("Healthbar").GetComponent<Image>()
-        GameObject.FindGameObjectWithTag("Canvas").transform.Find("GUI").Find("HealthBarBackground").Find("HealthBar").gameObject.GetComponent<Image>().fillAmount = health / startingHealth;
+        if (healthBar == null)
+            GameObject.FindGameObjectWithTag("Canvas").transform.Find("GUI").Find("HealthBarBackground").Find("HealthBar").gameObject.GetComponent<Image>().fillAmount = health / startingHealth;
+        else
+            healthBar.fillAmount = health / startingHealth;
     }
 
     void OnDeath()

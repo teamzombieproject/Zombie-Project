@@ -20,6 +20,12 @@ public class BuildingInventory : MonoBehaviour
         //disable weapons and weaponswitching
         Player = GameObject.FindGameObjectWithTag("Player");
         gameManager = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
+
+        GameObject canvas = GameObject.FindGameObjectWithTag("Canvas");
+        for(int i = 0; i < boxes.Length; i++)
+        {
+            boxes[i] = canvas.transform.Find("InventorySelections").Find("Selection " + (i + 1)).gameObject;
+        }
     }
     void Update()
     {
