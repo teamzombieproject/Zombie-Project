@@ -143,6 +143,7 @@ public class PlaceBuildable : MonoBehaviour
     private void OnEnable()
     {
         placeable = true;
+        colliderAmount = 0;
     }
 
     void PlaceObject()

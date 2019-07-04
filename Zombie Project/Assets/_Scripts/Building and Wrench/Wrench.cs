@@ -152,7 +152,7 @@ public class Wrench : MonoBehaviour
                 {
                     if (repairable.GetComponent<Barricade>().barricadeHealth < 60)
                     {
-                        repairable.GetComponent<Barricade>().barricadeHealth = Mathf.Clamp(repairable.GetComponent<Barricade>().barricadeHealth + repairAmount, 0, 60);
+                        repairable.GetComponent<Barricade>().barricadeHealth = Mathf.Clamp(repairable.GetComponent<Barricade>().barricadeHealth + repairAmount * 2, 0, 60);
                         
                     }
                 }
@@ -166,9 +166,17 @@ public class Wrench : MonoBehaviour
                             repairable.GetComponent<Turret>().turretHealth = repairAmount;
                             //repairable.GetComponent<Turret>().ActivateTurret();
                         } else
-                        repairable.GetComponent<Turret>().turretHealth = Mathf.Clamp(repairable.GetComponent<Turret>().turretHealth + repairAmount, 0, 100);
+                        repairable.GetComponent<Turret>().turretHealth = Mathf.Clamp(repairable.GetComponent<Turret>().turretHealth + repairAmount * 2, 0, 100);
                     }
                 }
+            }
+            else if (repairable.tag == "Radio")
+            {
+                Instantiate(sparks, repairable.transform.position + new Vector3(0, .5f, 0), Quaternion.identity);
+                wrenchSFX.clip = repairSFX;
+                wrenchSFX.pitch = .8f;
+                wrenchSFX.Play();
+                repairable.GetComponent<Radio>().radioHealth = Mathf.Clamp(repairable.GetComponent<Radio>().radioHealth + repairAmount, 0, 100);
             }
         }
     }
