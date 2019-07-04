@@ -290,6 +290,7 @@ public class GameManager : MonoBehaviour
 
             currentBEDrop = Instantiate(bEDropObject, currentBEDropSpawn.transform.position, currentBEDropSpawn.transform.rotation);
             hasBEDropSpawned = true;
+            BEUpdateText.text = "Goal: Get the BE Drop. It has spawned somewhere around the map.";
         }
     }
 
@@ -376,6 +377,7 @@ public class GameManager : MonoBehaviour
                 BEPiecesText.text = "BE Pieces: " + bEPieces + "/5";
                 WaveNumberText.text = "Wave: " + wave;
                 ZombiesRemainText.text = "Zombies Remaining: " + zombiesAlive;
+                BEUpdateText.text = "Goal: Kill the zombies & survive.";
 
                 double spawnTimerRounded;
                 spawnTimerRounded = System.Math.Round(spawnTimer, 2);               // round the timer to 2 decimal places
