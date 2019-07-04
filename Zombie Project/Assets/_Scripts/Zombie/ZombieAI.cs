@@ -118,25 +118,27 @@ public class ZombieAI : MonoBehaviour
         }
 
         //if (navAgent.velocity.x < 0) //rb is now navAgent
-        if (transform.position.x > currentTarget.transform.position.x)
+        if (currentTarget != null)
         {
-            sprite.flipX = false;
-        }
-        else
-        {
-            sprite.flipX = true;
-        }
+            if (transform.position.x > currentTarget.transform.position.x)
+            {
+                sprite.flipX = false;
+            }
+            else
+            {
+                sprite.flipX = true;
+            }
 
-        //if (navAgent.velocity.z < 0) //rb is now navagent
-        if (transform.position.z > currentTarget.transform.position.z)
-        {
-            zombieAnimator.SetBool("back", true);
+            //if (navAgent.velocity.z < 0) //rb is now navagent
+            if (transform.position.z > currentTarget.transform.position.z)
+            {
+                zombieAnimator.SetBool("back", true);
+            }
+            else
+            {
+                zombieAnimator.SetBool("back", false);
+            }
         }
-        else
-        {
-            zombieAnimator.SetBool("back", false);
-        }
-
         
     }
     private void OnCollisionEnter(Collision col)
