@@ -15,6 +15,7 @@ public class Shooting : MonoBehaviour
     public float ammoCount;                      // Count of bullets in gun 
     public float timeBetweenShots = 0.1f;        // Time between bullets
 
+
     public int curAmmo;                          // Current ammo of the weapon
     public int maxAmmo = 30;                     // Starting ammo of the weapon
     public int ammoReload;                       // Reload amount
@@ -24,6 +25,10 @@ public class Shooting : MonoBehaviour
     public bool isShooting = false;              // Player has pushed Fire1
     public bool isShotGun = true;                // Player is using shotgun
 
+    public string weaponName = "";
+
+    public GameObject ammoText;                  // Ammo text counter on HUD 
+    public GameObject weaponText;                // Weapon text on HUD
     public Transform[] bulletTransform;          // bullet spawn for projectile and fireFX
     public GameObject bulletPrefab;              // Projectile prefab
     public AudioSource fireSFX;                  // Sound effects for firing
@@ -39,6 +44,8 @@ public class Shooting : MonoBehaviour
         ammoReload = 2147483647;                 // MaxValue for Integer
 
         gameManager = GameObject.FindGameObjectWithTag("GameController");
+        ammoText = GameObject.Find("Bullet Count");
+        weaponText = GameObject.Find("Weapon Name");
     }
 
     public void OnEnable()
@@ -48,6 +55,15 @@ public class Shooting : MonoBehaviour
   
     private void Update()
     {
+        weaponText.GetComponent<Text>().text = weaponName.ToString();  // Display Weapon name player is using on hud
+        ammoText.GetComponent<Text>().text = curAmmo.ToString();       // Display ammo count before getbutton
+
+        if (Input.GetButtonDown("Fire1"))
+        {
+            ammoText.GetComponent<Text>().text = curAmmo.ToString();  // Display Ammo count when button down to update count
+        }
+
+
         if (fireMode == 1 || fireMode == 2) // Fire mode 1 = FullAuto(High Power Rifle) Fire mode 2 = Single fire(Desert Eagle, Handgun, .22 & Shotgun)
         {
             if (Input.GetButton("Fire1") && !isReloading && curAmmo > 0)

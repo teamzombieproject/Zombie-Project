@@ -487,6 +487,9 @@ MonoBehaviour:
   isReloading: 0
   isShooting: 0
   isShotGun: 0
+  weaponName: 9mm
+  ammoText: {fileID: 0}
+  weaponText: {fileID: 0}
   bulletTransform:
   - {fileID: 6407584679637196514}
   bulletPrefab: {fileID: 4819104520247393049, guid: 2fe1c89e759eacf478386962d30b3a57,

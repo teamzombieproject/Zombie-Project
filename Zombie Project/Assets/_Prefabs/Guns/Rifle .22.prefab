@@ -621,6 +621,9 @@ MonoBehaviour:
   isReloading: 0
   isShooting: 0
   isShotGun: 0
+  weaponName: .22 Rifle
+  ammoText: {fileID: 0}
+  weaponText: {fileID: 0}
   bulletTransform:
   - {fileID: 5844685197412164780}
   bulletPrefab: {fileID: 3239035987806781411, guid: a890a8e6b49736546a7d8f56b8a320d2,

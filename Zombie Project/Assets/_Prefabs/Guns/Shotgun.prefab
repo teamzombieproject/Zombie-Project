@@ -610,6 +610,9 @@ MonoBehaviour:
   isReloading: 0
   isShooting: 0
   isShotGun: 1
+  weaponName: Pump Action Shotgun
+  ammoText: {fileID: 0}
+  weaponText: {fileID: 0}
   bulletTransform:
   - {fileID: 4842987082252794632}
   - {fileID: 9175925573933949165}
