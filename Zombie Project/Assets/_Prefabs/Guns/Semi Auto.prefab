@@ -284,6 +284,9 @@ MonoBehaviour:
   isReloading: 0
   isShooting: 0
   isShotGun: 0
+  weaponName: AR15
+  ammoText: {fileID: 0}
+  weaponText: {fileID: 0}
   bulletTransform:
   - {fileID: 275184521549122728}
   bulletPrefab: {fileID: 6083209742458288922, guid: f0392dbb858a39741826fbbd7fdef7d8,

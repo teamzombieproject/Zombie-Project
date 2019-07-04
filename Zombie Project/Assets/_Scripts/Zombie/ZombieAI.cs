@@ -30,7 +30,8 @@ public class ZombieAI : MonoBehaviour
 
     [HideInInspector]
     public AudioSource audioSrc;
-    public AudioClip audioClip;
+    public AudioClip zombieAttack;
+   
 
     // public GameObject radioHealthBar;
 
@@ -48,7 +49,7 @@ public class ZombieAI : MonoBehaviour
         zombieAcceleration = zombieWalkSpeed;                       // set movement speed
         sprite = GetComponentInChildren<SpriteRenderer>();
         audioSrc = GetComponent<AudioSource>();
-        audioSrc.clip = audioClip;
+        audioSrc.clip = zombieAttack;
 
         //CONNORS NEW CODE
         navAgent = GetComponent<NavMeshAgent>();
@@ -175,8 +176,10 @@ public class ZombieAI : MonoBehaviour
         attackTimer += Time.deltaTime;
         if (attackTimer >= attackRate)
         {
+            audioSrc.clip = zombieAttack;
+            audioSrc.Play();
             //GetComponentInChildren<TurnToLook>().enabled = true;
-         //   GetComponentInChildren<TurnToLook>().EnableTurn(attackObject.transform, true);
+            //   GetComponentInChildren<TurnToLook>().EnableTurn(attackObject.transform, true);
             if (attackObject.tag == "Barricade")
             {
                 Barricade barricade = attackObject.GetComponent<Barricade>();

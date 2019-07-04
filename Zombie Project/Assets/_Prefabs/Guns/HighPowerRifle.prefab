@@ -253,6 +253,9 @@ MonoBehaviour:
   isReloading: 0
   isShooting: 0
   isShotGun: 0
+  weaponName: AK-47
+  ammoText: {fileID: 0}
+  weaponText: {fileID: 0}
   bulletTransform:
   - {fileID: 3329351497008091300}
   bulletPrefab: {fileID: 1936136267260929035, guid: d905bf2a92d2e444d8a4d87c150f27a3,

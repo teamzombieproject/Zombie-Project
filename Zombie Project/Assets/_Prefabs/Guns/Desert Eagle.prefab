@@ -589,6 +589,9 @@ MonoBehaviour:
   isReloading: 0
   isShooting: 0
   isShotGun: 0
+  weaponName: Desert Eagle
+  ammoText: {fileID: 0}
+  weaponText: {fileID: 0}
   bulletTransform:
   - {fileID: 7889296688286864957}
   bulletPrefab: {fileID: 9116186800894625880, guid: 23e4ed63e7b88f54ba688484ec505a77,

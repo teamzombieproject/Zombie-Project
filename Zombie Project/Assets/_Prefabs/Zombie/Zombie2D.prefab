@@ -185,6 +185,7 @@ MonoBehaviour:
   deathMagnitude: 5
   corpsePrefab: {fileID: 8957603523924562170, guid: 3edc3c954345b8749bf8756513466868,
     type: 3}
+  zombieHurt: {fileID: 8300000, guid: f28a558fc1fb359459d6f0db9f736d75, type: 3}
 --- !u!114 &1770090244399708474
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -214,7 +215,7 @@ MonoBehaviour:
   isHit: 0
   stunTime: 0.5
   audioSrc: {fileID: 0}
-  audioClip: {fileID: 8300000, guid: f5f70efe5efd6844ea65b220d71442e2, type: 3}
+  zombieAttack: {fileID: 8300000, guid: e4ccfc5a74ae2df4683b3b7b62b94771, type: 3}
   navAgent: {fileID: 0}
   ended: 0
   attack: 0
@@ -276,7 +277,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: e4ccfc5a74ae2df4683b3b7b62b94771, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -287,7 +288,7 @@ AudioSource:
   Priority: 128
   DopplerLevel: 1
   MinDistance: 1
-  MaxDistance: 500
+  MaxDistance: 9
   Pan2D: 0
   rolloffMode: 0
   BypassEffects: 0
@@ -322,7 +323,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
+      value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0
