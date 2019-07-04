@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 1770090243025800745}
   - component: {fileID: 1770090243025800747}
   - component: {fileID: 1770090243025800746}
-  - component: {fileID: 371921551454808299}
   m_Layer: 11
   m_Name: ZombieSprite
   m_TagString: Untagged
@@ -101,18 +100,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 1
---- !u!114 &371921551454808299
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1770090243025800744}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b86f20d53a3cf7447a61e84e8ff666fe, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1770090244399708473
 GameObject:
   m_ObjectHideFlags: 0
@@ -183,7 +170,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   zombieHealth: 100
   deathMagnitude: 5
-  corpsePrefab: {fileID: 8957603523924562170, guid: 0e68950a22fa44045a9ee147d43c60b6,
+  corpsePrefab: {fileID: 8957603523924562170, guid: 3edc3c954345b8749bf8756513466868,
     type: 3}
 --- !u!114 &1770090244399708474
 MonoBehaviour:
