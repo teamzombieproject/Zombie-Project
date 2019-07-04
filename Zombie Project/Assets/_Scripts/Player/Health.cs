@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class Health : MonoBehaviour
 {
     //total health, invulnurability sprite flash speed, how long your invulnurable (s), how long you have to wait after taking damage to heal (s), how much you heal
-    public float health = 100, invulnurability = 5, healWait = 10, healAmount = 1;
+    public float health = 100, invulnurability = 5, healWait = 20, healAmount = 1;
     //DONT MAKE INVULNURABILITY TIME NEGATIVE, PLAYER WILL BE INDESTRUCTABLE FOREVER.
     float timer = 0, healthTimer = 0, rotate = 0, timerInitial, startingHealth, multiplier = .1f;
     bool dead = false;
@@ -90,7 +90,7 @@ public class Health : MonoBehaviour
             damaged = true;
         }
         //GameObject.FindGameObjectWithTag("Healthbar").GetComponent<Image>()
-        FindObjectOfType<Canvas>().transform.GetChild(0).Find("HealthBarBackground").Find("HealthBar").GetComponent<Image>().fillAmount = health / startingHealth;
+        GameObject.FindGameObjectWithTag("Canvas").transform.Find("GUI").Find("HealthBarBackground").Find("HealthBar").gameObject.GetComponent<Image>().fillAmount = health / startingHealth;
     }
 
     void OnDeath()

@@ -338,6 +338,36 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!1 &3698195259414452543
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7989683895635301082}
+  m_Layer: 0
+  m_Name: CapPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7989683895635301082
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3698195259414452543}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -1.21}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 8955208013215146486}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4659648048404443198
 GameObject:
   m_ObjectHideFlags: 0
@@ -485,6 +515,7 @@ Transform:
   - {fileID: 5712334010676824196}
   - {fileID: 6949200451142166104}
   - {fileID: 5965331016691136165}
+  - {fileID: 7989683895635301082}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: -180, z: 0}
@@ -630,6 +661,9 @@ MonoBehaviour:
     type: 3}
   fireSFX: {fileID: 5724419091153691526}
   fireFx: {fileID: 6350805912164418681, guid: 001a1f7c4fae098478d8daace54d6db1, type: 3}
+  shellPrefab: {fileID: 8605892323413876489, guid: ea978d3a41058ef4e879a251cfc0ed68,
+    type: 3}
+  shellSocket: {fileID: 3698195259414452543}
   reloadSFX: {fileID: 1142545974544988185}
 --- !u!82 &1142545974544988185
 AudioSource:

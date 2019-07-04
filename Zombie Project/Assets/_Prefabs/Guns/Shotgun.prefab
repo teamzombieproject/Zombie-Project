@@ -216,6 +216,36 @@ Transform:
   m_Father: {fileID: 7957450501634424402}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
+--- !u!1 &4561982215491884220
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5948880102079369134}
+  m_Layer: 0
+  m_Name: CapPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5948880102079369134
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4561982215491884220}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.033, z: -0.684}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 7957450501634424402}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5074026209583646013
 GameObject:
   m_ObjectHideFlags: 0
@@ -474,6 +504,7 @@ Transform:
   - {fileID: 3161184783608574624}
   - {fileID: 9175925573933949165}
   - {fileID: 1280076734647259936}
+  - {fileID: 5948880102079369134}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -621,6 +652,9 @@ MonoBehaviour:
     type: 3}
   fireSFX: {fileID: 6726400897484192802}
   fireFx: {fileID: 7757583998089983991, guid: e6f76a071dec79c469c51674a67b1b4f, type: 3}
+  shellPrefab: {fileID: 8782970940013096466, guid: 5b2c645523ce4fb48ae094f437aacb32,
+    type: 3}
+  shellSocket: {fileID: 4561982215491884220}
   reloadSFX: {fileID: 7315179909762612748}
 --- !u!82 &7315179909762612748
 AudioSource:

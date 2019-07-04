@@ -58,20 +58,26 @@ MonoBehaviour:
   actionPhaseActive: 0
   isRadioDead: 0
   m_GameTime: 0
-  spawnDeactivate: 30
+  timeUntilEndOfWave: 30
   spawnTimer: 0
-  bEDropTimeEnd: 20
+  timeUntilBEDrop: 0
+  spawnRepeatRate: 3.75
   playerHealth: {fileID: 0}
   spawns: {fileID: 0}
   supplyDropSpawn: {fileID: 0}
+  supplyDropSpawn2: {fileID: 0}
+  supplyDropSpawn3: {fileID: 0}
+  supplyDropSpawn4: {fileID: 0}
   bEDropSpawn: {fileID: 0}
-  weaponDropSpawn: {fileID: 0}
+  bEDropSpawn2: {fileID: 0}
+  bEDropSpawn3: {fileID: 0}
+  bEDropSpawn4: {fileID: 0}
   playerSpawn: {fileID: 0}
   radioSpawn: {fileID: 0}
   zombieSpawner: {fileID: 0}
-  supplyDropObject: {fileID: 6222122715345630286, guid: df7aa5bf1bd0f8942b8af680095e3d99,
+  supplyDropObject: {fileID: 7224527114091995173, guid: 32167e20a9ce3e54290d2f742bc2bc77,
     type: 3}
-  bEDropObject: {fileID: 6125793029045932334, guid: abfd23078dae7324e814806f162b5953,
+  bEDropObject: {fileID: 4461424639508804272, guid: 0085673680412194d9b702e3c24d3053,
     type: 3}
   weaponDropObject: {fileID: 0}
   playerObject: {fileID: 7897983124235829538, guid: a2944bdffc92d564684d9cfae975ca94,
@@ -81,7 +87,9 @@ MonoBehaviour:
   cameraRigObject: {fileID: 2894945381534073869, guid: 2681a09a07ffd9f4ba257d793f3a323f,
     type: 3}
   currentSupplyDrop: {fileID: 0}
+  currentSupplyDropSpawn: {fileID: 0}
   currentBEDrop: {fileID: 0}
+  currentBEDropSpawn: {fileID: 0}
   currentWeaponDrop: {fileID: 0}
   currentPlayer: {fileID: 0}
   mineDrop: {fileID: 5466698764742541, guid: 5d783198d0b5e89468440c290358c744, type: 3}
@@ -99,6 +107,7 @@ MonoBehaviour:
   Gun4: {fileID: 2856288382467738154, guid: 766ba9e845833b140bdc184870ba0e1a, type: 3}
   Gun5: {fileID: 7306787393381154593, guid: 25b94170be692ee48a05c97268667161, type: 3}
   reloadGUIObject: {fileID: 0}
+  BEUpdateText: {fileID: 0}
   gameScore: 0
   wave: 0
   difficultyMultiplier: 1
@@ -109,6 +118,7 @@ MonoBehaviour:
   mineStock: 0
   bearTrapStock: 0
   barricadeStock: 0
+  currentAmmo: 0
 --- !u!114 &265840622
 MonoBehaviour:
   m_ObjectHideFlags: 0

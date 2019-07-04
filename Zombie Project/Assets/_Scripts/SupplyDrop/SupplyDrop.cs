@@ -25,23 +25,23 @@ public class SupplyDrop : MonoBehaviour
 
                 for (int i = GM.mineStock; i > 0; i--)
                 {
-                    Instantiate(GM.mineDrop, GM.supplyDropSpawn.transform.position, Quaternion.identity);
+                    Instantiate(GM.mineDrop, GM.currentSupplyDropSpawn.transform.position, Quaternion.identity);
                 }
                 for (int i = GM.bearTrapStock; i > 0; i--)
                 {
-                    Instantiate(GM.bearTrapDrop, GM.supplyDropSpawn.transform.position, Quaternion.identity);
+                    Instantiate(GM.bearTrapDrop, GM.currentSupplyDropSpawn.transform.position, Quaternion.identity);
                 }
                 for (int i = GM.javelinRocketTurretStock; i > 0; i--)
                 {
-                    Instantiate(GM.javelinRocketTurretDrop, GM.supplyDropSpawn.transform.position, Quaternion.identity);
+                    Instantiate(GM.javelinRocketTurretDrop, GM.currentSupplyDropSpawn.transform.position, Quaternion.identity);
                 }
                 for (int i = GM.machineGunTurretStock; i > 0; i--)
                 {
-                    Instantiate(GM.machineGunTurretDrop, GM.supplyDropSpawn.transform.position, Quaternion.identity);
+                    Instantiate(GM.machineGunTurretDrop, GM.currentSupplyDropSpawn.transform.position, Quaternion.identity);
                 }
                 for (int i = GM.barricadeStock; i > 0; i--)
                 {
-                    Instantiate(GM.barricadeDrop, GM.supplyDropSpawn.transform.position, Quaternion.identity);
+                    Instantiate(GM.barricadeDrop, GM.currentSupplyDropSpawn.transform.position, Quaternion.identity);
                 }
             Destroy(gameObject);
         }

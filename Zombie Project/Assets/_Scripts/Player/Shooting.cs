@@ -33,6 +33,8 @@ public class Shooting : MonoBehaviour
     public GameObject bulletPrefab;              // Projectile prefab
     public AudioSource fireSFX;                  // Sound effects for firing
     public GameObject fireFx;                    // Particle effect when firing guns - (Shotgun has its own particle effect)
+    public GameObject shellPrefab;
+    public GameObject shellSocket;
 
     public AudioSource reloadSFX;                // Reload sound efffect Final thing to do
 
@@ -179,6 +181,7 @@ public class Shooting : MonoBehaviour
         }
 
          Instantiate(bulletPrefab, bulletTransform[0].position, bulletTransform[0].transform.rotation);
+        Instantiate(shellPrefab, shellSocket.transform.position, new Quaternion(0,0,0,0));
          //Instantiate(fireFx, bulletTransform[0].position, bulletTransform[0].rotation);
 
         if (isShotGun)

@@ -409,7 +409,7 @@ public class GameManager : MonoBehaviour
                 }
 
                 // All zombies dead change to build state
-                if (!canZombiesSpawn && spawnTimer <= 0 && zombiesAlive == 0 && bEPiecePickedUp)
+                if (!canZombiesSpawn && spawnTimer <= 0 && zombiesAlive == 0)
                 {
                     m_GameState = GameState.Build;
                 }
