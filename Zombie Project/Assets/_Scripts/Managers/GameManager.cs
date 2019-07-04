@@ -443,6 +443,7 @@ public class GameManager : MonoBehaviour
                     spawnTimer = timeUntilEndOfWave;
                     timeUntilBEDrop = spawnTimer / 2;
                     bEPiecePickedUp = false;
+                    hasSupplyDropSpawned = false;
                 }
 
                 // Make the supply drop spawn (set Spawn bool to true) (can only spawn when false)

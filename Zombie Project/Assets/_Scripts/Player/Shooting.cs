@@ -57,6 +57,16 @@ public class Shooting : MonoBehaviour
   
     private void Update()
     {
+        if(weaponText == null)
+        {
+            weaponText = GameObject.Find("Weapon Name");
+        }
+
+        if (ammoText == null)
+        {
+            ammoText = GameObject.Find("Bullet Count");
+        }
+
         weaponText.GetComponent<Text>().text = weaponName.ToString();  // Display Weapon name player is using on hud
         ammoText.GetComponent<Text>().text = curAmmo.ToString();       // Display ammo count before getbutton
 
