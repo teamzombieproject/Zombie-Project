@@ -18,7 +18,6 @@ public class Radio : MonoBehaviour
 
 
 
-
     private void Start()
     {
         radioHealth = maxHealth;
@@ -38,11 +37,11 @@ public class Radio : MonoBehaviour
             Debug.Log("destroy me");
             for (int i = 0; i < zombieAIScript.Count; i++)
             {
-
-                zombieAIScript[i].attackObject = null;
+                if (zombieAIScript[i] != null)
+                    zombieAIScript[i].attackObject = null;
             }
             GM.isRadioDead = true;
-            Destroy(this.gameObject);
+            Destroy(gameObject);
         }
 
         radioHealthBar.fillAmount = radioHealth / maxHealth;
@@ -73,9 +72,10 @@ public class Radio : MonoBehaviour
     {
         if (other.gameObject.tag == "Zombie" || other.gameObject.tag == "Player")
         {
+
             rend.material = transparent;
         }
-
+        
     }
 
     public void OnTriggerExit(Collider other)

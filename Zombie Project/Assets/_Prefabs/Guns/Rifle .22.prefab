@@ -661,7 +661,7 @@ MonoBehaviour:
     type: 3}
   fireSFX: {fileID: 5724419091153691526}
   fireFx: {fileID: 6350805912164418681, guid: 001a1f7c4fae098478d8daace54d6db1, type: 3}
-  shellPrefab: {fileID: 8605892323413876489, guid: ea978d3a41058ef4e879a251cfc0ed68,
+  shellPrefab: {fileID: 8605892323413876489, guid: 1a447c1ffbae23045a5b0d69bdd19628,
     type: 3}
   shellSocket: {fileID: 3698195259414452543}
   reloadSFX: {fileID: 1142545974544988185}

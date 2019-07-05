@@ -49,9 +49,8 @@ public class OffScreenPoint : MonoBehaviour
             Vector2 pos = cameraObject.WorldToScreenPoint(pointTransform.position);
             Ray cameraObjectRay = cameraObject.ScreenPointToRay(pos);
             Plane groundPlane = new Plane(Vector3.up, Vector3.zero);
-            float rayLength;
 
-            if (groundPlane.Raycast(cameraObjectRay, out rayLength))
+            if (groundPlane.Raycast(cameraObjectRay, out float rayLength))
             {
                 Vector3 pointToLook = cameraObjectRay.GetPoint(rayLength);
 

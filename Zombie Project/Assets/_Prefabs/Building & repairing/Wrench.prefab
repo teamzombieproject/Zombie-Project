@@ -378,7 +378,7 @@ MonoBehaviour:
   forceMagnitude: 20
   damage: 20
   initialCooldown: 1.5
-  repairAmount: 10
+  repairAmount: 5
   swingSpeed: 4
   repairableTags:
   - Traps
