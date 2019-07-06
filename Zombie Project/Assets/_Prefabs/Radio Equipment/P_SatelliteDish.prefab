@@ -94,7 +94,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5564d85796e2024188d12c0b54f530a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  radioHealth: 100
+  radioHealth: 500
   zombieAIScript: []
   GM: {fileID: 0}
   radioUnderAttack: {fileID: 0}

@@ -25,7 +25,7 @@ public class Radio : MonoBehaviour
         GM = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
         radioUnderAttack = GameObject.Find("Radio Under Attack").GetComponent<Text>();
         radioUnderAttack.text = "";
-
+       //GM.BEUpdateText.text = "Goal: Kill the rest of the zombies.";
 
     }
 
@@ -46,10 +46,12 @@ public class Radio : MonoBehaviour
 
         radioHealthBar.fillAmount = radioHealth / maxHealth;
 
-        if (zombieAIScript.Count > 0)
+        if (zombieAIScript.Count > 0 && GM.actionPhaseActive == true)
         {
             radioUnderAttack.text = "Radio Under Attack!!";
+           
         }
+
         else
         {
             radioUnderAttack.text = "";
