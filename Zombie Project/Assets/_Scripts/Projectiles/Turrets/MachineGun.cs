@@ -72,7 +72,7 @@ public class MachineGun : MonoBehaviour
 
 
             // collision.gameObject.SendMessage("TakeDamage", projectileDamage, SendMessageOptions.DontRequireReceiver);
-            // Destroy(gameObject);
+            Destroy(gameObject);
             // GameObject.Instantiate(bloodHitFX, _MGPrefab.position, _MGPrefab.rotation);
         }
 
