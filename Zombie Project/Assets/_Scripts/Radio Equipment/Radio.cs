@@ -25,7 +25,7 @@ public class Radio : MonoBehaviour
         GM = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
         radioUnderAttack = GameObject.Find("Radio Under Attack").GetComponent<Text>();
         radioUnderAttack.text = "";
-       //GM.BEUpdateText.text = "Goal: Kill the rest of the zombies.";
+      
 
     }
 
@@ -65,6 +65,7 @@ public class Radio : MonoBehaviour
         if (collision.gameObject.tag == "Player" && GM.bEPiecePickedUp)
         {
             //GM.BEUpdateText.text = "Goal: Get the BE Drop. It has spawned somewhere around the map.";
+            GM.BEUpdateText.text = "Goal: Kill the rest of the zombies.";
             GM.bEPieces += 1;
             GM.bEPiecePickedUp = false;
         }
