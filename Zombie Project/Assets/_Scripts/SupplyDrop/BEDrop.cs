@@ -22,6 +22,7 @@ public class BEDrop : MonoBehaviour
         if (other.gameObject.tag == "Player")
         {
             GM.bEPiecePickedUp = true;
+            GM.bEPieces += 1;
             Destroy(gameObject);
             GM.BEUpdateText.text = "Goal: Bring the BE Drop back to the radio.";
         }

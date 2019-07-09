@@ -167,7 +167,8 @@ public class GameManager : MonoBehaviour
         
         if (m_GameState == GameState.Lose)
         {
-            SceneManager.LoadScene("Menu");
+            Debug.Log("You Lost!");
+            yield return SceneManager.LoadSceneAsync("Lose");
             Destroy(gameObject);
         }
 
@@ -408,8 +409,7 @@ public class GameManager : MonoBehaviour
                 double spawnTimerRounded;
                 spawnTimerRounded = System.Math.Round(spawnTimer, 2);               // round the timer to 2 decimal places
                 TimeRemainText.text = "Time Remaining: " + spawnTimerRounded;
-
-                AmmoText.text = "Ammo: " + currentAmmo;
+                
 
                 spawnTimer -= Time.deltaTime;           // count down spawn timer
                 actionPhaseActive = true;
