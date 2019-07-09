@@ -151,6 +151,10 @@ public class Health : MonoBehaviour
         {
             healthTimer -= 1.0f;
             health += healAmount;
+            if (healthBar == null)
+                GameObject.FindGameObjectWithTag("Canvas").transform.Find("GUI").Find("HealthBarBackground").Find("HealthBar").gameObject.GetComponent<Image>().fillAmount = health / startingHealth;
+            else
+                healthBar.fillAmount = health / startingHealth;
             //Debug.Log(health);
         }
     }

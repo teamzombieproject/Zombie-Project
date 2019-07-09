@@ -25,7 +25,7 @@ public class HealthBar : MonoBehaviour
 
         if (tag == "Turret")
         {
-            health.fillAmount = following.GetComponent<Turret>().turretHealth / 100;
+            health.fillAmount = following.GetComponent<Turret>().turretHealth / 50;
         }
         else if (tag == "Traps")
         {

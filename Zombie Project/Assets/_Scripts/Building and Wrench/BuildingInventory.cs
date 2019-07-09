@@ -10,7 +10,7 @@ public class BuildingInventory : MonoBehaviour
     public GameObject[] buildInventory;
     public GameObject[] boxes; // selection boxes
     //public Sprite[] Icons; //bear trap, mine, turret, machgunturret, barricade
-    GameObject Player, Arm;
+    GameObject Player, Arm, watchArm;
     public bool on = false, forceOn = false;
     bool enableOnce = false;
     int pickupSlot;
@@ -24,7 +24,7 @@ public class BuildingInventory : MonoBehaviour
         GameObject canvas = GameObject.FindGameObjectWithTag("Canvas");
         for(int i = 0; i < boxes.Length; i++)
         {
-            boxes[i] = canvas.transform.Find("InventorySelections").Find("Selection " + (i + 1)).gameObject;
+            boxes[i] = canvas.transform.Find("BuildGUI").Find("InventorySelections").Find("Selection " + (i + 1)).gameObject;
         }
     }
     void Update()
@@ -39,6 +39,7 @@ public class BuildingInventory : MonoBehaviour
         }
         else
         {
+            
             if ((gameManager.State == GameManager.GameState.Build || forceOn) && !enableOnce)
             {
                 enableOnce = true;
@@ -46,18 +47,30 @@ public class BuildingInventory : MonoBehaviour
                 Player.transform.Find("Arm").GetComponent<Aiming>().enabled = false;
                 Player.transform.Find("Arm").GetComponent<AudioSource>().enabled = false;
                 Player.transform.Find("Arm").GetChild(0).gameObject.SetActive(false);
-                boxes[0].transform.parent.gameObject.SetActive(true);
-                //GameObject.FindGameObjectWithTag("Canvas").transform.Find("InventorySelections").gameObject.SetActive(true);
+                boxes[0].transform.parent.parent.gameObject.SetActive(true);
+                watchArm = boxes[0].transform.parent.parent.Find("Stopwatch").GetChild(0).gameObject;
+                //GameObject.FindGameObjectWithTag("Canvas").transform.Find("BuildUI").gameObject.SetActive(true);
             }
             else if (gameManager.State != GameManager.GameState.Build && !forceOn)
             {
                 if (on)
                 {
                     Disable();
+                    GameObject.FindGameObjectWithTag("Player").transform.Find("ShadowCylinder").gameObject.GetComponent<AudioSource>().Play();
                     enableOnce = false;
                 }
             }
         }
+        if (watchArm == null)
+        {
+            watchArm = boxes[0].transform.parent.parent.Find("Stopwatch").GetChild(0).gameObject;
+        }
+        else
+        {
+            watchArm.transform.localRotation = Quaternion.Euler(0, 0, gameManager.GameTime / 45 * -360);
+        }
+
+        
         // if (gameManager.State == GameManager.GameState.Build)
         // {
         //     on = true;
@@ -163,7 +176,7 @@ public class BuildingInventory : MonoBehaviour
         }
         buildInventory[pickupSlot] = newBuildable;
         buildInventory[pickupSlot].GetComponent<PlaceBuildable>().quantity = quantity;
-        boxes[pickupSlot].GetComponentInChildren<Text>().text = quantity.ToString();
+        boxes[pickupSlot].GetComponentInChildren<Text>().text = "" + quantity;
         boxes[pickupSlot].transform.Find("PickupIcon").gameObject.GetComponent<Image>().enabled = true;
         boxes[pickupSlot].transform.Find("PickupIcon").gameObject.GetComponent<Image>().sprite = newBuildable.GetComponent<IconInfo>().Icon;
         if (boxes[pickupSlot].GetComponent<Outline>().enabled == true)
@@ -193,7 +206,7 @@ public class BuildingInventory : MonoBehaviour
         Player.transform.Find("Arm").GetComponent<Aiming>().enabled = true;
         Player.transform.Find("Arm").GetChild(0).gameObject.SetActive(true);
         Player.transform.Find("Arm").GetComponent<AudioSource>().enabled = true;
-        boxes[0].transform.parent.gameObject.SetActive(false);
-        //GameObject.FindGameObjectWithTag("Canvas").transform.Find("InventorySelections").gameObject.SetActive(false);
+        boxes[0].transform.parent.parent.gameObject.SetActive(false);
+        //GameObject.FindGameObjectWithTag("Canvas").transform.Find("BuildUI").gameObject.SetActive(false);
     }
 }

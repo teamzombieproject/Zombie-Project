@@ -67,6 +67,12 @@ public class GameManager : MonoBehaviour
     public GameObject Gun5;
     public GameObject reloadGUIObject;
 
+    public List<GameObject> corpses;
+    public float maxNumberOfCorpses = 100f;
+    public List<GameObject> shells;
+    public float maxNumberOfShells = 200f;
+
+
     GameObject GameHUD;
     Text BEPiecesText;
     Text WaveNumberText;
@@ -118,7 +124,23 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        CheckState();        
+        CheckState();
+        CheckDespawns();
+    }
+
+    void CheckDespawns()
+    {
+        if (corpses.Count > maxNumberOfCorpses)         // if there are too many corpses
+        {
+            Destroy(corpses[0]);                        // destroy the oldest corpse
+            corpses.RemoveAt(0);                        // remove reference from list
+        }
+        
+        if (shells.Count > maxNumberOfShells)           // if there are too many shells
+        {
+            Destroy(shells[0]);                         // destroy the oldest shell
+            shells.RemoveAt(0);                         // remove reference from list
+        }
     }
 
     public void PlayGame()
@@ -290,6 +312,7 @@ public class GameManager : MonoBehaviour
 
             currentBEDrop = Instantiate(bEDropObject, currentBEDropSpawn.transform.position, currentBEDropSpawn.transform.rotation);
             hasBEDropSpawned = true;
+            BEUpdateText.text = "Goal: Get the BE Drop. It has spawned somewhere around the map.";
         }
     }
 
@@ -320,7 +343,7 @@ public class GameManager : MonoBehaviour
     {
         if (wave == 1)
         {
-              weaponDropObject = Gun1;
+            weaponDropObject = Gun1;
         }
         if (wave == 2)
         {
@@ -376,6 +399,7 @@ public class GameManager : MonoBehaviour
                 BEPiecesText.text = "BE Pieces: " + bEPieces + "/5";
                 WaveNumberText.text = "Wave: " + wave;
                 ZombiesRemainText.text = "Zombies Remaining: " + zombiesAlive;
+                BEUpdateText.text = "Goal: Kill the zombies & survive.";
 
                 double spawnTimerRounded;
                 spawnTimerRounded = System.Math.Round(spawnTimer, 2);               // round the timer to 2 decimal places
@@ -443,6 +467,7 @@ public class GameManager : MonoBehaviour
                     spawnTimer = timeUntilEndOfWave;
                     timeUntilBEDrop = spawnTimer / 2;
                     bEPiecePickedUp = false;
+                    hasSupplyDropSpawned = false;
                 }
 
                 // Make the supply drop spawn (set Spawn bool to true) (can only spawn when false)
@@ -450,11 +475,11 @@ public class GameManager : MonoBehaviour
                 {
                     SpawnSupplyDrop();
                 }
-
+               
                 if (canGunBeSpawned)
                 {
                     SelectedWeaponDrop();
-                    currentWeaponDrop = Instantiate(weaponDropObject, supplyDropSpawn.transform.position, supplyDropSpawn.transform.rotation);
+                    currentWeaponDrop = Instantiate(weaponDropObject, currentSupplyDropSpawn.transform.position, currentSupplyDropSpawn.transform.rotation);
                     canGunBeSpawned = false;
                 }
 

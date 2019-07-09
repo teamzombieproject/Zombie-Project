@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Wrench : MonoBehaviour
 {
@@ -13,13 +14,38 @@ public class Wrench : MonoBehaviour
     public GameObject wrenchSprites, wind, windSpawnPoint;
     public GameObject hitFX; // stolen from james >:D
     public GameObject sparks;
-
+    
     public AudioClip smackSFX, repairSFX, repairMissSFX;
     AudioSource wrenchSFX;
+
+    GameObject ammoText, weaponText;
+
+    List<GameObject> damaged = new List<GameObject>();//make sure nothing is hurt twice//repaired twice in one swipe.
     private void Start()
     {
         wrenchSFX = GetComponent<AudioSource>();
+        ammoText = GameObject.Find("Bullet Count"); //lots of work wasted since i didnt know gameobject.find finds children of obj too.
+        weaponText = GameObject.Find("Weapon Name");
+        if (ammoText == null)
+            return;
+        weaponText.GetComponent<Text>().text = "Wrench";
+        ammoText.GetComponent<Text>().text = "1";
         
+    }
+    private void OnEnable()
+    {
+        if (ammoText == null)
+        {
+            ammoText = GameObject.Find("Bullet Count");
+            weaponText = GameObject.Find("Weapon Name");
+            if (ammoText == null)
+            {
+                return;
+            }
+        }
+            
+        weaponText.GetComponent<Text>().text = "Wrench";
+        ammoText.GetComponent<Text>().text = "1";
     }
     private void Update()
     {
@@ -30,6 +56,25 @@ public class Wrench : MonoBehaviour
         if (cooldown > 0)
         {
             cooldown -= Time.deltaTime;
+           /* if (ammoText != null)
+            {
+                ammoText.GetComponent<Text>().color = new Color(1, (initialCooldown - cooldown) / initialCooldown, (initialCooldown - cooldown) / initialCooldown);
+            }*/
+        } else
+        {
+            if (ammoText == null)
+            {
+                ammoText = GameObject.Find("Bullet Count");
+                weaponText = GameObject.Find("Weapon Name");
+                if (ammoText == null)
+                {
+                    return;
+                }
+            }
+            if (ammoText.GetComponent<Text>().text == "0")
+            {
+                ammoText.GetComponent<Text>().text = "1";
+            }
         }
         if (Input.GetKeyDown(KeyCode.Mouse0) && cooldown <= 0)
         {
@@ -39,6 +84,19 @@ public class Wrench : MonoBehaviour
                 attacking = true;
                 gameObject.GetComponent<BoxCollider>().enabled = true;
 
+                if (ammoText == null)
+                {
+                    ammoText = GameObject.Find("Bullet Count");
+                   weaponText = GameObject.Find("Weapon Name");
+                    if (ammoText != null)
+                    {
+                        ammoText.GetComponent<Text>().text = "0";
+                    }
+                } else
+                {
+                    ammoText.GetComponent<Text>().text = "0";
+                }
+            
                 if (repair)
                 {
                     wrenchSFX.clip = repairMissSFX;
@@ -52,9 +110,9 @@ public class Wrench : MonoBehaviour
                     wrenchSFX.pitch = .6f;
                 wrenchSFX.Play();
                 
-                Instantiate(wind, windSpawnPoint.transform.position, windSpawnPoint.transform.rotation);    
-            }
-
+                Instantiate(wind, windSpawnPoint.transform.position, windSpawnPoint.transform.rotation);
+                damaged.Clear();
+            } 
         }
         
     }
@@ -71,6 +129,14 @@ public class Wrench : MonoBehaviour
     {
         if (other.gameObject.tag == "Zombie" && !repair)
         {
+            for (int i = 0; i < damaged.Count; i++)
+            {
+                if (damaged[i] = other.gameObject) // wont effect repair items cuz under tag zombie if function
+                {
+                    return;
+                }
+            }
+            damaged.Add(other.gameObject);
             Debug.Log("Zombie Hit");
                 other.gameObject.GetComponent<Rigidbody>().AddForce(other.gameObject.transform.position - new Vector3 (transform.position.x,0,transform.position.y)* forceMagnitude, ForceMode.Impulse);
             // other.gameObject.SendMessage("TakeDamage", damage, SendMessageOptions.DontRequireReceiver);
@@ -78,9 +144,18 @@ public class Wrench : MonoBehaviour
             
             GameObject bloodFX = Instantiate(hitFX, other.transform.position, Quaternion.identity);
                 bloodFX.GetComponent<ParticleSystem>().Play();
+            
         }
         else if (repair)
         {
+            for (int i = 0; i < damaged.Count; i++)
+            {
+                if (damaged[i] = other.gameObject) // wont effect repair items cuz under tag zombie if function
+                {
+                    return;
+                }
+            }
+            damaged.Add(other.gameObject);
             Repair(other.gameObject);
         }
     }
@@ -166,18 +241,23 @@ public class Wrench : MonoBehaviour
                             repairable.GetComponent<Turret>().turretHealth = repairAmount;
                             //repairable.GetComponent<Turret>().ActivateTurret();
                         } else
-                        repairable.GetComponent<Turret>().turretHealth = Mathf.Clamp(repairable.GetComponent<Turret>().turretHealth + repairAmount * 2, 0, 100);
+                        repairable.GetComponent<Turret>().turretHealth = Mathf.Clamp(repairable.GetComponent<Turret>().turretHealth + repairAmount * 2, 0, 50);
                     }
                 }
             }
-            else if (repairable.tag == "Radio")
+        }
+    }
+    private void OnDisable()
+    {
+        /*if (ammoText == null)
+        {
+           // ammoText = GameObject.Find("Bullet Count");
+          //weaponText = GameObject.Find("Weapon Name");
+            if (ammoText == null)
             {
-                Instantiate(sparks, repairable.transform.position + new Vector3(0, .5f, 0), Quaternion.identity);
-                wrenchSFX.clip = repairSFX;
-                wrenchSFX.pitch = .8f;
-                wrenchSFX.Play();
-                repairable.GetComponent<Radio>().radioHealth = Mathf.Clamp(repairable.GetComponent<Radio>().radioHealth + repairAmount, 0, 100);
+                return;
             }
         }
+        ammoText.GetComponent<Text>().color = ammoTxtInit;*/
     }
 }

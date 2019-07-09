@@ -6,6 +6,7 @@ public class OffScreenPoint : MonoBehaviour
 {
     public Camera cameraObject;
     public Transform pointTransform;
+    Transform pointTransformQueue;
     GameObject child;
     public Vector3 initialPos;
     bool point = false, isDisabled = false;
@@ -49,9 +50,8 @@ public class OffScreenPoint : MonoBehaviour
             Vector2 pos = cameraObject.WorldToScreenPoint(pointTransform.position);
             Ray cameraObjectRay = cameraObject.ScreenPointToRay(pos);
             Plane groundPlane = new Plane(Vector3.up, Vector3.zero);
-            float rayLength;
 
-            if (groundPlane.Raycast(cameraObjectRay, out rayLength))
+            if (groundPlane.Raycast(cameraObjectRay, out float rayLength))
             {
                 Vector3 pointToLook = cameraObjectRay.GetPoint(rayLength);
 

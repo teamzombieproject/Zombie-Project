@@ -18,7 +18,6 @@ public class Radio : MonoBehaviour
 
 
 
-
     private void Start()
     {
         radioHealth = maxHealth;
@@ -26,7 +25,7 @@ public class Radio : MonoBehaviour
         GM = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
         radioUnderAttack = GameObject.Find("Radio Under Attack").GetComponent<Text>();
         radioUnderAttack.text = "";
-
+      
 
     }
 
@@ -38,19 +37,21 @@ public class Radio : MonoBehaviour
             Debug.Log("destroy me");
             for (int i = 0; i < zombieAIScript.Count; i++)
             {
-
-                zombieAIScript[i].attackObject = null;
+                if (zombieAIScript[i] != null)
+                    zombieAIScript[i].attackObject = null;
             }
             GM.isRadioDead = true;
-            Destroy(this.gameObject);
+            Destroy(gameObject);
         }
 
         radioHealthBar.fillAmount = radioHealth / maxHealth;
 
-        if (zombieAIScript.Count > 0)
+        if (zombieAIScript.Count > 0 && GM.actionPhaseActive == true)
         {
             radioUnderAttack.text = "Radio Under Attack!!";
+           
         }
+
         else
         {
             radioUnderAttack.text = "";
@@ -64,6 +65,7 @@ public class Radio : MonoBehaviour
         if (collision.gameObject.tag == "Player" && GM.bEPiecePickedUp)
         {
             //GM.BEUpdateText.text = "Goal: Get the BE Drop. It has spawned somewhere around the map.";
+            GM.BEUpdateText.text = "Goal: Kill the rest of the zombies.";
             GM.bEPieces += 1;
             GM.bEPiecePickedUp = false;
         }
@@ -73,9 +75,10 @@ public class Radio : MonoBehaviour
     {
         if (other.gameObject.tag == "Zombie" || other.gameObject.tag == "Player")
         {
+
             rend.material = transparent;
         }
-
+        
     }
 
     public void OnTriggerExit(Collider other)

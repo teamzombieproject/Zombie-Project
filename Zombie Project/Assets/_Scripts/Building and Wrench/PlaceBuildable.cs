@@ -160,8 +160,8 @@ public class PlaceBuildable : MonoBehaviour
                 {
                     GetComponentInParent<BuildingInventory>().boxes[i].transform.Find("PickupIcon").GetComponent<Image>().enabled = false;
                     GetComponentInParent<BuildingInventory>().buildInventory[i] = null;
-                    GetComponentInParent<BuildingInventory>().boxes[i].GetComponentInChildren<Text>().enabled = false;
-                }
+                    GetComponentInParent<BuildingInventory>().boxes[i].GetComponentInChildren<Text>().text = null;
+                } else
                 GetComponentInParent<BuildingInventory>().boxes[i].GetComponentInChildren<Text>().text = quantity.ToString();
             }
         }
