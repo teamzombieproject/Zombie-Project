@@ -18,28 +18,34 @@ public class Wrench : MonoBehaviour
     public AudioClip smackSFX, repairSFX, repairMissSFX;
     AudioSource wrenchSFX;
 
-    Text ammoText, weaponText;
-    Color ammoTxtInit;
+    GameObject ammoText, weaponText;
 
     List<GameObject> damaged = new List<GameObject>();//make sure nothing is hurt twice//repaired twice in one swipe.
     private void Start()
     {
         wrenchSFX = GetComponent<AudioSource>();
-        ammoText = GameObject.Find("Bullet Count").GetComponent<Text>(); //lots of work wasted since i didnt know gameobject.find finds children of obj too.
-        weaponText = GameObject.Find("Weapon Name").GetComponent<Text>();
-        weaponText.text = "Wrench";
-        ammoText.text = "1";
-        ammoTxtInit = ammoText.color;
-        ammoText.color = Color.white;
+        ammoText = GameObject.Find("Bullet Count"); //lots of work wasted since i didnt know gameobject.find finds children of obj too.
+        weaponText = GameObject.Find("Weapon Name");
+        if (ammoText == null)
+            return;
+        weaponText.GetComponent<Text>().text = "Wrench";
+        ammoText.GetComponent<Text>().text = "1";
         
     }
     private void OnEnable()
     {
         if (ammoText == null)
-            return;
-        weaponText.text = "Wrench";
-        ammoText.text = "1";
-        ammoText.color = Color.white;
+        {
+            ammoText = GameObject.Find("Bullet Count");
+            weaponText = GameObject.Find("Weapon Name");
+            if (ammoText == null)
+            {
+                return;
+            }
+        }
+            
+        weaponText.GetComponent<Text>().text = "Wrench";
+        ammoText.GetComponent<Text>().text = "1";
     }
     private void Update()
     {
@@ -50,11 +56,25 @@ public class Wrench : MonoBehaviour
         if (cooldown > 0)
         {
             cooldown -= Time.deltaTime;
-            ammoText.color = new Color(1,(initialCooldown - cooldown)/ initialCooldown, (initialCooldown - cooldown) / initialCooldown);
-        } else if (ammoText.text == "0")
+           /* if (ammoText != null)
+            {
+                ammoText.GetComponent<Text>().color = new Color(1, (initialCooldown - cooldown) / initialCooldown, (initialCooldown - cooldown) / initialCooldown);
+            }*/
+        } else
         {
-            ammoText.text = "1";
-            ammoText.color = Color.white;
+            if (ammoText == null)
+            {
+                ammoText = GameObject.Find("Bullet Count");
+                weaponText = GameObject.Find("Weapon Name");
+                if (ammoText == null)
+                {
+                    return;
+                }
+            }
+            if (ammoText.GetComponent<Text>().text == "0")
+            {
+                ammoText.GetComponent<Text>().text = "1";
+            }
         }
         if (Input.GetKeyDown(KeyCode.Mouse0) && cooldown <= 0)
         {
@@ -64,8 +84,19 @@ public class Wrench : MonoBehaviour
                 attacking = true;
                 gameObject.GetComponent<BoxCollider>().enabled = true;
 
-                ammoText.text = "0";
-                ammoText.color = Color.red;
+                if (ammoText == null)
+                {
+                    ammoText = GameObject.Find("Bullet Count");
+                   weaponText = GameObject.Find("Weapon Name");
+                    if (ammoText != null)
+                    {
+                        ammoText.GetComponent<Text>().text = "0";
+                    }
+                } else
+                {
+                    ammoText.GetComponent<Text>().text = "0";
+                }
+            
                 if (repair)
                 {
                     wrenchSFX.clip = repairMissSFX;
@@ -214,18 +245,19 @@ public class Wrench : MonoBehaviour
                     }
                 }
             }
-            else if (repairable.tag == "Radio")
-            {
-                Instantiate(sparks, repairable.transform.position + new Vector3(0, .5f, 0), Quaternion.identity);
-                wrenchSFX.clip = repairSFX;
-                wrenchSFX.pitch = .8f;
-                wrenchSFX.Play();
-                repairable.GetComponent<Radio>().radioHealth = Mathf.Clamp(repairable.GetComponent<Radio>().radioHealth + repairAmount, 0, 100);
-            }
         }
     }
     private void OnDisable()
     {
-        ammoText.color = ammoTxtInit; 
+        /*if (ammoText == null)
+        {
+           // ammoText = GameObject.Find("Bullet Count");
+          //weaponText = GameObject.Find("Weapon Name");
+            if (ammoText == null)
+            {
+                return;
+            }
+        }
+        ammoText.GetComponent<Text>().color = ammoTxtInit;*/
     }
 }

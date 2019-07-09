@@ -6,6 +6,7 @@ public class OffScreenPoint : MonoBehaviour
 {
     public Camera cameraObject;
     public Transform pointTransform;
+    Transform pointTransformQueue;
     GameObject child;
     public Vector3 initialPos;
     bool point = false, isDisabled = false;

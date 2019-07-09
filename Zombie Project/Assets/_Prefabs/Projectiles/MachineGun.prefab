@@ -46,10 +46,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f7201c6ef935a243b1ff5194c0d08b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectileDamage: 15
+  projectileDamage: 10
   destroyProjectile: 3
-  projectileSpeed: 65
-  kickBack: 2
+  projectileSpeed: 50
+  kickBack: 1.5
   bloodHitFX: {fileID: 492924346993083021, guid: f55f02b964098344b90354e2bec44554,
     type: 3}
   bulletPrefab: {fileID: 149625743778500591}
