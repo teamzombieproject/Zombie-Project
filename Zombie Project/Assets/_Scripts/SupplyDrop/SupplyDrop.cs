@@ -31,17 +31,20 @@ public class SupplyDrop : MonoBehaviour
                 {
                     Instantiate(GM.bearTrapDrop, GM.currentSupplyDropSpawn.transform.position, Quaternion.identity);
                 }
-                for (int i = GM.javelinRocketTurretStock; i > 0; i--)
-                {
-                    Instantiate(GM.javelinRocketTurretDrop, GM.currentSupplyDropSpawn.transform.position, Quaternion.identity);
-                }
-                for (int i = GM.machineGunTurretStock; i > 0; i--)
-                {
-                    Instantiate(GM.machineGunTurretDrop, GM.currentSupplyDropSpawn.transform.position, Quaternion.identity);
-                }
                 for (int i = GM.barricadeStock; i > 0; i--)
                 {
                     Instantiate(GM.barricadeDrop, GM.currentSupplyDropSpawn.transform.position, Quaternion.identity);
+                }
+                if (GM.wave >= 2)
+                {
+                    for (int i = GM.machineGunTurretStock; i > 0; i--)
+                    {
+                        Instantiate(GM.machineGunTurretDrop, GM.currentSupplyDropSpawn.transform.position, Quaternion.identity);
+                    }
+                    for (int i = GM.javelinRocketTurretStock; i > 0; i--)
+                    {
+                        Instantiate(GM.javelinRocketTurretDrop, GM.currentSupplyDropSpawn.transform.position, Quaternion.identity);
+                    }
                 }
             Destroy(gameObject);
         }
@@ -50,26 +53,28 @@ public class SupplyDrop : MonoBehaviour
     public void RandomizedLoot()
     {
         int JRTrandom = RandomValue(
-            new RandomVaribles(0, 2, .9f),
-            new RandomVaribles(2, 3, .1f));
+            new RandomVaribles(0, 1, .95f),
+            new RandomVaribles(1, 2, .05f));
         int MGTrandom =RandomValue(
-            new RandomVaribles(0, 2, .9f),
-            new RandomVaribles(2, 3, .1f));
+            new RandomVaribles(0, 1, .95f),
+            new RandomVaribles(1, 2, .05f));
         int Mrandom = RandomValue(
-            new RandomVaribles(0, 2, .9f),
-            new RandomVaribles(2, 3, .1f));
+            new RandomVaribles(0, 0, .05f),
+            new RandomVaribles(1, 1, .85f),
+            new RandomVaribles(1, 2, .1f));
         int BTrandom = RandomValue(
-            new RandomVaribles(0, 2, .9f),
-            new RandomVaribles(2, 3, .1f));
+            new RandomVaribles(0, 0, .05f),
+            new RandomVaribles(1, 1, .85f),
+            new RandomVaribles(1, 2, .1f));
         int Brandom = RandomValue(
-            new RandomVaribles(0, 2, .3f),
-            new RandomVaribles(2, 3, .7f));
+            new RandomVaribles(0, 1, .3f),
+            new RandomVaribles(2, 2, .7f));
 
-        GM.javelinRocketTurretStock += JRTrandom;
-        GM.machineGunTurretStock += MGTrandom;
-        GM.mineStock += Mrandom;
-        GM.bearTrapStock += BTrandom;
-        GM.barricadeStock += Brandom;
+        GM.javelinRocketTurretStock = JRTrandom;
+        GM.machineGunTurretStock = MGTrandom;
+        GM.mineStock = Mrandom;
+        GM.bearTrapStock = BTrandom;
+        GM.barricadeStock = Brandom;
     }
 
     struct RandomVaribles

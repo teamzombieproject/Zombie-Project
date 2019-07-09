@@ -21,6 +21,7 @@ public class GameManager : MonoBehaviour
     public bool canZombiesSpawn = false;
     public bool actionPhaseActive = false;
     public bool isRadioDead = false;
+    public bool gameEnd = false;
     
     public float m_GameTime = 0f;
     public float GameTime { get { return m_GameTime; } }
@@ -150,7 +151,10 @@ public class GameManager : MonoBehaviour
 
     public void EndGame()
     {
+        if (!gameEnd)
+        {
         StartCoroutine("LoadLevel");
+        }
     }
 
     public IEnumerator LoadLevel()
@@ -447,12 +451,30 @@ public class GameManager : MonoBehaviour
                 actionPhaseActive = false;
                 GameObject[] Dropped = GameObject.FindGameObjectsWithTag("Dropped");
 
+
+                // Make the supply drop spawn (set Spawn bool to true) (can only spawn when false)
+                if (!hasSupplyDropSpawned)
+                {
+                    SpawnSupplyDrop();
+                }
+
+                if (canGunBeSpawned)
+                {
+                    SelectedWeaponDrop();
+                    currentWeaponDrop = Instantiate(weaponDropObject, currentSupplyDropSpawn.transform.position, currentSupplyDropSpawn.transform.rotation);
+                    canGunBeSpawned = false;
+                }
+
                 if (m_GameTime >= 45)
                 {
                     m_GameState = GameState.Action;
                     m_GameTime = 0f;
                     timeUntilEndOfWave += difficultyMultiplier * 5;
-                    spawnRepeatRate -= difficultyMultiplier * 0.2f; 
+                    spawnRepeatRate -= difficultyMultiplier * 0.3f; 
+                    if (spawnRepeatRate <= 0.5f)
+                    {
+                        spawnRepeatRate = 0.5f;
+                    }
                     spawns.mayspawn = true;
                     canZombiesSpawn = true;
                     spawnTimer = 0f;
@@ -469,20 +491,6 @@ public class GameManager : MonoBehaviour
                     bEPiecePickedUp = false;
                     hasSupplyDropSpawned = false;
                 }
-
-                // Make the supply drop spawn (set Spawn bool to true) (can only spawn when false)
-                if (!hasSupplyDropSpawned)
-                {
-                    SpawnSupplyDrop();
-                }
-               
-                if (canGunBeSpawned)
-                {
-                    SelectedWeaponDrop();
-                    currentWeaponDrop = Instantiate(weaponDropObject, currentSupplyDropSpawn.transform.position, currentSupplyDropSpawn.transform.rotation);
-                    canGunBeSpawned = false;
-                }
-
                 break;
             case GameState.HighScores:
                 // if HS_BackButtonPressed
@@ -509,7 +517,7 @@ public class GameManager : MonoBehaviour
             case GameState.Win:
                 Debug.Log("You wine");
                 EndGame();
-
+                gameEnd = true;
                 break;
         }
     }
