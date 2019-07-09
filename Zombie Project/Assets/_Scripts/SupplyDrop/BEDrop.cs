@@ -5,6 +5,7 @@ using UnityEngine;
 public class BEDrop : MonoBehaviour
 {
     public GameManager GM;
+    public ParticleSystem pickupEffects;
 
     private void Start()
     {
@@ -22,9 +23,9 @@ public class BEDrop : MonoBehaviour
         if (other.gameObject.tag == "Player")
         {
             GM.bEPiecePickedUp = true;
-            GM.bEPieces += 1;
             Destroy(gameObject);
-            GM.BEUpdateText.text = "Goal: Bring the BE Drop back to the radio.";
+            GM.BEUpdateText.text = "Goal: Bring the BE Drop back to the radio";
+            Instantiate(pickupEffects, transform.position + new Vector3 (2.5f,0,2.5f), Quaternion.Euler(-45, 0, 0));
         }
     }
 }

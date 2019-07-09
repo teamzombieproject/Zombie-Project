@@ -5,7 +5,7 @@ using UnityEngine;
 public class SupplyDrop : MonoBehaviour
 {
     public GameManager GM;
-
+    public ParticleSystem pickupFX;
     private void Start()
     {
         //Connor Fettes added code to work with an arrow that points at SupplyDrop when it's off screen here
@@ -75,6 +75,7 @@ public class SupplyDrop : MonoBehaviour
         GM.mineStock = Mrandom;
         GM.bearTrapStock = BTrandom;
         GM.barricadeStock = Brandom;
+        Instantiate(pickupFX, transform.position, Quaternion.Euler(-45, 0, 0));
     }
 
     struct RandomVaribles
