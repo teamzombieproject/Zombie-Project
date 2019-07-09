@@ -57,16 +57,6 @@ public class Shooting : MonoBehaviour
   
     private void Update()
     {
-        if(weaponText == null)
-        {
-            weaponText = GameObject.Find("Weapon Name");
-        }
-
-        if (ammoText == null)
-        {
-            ammoText = GameObject.Find("Bullet Count");
-        }
-
         weaponText.GetComponent<Text>().text = weaponName.ToString();  // Display Weapon name player is using on hud
         ammoText.GetComponent<Text>().text = curAmmo.ToString();       // Display ammo count before getbutton
 
@@ -191,8 +181,7 @@ public class Shooting : MonoBehaviour
         }
 
          Instantiate(bulletPrefab, bulletTransform[0].position, bulletTransform[0].transform.rotation);
-
-        gameManager.GetComponent<GameManager>().shells.Add(Instantiate(shellPrefab, shellSocket.transform.position, new Quaternion(0,0,0,0)));
+         Instantiate(shellPrefab, shellSocket.transform.position, new Quaternion(0,0,0,0));
          //Instantiate(fireFx, bulletTransform[0].position, bulletTransform[0].rotation);
 
         if (isShotGun)

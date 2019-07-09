@@ -50,6 +50,13 @@ public class Radio : MonoBehaviour
         {
             radioUnderAttack.text = "Radio Under Attack!!";
            
+            foreach(ZombieAI zombie in zombieAIScript)
+            {
+                if (zombie == null)
+                {
+                    zombieAIScript.Remove(zombie);
+                }
+            }
         }
 
         else
