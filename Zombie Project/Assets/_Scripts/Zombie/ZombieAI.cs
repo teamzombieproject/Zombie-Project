@@ -101,17 +101,17 @@ public class ZombieAI : MonoBehaviour
                 hitTimer = stunTime;                                                            // reset the timer
             }
         }
-        /* done through zombie health script for some reason
-        if (zombieHealth <= 0)
-        {
-            Destroy(gameObject);
-            
-        }
-        */
         
         if (attackObject != null)
         {
-            ZombieAttack();
+            if (zombieHealth <= 0)
+            {
+                RemoveFromAttackObject();
+            }
+            else
+            {
+                ZombieAttack();
+            }
         }
         else
         {
@@ -157,15 +157,20 @@ public class ZombieAI : MonoBehaviour
 
    private void OnCollisionExit(Collision collision)
     {
-        //if (collision.gameObject == attackObject)
-       // attackObject = null;
-        
+        if (collision.gameObject == attackObject)
+        {
+            RemoveFromAttackObject();
+            attackObject = null;
+            attackTimer = 0;
+        }
+
     }
 
     private void OnTriggerExit(Collider other)
     {
         if (other.gameObject == attackObject)
         {
+            RemoveFromAttackObject();
             attackObject = null;
             attackTimer = 0;
         }
@@ -183,13 +188,21 @@ public class ZombieAI : MonoBehaviour
             if (attackObject.tag == "Barricade")
             {
                 Barricade barricade = attackObject.GetComponent<Barricade>();
-                barricade.zombieAIScript.Add(this);
+                if (barricade.zombieAIScript.Contains(this) == false)
+                {
+                    barricade.zombieAIScript.Add(this);
+                }
+
                 barricade.barricadeHealth -= damageToBarricade;
             }
             else if (attackObject.tag == "Turret")
             {
                 Turret turret = attackObject.GetComponent<Turret>();
-                turret.zombieAIScript.Add(this);
+                if (turret.zombieAIScript.Contains(this) == false)
+                {
+                    turret.zombieAIScript.Add(this);
+                }
+
                 turret.turretHealth -= damageToTurret;
                 navAgent.velocity += (attackObject.transform.position - transform.position).normalized * Mathf.Clamp(Vector3.Distance(attackObject.transform.position, transform.position), 3, 5);
             }
@@ -197,7 +210,11 @@ public class ZombieAI : MonoBehaviour
             else if (attackObject.tag == "Radio")
             {
                 Radio radio = attackObject.GetComponent<Radio>();
-                radio.zombieAIScript.Add(this);
+                if (radio.zombieAIScript.Contains(this) == false)
+                {
+                    radio.zombieAIScript.Add(this);
+                }
+
                 radio.radioHealth -= damageToRadio;
             }
             else if (attackObject.tag == "Player")
@@ -233,6 +250,25 @@ public class ZombieAI : MonoBehaviour
         //zombieAcceleration = zombieWalkSpeed;
         navAgent.isStopped = false;
         zombieAnimator.SetBool("attack", false);
+    }
+
+    void RemoveFromAttackObject()
+    {
+        if (attackObject.tag == "Barricade")
+        {
+            Barricade barricade = attackObject.GetComponent<Barricade>();
+            barricade.zombieAIScript.Remove(this);
+        }
+        else if (attackObject.tag == "Turret")
+        {
+            Turret turret = attackObject.GetComponent<Turret>();
+            turret.zombieAIScript.Remove(this);
+        }
+        else if (attackObject.tag == "Radio")
+        {
+            Radio radio = attackObject.GetComponent<Radio>();
+            radio.zombieAIScript.Remove(this);
+        }
     }
 
 
