@@ -67,6 +67,12 @@ public class GameManager : MonoBehaviour
     public GameObject Gun5;
     public GameObject reloadGUIObject;
 
+    public List<GameObject> corpses;
+    public float maxNumberOfCorpses = 100f;
+    public List<GameObject> shells;
+    public float maxNumberOfShells = 200f;
+
+
     GameObject GameHUD;
     Text BEPiecesText;
     Text WaveNumberText;
@@ -118,7 +124,23 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        CheckState();        
+        CheckState();
+        CheckDespawns();
+    }
+
+    void CheckDespawns()
+    {
+        if (corpses.Count > maxNumberOfCorpses)         // if there are too many corpses
+        {
+            Destroy(corpses[0]);                        // destroy the oldest corpse
+            corpses.RemoveAt(0);                        // remove reference from list
+        }
+        
+        if (shells.Count > maxNumberOfShells)           // if there are too many shells
+        {
+            Destroy(shells[0]);                         // destroy the oldest shell
+            shells.RemoveAt(0);                         // remove reference from list
+        }
     }
 
     public void PlayGame()

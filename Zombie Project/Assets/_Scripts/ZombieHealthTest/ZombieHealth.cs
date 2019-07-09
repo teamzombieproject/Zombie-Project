@@ -29,6 +29,7 @@ public class ZombieHealth : MonoBehaviour
         {
           gm.zombiesAlive--;
             GameObject corpse = Instantiate(corpsePrefab, transform.position + new Vector3 (0,.1f,0), Quaternion.identity);
+            gm.corpses.Add(corpse);
             if (GetComponent<NavMeshAgent>().velocity.x > 0)
                 corpse.GetComponentInChildren<SpriteRenderer>().flipX = false;
             else corpse.GetComponentInChildren<SpriteRenderer>().flipX = true;

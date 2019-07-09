@@ -191,7 +191,8 @@ public class Shooting : MonoBehaviour
         }
 
          Instantiate(bulletPrefab, bulletTransform[0].position, bulletTransform[0].transform.rotation);
-        Instantiate(shellPrefab, shellSocket.transform.position, new Quaternion(0,0,0,0));
+
+        gameManager.GetComponent<GameManager>().shells.Add(Instantiate(shellPrefab, shellSocket.transform.position, new Quaternion(0,0,0,0)));
          //Instantiate(fireFx, bulletTransform[0].position, bulletTransform[0].rotation);
 
         if (isShotGun)
