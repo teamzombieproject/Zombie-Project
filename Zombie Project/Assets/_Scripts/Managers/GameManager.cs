@@ -343,7 +343,7 @@ public class GameManager : MonoBehaviour
     {
         if (wave == 1)
         {
-              weaponDropObject = Gun1;
+            weaponDropObject = Gun1;
         }
         if (wave == 2)
         {
@@ -475,11 +475,11 @@ public class GameManager : MonoBehaviour
                 {
                     SpawnSupplyDrop();
                 }
-
+               
                 if (canGunBeSpawned)
                 {
                     SelectedWeaponDrop();
-                    currentWeaponDrop = Instantiate(weaponDropObject, supplyDropSpawn.transform.position, supplyDropSpawn.transform.rotation);
+                    currentWeaponDrop = Instantiate(weaponDropObject, currentSupplyDropSpawn.transform.position, currentSupplyDropSpawn.transform.rotation);
                     canGunBeSpawned = false;
                 }
 
