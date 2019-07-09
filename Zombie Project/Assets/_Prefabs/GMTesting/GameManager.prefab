@@ -44,7 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d736eb7d5024b684c8e4bbbc79537845, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  deBugMod: 1
+  deBugMod: 0
   playButtonPressed: 0
   highScoresButtonPressed: 0
   optionsButtonPressed: 0
@@ -107,6 +107,10 @@ MonoBehaviour:
   Gun4: {fileID: 2856288382467738154, guid: 766ba9e845833b140bdc184870ba0e1a, type: 3}
   Gun5: {fileID: 7306787393381154593, guid: 25b94170be692ee48a05c97268667161, type: 3}
   reloadGUIObject: {fileID: 0}
+  corpses: []
+  maxNumberOfCorpses: 100
+  shells: []
+  maxNumberOfShells: 200
   BEUpdateText: {fileID: 0}
   gameScore: 0
   wave: 0
