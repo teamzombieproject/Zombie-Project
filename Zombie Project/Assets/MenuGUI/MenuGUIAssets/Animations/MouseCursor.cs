@@ -11,17 +11,17 @@ public class MouseCursor : MonoBehaviour
 
     public void SetCursor()
     {
-        Cursor.SetCursor(cursorTexture, hotSpot, cursorMode);
+        //Cursor.SetCursor(cursorTexture, hotSpot, cursorMode);
     }
 
     void OnMouseEnter()
     {
-        Cursor.SetCursor(cursorTexture, hotSpot, cursorMode);
+        //Cursor.SetCursor(cursorTexture, hotSpot, cursorMode);
     }
 
     void OnMouseExit()
     {
-        Cursor.SetCursor(null, Vector2.zero, cursorMode);
+        //Cursor.SetCursor(null, Vector2.zero, cursorMode);
 
     }
 }
