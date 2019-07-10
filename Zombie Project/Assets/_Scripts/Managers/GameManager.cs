@@ -163,7 +163,7 @@ public class GameManager : MonoBehaviour
                 {
                     deathBlocker.fillAmount = Mathf.Cos(deathBlockerX + (Mathf.PI));
                 }
-                if (deathBlocker.fillAmount >= .99f)
+                if (deathBlockerX >= Mathf.PI)
                 {
                     StartCoroutine("LoadLevel");
                 }
@@ -191,6 +191,7 @@ public class GameManager : MonoBehaviour
         {
             Debug.Log("You Win!");
             yield return SceneManager.LoadSceneAsync("GameEnd");
+            Destroy(gameObject);
         }
     }
 
@@ -420,7 +421,8 @@ public class GameManager : MonoBehaviour
                 BEPiecesText.text = "BE Pieces: " + bEPieces + "/5";
                 WaveNumberText.text = "Wave: " + wave;
                 ZombiesRemainText.text = "Zombies Remaining: " + zombiesAlive;
-                BEUpdateText.text = "Goal: Kill the zombies & survive.";
+                if (!hasBEDropSpawned)
+                    BEUpdateText.text = "Goal: Kill the zombies & survive.";
 
                 double spawnTimerRounded;
                 spawnTimerRounded = System.Math.Round(spawnTimer, 2);               // round the timer to 2 decimal places
@@ -545,7 +547,7 @@ public class GameManager : MonoBehaviour
                 {
                     deathBlocker.fillAmount = Mathf.Cos(deathBlockerX + (Mathf.PI));
                 }
-                if (deathBlocker.fillAmount >= .99f)
+                if (deathBlockerX >= Mathf.PI)
                 {
                     EndGame();
                     gameEnd = true;

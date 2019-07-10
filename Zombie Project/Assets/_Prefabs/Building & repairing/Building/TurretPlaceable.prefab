@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 4864656170451147924}
   - component: {fileID: 9102675218722523681}
   - component: {fileID: 5403906042103444246}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: TurretPlaceable
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -108,7 +108,7 @@ GameObject:
   - component: {fileID: 7952369741967265346}
   - component: {fileID: 7952369741970165346}
   - component: {fileID: 7952369741969165474}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Temperature
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -185,7 +185,7 @@ GameObject:
   - component: {fileID: 7952369741967265348}
   - component: {fileID: 7952369741970165348}
   - component: {fileID: 7952369741969165476}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Head
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -262,7 +262,7 @@ GameObject:
   - component: {fileID: 7952369741967265350}
   - component: {fileID: 7952369741970165350}
   - component: {fileID: 7952369741969165478}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}

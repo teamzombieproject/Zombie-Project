@@ -129,6 +129,7 @@ public class Health : MonoBehaviour
         headAnimator.SetInteger("Direction", 0);
 
         transform.Find("ShadowCylinder").gameObject.SetActive(false);
+        GameObject.Find("BackgroundMusic").SetActive(false);
 
         /*for (int i = 0; i < lights.Length; i += 1)
         {

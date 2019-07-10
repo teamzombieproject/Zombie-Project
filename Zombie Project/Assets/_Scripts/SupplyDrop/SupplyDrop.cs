@@ -9,7 +9,17 @@ public class SupplyDrop : MonoBehaviour
     private void Start()
     {
         //Connor Fettes added code to work with an arrow that points at SupplyDrop when it's off screen here
-        GameObject.FindGameObjectWithTag("Player").GetComponentInChildren<OffScreenPoint>().pointTransform = gameObject.transform;
+        OffScreenPoint[] offPoint = GameObject.FindGameObjectWithTag("Player").GetComponentsInChildren<OffScreenPoint>();
+        for (int i = 0; i < offPoint.Length; i++)
+        {
+            if (offPoint[i] != null)
+            {
+                if (offPoint[i].isGoalArrow == false)
+                {
+                    offPoint[i].pointTransform = gameObject.transform;
+                }
+            }
+        }
         //code done
         if (GM == null)
         {

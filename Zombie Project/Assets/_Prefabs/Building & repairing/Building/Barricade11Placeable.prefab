@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1482468107759171293}
   - component: {fileID: 1554575968953613291}
   - component: {fileID: -8054076762627771821}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Barricade11Placeable
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -107,7 +107,7 @@ GameObject:
   - component: {fileID: 3524948249469565652}
   - component: {fileID: 3524948249472532478}
   - component: {fileID: 3524948249471826438}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Barricadeb
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -184,7 +184,7 @@ GameObject:
   - component: {fileID: 7940126762173501832}
   - component: {fileID: 7940126762172273826}
   - component: {fileID: 7940126762171568474}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Barricadea
   m_TagString: Untagged
   m_Icon: {fileID: 0}

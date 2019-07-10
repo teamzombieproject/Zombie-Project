@@ -42,6 +42,7 @@ public class Wrench : MonoBehaviour
             {
                 return;
             }
+            GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>().reloadGUIObject.SetActive(false);
         }
             
         weaponText.GetComponent<Text>().text = "Wrench";

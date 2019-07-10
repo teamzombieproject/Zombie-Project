@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8782970939479427326}
   - component: {fileID: 8782970939479427327}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: shell1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -91,8 +91,8 @@ GameObject:
   - component: {fileID: 8782970940013096467}
   - component: {fileID: 7017131392775795327}
   - component: {fileID: 1048534908347456756}
-  m_Layer: 0
-  m_Name: ShotGunShell_
+  m_Layer: 11
+  m_Name: ShotGunShell
   m_TagString: Shell
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3493166770426098869}
   - component: {fileID: 3493166770426098871}
   - component: {fileID: 3493166770426098868}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Cannon_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -89,7 +89,7 @@ GameObject:
   - component: {fileID: 3493166770992885152}
   - component: {fileID: 3493166770992885154}
   - component: {fileID: 3493166770992885155}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Head
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -168,7 +168,7 @@ GameObject:
   - component: {fileID: 3493166771249481219}
   - component: {fileID: 3493166771249481221}
   - component: {fileID: 3493166771249481218}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Cannon_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -246,7 +246,7 @@ GameObject:
   - component: {fileID: 3493166771251101829}
   - component: {fileID: 3493166771251101831}
   - component: {fileID: 3493166771251101828}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Temperature
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -325,7 +325,7 @@ GameObject:
   - component: {fileID: 3493166771876459755}
   - component: {fileID: 6013738296552921963}
   - component: {fileID: 8586061968091651990}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: MachineGunTurretPlaceable
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -418,7 +418,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3493166771941298850}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: FirePointLeft
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -448,7 +448,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3493166771986976237}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: FirePointRight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -480,7 +480,7 @@ GameObject:
   - component: {fileID: 3493166772014778017}
   - component: {fileID: 3493166772014778019}
   - component: {fileID: 3493166772014778016}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}

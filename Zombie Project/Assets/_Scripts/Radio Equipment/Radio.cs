@@ -75,6 +75,18 @@ public class Radio : MonoBehaviour
             GM.BEUpdateText.text = "Goal: Kill the rest of the zombies.";
             GM.bEPieces += 1;
             GM.bEPiecePickedUp = false;
+            GetComponent<AudioSource>().Play();
+            OffScreenPoint[] offPoint = collision.gameObject.GetComponentsInChildren<OffScreenPoint>();
+            for (int i = 0; i < offPoint.Length; i++)
+            {
+                if (offPoint[i] != null)
+                {
+                    if (offPoint[i].isGoalArrow)
+                    {
+                        offPoint[i].pointTransform = null;
+                    }
+                }
+            }
         }
     }
 

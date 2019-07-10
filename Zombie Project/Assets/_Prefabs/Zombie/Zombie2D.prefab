@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1770090243025800747}
   - component: {fileID: 1770090243025800746}
   - component: {fileID: 841861622680002235}
-  m_Layer: 11
+  m_Layer: 0
   m_Name: ZombieSprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -129,7 +129,7 @@ GameObject:
   - component: {fileID: 2462500754821307867}
   - component: {fileID: 7740011489804453639}
   - component: {fileID: 8232589939612357222}
-  m_Layer: 11
+  m_Layer: 0
   m_Name: Zombie2D
   m_TagString: Zombie
   m_Icon: {fileID: 0}
@@ -374,7 +374,7 @@ GameObject:
   - component: {fileID: 1770090244486485961}
   - component: {fileID: 1770090244486485963}
   - component: {fileID: 1770090244486485962}
-  m_Layer: 11
+  m_Layer: 0
   m_Name: ZombieDetector
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -431,7 +431,7 @@ GameObject:
   - component: {fileID: 2639639599676658776}
   - component: {fileID: 1947217896942070272}
   - component: {fileID: 7789090940592053246}
-  m_Layer: 11
+  m_Layer: 0
   m_Name: Cylinder
   m_TagString: Untagged
   m_Icon: {fileID: 0}

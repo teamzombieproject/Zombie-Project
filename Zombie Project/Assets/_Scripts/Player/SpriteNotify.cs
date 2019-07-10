@@ -10,5 +10,10 @@ public class SpriteNotify : MonoBehaviour
         GetComponentInParent<Health>().deathIsFinished = true;
         transform.parent.Find("ShadowCylinder").gameObject.SetActive(false);
         GetComponent<Animator>().enabled = false;
+        
+    }
+    public void DeathSFX()
+    {
+        GetComponent<AudioSource>().Play();
     }
 }

@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7223695492324577734}
   - component: {fileID: 7342571942844410890}
   - component: {fileID: 7508769376142574727}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: MinePlaceable
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -108,7 +108,7 @@ GameObject:
   - component: {fileID: 386476312881769890}
   - component: {fileID: 925144950250700620}
   - component: {fileID: 8018928592495246654}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Darker explosion
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4918,7 +4918,7 @@ GameObject:
   - component: {fileID: 2618458425953056573}
   - component: {fileID: 5884777403470139535}
   - component: {fileID: 8682760317083208303}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Inner Explosion
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9728,7 +9728,7 @@ GameObject:
   - component: {fileID: 3539579104261551800}
   - component: {fileID: 4067737070838309612}
   - component: {fileID: 2120576368243852610}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Smoke
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14537,7 +14537,7 @@ GameObject:
   m_Component:
   - component: {fileID: 194453825492186551}
   - component: {fileID: 8525298408501305347}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14617,7 +14617,7 @@ GameObject:
   - component: {fileID: 8924889971254636986}
   - component: {fileID: 7917214433945458851}
   - component: {fileID: 139064717426612256}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Bright explosion
   m_TagString: Untagged
   m_Icon: {fileID: 0}
