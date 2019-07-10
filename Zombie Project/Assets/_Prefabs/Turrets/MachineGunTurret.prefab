@@ -402,7 +402,7 @@ MonoBehaviour:
   zombieAIScript: []
   target: {fileID: 0}
   head: {fileID: 3902915270760214352}
-  range: 15
+  range: 9
   turnSpeed: 5
   fireRate: 0.5
   turretBulletPrefab: {fileID: 149625743778500591, guid: 4d0d188c2de358f449ce200314985381,

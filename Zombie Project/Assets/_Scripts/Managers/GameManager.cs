@@ -106,7 +106,8 @@ public class GameManager : MonoBehaviour
         Options,
         Credits,
         Win,
-        Lose
+        Lose,
+        Tutorial
     }
 
     private GameState m_GameState;
@@ -552,6 +553,11 @@ public class GameManager : MonoBehaviour
                     EndGame();
                     gameEnd = true;
                 }
+                break;
+
+            case GameState.Tutorial:
+
+
                 break;
         }
     }

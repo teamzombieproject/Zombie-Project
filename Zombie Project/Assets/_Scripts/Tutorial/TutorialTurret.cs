@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Turret : MonoBehaviour
+public class TutorialTurret : MonoBehaviour
 {
     public float turretHealth;
     public List<ZombieAI> zombieAIScript;
-    
+
 
     public Transform target;  // represents the zombie
     public Transform head;  //the part of the turret that rotates
@@ -14,7 +14,7 @@ public class Turret : MonoBehaviour
     public float range = 15f;
     public float turnSpeed = 5f;
     public float fireRate = 1f;
-    private float fireCountDown =0f;
+    private float fireCountDown = 0f;
     float delayCountDown;
     bool turretActive = true;
     public GameObject turretBulletPrefab;
@@ -30,6 +30,8 @@ public class Turret : MonoBehaviour
     public Renderer bodyRenderer;
     public bool smokeParticlePlaying = false;
 
+    float timer = 0;
+    public GameObject wall;
 
 
     void Start()
@@ -41,11 +43,11 @@ public class Turret : MonoBehaviour
         audioSrc = GetComponent<AudioSource>();
         audioSrc.clip = audioClip;
         smokeParticle.Clear();
-        
-       
+
+
     }
 
-    void Update()  
+    void Update()
     {
         if (turretActive = true && turretHealth > 0)
         {
@@ -53,16 +55,16 @@ public class Turret : MonoBehaviour
         }
         if (turretHealth <= 0)
         {
-            
+
             DeactivateTurret();
 
             for (int i = 0; i < zombieAIScript.Count; i++)
             {
-            zombieAIScript[i].attackObject = null;
+                zombieAIScript[i].attackObject = null;
             }
 
         }
-       
+
         if (target == null)  // if there is no target, don't do anything
         {
             return;
@@ -76,6 +78,12 @@ public class Turret : MonoBehaviour
             Vector3 rotation = Quaternion.Lerp(head.rotation, lookRotation, turnSpeed * Time.deltaTime).eulerAngles;  //convert quarternion to euler angles so we can specify just the y axis to rotate around
                                                                                                                       //using Lerp smooths out the rotation otherwise it would just jump to new target.
             head.rotation = Quaternion.Euler(0f, rotation.y, 0f);
+            timer += Time.deltaTime;
+        }
+        if (timer > 4.5)
+        {
+            Destroy(wall);
+            target = null;
         }
         if (fireCountDown <= 0 && turretActive == true)
         {
@@ -103,41 +111,17 @@ public class Turret : MonoBehaviour
 
     void Shoot2()
     {
-       GameObject bulletGo = Instantiate(turretBulletPrefab, firePoint[1].position, firePoint[1].rotation);
+        GameObject bulletGo = Instantiate(turretBulletPrefab, firePoint[1].position, firePoint[1].rotation);
         audioSrc.Play();
     }
-   
 
-    void UpdateTarget()  
+
+    void UpdateTarget()
     {
-        GameObject[] zombies = GameObject.FindGameObjectsWithTag("Zombie");  // find targets with tag "Zombie" and store them in the Array called zombies
-        float shortestDistance = Mathf.Infinity;  // make a float to store shortest distance (closest enemy). Mathf.Infinity sets it to infinity if there is no zombie 
-        GameObject nearestZombie = null;  // store the nearest enemy as nearestZombie and set it to null to start with
-
-
-        foreach (GameObject zombie in zombies)  
-        {
-            float distanceToZombie = Vector3.Distance(transform.position, zombie.transform.position);  // loop through each zombie and determine its distance and store it in variable distanceToEnemy
-
-            if (distanceToZombie < shortestDistance)  //if you find a zombie closer than the current shortest distance value
-            {
-                shortestDistance = distanceToZombie;  // then set this distance to the shortest distance
-                nearestZombie = zombie;  // and set this zombie in the array to the nearestZombie
-            }
-        }
-
-        if (nearestZombie != null && shortestDistance <= range)  // if the Nearest zombie is not null and within our range
-        {
-            target = nearestZombie.transform;  //set this zombie's transform to our target 
-
-        }
-        else
-        {
-            target = null;
-        }
+        
     }
 
-   void DeactivateTurret()
+    void DeactivateTurret()
     {
         turretHealth = 0;
         turretActive = false;
@@ -146,19 +130,19 @@ public class Turret : MonoBehaviour
             smokeParticle.Play();
             smokeParticlePlaying = true;
         }
-        
-            bodyRenderer.material = deadMat;
-            headRenderer.material = deadMat;
-        
+
+        bodyRenderer.material = deadMat;
+        headRenderer.material = deadMat;
+
     }
 
     public void ActivateTurret()
     {
         turretActive = true;
-        
-        
-            bodyRenderer.material = activeMat;
-            headRenderer.material = activeMat;
+
+
+        bodyRenderer.material = activeMat;
+        headRenderer.material = activeMat;
         smokeParticle.Stop();
         smokeParticlePlaying = false;
 

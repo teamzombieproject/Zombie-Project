@@ -14,6 +14,7 @@ public class Wrench : MonoBehaviour
     public GameObject wrenchSprites, wind, windSpawnPoint;
     public GameObject hitFX; // stolen from james >:D
     public GameObject sparks;
+    public bool tutorial = false;
     
     public AudioClip smackSFX, repairSFX, repairMissSFX;
     AudioSource wrenchSFX;
@@ -237,6 +238,20 @@ public class Wrench : MonoBehaviour
                 }
                 else if (i == 2)
                 {
+                    if (tutorial)
+                    {
+                        if (repairable.GetComponent<TutorialTurret>().turretHealth < 100)
+                        {
+
+                            if (repairable.GetComponent<TutorialTurret>().turretHealth <= 0)
+                            {
+                                repairable.GetComponent<TutorialTurret>().turretHealth = repairAmount;
+                                //repairable.GetComponent<Turret>().ActivateTurret();
+                            }
+                            else
+                                repairable.GetComponent<TutorialTurret>().turretHealth = Mathf.Clamp(repairable.GetComponent<TutorialTurret>().turretHealth + repairAmount * 2, 0, 50);
+                        }
+                    }
                      if (repairable.GetComponent<Turret>().turretHealth < 100)
                     {
                         
