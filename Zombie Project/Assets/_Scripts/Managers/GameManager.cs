@@ -72,7 +72,7 @@ public class GameManager : MonoBehaviour
     public float maxNumberOfCorpses = 100f;
     public List<GameObject> shells;
     public float maxNumberOfShells = 200f;
-
+    float deathBlockerX = 0;
 
     GameObject GameHUD;
     Text BEPiecesText;
@@ -81,6 +81,8 @@ public class GameManager : MonoBehaviour
     Text TimeRemainText;
     Text AmmoText;
     public Text BEUpdateText;
+    Image deathBlocker;
+
 
     public int gameScore = 0;
     public int wave = 0;
@@ -119,7 +121,7 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        deathBlocker = GameObject.FindGameObjectWithTag("Canvas").transform.Find("DeathBlocker").gameObject.GetComponent<Image>();
     }
 
     // Update is called once per frame
@@ -153,7 +155,20 @@ public class GameManager : MonoBehaviour
     {
         if (!gameEnd)
         {
-        StartCoroutine("LoadLevel");
+            if (m_GameState == GameState.Lose)
+            {
+                Time.timeScale = 0;
+                deathBlockerX += Time.unscaledDeltaTime;
+                if (deathBlockerX >= 1.5707963)
+                {
+                    deathBlocker.fillAmount = Mathf.Cos(deathBlockerX + (Mathf.PI));
+                }
+                if (deathBlocker.fillAmount >= .99f)
+                {
+                    StartCoroutine("LoadLevel");
+                }
+            } else
+            StartCoroutine("LoadLevel");
         }
     }
 
@@ -174,6 +189,7 @@ public class GameManager : MonoBehaviour
 
         if (m_GameState == GameState.Win)
         {
+            Debug.Log("You Win!");
             yield return SceneManager.LoadSceneAsync("GameEnd");
         }
     }
@@ -509,15 +525,31 @@ public class GameManager : MonoBehaviour
 
                 break;
             case GameState.Lose:
-                Debug.Log("You lose");
+                if (deathBlocker == null)
+                {
+                    deathBlocker = GameObject.FindGameObjectWithTag("Canvas").transform.Find("DeathBlocker").gameObject.GetComponent<Image>();
+                }
                 EndGame();
-
+               
 
                 break;
             case GameState.Win:
-                Debug.Log("You wine");
-                EndGame();
-                gameEnd = true;
+
+                if (deathBlocker == null)
+                {
+                    deathBlocker = GameObject.FindGameObjectWithTag("Canvas").transform.Find("DeathBlocker").gameObject.GetComponent<Image>();
+                }
+                Time.timeScale = 0;
+                deathBlockerX += Time.unscaledDeltaTime;
+                if (deathBlockerX >= 1.5707963)
+                {
+                    deathBlocker.fillAmount = Mathf.Cos(deathBlockerX + (Mathf.PI));
+                }
+                if (deathBlocker.fillAmount >= .99f)
+                {
+                    EndGame();
+                    gameEnd = true;
+                }
                 break;
         }
     }

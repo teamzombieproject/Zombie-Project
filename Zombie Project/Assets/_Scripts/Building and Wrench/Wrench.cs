@@ -45,7 +45,10 @@ public class Wrench : MonoBehaviour
         }
             
         weaponText.GetComponent<Text>().text = "Wrench";
-        ammoText.GetComponent<Text>().text = "1";
+        if (cooldown <= 0)
+            ammoText.GetComponent<Text>().text = "1";
+        else
+            ammoText.GetComponent<Text>().text = "0";
     }
     private void Update()
     {

@@ -35,6 +35,7 @@ TagManager:
   - PlayerHealthBar
   - Corpse
   - Shell
+  - OnDeath
   layers:
   - Default
   - TransparentFX
