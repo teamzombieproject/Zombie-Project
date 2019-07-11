@@ -14,8 +14,8 @@ PlayerSettings:
   accelerometerFrequency: 60
   companyName: DefaultCompany
   productName: Zombie Project
-  defaultCursor: {fileID: 2800000, guid: 23f1a6a79e5d8cd4e82570e49bc0a502, type: 3}
-  cursorHotspot: {x: 0, y: 0}
+  defaultCursor: {fileID: 2800000, guid: 6ecd5dff0a694a248a6c81210eb31131, type: 3}
+  cursorHotspot: {x: 9.5, y: 9.5}
   m_SplashScreenBackgroundColor: {r: 0.13725491, g: 0.12156863, b: 0.1254902, a: 1}
   m_ShowUnitySplashScreen: 1
   m_ShowUnitySplashLogo: 1

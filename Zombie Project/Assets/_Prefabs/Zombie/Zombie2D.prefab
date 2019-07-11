@@ -182,7 +182,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   zombieHealth: 100
-  deathMagnitude: 5
+  deathMagnitude: 2
   corpsePrefab: {fileID: 8957603523924562170, guid: 3edc3c954345b8749bf8756513466868,
     type: 3}
   zombieHurt: {fileID: 8300000, guid: f28a558fc1fb359459d6f0db9f736d75, type: 3}

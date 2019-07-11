@@ -35,7 +35,8 @@ public class ZombieHealth : MonoBehaviour
             if (GetComponent<NavMeshAgent>().velocity.x > 0)
                 corpse.GetComponentInChildren<SpriteRenderer>().flipX = false;
             else corpse.GetComponentInChildren<SpriteRenderer>().flipX = true;
-            //corpse.GetComponentInParent<Rigidbody>().velocity = navAgent.velocity * deathMagnitude;
+
+            corpse.GetComponentInParent<Rigidbody>().velocity = navAgent.velocity * deathMagnitude;
             Destroy(gameObject);
 
         }

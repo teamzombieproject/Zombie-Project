@@ -50,7 +50,8 @@ public class Projectiles : MonoBehaviour
         {
             ZombieAI zomb = collision.gameObject.GetComponent<ZombieAI>();
             
-            zomb.gameObject.SendMessage("TakeDamage", projectileDamage, SendMessageOptions.DontRequireReceiver);
+            //zomb.gameObject.SendMessage("TakeDamage", projectileDamage, SendMessageOptions.DontRequireReceiver);
+            zomb.gameObject.GetComponent<ZombieHealth>().Hurt(projectileDamage, transform.position, 0.5f);
             zomb.isHit = true;
 
             Vector3 shotDir = zomb.transform.position - transform.position;
