@@ -123,7 +123,6 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        deathBlocker = GameObject.FindGameObjectWithTag("Canvas").transform.Find("DeathBlocker").gameObject.GetComponent<Image>();
     }
 
     // Update is called once per frame

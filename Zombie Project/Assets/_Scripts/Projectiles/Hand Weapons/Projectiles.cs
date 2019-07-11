@@ -64,7 +64,7 @@ public class Projectiles : MonoBehaviour
             Destroy(gameObject);
 
         }
-        if (isDeagle == true)
+        if (isDeagle == true && collision.gameObject.tag == "Zombie")
         {
             ZombieAI zomb = collision.gameObject.GetComponent<ZombieAI>();
 
