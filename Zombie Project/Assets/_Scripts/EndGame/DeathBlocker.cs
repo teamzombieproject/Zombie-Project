@@ -20,6 +20,7 @@ public class DeathBlocker : MonoBehaviour
             x += Time.deltaTime;
 
             GetComponent<Image>().fillAmount = Mathf.Cos(x + (Mathf.PI));
-        }
+        } if (x > Mathf.PI * 1.5f)
+            Destroy(gameObject);
     }
 }
