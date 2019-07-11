@@ -1660,21 +1660,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7962415752316953021}
     m_Modifications:
-    - target: {fileID: 7957450501634424405, guid: 953b97089f2512d4b996e0ad4da80df4,
-        type: 3}
-      propertyPath: m_Name
-      value: Shotgun
-      objectReference: {fileID: 0}
-    - target: {fileID: 7957450501634424405, guid: 953b97089f2512d4b996e0ad4da80df4,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7957450501634424405, guid: 953b97089f2512d4b996e0ad4da80df4,
-        type: 3}
-      propertyPath: m_Layer
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 7957450501634424402, guid: 953b97089f2512d4b996e0ad4da80df4,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1728,6 +1713,21 @@ PrefabInstance:
     - target: {fileID: 7957450501634424402, guid: 953b97089f2512d4b996e0ad4da80df4,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7957450501634424405, guid: 953b97089f2512d4b996e0ad4da80df4,
+        type: 3}
+      propertyPath: m_Name
+      value: Shotgun
+      objectReference: {fileID: 0}
+    - target: {fileID: 7957450501634424405, guid: 953b97089f2512d4b996e0ad4da80df4,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7957450501634424405, guid: 953b97089f2512d4b996e0ad4da80df4,
+        type: 3}
+      propertyPath: m_Layer
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 12770386093675439, guid: 953b97089f2512d4b996e0ad4da80df4,
@@ -1794,6 +1794,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Desert Eagle
+      objectReference: {fileID: 0}
+    - target: {fileID: 4622766399936713568, guid: 3f47e780392b41b4bb62ec8016ff95d2,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4622766399936713575, guid: 3f47e780392b41b4bb62ec8016ff95d2,
         type: 3}
@@ -1865,21 +1870,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7962415752316953021}
     m_Modifications:
-    - target: {fileID: 3353654333039757813, guid: 58defe589936d714386ced5dd2628e79,
-        type: 3}
-      propertyPath: m_Name
-      value: Semi Auto
-      objectReference: {fileID: 0}
-    - target: {fileID: 3353654333039757813, guid: 58defe589936d714386ced5dd2628e79,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3353654333039757813, guid: 58defe589936d714386ced5dd2628e79,
-        type: 3}
-      propertyPath: m_Layer
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 3353654333039757810, guid: 58defe589936d714386ced5dd2628e79,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1933,6 +1923,21 @@ PrefabInstance:
     - target: {fileID: 3353654333039757810, guid: 58defe589936d714386ced5dd2628e79,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3353654333039757813, guid: 58defe589936d714386ced5dd2628e79,
+        type: 3}
+      propertyPath: m_Name
+      value: Semi Auto
+      objectReference: {fileID: 0}
+    - target: {fileID: 3353654333039757813, guid: 58defe589936d714386ced5dd2628e79,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3353654333039757813, guid: 58defe589936d714386ced5dd2628e79,
+        type: 3}
+      propertyPath: m_Layer
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4117677289264090962, guid: 58defe589936d714386ced5dd2628e79,
@@ -1995,21 +2000,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7962415752316953021}
     m_Modifications:
-    - target: {fileID: 8087132243958192422, guid: b4f0f034b8c4a6a49bff9c81752c4a65,
-        type: 3}
-      propertyPath: m_Name
-      value: Wrench
-      objectReference: {fileID: 0}
-    - target: {fileID: 8087132243958192422, guid: b4f0f034b8c4a6a49bff9c81752c4a65,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8087132243958192422, guid: b4f0f034b8c4a6a49bff9c81752c4a65,
-        type: 3}
-      propertyPath: m_Layer
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 8087132243958192417, guid: b4f0f034b8c4a6a49bff9c81752c4a65,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2063,6 +2053,21 @@ PrefabInstance:
     - target: {fileID: 8087132243958192417, guid: b4f0f034b8c4a6a49bff9c81752c4a65,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8087132243958192422, guid: b4f0f034b8c4a6a49bff9c81752c4a65,
+        type: 3}
+      propertyPath: m_Name
+      value: Wrench
+      objectReference: {fileID: 0}
+    - target: {fileID: 8087132243958192422, guid: b4f0f034b8c4a6a49bff9c81752c4a65,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8087132243958192422, guid: b4f0f034b8c4a6a49bff9c81752c4a65,
+        type: 3}
+      propertyPath: m_Layer
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8506700225913090420, guid: b4f0f034b8c4a6a49bff9c81752c4a65,
@@ -2136,21 +2141,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7962415752316953021}
     m_Modifications:
-    - target: {fileID: 247433608384665081, guid: 3394611bcb2c07a4697dcb38cd3c5885,
-        type: 3}
-      propertyPath: m_Name
-      value: HighPowerRifle
-      objectReference: {fileID: 0}
-    - target: {fileID: 247433608384665081, guid: 3394611bcb2c07a4697dcb38cd3c5885,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 247433608384665081, guid: 3394611bcb2c07a4697dcb38cd3c5885,
-        type: 3}
-      propertyPath: m_Layer
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 247433608384665086, guid: 3394611bcb2c07a4697dcb38cd3c5885,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2204,6 +2194,21 @@ PrefabInstance:
     - target: {fileID: 247433608384665086, guid: 3394611bcb2c07a4697dcb38cd3c5885,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 247433608384665081, guid: 3394611bcb2c07a4697dcb38cd3c5885,
+        type: 3}
+      propertyPath: m_Name
+      value: HighPowerRifle
+      objectReference: {fileID: 0}
+    - target: {fileID: 247433608384665081, guid: 3394611bcb2c07a4697dcb38cd3c5885,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 247433608384665081, guid: 3394611bcb2c07a4697dcb38cd3c5885,
+        type: 3}
+      propertyPath: m_Layer
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6592181902461334331, guid: 3394611bcb2c07a4697dcb38cd3c5885,
@@ -2261,21 +2266,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7962415752316953021}
     m_Modifications:
-    - target: {fileID: 8955208013215146481, guid: e226acc97c4e7f14fa5bb0e32bb9c8c2,
-        type: 3}
-      propertyPath: m_Name
-      value: Rifle .22
-      objectReference: {fileID: 0}
-    - target: {fileID: 8955208013215146481, guid: e226acc97c4e7f14fa5bb0e32bb9c8c2,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8955208013215146481, guid: e226acc97c4e7f14fa5bb0e32bb9c8c2,
-        type: 3}
-      propertyPath: m_Layer
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 8955208013215146486, guid: e226acc97c4e7f14fa5bb0e32bb9c8c2,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2329,6 +2319,21 @@ PrefabInstance:
     - target: {fileID: 8955208013215146486, guid: e226acc97c4e7f14fa5bb0e32bb9c8c2,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8955208013215146481, guid: e226acc97c4e7f14fa5bb0e32bb9c8c2,
+        type: 3}
+      propertyPath: m_Name
+      value: Rifle .22
+      objectReference: {fileID: 0}
+    - target: {fileID: 8955208013215146481, guid: e226acc97c4e7f14fa5bb0e32bb9c8c2,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8955208013215146481, guid: e226acc97c4e7f14fa5bb0e32bb9c8c2,
+        type: 3}
+      propertyPath: m_Layer
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8737751332007085479, guid: e226acc97c4e7f14fa5bb0e32bb9c8c2,
