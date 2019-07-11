@@ -196,6 +196,11 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public void EndApplication()
+    {
+        Application.Quit();
+    }
+
     void Init()
     {
         Destroy(GameObject.FindGameObjectWithTag("Player"));                            // remove old player object
@@ -410,10 +415,6 @@ public class GameManager : MonoBehaviour
                 if (tutorialButtonPressed)
                 {
                     m_GameState = GameState.Tutorial;
-                }
-                if (quitButtonPressed == true)
-                {
-                    Application.Quit();
                 }
                 break;
             case GameState.Setup:
