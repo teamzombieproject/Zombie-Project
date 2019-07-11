@@ -6,7 +6,7 @@ public class BearTrap : MonoBehaviour
 {
     public int uses = 3;
 
-    public ZombieAI targetHealth;
+    public ZombieHealth targetHealth;
 
     public Animator animator;
 
@@ -59,7 +59,8 @@ public class BearTrap : MonoBehaviour
             if (isDestroyed == false && coolDownComplete == true)
             {
                 animator.SetBool("Triggered", true);
-                targetHealth = other.gameObject.GetComponent<ZombieAI>();
+                targetHealth = other.gameObject.GetComponent<ZombieHealth>();
+                
                 triggered = 0f;
                 coolDownComplete = false;
                 uses -= 1;
@@ -70,7 +71,8 @@ public class BearTrap : MonoBehaviour
 
     private void TakeHealth()
     {
-        targetHealth.zombieHealth -= 100;
+       // targetHealth.zombieHealth -= 100;
+        targetHealth.Hurt(100, transform.position, 1);
     }
 
 

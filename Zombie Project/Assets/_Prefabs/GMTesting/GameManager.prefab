@@ -50,6 +50,7 @@ MonoBehaviour:
   optionsButtonPressed: 0
   creditsButtonPressed: 0
   quitButtonPressed: 0
+  tutorialButtonPressed: 0
   hasSupplyDropSpawned: 0
   hasBEDropSpawned: 0
   bEPiecePickedUp: 0
@@ -57,6 +58,7 @@ MonoBehaviour:
   canZombiesSpawn: 0
   actionPhaseActive: 0
   isRadioDead: 0
+  gameEnd: 0
   m_GameTime: 0
   timeUntilEndOfWave: 30
   spawnTimer: 0
@@ -101,7 +103,7 @@ MonoBehaviour:
     type: 3}
   barricadeDrop: {fileID: 7773288304641322761, guid: e55df1fc2d589d54e8eafbada42a834b,
     type: 3}
-  Gun1: {fileID: 2836373917740303927, guid: 54cde5a3ffd7df94094b7af5012ad067, type: 3}
+  Gun1: {fileID: 7669610303425827017, guid: d875730d44b8ec84bb41752a52933e38, type: 3}
   Gun2: {fileID: 6940478904085392384, guid: 9e0bc5c684bd87b41bf073d7af27ef10, type: 3}
   Gun3: {fileID: 968243663125828718, guid: 80cf3d10b02a00b49a23ed9987c597bc, type: 3}
   Gun4: {fileID: 2856288382467738154, guid: 766ba9e845833b140bdc184870ba0e1a, type: 3}

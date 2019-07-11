@@ -14,6 +14,7 @@ public class GameManager : MonoBehaviour
     public bool optionsButtonPressed = false;
     public bool creditsButtonPressed = false;
     public bool quitButtonPressed = false;
+    public bool tutorialButtonPressed = false;
     public bool hasSupplyDropSpawned = false;
     public bool hasBEDropSpawned = false;
     public bool bEPiecePickedUp = false;
@@ -406,6 +407,10 @@ public class GameManager : MonoBehaviour
                 if (creditsButtonPressed == true)
                 {
                     m_GameState = GameState.Credits;
+                }
+                if (tutorialButtonPressed)
+                {
+                    m_GameState = GameState.Tutorial;
                 }
                 if (quitButtonPressed == true)
                 {

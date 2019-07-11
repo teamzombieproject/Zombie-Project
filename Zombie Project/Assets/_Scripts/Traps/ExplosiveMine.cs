@@ -31,12 +31,12 @@ public class ExplosiveMine : MonoBehaviour
         {
             targetRigidbody.AddExplosionForce(explosionForce, transform.position, explosionRadius);
 
-            ZombieAI targetHealth = targetRigidbody.GetComponent<ZombieAI>();
+            ZombieHealth targetHealth = targetRigidbody.GetComponent<ZombieHealth>();
 
             if (targetHealth != null)
             {
                 float damage = CalculateDamage(targetRigidbody.position);
-
+                targetHealth.Hurt(damage, transform.position, 5);
                 targetHealth.zombieHealth -= damage;
             }
 
