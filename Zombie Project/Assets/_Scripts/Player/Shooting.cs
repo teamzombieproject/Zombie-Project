@@ -57,8 +57,14 @@ public class Shooting : MonoBehaviour
   
     private void Update()
     {
-        weaponText.GetComponent<Text>().text = weaponName.ToString();  // Display Weapon name player is using on hud
-        ammoText.GetComponent<Text>().text = curAmmo.ToString();       // Display ammo count before getbutton
+        if(weaponText == null)
+        {
+            weaponText.GetComponent<Text>().text = weaponName.ToString();  // Display Weapon name player is using on hud
+        }
+        if(ammoText == null)
+        {
+            ammoText.GetComponent<Text>().text = curAmmo.ToString();       // Display ammo count before getbutton
+        }
 
         if (Input.GetButtonDown("Fire1"))
         {
