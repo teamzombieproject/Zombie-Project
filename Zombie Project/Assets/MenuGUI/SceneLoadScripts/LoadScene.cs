@@ -10,6 +10,8 @@ public class LoadScene : MonoBehaviour
 
     public void OnButtonPressed()
     {
+        if (sceneName == "Tutorial")
+            GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>().tutorialButtonPressed = true;
         SceneManager.LoadScene(sceneName);
     }
 }

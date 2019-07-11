@@ -9,7 +9,9 @@ public class Escape : MonoBehaviour
     {
         if (other.gameObject.tag == "Player")
         {
+            Destroy(GameObject.FindGameObjectWithTag("GameController"));
             SceneManager.LoadScene("Menu");
+
         }
     }
 }
