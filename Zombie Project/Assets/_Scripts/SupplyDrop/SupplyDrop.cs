@@ -5,11 +5,21 @@ using UnityEngine;
 public class SupplyDrop : MonoBehaviour
 {
     public GameManager GM;
-
+    public ParticleSystem pickupFX;
     private void Start()
     {
         //Connor Fettes added code to work with an arrow that points at SupplyDrop when it's off screen here
-        GameObject.FindGameObjectWithTag("Player").GetComponentInChildren<OffScreenPoint>().pointTransform = gameObject.transform;
+        OffScreenPoint[] offPoint = GameObject.FindGameObjectWithTag("Player").GetComponentsInChildren<OffScreenPoint>();
+        for (int i = 0; i < offPoint.Length; i++)
+        {
+            if (offPoint[i] != null)
+            {
+                if (offPoint[i].isGoalArrow == false)
+                {
+                    offPoint[i].pointTransform = gameObject.transform;
+                }
+            }
+        }
         //code done
         if (GM == null)
         {
@@ -75,6 +85,7 @@ public class SupplyDrop : MonoBehaviour
         GM.mineStock = Mrandom;
         GM.bearTrapStock = BTrandom;
         GM.barricadeStock = Brandom;
+        Instantiate(pickupFX, transform.position, Quaternion.Euler(-45, 0, 0));
     }
 
     struct RandomVaribles

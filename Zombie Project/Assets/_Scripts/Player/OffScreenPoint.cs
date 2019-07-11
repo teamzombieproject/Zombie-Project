@@ -11,6 +11,7 @@ public class OffScreenPoint : MonoBehaviour
     public Vector3 initialPos;
     bool point = false, isDisabled = false;
     float x = 0;
+    public bool isGoalArrow;
    
 
     private void Start()

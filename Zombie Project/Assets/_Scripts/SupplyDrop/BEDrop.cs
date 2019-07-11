@@ -5,11 +5,24 @@ using UnityEngine;
 public class BEDrop : MonoBehaviour
 {
     public GameManager GM;
+    public ParticleSystem pickupEffects;
+    OffScreenPoint[] pointArray;
 
     private void Start()
     {
         //Connor Fettes added code to work with an arrow that points at BEDrop when it's off screen here
-        GameObject.FindGameObjectWithTag("Player").GetComponentInChildren<OffScreenPoint>().pointTransform = gameObject.transform;
+        pointArray = GameObject.FindGameObjectWithTag("Player").GetComponentsInChildren<OffScreenPoint>();
+        for (int i = 0;  i < pointArray.Length; i++)
+        {
+            if (pointArray[i] != null)
+            {
+                if (pointArray[i].isGoalArrow)
+                {
+                    pointArray[i].pointTransform = gameObject.transform;
+                }
+            }
+        }
+
         //code done
         if (GM == null)
         {
@@ -23,7 +36,19 @@ public class BEDrop : MonoBehaviour
         {
             GM.bEPiecePickedUp = true;
             Destroy(gameObject);
-            GM.BEUpdateText.text = "Goal: Bring the BE Drop back to the radio.";
+            GM.BEUpdateText.text = "Goal: Bring the BE Drop back to the radio";
+            Instantiate(pickupEffects, transform.position + new Vector3 (2.5f,0,2.5f), Quaternion.Euler(-45, 0, 0));
+
+            for (int i = 0; i < pointArray.Length; i++)
+            {
+                if (pointArray[i] != null)
+                {
+                    if (pointArray[i].isGoalArrow)
+                    {
+                        pointArray[i].pointTransform = GameObject.FindGameObjectWithTag("Radio").transform;
+                    }
+                }
+            }
         }
     }
 }

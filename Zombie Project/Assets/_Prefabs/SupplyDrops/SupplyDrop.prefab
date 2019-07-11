@@ -84,6 +84,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   GM: {fileID: 0}
+  pickupFX: {fileID: 3345573721763072375, guid: 9ed46783786fe9546921f5a575e1f150,
+    type: 3}
 --- !u!65 &2428048371981798632
 BoxCollider:
   m_ObjectHideFlags: 0

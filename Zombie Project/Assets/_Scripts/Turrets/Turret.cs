@@ -47,6 +47,10 @@ public class Turret : MonoBehaviour
 
     void Update()  
     {
+        if (turretActive = true && turretHealth > 0)
+        {
+            ActivateTurret();
+        }
         if (turretHealth <= 0)
         {
             
