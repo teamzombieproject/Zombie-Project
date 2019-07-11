@@ -2424,7 +2424,6 @@ GameObject:
   - component: {fileID: 3391368163949548543}
   - component: {fileID: 3391368163949548542}
   - component: {fileID: 3391368163949548537}
-  - component: {fileID: 5277959809399143640}
   - component: {fileID: 3391368163949548540}
   m_Layer: 5
   m_Name: ButtonOptions
@@ -2545,7 +2544,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 5277959809399143640}
+      - m_Target: {fileID: 0}
         m_MethodName: ClickExit
         m_Mode: 1
         m_Arguments:
@@ -2558,18 +2557,6 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
---- !u!114 &5277959809399143640
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3391368163949548539}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 39f75c0c0332f1a43859ee0dae7d247b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &3391368163949548540
 MonoBehaviour:
   m_ObjectHideFlags: 0
